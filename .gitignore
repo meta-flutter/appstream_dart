@@ -4,6 +4,8 @@
 pubspec.lock
 
 # Build artifacts
+build/
+build-verify/
 src/*.o
 lib/libappstream.so
 

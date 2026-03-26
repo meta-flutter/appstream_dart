@@ -1,1 +1,0 @@
-/usr/lib64/ccache/c++ -fPIC -g -Wl,--dependency-file=CMakeFiles/appstream.dir/link.d -shared -Wl,-soname,libappstream.so -o /home/joel/CLionProjects/appstream/lib/libappstream.so CMakeFiles/appstream.dir/src/dart_api_dl.c.o CMakeFiles/appstream.dir/src/appstream_ffi.cpp.o  libappstream_core.a -lsqlite3 -lpthread
