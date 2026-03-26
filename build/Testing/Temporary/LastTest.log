@@ -1,0 +1,3865 @@
+Start testing: Mar 26 08:27 PDT
+----------------------------------------------------------
+1/140 Testing: StringPool.InternByViewReturnsSamePointerForSameInput
+1/140 Test: StringPool.InternByViewReturnsSamePointerForSameInput
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=StringPool.InternByViewReturnsSamePointerForSameInput" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"StringPool.InternByViewReturnsSamePointerForSameInput" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = StringPool.InternByViewReturnsSamePointerForSameInput
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StringPool
+[ RUN      ] StringPool.InternByViewReturnsSamePointerForSameInput
+[       OK ] StringPool.InternByViewReturnsSamePointerForSameInput (0 ms)
+[----------] 1 test from StringPool (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StringPool.InternByViewReturnsSamePointerForSameInput" end time: Mar 26 08:27 PDT
+"StringPool.InternByViewReturnsSamePointerForSameInput" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/140 Testing: StringPool.InternByStringReturnsSamePointerForSameInput
+2/140 Test: StringPool.InternByStringReturnsSamePointerForSameInput
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=StringPool.InternByStringReturnsSamePointerForSameInput" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"StringPool.InternByStringReturnsSamePointerForSameInput" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = StringPool.InternByStringReturnsSamePointerForSameInput
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StringPool
+[ RUN      ] StringPool.InternByStringReturnsSamePointerForSameInput
+[       OK ] StringPool.InternByStringReturnsSamePointerForSameInput (0 ms)
+[----------] 1 test from StringPool (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StringPool.InternByStringReturnsSamePointerForSameInput" end time: Mar 26 08:27 PDT
+"StringPool.InternByStringReturnsSamePointerForSameInput" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/140 Testing: StringPool.InternByViewAndByStringReturnSamePointer
+3/140 Test: StringPool.InternByViewAndByStringReturnSamePointer
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=StringPool.InternByViewAndByStringReturnSamePointer" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"StringPool.InternByViewAndByStringReturnSamePointer" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = StringPool.InternByViewAndByStringReturnSamePointer
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StringPool
+[ RUN      ] StringPool.InternByViewAndByStringReturnSamePointer
+[       OK ] StringPool.InternByViewAndByStringReturnSamePointer (0 ms)
+[----------] 1 test from StringPool (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StringPool.InternByViewAndByStringReturnSamePointer" end time: Mar 26 08:27 PDT
+"StringPool.InternByViewAndByStringReturnSamePointer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/140 Testing: StringPool.DifferentStringsHaveDifferentPointers
+4/140 Test: StringPool.DifferentStringsHaveDifferentPointers
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=StringPool.DifferentStringsHaveDifferentPointers" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"StringPool.DifferentStringsHaveDifferentPointers" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = StringPool.DifferentStringsHaveDifferentPointers
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StringPool
+[ RUN      ] StringPool.DifferentStringsHaveDifferentPointers
+[       OK ] StringPool.DifferentStringsHaveDifferentPointers (0 ms)
+[----------] 1 test from StringPool (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StringPool.DifferentStringsHaveDifferentPointers" end time: Mar 26 08:27 PDT
+"StringPool.DifferentStringsHaveDifferentPointers" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/140 Testing: StringPool.SizeStartsAtZero
+5/140 Test: StringPool.SizeStartsAtZero
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=StringPool.SizeStartsAtZero" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"StringPool.SizeStartsAtZero" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = StringPool.SizeStartsAtZero
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StringPool
+[ RUN      ] StringPool.SizeStartsAtZero
+[       OK ] StringPool.SizeStartsAtZero (0 ms)
+[----------] 1 test from StringPool (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StringPool.SizeStartsAtZero" end time: Mar 26 08:27 PDT
+"StringPool.SizeStartsAtZero" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/140 Testing: StringPool.SizeIncrementsOnNewStrings
+6/140 Test: StringPool.SizeIncrementsOnNewStrings
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=StringPool.SizeIncrementsOnNewStrings" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"StringPool.SizeIncrementsOnNewStrings" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = StringPool.SizeIncrementsOnNewStrings
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StringPool
+[ RUN      ] StringPool.SizeIncrementsOnNewStrings
+[       OK ] StringPool.SizeIncrementsOnNewStrings (0 ms)
+[----------] 1 test from StringPool (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StringPool.SizeIncrementsOnNewStrings" end time: Mar 26 08:27 PDT
+"StringPool.SizeIncrementsOnNewStrings" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/140 Testing: StringPool.SizeDoesNotChangeOnDuplicate
+7/140 Test: StringPool.SizeDoesNotChangeOnDuplicate
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=StringPool.SizeDoesNotChangeOnDuplicate" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"StringPool.SizeDoesNotChangeOnDuplicate" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = StringPool.SizeDoesNotChangeOnDuplicate
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StringPool
+[ RUN      ] StringPool.SizeDoesNotChangeOnDuplicate
+[       OK ] StringPool.SizeDoesNotChangeOnDuplicate (0 ms)
+[----------] 1 test from StringPool (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StringPool.SizeDoesNotChangeOnDuplicate" end time: Mar 26 08:27 PDT
+"StringPool.SizeDoesNotChangeOnDuplicate" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/140 Testing: StringPool.SizeCountsBothViewAndStringInserts
+8/140 Test: StringPool.SizeCountsBothViewAndStringInserts
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=StringPool.SizeCountsBothViewAndStringInserts" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"StringPool.SizeCountsBothViewAndStringInserts" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = StringPool.SizeCountsBothViewAndStringInserts
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StringPool
+[ RUN      ] StringPool.SizeCountsBothViewAndStringInserts
+[       OK ] StringPool.SizeCountsBothViewAndStringInserts (0 ms)
+[----------] 1 test from StringPool (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StringPool.SizeCountsBothViewAndStringInserts" end time: Mar 26 08:27 PDT
+"StringPool.SizeCountsBothViewAndStringInserts" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/140 Testing: StringPool.EmptyStringIsInterned
+9/140 Test: StringPool.EmptyStringIsInterned
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=StringPool.EmptyStringIsInterned" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"StringPool.EmptyStringIsInterned" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = StringPool.EmptyStringIsInterned
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StringPool
+[ RUN      ] StringPool.EmptyStringIsInterned
+[       OK ] StringPool.EmptyStringIsInterned (0 ms)
+[----------] 1 test from StringPool (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StringPool.EmptyStringIsInterned" end time: Mar 26 08:27 PDT
+"StringPool.EmptyStringIsInterned" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/140 Testing: StringPool.ViewRemainsValidAfterOriginalModified
+10/140 Test: StringPool.ViewRemainsValidAfterOriginalModified
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=StringPool.ViewRemainsValidAfterOriginalModified" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"StringPool.ViewRemainsValidAfterOriginalModified" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = StringPool.ViewRemainsValidAfterOriginalModified
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StringPool
+[ RUN      ] StringPool.ViewRemainsValidAfterOriginalModified
+[       OK ] StringPool.ViewRemainsValidAfterOriginalModified (0 ms)
+[----------] 1 test from StringPool (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StringPool.ViewRemainsValidAfterOriginalModified" end time: Mar 26 08:27 PDT
+"StringPool.ViewRemainsValidAfterOriginalModified" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/140 Testing: StringPool.LongStringInterned
+11/140 Test: StringPool.LongStringInterned
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=StringPool.LongStringInterned" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"StringPool.LongStringInterned" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = StringPool.LongStringInterned
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StringPool
+[ RUN      ] StringPool.LongStringInterned
+[       OK ] StringPool.LongStringInterned (0 ms)
+[----------] 1 test from StringPool (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StringPool.LongStringInterned" end time: Mar 26 08:27 PDT
+"StringPool.LongStringInterned" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/140 Testing: StringPool.StressTestManyDistinctStrings
+12/140 Test: StringPool.StressTestManyDistinctStrings
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=StringPool.StressTestManyDistinctStrings" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"StringPool.StressTestManyDistinctStrings" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = StringPool.StressTestManyDistinctStrings
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StringPool
+[ RUN      ] StringPool.StressTestManyDistinctStrings
+[       OK ] StringPool.StressTestManyDistinctStrings (0 ms)
+[----------] 1 test from StringPool (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"StringPool.StressTestManyDistinctStrings" end time: Mar 26 08:27 PDT
+"StringPool.StressTestManyDistinctStrings" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/140 Testing: XmlScanner.EmptyBufferIsAtEnd
+13/140 Test: XmlScanner.EmptyBufferIsAtEnd
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.EmptyBufferIsAtEnd" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.EmptyBufferIsAtEnd" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.EmptyBufferIsAtEnd
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.EmptyBufferIsAtEnd
+[       OK ] XmlScanner.EmptyBufferIsAtEnd (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.EmptyBufferIsAtEnd" end time: Mar 26 08:27 PDT
+"XmlScanner.EmptyBufferIsAtEnd" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/140 Testing: XmlScanner.WhitespaceOnlyYieldsEndOfDocument
+14/140 Test: XmlScanner.WhitespaceOnlyYieldsEndOfDocument
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.WhitespaceOnlyYieldsEndOfDocument" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.WhitespaceOnlyYieldsEndOfDocument" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.WhitespaceOnlyYieldsEndOfDocument
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.WhitespaceOnlyYieldsEndOfDocument
+[       OK ] XmlScanner.WhitespaceOnlyYieldsEndOfDocument (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.WhitespaceOnlyYieldsEndOfDocument" end time: Mar 26 08:27 PDT
+"XmlScanner.WhitespaceOnlyYieldsEndOfDocument" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/140 Testing: XmlScanner.SimpleStartAndEndTag
+15/140 Test: XmlScanner.SimpleStartAndEndTag
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.SimpleStartAndEndTag" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.SimpleStartAndEndTag" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.SimpleStartAndEndTag
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.SimpleStartAndEndTag
+[       OK ] XmlScanner.SimpleStartAndEndTag (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.SimpleStartAndEndTag" end time: Mar 26 08:27 PDT
+"XmlScanner.SimpleStartAndEndTag" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/140 Testing: XmlScanner.SelfClosingTagProducesStartThenEnd
+16/140 Test: XmlScanner.SelfClosingTagProducesStartThenEnd
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.SelfClosingTagProducesStartThenEnd" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.SelfClosingTagProducesStartThenEnd" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.SelfClosingTagProducesStartThenEnd
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.SelfClosingTagProducesStartThenEnd
+[       OK ] XmlScanner.SelfClosingTagProducesStartThenEnd (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.SelfClosingTagProducesStartThenEnd" end time: Mar 26 08:27 PDT
+"XmlScanner.SelfClosingTagProducesStartThenEnd" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/140 Testing: XmlScanner.SelfClosingTagWithSpaceBeforeSlash
+17/140 Test: XmlScanner.SelfClosingTagWithSpaceBeforeSlash
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.SelfClosingTagWithSpaceBeforeSlash" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.SelfClosingTagWithSpaceBeforeSlash" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.SelfClosingTagWithSpaceBeforeSlash
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.SelfClosingTagWithSpaceBeforeSlash
+[       OK ] XmlScanner.SelfClosingTagWithSpaceBeforeSlash (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.SelfClosingTagWithSpaceBeforeSlash" end time: Mar 26 08:27 PDT
+"XmlScanner.SelfClosingTagWithSpaceBeforeSlash" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/140 Testing: XmlScanner.NestedElements
+18/140 Test: XmlScanner.NestedElements
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.NestedElements" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.NestedElements" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.NestedElements
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.NestedElements
+[       OK ] XmlScanner.NestedElements (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.NestedElements" end time: Mar 26 08:27 PDT
+"XmlScanner.NestedElements" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/140 Testing: XmlScanner.SingleDoubleQuotedAttribute
+19/140 Test: XmlScanner.SingleDoubleQuotedAttribute
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.SingleDoubleQuotedAttribute" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.SingleDoubleQuotedAttribute" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.SingleDoubleQuotedAttribute
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.SingleDoubleQuotedAttribute
+[       OK ] XmlScanner.SingleDoubleQuotedAttribute (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.SingleDoubleQuotedAttribute" end time: Mar 26 08:27 PDT
+"XmlScanner.SingleDoubleQuotedAttribute" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/140 Testing: XmlScanner.SingleSingleQuotedAttribute
+20/140 Test: XmlScanner.SingleSingleQuotedAttribute
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.SingleSingleQuotedAttribute" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.SingleSingleQuotedAttribute" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.SingleSingleQuotedAttribute
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.SingleSingleQuotedAttribute
+[       OK ] XmlScanner.SingleSingleQuotedAttribute (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.SingleSingleQuotedAttribute" end time: Mar 26 08:27 PDT
+"XmlScanner.SingleSingleQuotedAttribute" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/140 Testing: XmlScanner.MultipleAttributes
+21/140 Test: XmlScanner.MultipleAttributes
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.MultipleAttributes" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.MultipleAttributes" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.MultipleAttributes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.MultipleAttributes
+[       OK ] XmlScanner.MultipleAttributes (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.MultipleAttributes" end time: Mar 26 08:27 PDT
+"XmlScanner.MultipleAttributes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/140 Testing: XmlScanner.AttributeOnStartTag
+22/140 Test: XmlScanner.AttributeOnStartTag
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.AttributeOnStartTag" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.AttributeOnStartTag" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.AttributeOnStartTag
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.AttributeOnStartTag
+[       OK ] XmlScanner.AttributeOnStartTag (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.AttributeOnStartTag" end time: Mar 26 08:27 PDT
+"XmlScanner.AttributeOnStartTag" time elapsed: 00:00:00
+----------------------------------------------------------
+
+23/140 Testing: XmlScanner.PlainTextContent
+23/140 Test: XmlScanner.PlainTextContent
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.PlainTextContent" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.PlainTextContent" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.PlainTextContent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.PlainTextContent
+[       OK ] XmlScanner.PlainTextContent (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.PlainTextContent" end time: Mar 26 08:27 PDT
+"XmlScanner.PlainTextContent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/140 Testing: XmlScanner.TextEventTextMethod_NoEntities
+24/140 Test: XmlScanner.TextEventTextMethod_NoEntities
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.TextEventTextMethod_NoEntities" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.TextEventTextMethod_NoEntities" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.TextEventTextMethod_NoEntities
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.TextEventTextMethod_NoEntities
+[       OK ] XmlScanner.TextEventTextMethod_NoEntities (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.TextEventTextMethod_NoEntities" end time: Mar 26 08:27 PDT
+"XmlScanner.TextEventTextMethod_NoEntities" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/140 Testing: XmlScanner.TextEventTextMethod_WithEntities
+25/140 Test: XmlScanner.TextEventTextMethod_WithEntities
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.TextEventTextMethod_WithEntities" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.TextEventTextMethod_WithEntities" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.TextEventTextMethod_WithEntities
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.TextEventTextMethod_WithEntities
+[       OK ] XmlScanner.TextEventTextMethod_WithEntities (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.TextEventTextMethod_WithEntities" end time: Mar 26 08:27 PDT
+"XmlScanner.TextEventTextMethod_WithEntities" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/140 Testing: XmlScanner.EntityAmp
+26/140 Test: XmlScanner.EntityAmp
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.EntityAmp" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.EntityAmp" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.EntityAmp
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.EntityAmp
+[       OK ] XmlScanner.EntityAmp (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.EntityAmp" end time: Mar 26 08:27 PDT
+"XmlScanner.EntityAmp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+27/140 Testing: XmlScanner.EntityLt
+27/140 Test: XmlScanner.EntityLt
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.EntityLt" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.EntityLt" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.EntityLt
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.EntityLt
+[       OK ] XmlScanner.EntityLt (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.EntityLt" end time: Mar 26 08:27 PDT
+"XmlScanner.EntityLt" time elapsed: 00:00:00
+----------------------------------------------------------
+
+28/140 Testing: XmlScanner.EntityGt
+28/140 Test: XmlScanner.EntityGt
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.EntityGt" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.EntityGt" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.EntityGt
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.EntityGt
+[       OK ] XmlScanner.EntityGt (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.EntityGt" end time: Mar 26 08:27 PDT
+"XmlScanner.EntityGt" time elapsed: 00:00:00
+----------------------------------------------------------
+
+29/140 Testing: XmlScanner.EntityQuot
+29/140 Test: XmlScanner.EntityQuot
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.EntityQuot" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.EntityQuot" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.EntityQuot
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.EntityQuot
+[       OK ] XmlScanner.EntityQuot (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.EntityQuot" end time: Mar 26 08:27 PDT
+"XmlScanner.EntityQuot" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/140 Testing: XmlScanner.EntityApos
+30/140 Test: XmlScanner.EntityApos
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.EntityApos" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.EntityApos" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.EntityApos
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.EntityApos
+[       OK ] XmlScanner.EntityApos (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.EntityApos" end time: Mar 26 08:27 PDT
+"XmlScanner.EntityApos" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/140 Testing: XmlScanner.NumericDecimalEntity
+31/140 Test: XmlScanner.NumericDecimalEntity
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.NumericDecimalEntity" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.NumericDecimalEntity" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.NumericDecimalEntity
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.NumericDecimalEntity
+[       OK ] XmlScanner.NumericDecimalEntity (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.NumericDecimalEntity" end time: Mar 26 08:27 PDT
+"XmlScanner.NumericDecimalEntity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+32/140 Testing: XmlScanner.NumericHexEntityLower
+32/140 Test: XmlScanner.NumericHexEntityLower
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.NumericHexEntityLower" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.NumericHexEntityLower" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.NumericHexEntityLower
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.NumericHexEntityLower
+[       OK ] XmlScanner.NumericHexEntityLower (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.NumericHexEntityLower" end time: Mar 26 08:27 PDT
+"XmlScanner.NumericHexEntityLower" time elapsed: 00:00:00
+----------------------------------------------------------
+
+33/140 Testing: XmlScanner.NumericHexEntityUpper
+33/140 Test: XmlScanner.NumericHexEntityUpper
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.NumericHexEntityUpper" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.NumericHexEntityUpper" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.NumericHexEntityUpper
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.NumericHexEntityUpper
+[       OK ] XmlScanner.NumericHexEntityUpper (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.NumericHexEntityUpper" end time: Mar 26 08:27 PDT
+"XmlScanner.NumericHexEntityUpper" time elapsed: 00:00:00
+----------------------------------------------------------
+
+34/140 Testing: XmlScanner.MultipleEntitiesInOneText
+34/140 Test: XmlScanner.MultipleEntitiesInOneText
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.MultipleEntitiesInOneText" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.MultipleEntitiesInOneText" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.MultipleEntitiesInOneText
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.MultipleEntitiesInOneText
+[       OK ] XmlScanner.MultipleEntitiesInOneText (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.MultipleEntitiesInOneText" end time: Mar 26 08:27 PDT
+"XmlScanner.MultipleEntitiesInOneText" time elapsed: 00:00:00
+----------------------------------------------------------
+
+35/140 Testing: XmlScanner.TextMixedPlainAndEntities
+35/140 Test: XmlScanner.TextMixedPlainAndEntities
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.TextMixedPlainAndEntities" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.TextMixedPlainAndEntities" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.TextMixedPlainAndEntities
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.TextMixedPlainAndEntities
+[       OK ] XmlScanner.TextMixedPlainAndEntities (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.TextMixedPlainAndEntities" end time: Mar 26 08:27 PDT
+"XmlScanner.TextMixedPlainAndEntities" time elapsed: 00:00:00
+----------------------------------------------------------
+
+36/140 Testing: XmlScanner.CommentSkippedBetweenElements
+36/140 Test: XmlScanner.CommentSkippedBetweenElements
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.CommentSkippedBetweenElements" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.CommentSkippedBetweenElements" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.CommentSkippedBetweenElements
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.CommentSkippedBetweenElements
+[       OK ] XmlScanner.CommentSkippedBetweenElements (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.CommentSkippedBetweenElements" end time: Mar 26 08:27 PDT
+"XmlScanner.CommentSkippedBetweenElements" time elapsed: 00:00:00
+----------------------------------------------------------
+
+37/140 Testing: XmlScanner.CommentSkippedAtDocStart
+37/140 Test: XmlScanner.CommentSkippedAtDocStart
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.CommentSkippedAtDocStart" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.CommentSkippedAtDocStart" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.CommentSkippedAtDocStart
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.CommentSkippedAtDocStart
+[       OK ] XmlScanner.CommentSkippedAtDocStart (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.CommentSkippedAtDocStart" end time: Mar 26 08:27 PDT
+"XmlScanner.CommentSkippedAtDocStart" time elapsed: 00:00:00
+----------------------------------------------------------
+
+38/140 Testing: XmlScanner.CdataSectionPreservesRawContent
+38/140 Test: XmlScanner.CdataSectionPreservesRawContent
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.CdataSectionPreservesRawContent" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.CdataSectionPreservesRawContent" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.CdataSectionPreservesRawContent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.CdataSectionPreservesRawContent
+[       OK ] XmlScanner.CdataSectionPreservesRawContent (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.CdataSectionPreservesRawContent" end time: Mar 26 08:27 PDT
+"XmlScanner.CdataSectionPreservesRawContent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+39/140 Testing: XmlScanner.CdataWithBracketContent
+39/140 Test: XmlScanner.CdataWithBracketContent
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.CdataWithBracketContent" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.CdataWithBracketContent" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.CdataWithBracketContent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.CdataWithBracketContent
+[       OK ] XmlScanner.CdataWithBracketContent (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.CdataWithBracketContent" end time: Mar 26 08:27 PDT
+"XmlScanner.CdataWithBracketContent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+40/140 Testing: XmlScanner.XmlDeclarationSkipped
+40/140 Test: XmlScanner.XmlDeclarationSkipped
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.XmlDeclarationSkipped" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.XmlDeclarationSkipped" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.XmlDeclarationSkipped
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.XmlDeclarationSkipped
+[       OK ] XmlScanner.XmlDeclarationSkipped (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.XmlDeclarationSkipped" end time: Mar 26 08:27 PDT
+"XmlScanner.XmlDeclarationSkipped" time elapsed: 00:00:00
+----------------------------------------------------------
+
+41/140 Testing: XmlScanner.BomSkipped
+41/140 Test: XmlScanner.BomSkipped
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.BomSkipped" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.BomSkipped" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.BomSkipped
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.BomSkipped
+[       OK ] XmlScanner.BomSkipped (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.BomSkipped" end time: Mar 26 08:27 PDT
+"XmlScanner.BomSkipped" time elapsed: 00:00:00
+----------------------------------------------------------
+
+42/140 Testing: XmlScanner.MalformedTagUnquotedAttributeReturnsMalformedTag
+42/140 Test: XmlScanner.MalformedTagUnquotedAttributeReturnsMalformedTag
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.MalformedTagUnquotedAttributeReturnsMalformedTag" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.MalformedTagUnquotedAttributeReturnsMalformedTag" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.MalformedTagUnquotedAttributeReturnsMalformedTag
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.MalformedTagUnquotedAttributeReturnsMalformedTag
+[       OK ] XmlScanner.MalformedTagUnquotedAttributeReturnsMalformedTag (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.MalformedTagUnquotedAttributeReturnsMalformedTag" end time: Mar 26 08:27 PDT
+"XmlScanner.MalformedTagUnquotedAttributeReturnsMalformedTag" time elapsed: 00:00:00
+----------------------------------------------------------
+
+43/140 Testing: XmlScanner.UnexpectedEofInCdataReturnsUnexpectedEof
+43/140 Test: XmlScanner.UnexpectedEofInCdataReturnsUnexpectedEof
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.UnexpectedEofInCdataReturnsUnexpectedEof" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.UnexpectedEofInCdataReturnsUnexpectedEof" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.UnexpectedEofInCdataReturnsUnexpectedEof
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.UnexpectedEofInCdataReturnsUnexpectedEof
+[       OK ] XmlScanner.UnexpectedEofInCdataReturnsUnexpectedEof (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.UnexpectedEofInCdataReturnsUnexpectedEof" end time: Mar 26 08:27 PDT
+"XmlScanner.UnexpectedEofInCdataReturnsUnexpectedEof" time elapsed: 00:00:00
+----------------------------------------------------------
+
+44/140 Testing: XmlScanner.UnexpectedEofMidTag
+44/140 Test: XmlScanner.UnexpectedEofMidTag
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.UnexpectedEofMidTag" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.UnexpectedEofMidTag" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.UnexpectedEofMidTag
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.UnexpectedEofMidTag
+[       OK ] XmlScanner.UnexpectedEofMidTag (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.UnexpectedEofMidTag" end time: Mar 26 08:27 PDT
+"XmlScanner.UnexpectedEofMidTag" time elapsed: 00:00:00
+----------------------------------------------------------
+
+45/140 Testing: XmlScanner.AtEndAfterDocument
+45/140 Test: XmlScanner.AtEndAfterDocument
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=XmlScanner.AtEndAfterDocument" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"XmlScanner.AtEndAfterDocument" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = XmlScanner.AtEndAfterDocument
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from XmlScanner
+[ RUN      ] XmlScanner.AtEndAfterDocument
+[       OK ] XmlScanner.AtEndAfterDocument (0 ms)
+[----------] 1 test from XmlScanner (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"XmlScanner.AtEndAfterDocument" end time: Mar 26 08:27 PDT
+"XmlScanner.AtEndAfterDocument" time elapsed: 00:00:00
+----------------------------------------------------------
+
+46/140 Testing: ComponentType.DesktopApplication
+46/140 Test: ComponentType.DesktopApplication
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentType.DesktopApplication" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentType.DesktopApplication" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentType.DesktopApplication
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentType
+[ RUN      ] ComponentType.DesktopApplication
+[       OK ] ComponentType.DesktopApplication (0 ms)
+[----------] 1 test from ComponentType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentType.DesktopApplication" end time: Mar 26 08:27 PDT
+"ComponentType.DesktopApplication" time elapsed: 00:00:00
+----------------------------------------------------------
+
+47/140 Testing: ComponentType.LegacyDesktopAlias
+47/140 Test: ComponentType.LegacyDesktopAlias
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentType.LegacyDesktopAlias" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentType.LegacyDesktopAlias" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentType.LegacyDesktopAlias
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentType
+[ RUN      ] ComponentType.LegacyDesktopAlias
+[       OK ] ComponentType.LegacyDesktopAlias (0 ms)
+[----------] 1 test from ComponentType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentType.LegacyDesktopAlias" end time: Mar 26 08:27 PDT
+"ComponentType.LegacyDesktopAlias" time elapsed: 00:00:00
+----------------------------------------------------------
+
+48/140 Testing: ComponentType.AllKnownTypes
+48/140 Test: ComponentType.AllKnownTypes
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentType.AllKnownTypes" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentType.AllKnownTypes" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentType.AllKnownTypes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentType
+[ RUN      ] ComponentType.AllKnownTypes
+[       OK ] ComponentType.AllKnownTypes (0 ms)
+[----------] 1 test from ComponentType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentType.AllKnownTypes" end time: Mar 26 08:27 PDT
+"ComponentType.AllKnownTypes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+49/140 Testing: ComponentType.UnknownStringReturnsUnknown
+49/140 Test: ComponentType.UnknownStringReturnsUnknown
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentType.UnknownStringReturnsUnknown" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentType.UnknownStringReturnsUnknown" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentType.UnknownStringReturnsUnknown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentType
+[ RUN      ] ComponentType.UnknownStringReturnsUnknown
+[       OK ] ComponentType.UnknownStringReturnsUnknown (0 ms)
+[----------] 1 test from ComponentType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentType.UnknownStringReturnsUnknown" end time: Mar 26 08:27 PDT
+"ComponentType.UnknownStringReturnsUnknown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+50/140 Testing: ComponentType.RoundTrip
+50/140 Test: ComponentType.RoundTrip
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentType.RoundTrip" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentType.RoundTrip" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentType.RoundTrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentType
+[ RUN      ] ComponentType.RoundTrip
+[       OK ] ComponentType.RoundTrip (0 ms)
+[----------] 1 test from ComponentType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentType.RoundTrip" end time: Mar 26 08:27 PDT
+"ComponentType.RoundTrip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+51/140 Testing: BundleType.AllKnownTypes
+51/140 Test: BundleType.AllKnownTypes
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=BundleType.AllKnownTypes" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"BundleType.AllKnownTypes" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = BundleType.AllKnownTypes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BundleType
+[ RUN      ] BundleType.AllKnownTypes
+[       OK ] BundleType.AllKnownTypes (0 ms)
+[----------] 1 test from BundleType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"BundleType.AllKnownTypes" end time: Mar 26 08:27 PDT
+"BundleType.AllKnownTypes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+52/140 Testing: BundleType.UnknownReturnsUnknown
+52/140 Test: BundleType.UnknownReturnsUnknown
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=BundleType.UnknownReturnsUnknown" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"BundleType.UnknownReturnsUnknown" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = BundleType.UnknownReturnsUnknown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BundleType
+[ RUN      ] BundleType.UnknownReturnsUnknown
+[       OK ] BundleType.UnknownReturnsUnknown (0 ms)
+[----------] 1 test from BundleType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"BundleType.UnknownReturnsUnknown" end time: Mar 26 08:27 PDT
+"BundleType.UnknownReturnsUnknown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+53/140 Testing: BundleType.RoundTrip
+53/140 Test: BundleType.RoundTrip
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=BundleType.RoundTrip" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"BundleType.RoundTrip" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = BundleType.RoundTrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BundleType
+[ RUN      ] BundleType.RoundTrip
+[       OK ] BundleType.RoundTrip (0 ms)
+[----------] 1 test from BundleType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"BundleType.RoundTrip" end time: Mar 26 08:27 PDT
+"BundleType.RoundTrip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+54/140 Testing: IconType.AllKnownTypes
+54/140 Test: IconType.AllKnownTypes
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=IconType.AllKnownTypes" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"IconType.AllKnownTypes" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = IconType.AllKnownTypes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IconType
+[ RUN      ] IconType.AllKnownTypes
+[       OK ] IconType.AllKnownTypes (0 ms)
+[----------] 1 test from IconType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"IconType.AllKnownTypes" end time: Mar 26 08:27 PDT
+"IconType.AllKnownTypes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+55/140 Testing: IconType.UnknownReturnsUnknown
+55/140 Test: IconType.UnknownReturnsUnknown
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=IconType.UnknownReturnsUnknown" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"IconType.UnknownReturnsUnknown" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = IconType.UnknownReturnsUnknown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IconType
+[ RUN      ] IconType.UnknownReturnsUnknown
+[       OK ] IconType.UnknownReturnsUnknown (0 ms)
+[----------] 1 test from IconType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"IconType.UnknownReturnsUnknown" end time: Mar 26 08:27 PDT
+"IconType.UnknownReturnsUnknown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+56/140 Testing: IconType.RoundTrip
+56/140 Test: IconType.RoundTrip
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=IconType.RoundTrip" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"IconType.RoundTrip" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = IconType.RoundTrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IconType
+[ RUN      ] IconType.RoundTrip
+[       OK ] IconType.RoundTrip (0 ms)
+[----------] 1 test from IconType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"IconType.RoundTrip" end time: Mar 26 08:27 PDT
+"IconType.RoundTrip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+57/140 Testing: UrlType.AllKnownTypes
+57/140 Test: UrlType.AllKnownTypes
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=UrlType.AllKnownTypes" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"UrlType.AllKnownTypes" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = UrlType.AllKnownTypes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from UrlType
+[ RUN      ] UrlType.AllKnownTypes
+[       OK ] UrlType.AllKnownTypes (0 ms)
+[----------] 1 test from UrlType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"UrlType.AllKnownTypes" end time: Mar 26 08:27 PDT
+"UrlType.AllKnownTypes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+58/140 Testing: UrlType.UnknownReturnsUnknown
+58/140 Test: UrlType.UnknownReturnsUnknown
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=UrlType.UnknownReturnsUnknown" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"UrlType.UnknownReturnsUnknown" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = UrlType.UnknownReturnsUnknown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from UrlType
+[ RUN      ] UrlType.UnknownReturnsUnknown
+[       OK ] UrlType.UnknownReturnsUnknown (0 ms)
+[----------] 1 test from UrlType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"UrlType.UnknownReturnsUnknown" end time: Mar 26 08:27 PDT
+"UrlType.UnknownReturnsUnknown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+59/140 Testing: UrlType.RoundTrip
+59/140 Test: UrlType.RoundTrip
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=UrlType.RoundTrip" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"UrlType.RoundTrip" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = UrlType.RoundTrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from UrlType
+[ RUN      ] UrlType.RoundTrip
+[       OK ] UrlType.RoundTrip (0 ms)
+[----------] 1 test from UrlType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"UrlType.RoundTrip" end time: Mar 26 08:27 PDT
+"UrlType.RoundTrip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+60/140 Testing: LaunchableType.AllKnownTypes
+60/140 Test: LaunchableType.AllKnownTypes
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=LaunchableType.AllKnownTypes" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"LaunchableType.AllKnownTypes" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = LaunchableType.AllKnownTypes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LaunchableType
+[ RUN      ] LaunchableType.AllKnownTypes
+[       OK ] LaunchableType.AllKnownTypes (0 ms)
+[----------] 1 test from LaunchableType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LaunchableType.AllKnownTypes" end time: Mar 26 08:27 PDT
+"LaunchableType.AllKnownTypes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+61/140 Testing: LaunchableType.UnknownReturnsUnknown
+61/140 Test: LaunchableType.UnknownReturnsUnknown
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=LaunchableType.UnknownReturnsUnknown" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"LaunchableType.UnknownReturnsUnknown" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = LaunchableType.UnknownReturnsUnknown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LaunchableType
+[ RUN      ] LaunchableType.UnknownReturnsUnknown
+[       OK ] LaunchableType.UnknownReturnsUnknown (0 ms)
+[----------] 1 test from LaunchableType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LaunchableType.UnknownReturnsUnknown" end time: Mar 26 08:27 PDT
+"LaunchableType.UnknownReturnsUnknown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+62/140 Testing: ReleaseType.AllKnownTypes
+62/140 Test: ReleaseType.AllKnownTypes
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ReleaseType.AllKnownTypes" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ReleaseType.AllKnownTypes" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ReleaseType.AllKnownTypes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ReleaseType
+[ RUN      ] ReleaseType.AllKnownTypes
+[       OK ] ReleaseType.AllKnownTypes (0 ms)
+[----------] 1 test from ReleaseType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ReleaseType.AllKnownTypes" end time: Mar 26 08:27 PDT
+"ReleaseType.AllKnownTypes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+63/140 Testing: ReleaseType.UnknownReturnsUnknown
+63/140 Test: ReleaseType.UnknownReturnsUnknown
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ReleaseType.UnknownReturnsUnknown" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ReleaseType.UnknownReturnsUnknown" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ReleaseType.UnknownReturnsUnknown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ReleaseType
+[ RUN      ] ReleaseType.UnknownReturnsUnknown
+[       OK ] ReleaseType.UnknownReturnsUnknown (0 ms)
+[----------] 1 test from ReleaseType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ReleaseType.UnknownReturnsUnknown" end time: Mar 26 08:27 PDT
+"ReleaseType.UnknownReturnsUnknown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+64/140 Testing: ReleaseType.RoundTrip
+64/140 Test: ReleaseType.RoundTrip
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ReleaseType.RoundTrip" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ReleaseType.RoundTrip" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ReleaseType.RoundTrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ReleaseType
+[ RUN      ] ReleaseType.RoundTrip
+[       OK ] ReleaseType.RoundTrip (0 ms)
+[----------] 1 test from ReleaseType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ReleaseType.RoundTrip" end time: Mar 26 08:27 PDT
+"ReleaseType.RoundTrip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+65/140 Testing: ReleaseUrgency.AllKnownTypes
+65/140 Test: ReleaseUrgency.AllKnownTypes
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ReleaseUrgency.AllKnownTypes" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ReleaseUrgency.AllKnownTypes" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ReleaseUrgency.AllKnownTypes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ReleaseUrgency
+[ RUN      ] ReleaseUrgency.AllKnownTypes
+[       OK ] ReleaseUrgency.AllKnownTypes (0 ms)
+[----------] 1 test from ReleaseUrgency (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ReleaseUrgency.AllKnownTypes" end time: Mar 26 08:27 PDT
+"ReleaseUrgency.AllKnownTypes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+66/140 Testing: ReleaseUrgency.UnknownReturnsUnknown
+66/140 Test: ReleaseUrgency.UnknownReturnsUnknown
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ReleaseUrgency.UnknownReturnsUnknown" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ReleaseUrgency.UnknownReturnsUnknown" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ReleaseUrgency.UnknownReturnsUnknown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ReleaseUrgency
+[ RUN      ] ReleaseUrgency.UnknownReturnsUnknown
+[       OK ] ReleaseUrgency.UnknownReturnsUnknown (0 ms)
+[----------] 1 test from ReleaseUrgency (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ReleaseUrgency.UnknownReturnsUnknown" end time: Mar 26 08:27 PDT
+"ReleaseUrgency.UnknownReturnsUnknown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+67/140 Testing: ReleaseUrgency.RoundTrip
+67/140 Test: ReleaseUrgency.RoundTrip
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ReleaseUrgency.RoundTrip" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ReleaseUrgency.RoundTrip" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ReleaseUrgency.RoundTrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ReleaseUrgency
+[ RUN      ] ReleaseUrgency.RoundTrip
+[       OK ] ReleaseUrgency.RoundTrip (0 ms)
+[----------] 1 test from ReleaseUrgency (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ReleaseUrgency.RoundTrip" end time: Mar 26 08:27 PDT
+"ReleaseUrgency.RoundTrip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+68/140 Testing: IssueType.AllKnownTypes
+68/140 Test: IssueType.AllKnownTypes
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=IssueType.AllKnownTypes" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"IssueType.AllKnownTypes" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = IssueType.AllKnownTypes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IssueType
+[ RUN      ] IssueType.AllKnownTypes
+[       OK ] IssueType.AllKnownTypes (0 ms)
+[----------] 1 test from IssueType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"IssueType.AllKnownTypes" end time: Mar 26 08:27 PDT
+"IssueType.AllKnownTypes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+69/140 Testing: IssueType.UnknownReturnsUnknown
+69/140 Test: IssueType.UnknownReturnsUnknown
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=IssueType.UnknownReturnsUnknown" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"IssueType.UnknownReturnsUnknown" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = IssueType.UnknownReturnsUnknown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IssueType
+[ RUN      ] IssueType.UnknownReturnsUnknown
+[       OK ] IssueType.UnknownReturnsUnknown (0 ms)
+[----------] 1 test from IssueType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"IssueType.UnknownReturnsUnknown" end time: Mar 26 08:27 PDT
+"IssueType.UnknownReturnsUnknown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+70/140 Testing: IssueType.RoundTrip
+70/140 Test: IssueType.RoundTrip
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=IssueType.RoundTrip" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"IssueType.RoundTrip" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = IssueType.RoundTrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IssueType
+[ RUN      ] IssueType.RoundTrip
+[       OK ] IssueType.RoundTrip (0 ms)
+[----------] 1 test from IssueType (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"IssueType.RoundTrip" end time: Mar 26 08:27 PDT
+"IssueType.RoundTrip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+71/140 Testing: ComponentUrls.SetAndGetHomepage
+71/140 Test: ComponentUrls.SetAndGetHomepage
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentUrls.SetAndGetHomepage" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentUrls.SetAndGetHomepage" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentUrls.SetAndGetHomepage
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentUrls
+[ RUN      ] ComponentUrls.SetAndGetHomepage
+[       OK ] ComponentUrls.SetAndGetHomepage (0 ms)
+[----------] 1 test from ComponentUrls (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentUrls.SetAndGetHomepage" end time: Mar 26 08:27 PDT
+"ComponentUrls.SetAndGetHomepage" time elapsed: 00:00:00
+----------------------------------------------------------
+
+72/140 Testing: ComponentUrls.GetUnsetTypeReturnsEmpty
+72/140 Test: ComponentUrls.GetUnsetTypeReturnsEmpty
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentUrls.GetUnsetTypeReturnsEmpty" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentUrls.GetUnsetTypeReturnsEmpty" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentUrls.GetUnsetTypeReturnsEmpty
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentUrls
+[ RUN      ] ComponentUrls.GetUnsetTypeReturnsEmpty
+[       OK ] ComponentUrls.GetUnsetTypeReturnsEmpty (0 ms)
+[----------] 1 test from ComponentUrls (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentUrls.GetUnsetTypeReturnsEmpty" end time: Mar 26 08:27 PDT
+"ComponentUrls.GetUnsetTypeReturnsEmpty" time elapsed: 00:00:00
+----------------------------------------------------------
+
+73/140 Testing: ComponentUrls.SetOverwritesExistingUrl
+73/140 Test: ComponentUrls.SetOverwritesExistingUrl
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentUrls.SetOverwritesExistingUrl" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentUrls.SetOverwritesExistingUrl" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentUrls.SetOverwritesExistingUrl
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentUrls
+[ RUN      ] ComponentUrls.SetOverwritesExistingUrl
+[       OK ] ComponentUrls.SetOverwritesExistingUrl (0 ms)
+[----------] 1 test from ComponentUrls (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentUrls.SetOverwritesExistingUrl" end time: Mar 26 08:27 PDT
+"ComponentUrls.SetOverwritesExistingUrl" time elapsed: 00:00:00
+----------------------------------------------------------
+
+74/140 Testing: ComponentUrls.MultipleTypesIndependent
+74/140 Test: ComponentUrls.MultipleTypesIndependent
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentUrls.MultipleTypesIndependent" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentUrls.MultipleTypesIndependent" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentUrls.MultipleTypesIndependent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentUrls
+[ RUN      ] ComponentUrls.MultipleTypesIndependent
+[       OK ] ComponentUrls.MultipleTypesIndependent (0 ms)
+[----------] 1 test from ComponentUrls (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentUrls.MultipleTypesIndependent" end time: Mar 26 08:27 PDT
+"ComponentUrls.MultipleTypesIndependent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+75/140 Testing: ComponentLanguages.AddLanguageStoredCorrectly
+75/140 Test: ComponentLanguages.AddLanguageStoredCorrectly
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentLanguages.AddLanguageStoredCorrectly" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentLanguages.AddLanguageStoredCorrectly" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentLanguages.AddLanguageStoredCorrectly
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentLanguages
+[ RUN      ] ComponentLanguages.AddLanguageStoredCorrectly
+[       OK ] ComponentLanguages.AddLanguageStoredCorrectly (0 ms)
+[----------] 1 test from ComponentLanguages (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentLanguages.AddLanguageStoredCorrectly" end time: Mar 26 08:27 PDT
+"ComponentLanguages.AddLanguageStoredCorrectly" time elapsed: 00:00:00
+----------------------------------------------------------
+
+76/140 Testing: ComponentLanguages.DeduplicatesOnAdd
+76/140 Test: ComponentLanguages.DeduplicatesOnAdd
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentLanguages.DeduplicatesOnAdd" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentLanguages.DeduplicatesOnAdd" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentLanguages.DeduplicatesOnAdd
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentLanguages
+[ RUN      ] ComponentLanguages.DeduplicatesOnAdd
+[       OK ] ComponentLanguages.DeduplicatesOnAdd (0 ms)
+[----------] 1 test from ComponentLanguages (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentLanguages.DeduplicatesOnAdd" end time: Mar 26 08:27 PDT
+"ComponentLanguages.DeduplicatesOnAdd" time elapsed: 00:00:00
+----------------------------------------------------------
+
+77/140 Testing: ComponentLanguages.MultipleDistinctLanguages
+77/140 Test: ComponentLanguages.MultipleDistinctLanguages
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentLanguages.MultipleDistinctLanguages" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentLanguages.MultipleDistinctLanguages" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentLanguages.MultipleDistinctLanguages
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentLanguages
+[ RUN      ] ComponentLanguages.MultipleDistinctLanguages
+[       OK ] ComponentLanguages.MultipleDistinctLanguages (0 ms)
+[----------] 1 test from ComponentLanguages (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentLanguages.MultipleDistinctLanguages" end time: Mar 26 08:27 PDT
+"ComponentLanguages.MultipleDistinctLanguages" time elapsed: 00:00:00
+----------------------------------------------------------
+
+78/140 Testing: ComponentShrink.EmptyComponentDoesNotCrash
+78/140 Test: ComponentShrink.EmptyComponentDoesNotCrash
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentShrink.EmptyComponentDoesNotCrash" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentShrink.EmptyComponentDoesNotCrash" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentShrink.EmptyComponentDoesNotCrash
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentShrink
+[ RUN      ] ComponentShrink.EmptyComponentDoesNotCrash
+[       OK ] ComponentShrink.EmptyComponentDoesNotCrash (0 ms)
+[----------] 1 test from ComponentShrink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentShrink.EmptyComponentDoesNotCrash" end time: Mar 26 08:27 PDT
+"ComponentShrink.EmptyComponentDoesNotCrash" time elapsed: 00:00:00
+----------------------------------------------------------
+
+79/140 Testing: ComponentShrink.DataPreservedAfterShrink
+79/140 Test: ComponentShrink.DataPreservedAfterShrink
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentShrink.DataPreservedAfterShrink" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentShrink.DataPreservedAfterShrink" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentShrink.DataPreservedAfterShrink
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentShrink
+[ RUN      ] ComponentShrink.DataPreservedAfterShrink
+[       OK ] ComponentShrink.DataPreservedAfterShrink (0 ms)
+[----------] 1 test from ComponentShrink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentShrink.DataPreservedAfterShrink" end time: Mar 26 08:27 PDT
+"ComponentShrink.DataPreservedAfterShrink" time elapsed: 00:00:00
+----------------------------------------------------------
+
+80/140 Testing: ComponentDefaults.TypeIsUnknown
+80/140 Test: ComponentDefaults.TypeIsUnknown
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentDefaults.TypeIsUnknown" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentDefaults.TypeIsUnknown" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentDefaults.TypeIsUnknown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentDefaults
+[ RUN      ] ComponentDefaults.TypeIsUnknown
+[       OK ] ComponentDefaults.TypeIsUnknown (0 ms)
+[----------] 1 test from ComponentDefaults (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentDefaults.TypeIsUnknown" end time: Mar 26 08:27 PDT
+"ComponentDefaults.TypeIsUnknown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+81/140 Testing: ComponentDefaults.PriorityIsZero
+81/140 Test: ComponentDefaults.PriorityIsZero
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentDefaults.PriorityIsZero" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentDefaults.PriorityIsZero" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentDefaults.PriorityIsZero
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentDefaults
+[ RUN      ] ComponentDefaults.PriorityIsZero
+[       OK ] ComponentDefaults.PriorityIsZero (0 ms)
+[----------] 1 test from ComponentDefaults (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentDefaults.PriorityIsZero" end time: Mar 26 08:27 PDT
+"ComponentDefaults.PriorityIsZero" time elapsed: 00:00:00
+----------------------------------------------------------
+
+82/140 Testing: ComponentDefaults.LaunchableTypeIsUnknown
+82/140 Test: ComponentDefaults.LaunchableTypeIsUnknown
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentDefaults.LaunchableTypeIsUnknown" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentDefaults.LaunchableTypeIsUnknown" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentDefaults.LaunchableTypeIsUnknown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentDefaults
+[ RUN      ] ComponentDefaults.LaunchableTypeIsUnknown
+[       OK ] ComponentDefaults.LaunchableTypeIsUnknown (0 ms)
+[----------] 1 test from ComponentDefaults (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentDefaults.LaunchableTypeIsUnknown" end time: Mar 26 08:27 PDT
+"ComponentDefaults.LaunchableTypeIsUnknown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+83/140 Testing: ComponentDefaults.BundleTypeIsUnknown
+83/140 Test: ComponentDefaults.BundleTypeIsUnknown
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentDefaults.BundleTypeIsUnknown" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentDefaults.BundleTypeIsUnknown" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentDefaults.BundleTypeIsUnknown
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentDefaults
+[ RUN      ] ComponentDefaults.BundleTypeIsUnknown
+[       OK ] ComponentDefaults.BundleTypeIsUnknown (0 ms)
+[----------] 1 test from ComponentDefaults (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentDefaults.BundleTypeIsUnknown" end time: Mar 26 08:27 PDT
+"ComponentDefaults.BundleTypeIsUnknown" time elapsed: 00:00:00
+----------------------------------------------------------
+
+84/140 Testing: ComponentDefaults.CollectionsAreEmpty
+84/140 Test: ComponentDefaults.CollectionsAreEmpty
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=ComponentDefaults.CollectionsAreEmpty" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"ComponentDefaults.CollectionsAreEmpty" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = ComponentDefaults.CollectionsAreEmpty
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ComponentDefaults
+[ RUN      ] ComponentDefaults.CollectionsAreEmpty
+[       OK ] ComponentDefaults.CollectionsAreEmpty (0 ms)
+[----------] 1 test from ComponentDefaults (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ComponentDefaults.CollectionsAreEmpty" end time: Mar 26 08:27 PDT
+"ComponentDefaults.CollectionsAreEmpty" time elapsed: 00:00:00
+----------------------------------------------------------
+
+85/140 Testing: AppStreamParserSink.MissingFileReturnsMmapFailed
+85/140 Test: AppStreamParserSink.MissingFileReturnsMmapFailed
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.MissingFileReturnsMmapFailed" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.MissingFileReturnsMmapFailed" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.MissingFileReturnsMmapFailed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.MissingFileReturnsMmapFailed
+[error] Failed to open: /no/such/path/file.xml
+[       OK ] AppStreamParserSink.MissingFileReturnsMmapFailed (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.MissingFileReturnsMmapFailed" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.MissingFileReturnsMmapFailed" time elapsed: 00:00:00
+----------------------------------------------------------
+
+86/140 Testing: AppStreamParserSink.MalformedXmlReturnsXmlParseError
+86/140 Test: AppStreamParserSink.MalformedXmlReturnsXmlParseError
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.MalformedXmlReturnsXmlParseError" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.MalformedXmlReturnsXmlParseError" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.MalformedXmlReturnsXmlParseError
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.MalformedXmlReturnsXmlParseError
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[error] XML scan error
+[       OK ] AppStreamParserSink.MalformedXmlReturnsXmlParseError (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.MalformedXmlReturnsXmlParseError" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.MalformedXmlReturnsXmlParseError" time elapsed: 00:00:00
+----------------------------------------------------------
+
+87/140 Testing: AppStreamParserSink.SinkErrorIsPropagated
+87/140 Test: AppStreamParserSink.SinkErrorIsPropagated
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.SinkErrorIsPropagated" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.SinkErrorIsPropagated" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.SinkErrorIsPropagated
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.SinkErrorIsPropagated
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.SinkErrorIsPropagated (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.SinkErrorIsPropagated" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.SinkErrorIsPropagated" time elapsed: 00:00:00
+----------------------------------------------------------
+
+88/140 Testing: AppStreamParserSink.EmptyRootProducesZeroComponents
+88/140 Test: AppStreamParserSink.EmptyRootProducesZeroComponents
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.EmptyRootProducesZeroComponents" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.EmptyRootProducesZeroComponents" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.EmptyRootProducesZeroComponents
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.EmptyRootProducesZeroComponents
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.EmptyRootProducesZeroComponents (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.EmptyRootProducesZeroComponents" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.EmptyRootProducesZeroComponents" time elapsed: 00:00:00
+----------------------------------------------------------
+
+89/140 Testing: AppStreamParserSink.SingleComponentDelivered
+89/140 Test: AppStreamParserSink.SingleComponentDelivered
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.SingleComponentDelivered" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.SingleComponentDelivered" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.SingleComponentDelivered
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.SingleComponentDelivered
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.SingleComponentDelivered (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.SingleComponentDelivered" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.SingleComponentDelivered" time elapsed: 00:00:00
+----------------------------------------------------------
+
+90/140 Testing: AppStreamParserSink.ComponentFieldsPreserved
+90/140 Test: AppStreamParserSink.ComponentFieldsPreserved
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.ComponentFieldsPreserved" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.ComponentFieldsPreserved" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.ComponentFieldsPreserved
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.ComponentFieldsPreserved
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.ComponentFieldsPreserved (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.ComponentFieldsPreserved" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.ComponentFieldsPreserved" time elapsed: 00:00:00
+----------------------------------------------------------
+
+91/140 Testing: AppStreamParserSink.CategoriesParsed
+91/140 Test: AppStreamParserSink.CategoriesParsed
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.CategoriesParsed" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.CategoriesParsed" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.CategoriesParsed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.CategoriesParsed
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.CategoriesParsed (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.CategoriesParsed" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.CategoriesParsed" time elapsed: 00:00:00
+----------------------------------------------------------
+
+92/140 Testing: AppStreamParserSink.KeywordsParsed
+92/140 Test: AppStreamParserSink.KeywordsParsed
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.KeywordsParsed" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.KeywordsParsed" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.KeywordsParsed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.KeywordsParsed
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.KeywordsParsed (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.KeywordsParsed" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.KeywordsParsed" time elapsed: 00:00:00
+----------------------------------------------------------
+
+93/140 Testing: AppStreamParserSink.UrlsParsed
+93/140 Test: AppStreamParserSink.UrlsParsed
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.UrlsParsed" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.UrlsParsed" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.UrlsParsed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.UrlsParsed
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.UrlsParsed (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.UrlsParsed" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.UrlsParsed" time elapsed: 00:00:00
+----------------------------------------------------------
+
+94/140 Testing: AppStreamParserSink.MultipleComponents
+94/140 Test: AppStreamParserSink.MultipleComponents
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.MultipleComponents" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.MultipleComponents" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.MultipleComponents
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.MultipleComponents
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.MultipleComponents (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.MultipleComponents" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.MultipleComponents" time elapsed: 00:00:00
+----------------------------------------------------------
+
+95/140 Testing: AppStreamParserSink.MultipleComponentTypes
+95/140 Test: AppStreamParserSink.MultipleComponentTypes
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.MultipleComponentTypes" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.MultipleComponentTypes" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.MultipleComponentTypes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.MultipleComponentTypes
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.MultipleComponentTypes (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.MultipleComponentTypes" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.MultipleComponentTypes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+96/140 Testing: AppStreamParserSink.ReleaseParsed
+96/140 Test: AppStreamParserSink.ReleaseParsed
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.ReleaseParsed" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.ReleaseParsed" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.ReleaseParsed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.ReleaseParsed
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.ReleaseParsed (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.ReleaseParsed" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.ReleaseParsed" time elapsed: 00:00:00
+----------------------------------------------------------
+
+97/140 Testing: AppStreamParserSink.DescriptionHtmlAccumulated
+97/140 Test: AppStreamParserSink.DescriptionHtmlAccumulated
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.DescriptionHtmlAccumulated" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.DescriptionHtmlAccumulated" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.DescriptionHtmlAccumulated
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.DescriptionHtmlAccumulated
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.DescriptionHtmlAccumulated (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.DescriptionHtmlAccumulated" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.DescriptionHtmlAccumulated" time elapsed: 00:00:00
+----------------------------------------------------------
+
+98/140 Testing: AppStreamParserSink.LangFilter_EnSkipsDeNameTag
+98/140 Test: AppStreamParserSink.LangFilter_EnSkipsDeNameTag
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.LangFilter_EnSkipsDeNameTag" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.LangFilter_EnSkipsDeNameTag" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.LangFilter_EnSkipsDeNameTag
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.LangFilter_EnSkipsDeNameTag
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.LangFilter_EnSkipsDeNameTag (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.LangFilter_EnSkipsDeNameTag" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.LangFilter_EnSkipsDeNameTag" time elapsed: 00:00:00
+----------------------------------------------------------
+
+99/140 Testing: AppStreamParserSink.LangFilter_EmptyProcessesAll_LastWins
+99/140 Test: AppStreamParserSink.LangFilter_EmptyProcessesAll_LastWins
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.LangFilter_EmptyProcessesAll_LastWins" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.LangFilter_EmptyProcessesAll_LastWins" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.LangFilter_EmptyProcessesAll_LastWins
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.LangFilter_EmptyProcessesAll_LastWins
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.LangFilter_EmptyProcessesAll_LastWins (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.LangFilter_EmptyProcessesAll_LastWins" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.LangFilter_EmptyProcessesAll_LastWins" time elapsed: 00:00:00
+----------------------------------------------------------
+
+100/140 Testing: AppStreamParserSink.LangFilter_DeMatchesDeTag
+100/140 Test: AppStreamParserSink.LangFilter_DeMatchesDeTag
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserSink.LangFilter_DeMatchesDeTag" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserSink.LangFilter_DeMatchesDeTag" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserSink.LangFilter_DeMatchesDeTag
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserSink
+[ RUN      ] AppStreamParserSink.LangFilter_DeMatchesDeTag
+[info] Parsing file (streaming): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserSink.LangFilter_DeMatchesDeTag (0 ms)
+[----------] 1 test from AppStreamParserSink (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserSink.LangFilter_DeMatchesDeTag" end time: Mar 26 08:27 PDT
+"AppStreamParserSink.LangFilter_DeMatchesDeTag" time elapsed: 00:00:00
+----------------------------------------------------------
+
+101/140 Testing: AppStreamParserCreate.MissingFileReturnsError
+101/140 Test: AppStreamParserCreate.MissingFileReturnsError
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.MissingFileReturnsError" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.MissingFileReturnsError" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.MissingFileReturnsError
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.MissingFileReturnsError
+[error] Failed to open: /does/not/exist.xml
+[       OK ] AppStreamParserCreate.MissingFileReturnsError (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.MissingFileReturnsError" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.MissingFileReturnsError" time elapsed: 00:00:00
+----------------------------------------------------------
+
+102/140 Testing: AppStreamParserCreate.SingleComponent
+102/140 Test: AppStreamParserCreate.SingleComponent
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.SingleComponent" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.SingleComponent" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.SingleComponent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.SingleComponent
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.SingleComponent (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.SingleComponent" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.SingleComponent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+103/140 Testing: AppStreamParserCreate.FindComponentById
+103/140 Test: AppStreamParserCreate.FindComponentById
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.FindComponentById" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.FindComponentById" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.FindComponentById
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.FindComponentById
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.FindComponentById (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.FindComponentById" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.FindComponentById" time elapsed: 00:00:00
+----------------------------------------------------------
+
+104/140 Testing: AppStreamParserCreate.FindMissingComponentReturnsNull
+104/140 Test: AppStreamParserCreate.FindMissingComponentReturnsNull
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.FindMissingComponentReturnsNull" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.FindMissingComponentReturnsNull" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.FindMissingComponentReturnsNull
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.FindMissingComponentReturnsNull
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.FindMissingComponentReturnsNull (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.FindMissingComponentReturnsNull" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.FindMissingComponentReturnsNull" time elapsed: 00:00:00
+----------------------------------------------------------
+
+105/140 Testing: AppStreamParserCreate.MultipleComponents
+105/140 Test: AppStreamParserCreate.MultipleComponents
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.MultipleComponents" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.MultipleComponents" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.MultipleComponents
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.MultipleComponents
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.MultipleComponents (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.MultipleComponents" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.MultipleComponents" time elapsed: 00:00:00
+----------------------------------------------------------
+
+106/140 Testing: AppStreamParserCreate.GetUniqueCategories
+106/140 Test: AppStreamParserCreate.GetUniqueCategories
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.GetUniqueCategories" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.GetUniqueCategories" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.GetUniqueCategories
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.GetUniqueCategories
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.GetUniqueCategories (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.GetUniqueCategories" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.GetUniqueCategories" time elapsed: 00:00:00
+----------------------------------------------------------
+
+107/140 Testing: AppStreamParserCreate.GetUniqueKeywords
+107/140 Test: AppStreamParserCreate.GetUniqueKeywords
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.GetUniqueKeywords" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.GetUniqueKeywords" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.GetUniqueKeywords
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.GetUniqueKeywords
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.GetUniqueKeywords (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.GetUniqueKeywords" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.GetUniqueKeywords" time elapsed: 00:00:00
+----------------------------------------------------------
+
+108/140 Testing: AppStreamParserCreate.SearchByCategory_Hit
+108/140 Test: AppStreamParserCreate.SearchByCategory_Hit
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.SearchByCategory_Hit" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.SearchByCategory_Hit" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.SearchByCategory_Hit
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.SearchByCategory_Hit
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.SearchByCategory_Hit (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.SearchByCategory_Hit" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.SearchByCategory_Hit" time elapsed: 00:00:00
+----------------------------------------------------------
+
+109/140 Testing: AppStreamParserCreate.SearchByCategory_Miss
+109/140 Test: AppStreamParserCreate.SearchByCategory_Miss
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.SearchByCategory_Miss" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.SearchByCategory_Miss" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.SearchByCategory_Miss
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.SearchByCategory_Miss
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.SearchByCategory_Miss (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.SearchByCategory_Miss" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.SearchByCategory_Miss" time elapsed: 00:00:00
+----------------------------------------------------------
+
+110/140 Testing: AppStreamParserCreate.SearchByKeyword_Hit
+110/140 Test: AppStreamParserCreate.SearchByKeyword_Hit
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.SearchByKeyword_Hit" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.SearchByKeyword_Hit" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.SearchByKeyword_Hit
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.SearchByKeyword_Hit
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.SearchByKeyword_Hit (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.SearchByKeyword_Hit" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.SearchByKeyword_Hit" time elapsed: 00:00:00
+----------------------------------------------------------
+
+111/140 Testing: AppStreamParserCreate.SearchByKeyword_Miss
+111/140 Test: AppStreamParserCreate.SearchByKeyword_Miss
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.SearchByKeyword_Miss" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.SearchByKeyword_Miss" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.SearchByKeyword_Miss
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.SearchByKeyword_Miss
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.SearchByKeyword_Miss (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.SearchByKeyword_Miss" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.SearchByKeyword_Miss" time elapsed: 00:00:00
+----------------------------------------------------------
+
+112/140 Testing: AppStreamParserCreate.GetSortedComponentsById_IsOrdered
+112/140 Test: AppStreamParserCreate.GetSortedComponentsById_IsOrdered
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.GetSortedComponentsById_IsOrdered" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.GetSortedComponentsById_IsOrdered" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.GetSortedComponentsById_IsOrdered
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.GetSortedComponentsById_IsOrdered
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.GetSortedComponentsById_IsOrdered (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.GetSortedComponentsById_IsOrdered" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.GetSortedComponentsById_IsOrdered" time elapsed: 00:00:00
+----------------------------------------------------------
+
+113/140 Testing: AppStreamParserCreate.GetSortedComponentsByName_IsOrdered
+113/140 Test: AppStreamParserCreate.GetSortedComponentsByName_IsOrdered
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.GetSortedComponentsByName_IsOrdered" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.GetSortedComponentsByName_IsOrdered" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.GetSortedComponentsByName_IsOrdered
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.GetSortedComponentsByName_IsOrdered
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.GetSortedComponentsByName_IsOrdered (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.GetSortedComponentsByName_IsOrdered" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.GetSortedComponentsByName_IsOrdered" time elapsed: 00:00:00
+----------------------------------------------------------
+
+114/140 Testing: AppStreamParserCreate.DuplicateIdKeepsFirst
+114/140 Test: AppStreamParserCreate.DuplicateIdKeepsFirst
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.DuplicateIdKeepsFirst" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.DuplicateIdKeepsFirst" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.DuplicateIdKeepsFirst
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.DuplicateIdKeepsFirst
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[warn] Duplicate: [com.dup.App]
+[       OK ] AppStreamParserCreate.DuplicateIdKeepsFirst (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.DuplicateIdKeepsFirst" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.DuplicateIdKeepsFirst" time elapsed: 00:00:00
+----------------------------------------------------------
+
+115/140 Testing: AppStreamParserCreate.GetComponentsRangeYieldsAllComponents
+115/140 Test: AppStreamParserCreate.GetComponentsRangeYieldsAllComponents
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.GetComponentsRangeYieldsAllComponents" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.GetComponentsRangeYieldsAllComponents" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.GetComponentsRangeYieldsAllComponents
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.GetComponentsRangeYieldsAllComponents
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.GetComponentsRangeYieldsAllComponents (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.GetComponentsRangeYieldsAllComponents" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.GetComponentsRangeYieldsAllComponents" time elapsed: 00:00:00
+----------------------------------------------------------
+
+116/140 Testing: AppStreamParserCreate.MoveConstruction
+116/140 Test: AppStreamParserCreate.MoveConstruction
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.MoveConstruction" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.MoveConstruction" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.MoveConstruction
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.MoveConstruction
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[       OK ] AppStreamParserCreate.MoveConstruction (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.MoveConstruction" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.MoveConstruction" time elapsed: 00:00:00
+----------------------------------------------------------
+
+117/140 Testing: AppStreamParserCreate.MoveAssignment
+117/140 Test: AppStreamParserCreate.MoveAssignment
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=AppStreamParserCreate.MoveAssignment" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"AppStreamParserCreate.MoveAssignment" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = AppStreamParserCreate.MoveAssignment
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AppStreamParserCreate
+[ RUN      ] AppStreamParserCreate.MoveAssignment
+[info] Parsing file (in-memory): /tmp/appstream_test_1.xml
+[info] Parsing file (in-memory): /tmp/appstream_test_2.xml
+[       OK ] AppStreamParserCreate.MoveAssignment (0 ms)
+[----------] 1 test from AppStreamParserCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppStreamParserCreate.MoveAssignment" end time: Mar 26 08:27 PDT
+"AppStreamParserCreate.MoveAssignment" time elapsed: 00:00:00
+----------------------------------------------------------
+
+118/140 Testing: SqliteWriter.BeginCreatesStagingFile
+118/140 Test: SqliteWriter.BeginCreatesStagingFile
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.BeginCreatesStagingFile" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.BeginCreatesStagingFile" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.BeginCreatesStagingFile
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.BeginCreatesStagingFile
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[warn] SqliteWriter destroyed without end() — staging left at: /tmp/appstream_testdb_1.db.staging
+[       OK ] SqliteWriter.BeginCreatesStagingFile (0 ms)
+[----------] 1 test from SqliteWriter (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.BeginCreatesStagingFile" end time: Mar 26 08:27 PDT
+"SqliteWriter.BeginCreatesStagingFile" time elapsed: 00:00:00
+----------------------------------------------------------
+
+119/140 Testing: SqliteWriter.EndAfterBeginCreatesDbFile
+119/140 Test: SqliteWriter.EndAfterBeginCreatesDbFile
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.EndAfterBeginCreatesDbFile" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.EndAfterBeginCreatesDbFile" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.EndAfterBeginCreatesDbFile
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.EndAfterBeginCreatesDbFile
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 0 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.EndAfterBeginCreatesDbFile (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.EndAfterBeginCreatesDbFile" end time: Mar 26 08:27 PDT
+"SqliteWriter.EndAfterBeginCreatesDbFile" time elapsed: 00:00:00
+----------------------------------------------------------
+
+120/140 Testing: SqliteWriter.EndAfterBeginRemovesStagingFile
+120/140 Test: SqliteWriter.EndAfterBeginRemovesStagingFile
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.EndAfterBeginRemovesStagingFile" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.EndAfterBeginRemovesStagingFile" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.EndAfterBeginRemovesStagingFile
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.EndAfterBeginRemovesStagingFile
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 0 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.EndAfterBeginRemovesStagingFile (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.EndAfterBeginRemovesStagingFile" end time: Mar 26 08:27 PDT
+"SqliteWriter.EndAfterBeginRemovesStagingFile" time elapsed: 00:00:00
+----------------------------------------------------------
+
+121/140 Testing: SqliteWriter.EmptyWriteProducesZeroComponentCount
+121/140 Test: SqliteWriter.EmptyWriteProducesZeroComponentCount
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.EmptyWriteProducesZeroComponentCount" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.EmptyWriteProducesZeroComponentCount" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.EmptyWriteProducesZeroComponentCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.EmptyWriteProducesZeroComponentCount
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 0 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.EmptyWriteProducesZeroComponentCount (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.EmptyWriteProducesZeroComponentCount" end time: Mar 26 08:27 PDT
+"SqliteWriter.EmptyWriteProducesZeroComponentCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+122/140 Testing: SqliteWriter.SingleComponentIncreasesCount
+122/140 Test: SqliteWriter.SingleComponentIncreasesCount
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.SingleComponentIncreasesCount" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.SingleComponentIncreasesCount" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.SingleComponentIncreasesCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.SingleComponentIncreasesCount
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.SingleComponentIncreasesCount (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.SingleComponentIncreasesCount" end time: Mar 26 08:27 PDT
+"SqliteWriter.SingleComponentIncreasesCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+123/140 Testing: SqliteWriter.SingleComponentAppearsInDb
+123/140 Test: SqliteWriter.SingleComponentAppearsInDb
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.SingleComponentAppearsInDb" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.SingleComponentAppearsInDb" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.SingleComponentAppearsInDb
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.SingleComponentAppearsInDb
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.SingleComponentAppearsInDb (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.SingleComponentAppearsInDb" end time: Mar 26 08:27 PDT
+"SqliteWriter.SingleComponentAppearsInDb" time elapsed: 00:00:00
+----------------------------------------------------------
+
+124/140 Testing: SqliteWriter.ComponentFieldsStoredCorrectly
+124/140 Test: SqliteWriter.ComponentFieldsStoredCorrectly
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.ComponentFieldsStoredCorrectly" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.ComponentFieldsStoredCorrectly" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.ComponentFieldsStoredCorrectly
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.ComponentFieldsStoredCorrectly
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.ComponentFieldsStoredCorrectly (2 ms)
+[----------] 1 test from SqliteWriter (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.ComponentFieldsStoredCorrectly" end time: Mar 26 08:27 PDT
+"SqliteWriter.ComponentFieldsStoredCorrectly" time elapsed: 00:00:00
+----------------------------------------------------------
+
+125/140 Testing: SqliteWriter.FiveComponentsAllWritten
+125/140 Test: SqliteWriter.FiveComponentsAllWritten
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.FiveComponentsAllWritten" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.FiveComponentsAllWritten" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.FiveComponentsAllWritten
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.FiveComponentsAllWritten
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 5 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.FiveComponentsAllWritten (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.FiveComponentsAllWritten" end time: Mar 26 08:27 PDT
+"SqliteWriter.FiveComponentsAllWritten" time elapsed: 00:00:00
+----------------------------------------------------------
+
+126/140 Testing: SqliteWriter.BatchSizeOneCommitsAfterEachComponent
+126/140 Test: SqliteWriter.BatchSizeOneCommitsAfterEachComponent
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.BatchSizeOneCommitsAfterEachComponent" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.BatchSizeOneCommitsAfterEachComponent" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.BatchSizeOneCommitsAfterEachComponent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.BatchSizeOneCommitsAfterEachComponent
+[info] SQLite writer ready (batch 1): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 4 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.BatchSizeOneCommitsAfterEachComponent (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.BatchSizeOneCommitsAfterEachComponent" end time: Mar 26 08:27 PDT
+"SqliteWriter.BatchSizeOneCommitsAfterEachComponent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+127/140 Testing: SqliteWriter.BatchSizeLargerThanComponentCount
+127/140 Test: SqliteWriter.BatchSizeLargerThanComponentCount
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.BatchSizeLargerThanComponentCount" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.BatchSizeLargerThanComponentCount" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.BatchSizeLargerThanComponentCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.BatchSizeLargerThanComponentCount
+[info] SQLite writer ready (batch 1000): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.BatchSizeLargerThanComponentCount (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.BatchSizeLargerThanComponentCount" end time: Mar 26 08:27 PDT
+"SqliteWriter.BatchSizeLargerThanComponentCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+128/140 Testing: SqliteWriter.CategoriesStoredInJunctionTable
+128/140 Test: SqliteWriter.CategoriesStoredInJunctionTable
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.CategoriesStoredInJunctionTable" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.CategoriesStoredInJunctionTable" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.CategoriesStoredInJunctionTable
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.CategoriesStoredInJunctionTable
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.CategoriesStoredInJunctionTable (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.CategoriesStoredInJunctionTable" end time: Mar 26 08:27 PDT
+"SqliteWriter.CategoriesStoredInJunctionTable" time elapsed: 00:00:00
+----------------------------------------------------------
+
+129/140 Testing: SqliteWriter.KeywordsStoredInJunctionTable
+129/140 Test: SqliteWriter.KeywordsStoredInJunctionTable
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.KeywordsStoredInJunctionTable" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.KeywordsStoredInJunctionTable" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.KeywordsStoredInJunctionTable
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.KeywordsStoredInJunctionTable
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.KeywordsStoredInJunctionTable (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.KeywordsStoredInJunctionTable" end time: Mar 26 08:27 PDT
+"SqliteWriter.KeywordsStoredInJunctionTable" time elapsed: 00:00:00
+----------------------------------------------------------
+
+130/140 Testing: SqliteWriter.SharedCategoryInternedOnce
+130/140 Test: SqliteWriter.SharedCategoryInternedOnce
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.SharedCategoryInternedOnce" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.SharedCategoryInternedOnce" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.SharedCategoryInternedOnce
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.SharedCategoryInternedOnce
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 2 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.SharedCategoryInternedOnce (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.SharedCategoryInternedOnce" end time: Mar 26 08:27 PDT
+"SqliteWriter.SharedCategoryInternedOnce" time elapsed: 00:00:00
+----------------------------------------------------------
+
+131/140 Testing: SqliteWriter.ReleaseStoredCorrectly
+131/140 Test: SqliteWriter.ReleaseStoredCorrectly
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.ReleaseStoredCorrectly" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.ReleaseStoredCorrectly" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.ReleaseStoredCorrectly
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.ReleaseStoredCorrectly
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.ReleaseStoredCorrectly (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.ReleaseStoredCorrectly" end time: Mar 26 08:27 PDT
+"SqliteWriter.ReleaseStoredCorrectly" time elapsed: 00:00:00
+----------------------------------------------------------
+
+132/140 Testing: SqliteWriter.IconsStoredInIconTable
+132/140 Test: SqliteWriter.IconsStoredInIconTable
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.IconsStoredInIconTable" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.IconsStoredInIconTable" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.IconsStoredInIconTable
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.IconsStoredInIconTable
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.IconsStoredInIconTable (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.IconsStoredInIconTable" end time: Mar 26 08:27 PDT
+"SqliteWriter.IconsStoredInIconTable" time elapsed: 00:00:00
+----------------------------------------------------------
+
+133/140 Testing: SqliteWriter.UrlsStoredInUrlTable
+133/140 Test: SqliteWriter.UrlsStoredInUrlTable
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.UrlsStoredInUrlTable" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.UrlsStoredInUrlTable" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.UrlsStoredInUrlTable
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.UrlsStoredInUrlTable
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.UrlsStoredInUrlTable (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.UrlsStoredInUrlTable" end time: Mar 26 08:27 PDT
+"SqliteWriter.UrlsStoredInUrlTable" time elapsed: 00:00:00
+----------------------------------------------------------
+
+134/140 Testing: SqliteWriter.ScreenshotAndImagesStored
+134/140 Test: SqliteWriter.ScreenshotAndImagesStored
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.ScreenshotAndImagesStored" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.ScreenshotAndImagesStored" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.ScreenshotAndImagesStored
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.ScreenshotAndImagesStored
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.ScreenshotAndImagesStored (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.ScreenshotAndImagesStored" end time: Mar 26 08:27 PDT
+"SqliteWriter.ScreenshotAndImagesStored" time elapsed: 00:00:00
+----------------------------------------------------------
+
+135/140 Testing: SqliteWriter.AllRequiredTablesPresent
+135/140 Test: SqliteWriter.AllRequiredTablesPresent
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.AllRequiredTablesPresent" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.AllRequiredTablesPresent" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.AllRequiredTablesPresent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.AllRequiredTablesPresent
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 0 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.AllRequiredTablesPresent (4 ms)
+[----------] 1 test from SqliteWriter (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (4 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.AllRequiredTablesPresent" end time: Mar 26 08:27 PDT
+"SqliteWriter.AllRequiredTablesPresent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+136/140 Testing: SqliteWriter.FtsTablePopulatedAfterEnd
+136/140 Test: SqliteWriter.FtsTablePopulatedAfterEnd
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.FtsTablePopulatedAfterEnd" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.FtsTablePopulatedAfterEnd" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.FtsTablePopulatedAfterEnd
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.FtsTablePopulatedAfterEnd
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.FtsTablePopulatedAfterEnd (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.FtsTablePopulatedAfterEnd" end time: Mar 26 08:27 PDT
+"SqliteWriter.FtsTablePopulatedAfterEnd" time elapsed: 00:00:00
+----------------------------------------------------------
+
+137/140 Testing: SqliteWriter.ProvidesStoredCorrectly
+137/140 Test: SqliteWriter.ProvidesStoredCorrectly
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.ProvidesStoredCorrectly" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.ProvidesStoredCorrectly" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.ProvidesStoredCorrectly
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.ProvidesStoredCorrectly
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.ProvidesStoredCorrectly (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.ProvidesStoredCorrectly" end time: Mar 26 08:27 PDT
+"SqliteWriter.ProvidesStoredCorrectly" time elapsed: 00:00:00
+----------------------------------------------------------
+
+138/140 Testing: SqliteWriter.BrandingColorsStored
+138/140 Test: SqliteWriter.BrandingColorsStored
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.BrandingColorsStored" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.BrandingColorsStored" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.BrandingColorsStored
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.BrandingColorsStored
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.BrandingColorsStored (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.BrandingColorsStored" end time: Mar 26 08:27 PDT
+"SqliteWriter.BrandingColorsStored" time elapsed: 00:00:00
+----------------------------------------------------------
+
+139/140 Testing: SqliteWriter.RelationsStoredCorrectly
+139/140 Test: SqliteWriter.RelationsStoredCorrectly
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.RelationsStoredCorrectly" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.RelationsStoredCorrectly" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.RelationsStoredCorrectly
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.RelationsStoredCorrectly
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.RelationsStoredCorrectly (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.RelationsStoredCorrectly" end time: Mar 26 08:27 PDT
+"SqliteWriter.RelationsStoredCorrectly" time elapsed: 00:00:00
+----------------------------------------------------------
+
+140/140 Testing: SqliteWriter.CustomKeyValueStored
+140/140 Test: SqliteWriter.CustomKeyValueStored
+Command: "/home/joel/CLionProjects/appstream/build/tests/appstream_tests" "--gtest_filter=SqliteWriter.CustomKeyValueStored" "--gtest_also_run_disabled_tests"
+Directory: /home/joel/CLionProjects/appstream/build/tests
+"SqliteWriter.CustomKeyValueStored" start time: Mar 26 08:27 PDT
+Output:
+----------------------------------------------------------
+Running main() from /builddir/build/BUILD/gtest-1.15.2-build/googletest-1.15.2/googletest/src/gtest_main.cc
+Note: Google Test filter = SqliteWriter.CustomKeyValueStored
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqliteWriter
+[ RUN      ] SqliteWriter.CustomKeyValueStored
+[info] SQLite writer ready (batch 200): /tmp/appstream_testdb_1.db.staging
+[info] Database complete: 1 components at /tmp/appstream_testdb_1.db
+[       OK ] SqliteWriter.CustomKeyValueStored (1 ms)
+[----------] 1 test from SqliteWriter (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SqliteWriter.CustomKeyValueStored" end time: Mar 26 08:27 PDT
+"SqliteWriter.CustomKeyValueStored" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Mar 26 08:27 PDT

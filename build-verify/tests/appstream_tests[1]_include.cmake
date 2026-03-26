@@ -1,0 +1,5 @@
+if(EXISTS "/home/joel/CLionProjects/appstream/build-verify/tests/appstream_tests[1]_tests.cmake")
+  include("/home/joel/CLionProjects/appstream/build-verify/tests/appstream_tests[1]_tests.cmake")
+else()
+  add_test(appstream_tests_NOT_BUILT appstream_tests_NOT_BUILT)
+endif()

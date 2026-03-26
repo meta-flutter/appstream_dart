@@ -1,0 +1,19 @@
+# Dart
+.dart_tool/
+.packages
+pubspec.lock
+
+# Build artifacts
+src/*.o
+lib/libappstream.so
+
+# Generated
+catalog.db
+catalog.db-wal
+catalog.db-shm
+catalog.db.staging*
+
+# IDE
+.idea/
+.vscode/
+*.swp

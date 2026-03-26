@@ -1,0 +1,16 @@
+name: appstream
+description: Flathub Appstream parser — fetches XML, streams to SQLite via C++23 FFI.
+version: 0.1.0
+
+environment:
+  sdk: ^3.3.0
+
+dependencies:
+  ffi: ^2.1.0
+  http: ^1.2.0
+  path: ^1.9.0
+  sqlite3: ^2.4.0
+
+dev_dependencies:
+  lints: ^4.0.0
+  test: ^1.25.8

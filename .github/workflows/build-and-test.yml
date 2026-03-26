@@ -1,0 +1,164 @@
+name: Build & Test CI/CD
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        build-type: [Debug, Release]
+        sanitizer: [none, asan, msan, ubsan]
+        exclude:
+          # MemorySanitizer is rarely used in CI (requires special setup)
+          - sanitizer: msan
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake \
+            g++ \
+            libsqlite3-dev \
+            libgtest-dev \
+            lcov \
+            gcov-13
+
+      - name: Configure CMake
+        run: |
+          cmake -S . -B build \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} \
+            -DENABLE_COVERAGE=${{ matrix.build-type == 'Debug' && 'ON' || 'OFF' }} \
+            -DENABLE_SANITIZER=${{ matrix.sanitizer }}
+
+      - name: Build
+        run: cmake --build build -j$(nproc)
+
+      - name: Run C++ tests
+        run: |
+          cd build
+          ctest --output-on-failure -V
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: "3.3.0"
+
+      - name: Get Dart dependencies
+        run: dart pub get
+
+      - name: Run Dart tests
+        run: dart test
+
+      - name: Generate coverage report
+        if: matrix.build-type == 'Debug' && matrix.sanitizer == 'none'
+        run: |
+          cd build
+          lcov --directory . --capture --output-file coverage.info
+          lcov --remove coverage.info '/usr/*' '*/test/*' --output-file coverage.info
+          lcov --list coverage.info
+
+      - name: Upload coverage to Codecov
+        if: matrix.build-type == 'Debug' && matrix.sanitizer == 'none'
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./build/coverage.info
+          flags: unittests
+          name: codecov-umbrella
+
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            clang-tidy-19 \
+            clang-format-19
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: "3.3.0"
+
+      - name: Run dart analyze
+        run: dart analyze
+
+      - name: Run clang-tidy
+        run: |
+          cd build 2>/dev/null || cmake -S . -B build
+          clang-tidy-19 -p . ../src/*.cpp 2>&1 | head -100
+
+      - name: Check clang-format
+        run: |
+          cd build 2>/dev/null || cmake -S . -B build
+          for file in ../src/*.cpp ../include/*.h; do
+            if ! clang-format-19 -style=file "$file" | diff -q "$file" - > /dev/null 2>&1; then
+              echo "Format check failed for $file"
+              clang-format-19 -style=file "$file" | diff "$file" - || true
+            fi
+          done
+
+  performance-benchmark:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake \
+            g++ \
+            libsqlite3-dev \
+            libgtest-dev
+
+      - name: Build with optimizations
+        run: |
+          cmake -S . -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DENABLE_BENCHMARKS=ON
+          cmake --build build -j$(nproc)
+
+      - name: Run performance benchmarks
+        run: ./build/tests/appstream_benchmarks
+
+  sanitizer-verification:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        sanitizer: [asan, ubsan]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake \
+            g++ \
+            libsqlite3-dev \
+            libgtest-dev
+
+      - name: Build with ${{ matrix.sanitizer }}
+        run: |
+          cmake -S . -B build-${{ matrix.sanitizer }} \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DENABLE_SANITIZER=${{ matrix.sanitizer }}
+          cmake --build build-${{ matrix.sanitizer }} -j$(nproc)
+
+      - name: Run tests with ${{ matrix.sanitizer }}
+        run: |
+          cd build-${{ matrix.sanitizer }}
+          ctest --output-on-failure -V
+
