@@ -262,7 +262,7 @@ TEST_F(RealAppstreamTest, ParseAndStoreRealData) {
   // Verify database was created
   EXPECT_TRUE(fs::exists(db_path));
   auto file_size = fs::file_size(db_path);
-  EXPECT_GT(file_size, 0u);
+  EXPECT_GT(file_size, 4096u); // Should contain schema and data
   std::cout << "Created database: " << file_size << " bytes" << std::endl;
 
   cleanupFile(xml_path);
@@ -355,7 +355,9 @@ TEST_F(RealAppstreamTest, ErrorHandlingMalformedXML) {
 
   // Should gracefully handle errors (may succeed with partial data or fail)
   // Either way, should not crash
-  EXPECT_TRUE(result.has_value() || !result.has_value());
+  if (!result.has_value()) {
+    EXPECT_NE(result.error(), AppStreamParser::ParseError::FILE_NOT_FOUND);
+  }
 
   cleanupFile(xml_path);
 }
