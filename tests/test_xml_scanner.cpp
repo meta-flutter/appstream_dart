@@ -42,7 +42,8 @@ TEST(XmlScanner, WhitespaceOnlyYieldsEndOfDocument) {
 // ── start / end tags ──────────────────────────────────────────────────────
 
 TEST(XmlScanner, SimpleStartAndEndTag) {
-    auto ev = scanAll("<root></root>");
+    std::string xml = "<root></root>";
+    auto ev = scanAll(xml);
     ASSERT_EQ(ev.size(), 2u);
     EXPECT_EQ(ev[0].type, ET::START_ELEMENT);  EXPECT_EQ(ev[0].name, "root");
     EXPECT_EQ(ev[1].type, ET::END_ELEMENT);    EXPECT_EQ(ev[1].name, "root");
@@ -150,7 +151,8 @@ TEST(XmlScanner, PlainTextContent) {
 }
 
 TEST(XmlScanner, TextEventTextMethod_NoEntities) {
-    auto ev = scanAll("<t>plain</t>");
+    std::string xml = "<t>plain</t>";
+    auto ev = scanAll(xml);
     EXPECT_EQ(ev[1].text(), "plain");
     EXPECT_FALSE(ev[1].text_has_entities);
     // text_view should point into the source buffer (zero-copy)
@@ -196,7 +198,8 @@ TEST(XmlScanner, TextMixedPlainAndEntities) {
 // ── comment skipping ──────────────────────────────────────────────────────
 
 TEST(XmlScanner, CommentSkippedBetweenElements) {
-    auto ev = scanAll("<root><!-- skip --><child/></root>");
+    std::string xml = "<root><!-- skip --><child/></root>";
+    auto ev = scanAll(xml);
     // root-start, child-start, child-end, root-end (comment absent)
     ASSERT_EQ(ev.size(), 4u);
     EXPECT_EQ(ev[1].name, "child");
