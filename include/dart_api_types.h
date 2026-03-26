@@ -7,6 +7,7 @@
 #ifndef DART_API_TYPES_H_
 #define DART_API_TYPES_H_
 
+#include <stdbool.h>
 #include <stdint.h>
 
 typedef int64_t Dart_Port;

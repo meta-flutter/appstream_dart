@@ -28,8 +28,7 @@ jobs:
             g++ \
             libsqlite3-dev \
             libgtest-dev \
-            lcov \
-            gcov-13
+            lcov
 
       - name: Configure CMake
         run: |
@@ -89,6 +88,9 @@ jobs:
         uses: dart-lang/setup-dart@v1
         with:
           sdk: "3.3.0"
+
+      - name: Get Dart dependencies
+        run: dart pub get
 
       - name: Run dart analyze
         run: dart analyze

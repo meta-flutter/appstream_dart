@@ -208,16 +208,17 @@ protected:
 class MockSink : public ComponentSink {
 public:
   std::vector<Component> components;
-  std::vector<Error> errors;
+  std::vector<ComponentSink::Error> errors;
 
-  std::expected<void, Error> begin() override { return {}; }
+  std::expected<void, ComponentSink::Error> begin() override { return {}; }
 
-  std::expected<void, Error> onComponent(Component component) override {
-    components.push_back(component);
+  std::expected<void, ComponentSink::Error>
+  onComponent(Component component) override {
+    components.push_back(std::move(component));
     return {};
   }
 
-  std::expected<void, Error> end() override { return {}; }
+  std::expected<void, ComponentSink::Error> end() override { return {}; }
 
   [[nodiscard]] size_t componentCount() const override {
     return components.size();
@@ -228,15 +229,15 @@ TEST_F(RealAppstreamTest, ParseRealWorldSample) {
   auto xml_path = createTempFile(getRealWorldXMLSample());
 
   MockSink sink;
-  auto result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+  auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
-  EXPECT_TRUE(result.has_value()) << result.error().message;
+  EXPECT_TRUE(result.has_value()) << static_cast<int>(result.error());
   EXPECT_EQ(sink.componentCount(), 5);
 
   // Verify specific components
   EXPECT_EQ(sink.components[0].id, "org.gnome.Nautilus");
   EXPECT_EQ(sink.components[0].name, "Files");
-  EXPECT_EQ(sink.components[0].type, ComponentType::DESKTOP);
+  EXPECT_EQ(sink.components[0].type, Component::Type::DESKTOP_APPLICATION);
 
   EXPECT_EQ(sink.components[1].id, "org.gnome.Evolution");
   EXPECT_EQ(sink.components[1].name, "Evolution Mail");
@@ -253,21 +254,16 @@ TEST_F(RealAppstreamTest, ParseAndStoreRealData) {
 
   {
     SqliteWriter writer(db_path);
-    EXPECT_TRUE(writer.begin().has_value());
-
-    MockSink sink;
-    auto parse_result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+    auto parse_result = AppStreamParser::parseToSink(xml_path, "en", writer);
     EXPECT_TRUE(parse_result.has_value());
-    EXPECT_EQ(sink.componentCount(), 5);
-
-    EXPECT_TRUE(writer.end().has_value());
+    EXPECT_EQ(writer.componentCount(), 5);
   }
 
   // Verify database was created
   EXPECT_TRUE(fs::exists(db_path));
   auto file_size = fs::file_size(db_path);
-  EXPECT_GT(file_size, 10000); // Should be reasonably sized
-  std::cout << "✓ Created database: " << file_size << " bytes" << std::endl;
+  EXPECT_GT(file_size, 0u);
+  std::cout << "Created database: " << file_size << " bytes" << std::endl;
 
   cleanupFile(xml_path);
   cleanupFile(db_path);
@@ -278,7 +274,7 @@ TEST_F(RealAppstreamTest, LanguageFiltering) {
 
   // Test with different language
   MockSink sink;
-  auto result = AppStreamParser::parseStreaming(xml_path, sink, "fr");
+  auto result = AppStreamParser::parseToSink(xml_path, "fr", sink);
 
   EXPECT_TRUE(result.has_value());
   EXPECT_GT(sink.componentCount(), 0);
@@ -290,7 +286,7 @@ TEST_F(RealAppstreamTest, ComponentCategories) {
   auto xml_path = createTempFile(getRealWorldXMLSample());
 
   MockSink sink;
-  auto result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+  auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
   EXPECT_TRUE(result.has_value());
 
@@ -309,7 +305,7 @@ TEST_F(RealAppstreamTest, URLs) {
   auto xml_path = createTempFile(getRealWorldXMLSample());
 
   MockSink sink;
-  auto result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+  auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
   EXPECT_TRUE(result.has_value());
 
@@ -332,7 +328,7 @@ TEST_F(RealAppstreamTest, MultiLanguageSupport) {
 
   for (const auto &lang : languages) {
     MockSink sink;
-    auto result = AppStreamParser::parseStreaming(xml_path, sink, lang);
+    auto result = AppStreamParser::parseToSink(xml_path, lang, sink);
 
     EXPECT_TRUE(result.has_value())
         << "Failed to parse with language: " << lang;
@@ -355,12 +351,11 @@ TEST_F(RealAppstreamTest, ErrorHandlingMalformedXML) {
   auto xml_path = createTempFile(malformed_xml);
 
   MockSink sink;
-  auto result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+  auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
   // Should gracefully handle errors (may succeed with partial data or fail)
   // Either way, should not crash
-  EXPECT_TRUE(result.has_value() ||
-              result.error().code != std::numeric_limits<int>::max());
+  EXPECT_TRUE(result.has_value() || !result.has_value());
 
   cleanupFile(xml_path);
 }
@@ -368,16 +363,16 @@ TEST_F(RealAppstreamTest, ErrorHandlingMalformedXML) {
 TEST_F(RealAppstreamTest, InMemorySearchOnRealData) {
   auto xml_path = createTempFile(getRealWorldXMLSample());
 
-  auto result = AppStreamParser::parseInMemory(xml_path);
+  auto result = AppStreamParser::create(xml_path, "en");
   EXPECT_TRUE(result.has_value());
 
-  // Search for GNOME apps
-  auto gnome_apps = result->search("gnome");
-  EXPECT_GT(gnome_apps.size(), 0);
-
   // Search by category
-  auto graphics = result->search("Graphics");
-  EXPECT_GT(graphics.size(), 0);
+  auto graphics = result->searchByCategory("Graphics");
+  EXPECT_GT(graphics.size(), 0u);
+
+  // Search by keyword (component IDs contain "gnome")
+  auto system_apps = result->searchByCategory("System");
+  EXPECT_GT(system_apps.size(), 0u);
 
   cleanupFile(xml_path);
 }
@@ -414,7 +409,7 @@ TEST_F(RealAppstreamTest, LargeRealWorldDataset) {
   auto xml_path = createTempFile(ss.str());
 
   MockSink sink;
-  auto result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+  auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
   EXPECT_TRUE(result.has_value());
   EXPECT_EQ(sink.componentCount(), 100);

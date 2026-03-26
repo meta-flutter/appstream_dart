@@ -1,2 +1,0 @@
-/usr/bin/ar qc libappstream_core.a CMakeFiles/appstream_core.dir/src/AppStreamParser.cpp.o CMakeFiles/appstream_core.dir/src/Component.cpp.o CMakeFiles/appstream_core.dir/src/XmlScanner.cpp.o CMakeFiles/appstream_core.dir/src/StringPool.cpp.o CMakeFiles/appstream_core.dir/src/SqliteWriter.cpp.o
-/usr/bin/ranlib libappstream_core.a
