@@ -46,14 +46,17 @@ jobs:
           ctest --output-on-failure -V
 
       - name: Set up Dart
+        if: matrix.sanitizer == 'none'
         uses: dart-lang/setup-dart@v1
         with:
           sdk: "3.4.0"
 
       - name: Get Dart dependencies
+        if: matrix.sanitizer == 'none'
         run: dart pub get
 
       - name: Run Dart tests
+        if: matrix.sanitizer == 'none'
         run: dart test
 
       - name: Generate coverage report
