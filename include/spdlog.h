@@ -8,26 +8,26 @@
 #define SPDLOG_SPDLOG_H
 
 #include <cstdio>
-#include <print>
+#include <format>
 
 namespace spdlog {
 
 template <typename... Args>
 void info(std::format_string<Args...> fmt, Args &&...args) {
   auto msg = std::format(fmt, std::forward<Args>(args)...);
-  std::print(stderr, "[info] {}\n", msg);
+  fprintf(stderr, "[info] %s\n", msg.c_str());
 }
 
 template <typename... Args>
 void warn(std::format_string<Args...> fmt, Args &&...args) {
   auto msg = std::format(fmt, std::forward<Args>(args)...);
-  std::print(stderr, "[warn] {}\n", msg);
+  fprintf(stderr, "[warn] %s\n", msg.c_str());
 }
 
 template <typename... Args>
 void error(std::format_string<Args...> fmt, Args &&...args) {
   auto msg = std::format(fmt, std::forward<Args>(args)...);
-  std::print(stderr, "[error] {}\n", msg);
+  fprintf(stderr, "[error] %s\n", msg.c_str());
 }
 
 template <typename... Args>
@@ -35,7 +35,7 @@ void debug([[maybe_unused]] std::format_string<Args...> fmt,
            [[maybe_unused]] Args &&...args) {
 #ifndef NDEBUG
   auto msg = std::format(fmt, std::forward<Args>(args)...);
-  std::print(stderr, "[debug] {}\n", msg);
+  fprintf(stderr, "[debug] %s\n", msg.c_str());
 #endif
 }
 
