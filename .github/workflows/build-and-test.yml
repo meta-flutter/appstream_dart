@@ -28,8 +28,7 @@ jobs:
             g++ \
             libsqlite3-dev \
             libgtest-dev \
-            lcov \
-            gcov-13
+            lcov
 
       - name: Configure CMake
         run: |
@@ -55,14 +54,15 @@ jobs:
         run: dart pub get
 
       - name: Run Dart tests
+        if: matrix.sanitizer == 'none'
         run: dart test
 
       - name: Generate coverage report
         if: matrix.build-type == 'Debug' && matrix.sanitizer == 'none'
         run: |
           cd build
-          lcov --directory . --capture --output-file coverage.info
-          lcov --remove coverage.info '/usr/*' '*/test/*' --output-file coverage.info
+          lcov --directory . --capture --output-file coverage.info --ignore-errors mismatch,unused
+          lcov --remove coverage.info '/usr/*' '*/test/*' --output-file coverage.info --ignore-errors unused
           lcov --list coverage.info
 
       - name: Upload coverage to Codecov
@@ -89,6 +89,9 @@ jobs:
         uses: dart-lang/setup-dart@v1
         with:
           sdk: "3.3.0"
+
+      - name: Get Dart dependencies
+        run: dart pub get
 
       - name: Run dart analyze
         run: dart analyze
