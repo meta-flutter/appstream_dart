@@ -230,7 +230,8 @@ TEST_F(RealAppstreamTest, ParseRealWorldSample) {
   MockSink sink;
   auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
-  EXPECT_TRUE(result.has_value()) << static_cast<int>(result.error());
+  EXPECT_TRUE(result.has_value()) << "parse failed with error code "
+                                  << static_cast<int>(result.error());
   EXPECT_EQ(sink.componentCount(), 5);
 
   // Verify specific components
@@ -357,10 +358,13 @@ TEST_F(RealAppstreamTest, ErrorHandlingMalformedXML) {
   MockSink sink;
   auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
-  // Should gracefully handle errors (may succeed with partial data or fail)
-  // Either way, should not crash
-  EXPECT_TRUE(result.has_value() ||
-              result.error() != AppStreamParser::ParseError::FILE_NOT_FOUND);
+  // Should gracefully handle errors (may succeed with partial data or fail
+  // with a parse error). Either way, should not crash.
+  if (result.has_value()) {
+    SUCCEED() << "parser returned success with partial data";
+  } else {
+    EXPECT_NE(result.error(), AppStreamParser::ParseError::FILE_NOT_FOUND);
+  }
 
   cleanupFile(xml_path);
 }
