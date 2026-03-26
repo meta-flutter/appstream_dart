@@ -48,7 +48,7 @@ jobs:
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: "3.3.0"
+          sdk: "3.4.0"
 
       - name: Get Dart dependencies
         run: dart pub get
@@ -88,7 +88,7 @@ jobs:
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: "3.3.0"
+          sdk: "3.4.0"
 
       - name: Get Dart dependencies
         run: dart pub get

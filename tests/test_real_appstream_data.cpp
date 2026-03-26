@@ -228,15 +228,15 @@ TEST_F(RealAppstreamTest, ParseRealWorldSample) {
   auto xml_path = createTempFile(getRealWorldXMLSample());
 
   MockSink sink;
-  auto result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+  auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
-  EXPECT_TRUE(result.has_value()) << result.error().message;
+  EXPECT_TRUE(result.has_value()) << static_cast<int>(result.error());
   EXPECT_EQ(sink.componentCount(), 5);
 
   // Verify specific components
   EXPECT_EQ(sink.components[0].id, "org.gnome.Nautilus");
   EXPECT_EQ(sink.components[0].name, "Files");
-  EXPECT_EQ(sink.components[0].type, ComponentType::DESKTOP);
+  EXPECT_EQ(sink.components[0].type, Component::Type::DESKTOP_APPLICATION);
 
   EXPECT_EQ(sink.components[1].id, "org.gnome.Evolution");
   EXPECT_EQ(sink.components[1].name, "Evolution Mail");
@@ -256,7 +256,7 @@ TEST_F(RealAppstreamTest, ParseAndStoreRealData) {
     EXPECT_TRUE(writer.begin().has_value());
 
     MockSink sink;
-    auto parse_result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+    auto parse_result = AppStreamParser::parseToSink(xml_path, "en", sink);
     EXPECT_TRUE(parse_result.has_value());
     EXPECT_EQ(sink.componentCount(), 5);
 
@@ -278,7 +278,7 @@ TEST_F(RealAppstreamTest, LanguageFiltering) {
 
   // Test with different language
   MockSink sink;
-  auto result = AppStreamParser::parseStreaming(xml_path, sink, "fr");
+  auto result = AppStreamParser::parseToSink(xml_path, "fr", sink);
 
   EXPECT_TRUE(result.has_value());
   EXPECT_GT(sink.componentCount(), 0);
@@ -290,7 +290,7 @@ TEST_F(RealAppstreamTest, ComponentCategories) {
   auto xml_path = createTempFile(getRealWorldXMLSample());
 
   MockSink sink;
-  auto result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+  auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
   EXPECT_TRUE(result.has_value());
 
@@ -309,7 +309,7 @@ TEST_F(RealAppstreamTest, URLs) {
   auto xml_path = createTempFile(getRealWorldXMLSample());
 
   MockSink sink;
-  auto result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+  auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
   EXPECT_TRUE(result.has_value());
 
@@ -332,7 +332,7 @@ TEST_F(RealAppstreamTest, MultiLanguageSupport) {
 
   for (const auto &lang : languages) {
     MockSink sink;
-    auto result = AppStreamParser::parseStreaming(xml_path, sink, lang);
+    auto result = AppStreamParser::parseToSink(xml_path, lang, sink);
 
     EXPECT_TRUE(result.has_value())
         << "Failed to parse with language: " << lang;
@@ -355,12 +355,12 @@ TEST_F(RealAppstreamTest, ErrorHandlingMalformedXML) {
   auto xml_path = createTempFile(malformed_xml);
 
   MockSink sink;
-  auto result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+  auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
   // Should gracefully handle errors (may succeed with partial data or fail)
   // Either way, should not crash
   EXPECT_TRUE(result.has_value() ||
-              result.error().code != std::numeric_limits<int>::max());
+              result.error() != AppStreamParser::ParseError::FILE_NOT_FOUND);
 
   cleanupFile(xml_path);
 }
@@ -368,15 +368,18 @@ TEST_F(RealAppstreamTest, ErrorHandlingMalformedXML) {
 TEST_F(RealAppstreamTest, InMemorySearchOnRealData) {
   auto xml_path = createTempFile(getRealWorldXMLSample());
 
-  auto result = AppStreamParser::parseInMemory(xml_path);
+  auto result = AppStreamParser::create(xml_path, "en");
   EXPECT_TRUE(result.has_value());
 
-  // Search for GNOME apps
-  auto gnome_apps = result->search("gnome");
-  EXPECT_GT(gnome_apps.size(), 0);
+  // Verify total component count
+  EXPECT_EQ(result->getTotalComponentCount(), 5);
+
+  // Find a specific GNOME app by id
+  auto *nautilus = result->findComponent("org.gnome.Nautilus");
+  EXPECT_NE(nautilus, nullptr);
 
   // Search by category
-  auto graphics = result->search("Graphics");
+  auto graphics = result->searchByCategory("Graphics");
   EXPECT_GT(graphics.size(), 0);
 
   cleanupFile(xml_path);
@@ -414,7 +417,7 @@ TEST_F(RealAppstreamTest, LargeRealWorldDataset) {
   auto xml_path = createTempFile(ss.str());
 
   MockSink sink;
-  auto result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+  auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
   EXPECT_TRUE(result.has_value());
   EXPECT_EQ(sink.componentCount(), 100);
