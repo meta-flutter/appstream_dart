@@ -358,6 +358,13 @@ Future<String> _fetchAppstream() async {
       '✓ ${ProgressBar._formatBytes(gzBytes.length)} → ${ProgressBar._formatBytes(xmlBytes.length)}');
   print('');
 
+  // Basic integrity check: verify the decompressed file looks like AppStream XML
+  final header = String.fromCharCodes(xmlBytes.take(256));
+  if (!header.contains('<components') && !header.contains('<component')) {
+    stderr.writeln('Error: downloaded file does not appear to be AppStream XML');
+    exit(1);
+  }
+
   return xmlPath;
 }
 

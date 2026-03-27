@@ -7,7 +7,7 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
 /// Manages fetching, importing, and querying the Flathub catalog.
-class CatalogService {
+class CatalogService extends ChangeNotifier {
   static const _flathubUrls = [
     'https://dl.flathub.org/repo/appstream/x86_64/appstream.xml.gz',
     'https://flathub.org/repo/appstream/x86_64/appstream.xml.gz',
@@ -17,6 +17,52 @@ class CatalogService {
 
   CatalogDatabase? _db;
   late final String _dataDir;
+
+  /// Active display locale. Null means use system default (no translation).
+  String? _locale;
+
+  /// Available translation languages in the database.
+  List<String> availableLanguages = [];
+
+  /// Get/set the active locale. Setting notifies listeners to rebuild.
+  String? get locale => _locale;
+  set locale(String? value) {
+    if (_locale != value) {
+      _locale = value;
+      notifyListeners();
+    }
+  }
+
+  /// Resolve the effective locale.
+  /// Returns null when "Auto (System)" is selected — meaning show all
+  /// components with translations applied opportunistically from the
+  /// system locale, but no filtering.
+  /// Returns a language code only when the user explicitly picks one
+  /// from the language picker.
+  String? get effectiveLocale => _locale;
+
+  /// The system locale for applying translations (without filtering).
+  /// Used to display translated fields when available, even in "Auto" mode.
+  String? get displayLocale {
+    if (_locale != null) return _locale;
+    final sys = Platform.localeName.split('.').first.replaceAll('_', '-');
+    if (availableLanguages.contains(sys)) return sys;
+    final base = sys.contains('-') ? sys.split('-').first : sys;
+    if (availableLanguages.contains(base)) return base;
+    return null;
+  }
+
+  /// Load available languages from the database.
+  Future<void> loadAvailableLanguages() async {
+    try {
+      final langs = await db.listTranslationLanguages(limit: 500);
+      availableLanguages = langs.map((l) => l.language).toList();
+      debugPrint('Loaded ${availableLanguages.length} translation languages');
+    } catch (e) {
+      debugPrint('Failed to load translation languages: $e');
+      availableLanguages = [];
+    }
+  }
 
   String get dbPath => p.join(_dataDir, 'catalog.db');
   String get xmlPath => p.join(_dataDir, 'appstream.xml');
@@ -96,6 +142,8 @@ class CatalogService {
   /// Import XML into SQLite DB, streaming progress.
   /// [onProgress] receives (componentCount, estimatedTotal).
   Stream<(int count, int estimated)> importToDatabase() async* {
+    // Close any existing DB handle so we don't read stale data after import
+    await close();
     Appstream.initialize();
 
     final xmlSize = File(xmlPath).lengthSync();
@@ -105,6 +153,7 @@ class CatalogService {
     await for (final event in Appstream.parseToSqlite(
       xmlPath: xmlPath,
       dbPath: dbPath,
+      language: '*',
       batchSize: 200,
     )) {
       switch (event) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Joel Winarske
+ * Copyright 2026 Joel Winarske
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,6 +88,10 @@ public:
   explicit XmlScanner(int fd, size_t bufSize = kDefaultStreamBufSize);
 
   /// Pull the next event. Returns error on malformed input.
+  /// IMPORTANT: string_view members in the returned Event are only valid
+  /// until the next call to next(). In streaming mode, the internal buffer
+  /// may be compacted between calls. Callers must copy any values they
+  /// need to retain before calling next() again.
   std::expected<Event, Error> next();
 
   /// Check if we've reached the end

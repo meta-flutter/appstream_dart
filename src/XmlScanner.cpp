@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Joel Winarske
+ * Copyright 2026 Joel Winarske
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -169,24 +169,37 @@ void XmlScanner::decodeEntities(std::string_view src) {
     } else if (entity.size() > 1 && entity[0] == '#') {
       // Numeric character reference
       unsigned long cp = 0;
+      bool valid = true;
       if (entity[1] == 'x' || entity[1] == 'X') {
-        for (size_t i = 2; i < entity.size(); ++i) {
+        for (size_t i = 2; i < entity.size() && valid; ++i) {
           char c = entity[i];
-          cp *= 16;
           if (c >= '0' && c <= '9')
-            cp += static_cast<unsigned long>(c - '0');
+            cp = cp * 16 + static_cast<unsigned long>(c - '0');
           else if (c >= 'a' && c <= 'f')
-            cp += static_cast<unsigned long>(c - 'a' + 10);
+            cp = cp * 16 + static_cast<unsigned long>(c - 'a' + 10);
           else if (c >= 'A' && c <= 'F')
-            cp += static_cast<unsigned long>(c - 'A' + 10);
+            cp = cp * 16 + static_cast<unsigned long>(c - 'A' + 10);
+          else
+            valid = false;
+          if (cp > 0x10FFFF)
+            valid = false;
         }
       } else {
-        for (size_t i = 1; i < entity.size(); ++i) {
-          cp = cp * 10 + static_cast<unsigned long>(entity[i] - '0');
+        for (size_t i = 1; i < entity.size() && valid; ++i) {
+          if (entity[i] >= '0' && entity[i] <= '9')
+            cp = cp * 10 + static_cast<unsigned long>(entity[i] - '0');
+          else
+            valid = false;
+          if (cp > 0x10FFFF)
+            valid = false;
         }
       }
-      // UTF-8 encode
-      if (cp < 0x80) {
+      // Reject surrogate halves, NUL, and out-of-range codepoints
+      if (!valid || cp == 0 || cp > 0x10FFFF ||
+          (cp >= 0xD800 && cp <= 0xDFFF)) {
+        // Replace invalid reference with U+FFFD
+        decode_buf_ += "\xEF\xBF\xBD";
+      } else if (cp < 0x80) {
         decode_buf_ += static_cast<char>(cp);
       } else if (cp < 0x800) {
         decode_buf_ += static_cast<char>(0xC0 | (cp >> 6));

@@ -5965,6 +5965,287 @@ class ComponentCustomCompanion extends UpdateCompanion<ComponentCustomRow> {
   }
 }
 
+class $ComponentFieldTranslationsTable extends ComponentFieldTranslations
+    with
+        TableInfo<$ComponentFieldTranslationsTable,
+            ComponentFieldTranslationRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ComponentFieldTranslationsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _componentIdMeta =
+      const VerificationMeta('componentId');
+  @override
+  late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
+      'component_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _fieldMeta = const VerificationMeta('field');
+  @override
+  late final GeneratedColumn<String> field = GeneratedColumn<String>(
+      'field', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _languageMeta =
+      const VerificationMeta('language');
+  @override
+  late final GeneratedColumn<String> language = GeneratedColumn<String>(
+      'language', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _valueMeta = const VerificationMeta('value');
+  @override
+  late final GeneratedColumn<String> value = GeneratedColumn<String>(
+      'value', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [componentId, field, language, value];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'component_field_translations';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<ComponentFieldTranslationRow> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('component_id')) {
+      context.handle(
+          _componentIdMeta,
+          componentId.isAcceptableOrUnknown(
+              data['component_id']!, _componentIdMeta));
+    } else if (isInserting) {
+      context.missing(_componentIdMeta);
+    }
+    if (data.containsKey('field')) {
+      context.handle(
+          _fieldMeta, field.isAcceptableOrUnknown(data['field']!, _fieldMeta));
+    } else if (isInserting) {
+      context.missing(_fieldMeta);
+    }
+    if (data.containsKey('language')) {
+      context.handle(_languageMeta,
+          language.isAcceptableOrUnknown(data['language']!, _languageMeta));
+    } else if (isInserting) {
+      context.missing(_languageMeta);
+    }
+    if (data.containsKey('value')) {
+      context.handle(
+          _valueMeta, value.isAcceptableOrUnknown(data['value']!, _valueMeta));
+    } else if (isInserting) {
+      context.missing(_valueMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {componentId, field, language};
+  @override
+  ComponentFieldTranslationRow map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ComponentFieldTranslationRow(
+      componentId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
+      field: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}field'])!,
+      language: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}language'])!,
+      value: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}value'])!,
+    );
+  }
+
+  @override
+  $ComponentFieldTranslationsTable createAlias(String alias) {
+    return $ComponentFieldTranslationsTable(attachedDatabase, alias);
+  }
+}
+
+class ComponentFieldTranslationRow extends DataClass
+    implements Insertable<ComponentFieldTranslationRow> {
+  final String componentId;
+  final String field;
+  final String language;
+  final String value;
+  const ComponentFieldTranslationRow(
+      {required this.componentId,
+      required this.field,
+      required this.language,
+      required this.value});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['component_id'] = Variable<String>(componentId);
+    map['field'] = Variable<String>(field);
+    map['language'] = Variable<String>(language);
+    map['value'] = Variable<String>(value);
+    return map;
+  }
+
+  ComponentFieldTranslationsCompanion toCompanion(bool nullToAbsent) {
+    return ComponentFieldTranslationsCompanion(
+      componentId: Value(componentId),
+      field: Value(field),
+      language: Value(language),
+      value: Value(value),
+    );
+  }
+
+  factory ComponentFieldTranslationRow.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ComponentFieldTranslationRow(
+      componentId: serializer.fromJson<String>(json['componentId']),
+      field: serializer.fromJson<String>(json['field']),
+      language: serializer.fromJson<String>(json['language']),
+      value: serializer.fromJson<String>(json['value']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'componentId': serializer.toJson<String>(componentId),
+      'field': serializer.toJson<String>(field),
+      'language': serializer.toJson<String>(language),
+      'value': serializer.toJson<String>(value),
+    };
+  }
+
+  ComponentFieldTranslationRow copyWith(
+          {String? componentId,
+          String? field,
+          String? language,
+          String? value}) =>
+      ComponentFieldTranslationRow(
+        componentId: componentId ?? this.componentId,
+        field: field ?? this.field,
+        language: language ?? this.language,
+        value: value ?? this.value,
+      );
+  ComponentFieldTranslationRow copyWithCompanion(
+      ComponentFieldTranslationsCompanion data) {
+    return ComponentFieldTranslationRow(
+      componentId:
+          data.componentId.present ? data.componentId.value : this.componentId,
+      field: data.field.present ? data.field.value : this.field,
+      language: data.language.present ? data.language.value : this.language,
+      value: data.value.present ? data.value.value : this.value,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ComponentFieldTranslationRow(')
+          ..write('componentId: $componentId, ')
+          ..write('field: $field, ')
+          ..write('language: $language, ')
+          ..write('value: $value')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(componentId, field, language, value);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ComponentFieldTranslationRow &&
+          other.componentId == this.componentId &&
+          other.field == this.field &&
+          other.language == this.language &&
+          other.value == this.value);
+}
+
+class ComponentFieldTranslationsCompanion
+    extends UpdateCompanion<ComponentFieldTranslationRow> {
+  final Value<String> componentId;
+  final Value<String> field;
+  final Value<String> language;
+  final Value<String> value;
+  final Value<int> rowid;
+  const ComponentFieldTranslationsCompanion({
+    this.componentId = const Value.absent(),
+    this.field = const Value.absent(),
+    this.language = const Value.absent(),
+    this.value = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ComponentFieldTranslationsCompanion.insert({
+    required String componentId,
+    required String field,
+    required String language,
+    required String value,
+    this.rowid = const Value.absent(),
+  })  : componentId = Value(componentId),
+        field = Value(field),
+        language = Value(language),
+        value = Value(value);
+  static Insertable<ComponentFieldTranslationRow> custom({
+    Expression<String>? componentId,
+    Expression<String>? field,
+    Expression<String>? language,
+    Expression<String>? value,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (componentId != null) 'component_id': componentId,
+      if (field != null) 'field': field,
+      if (language != null) 'language': language,
+      if (value != null) 'value': value,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ComponentFieldTranslationsCompanion copyWith(
+      {Value<String>? componentId,
+      Value<String>? field,
+      Value<String>? language,
+      Value<String>? value,
+      Value<int>? rowid}) {
+    return ComponentFieldTranslationsCompanion(
+      componentId: componentId ?? this.componentId,
+      field: field ?? this.field,
+      language: language ?? this.language,
+      value: value ?? this.value,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (componentId.present) {
+      map['component_id'] = Variable<String>(componentId.value);
+    }
+    if (field.present) {
+      map['field'] = Variable<String>(field.value);
+    }
+    if (language.present) {
+      map['language'] = Variable<String>(language.value);
+    }
+    if (value.present) {
+      map['value'] = Variable<String>(value.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ComponentFieldTranslationsCompanion(')
+          ..write('componentId: $componentId, ')
+          ..write('field: $field, ')
+          ..write('language: $language, ')
+          ..write('value: $value, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$CatalogDatabase extends GeneratedDatabase {
   _$CatalogDatabase(QueryExecutor e) : super(e);
   $CatalogDatabaseManager get managers => $CatalogDatabaseManager(this);
@@ -5997,6 +6278,8 @@ abstract class _$CatalogDatabase extends GeneratedDatabase {
       $ComponentRelationsTable(this);
   late final $ComponentCustomTable componentCustom =
       $ComponentCustomTable(this);
+  late final $ComponentFieldTranslationsTable componentFieldTranslations =
+      $ComponentFieldTranslationsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -6020,7 +6303,8 @@ abstract class _$CatalogDatabase extends GeneratedDatabase {
         componentExtends,
         componentSuggests,
         componentRelations,
-        componentCustom
+        componentCustom,
+        componentFieldTranslations
       ];
 }
 
@@ -9296,6 +9580,171 @@ typedef $$ComponentCustomTableProcessedTableManager = ProcessedTableManager<
     ),
     ComponentCustomRow,
     PrefetchHooks Function()>;
+typedef $$ComponentFieldTranslationsTableCreateCompanionBuilder
+    = ComponentFieldTranslationsCompanion Function({
+  required String componentId,
+  required String field,
+  required String language,
+  required String value,
+  Value<int> rowid,
+});
+typedef $$ComponentFieldTranslationsTableUpdateCompanionBuilder
+    = ComponentFieldTranslationsCompanion Function({
+  Value<String> componentId,
+  Value<String> field,
+  Value<String> language,
+  Value<String> value,
+  Value<int> rowid,
+});
+
+class $$ComponentFieldTranslationsTableFilterComposer
+    extends Composer<_$CatalogDatabase, $ComponentFieldTranslationsTable> {
+  $$ComponentFieldTranslationsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get componentId => $composableBuilder(
+      column: $table.componentId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get field => $composableBuilder(
+      column: $table.field, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get language => $composableBuilder(
+      column: $table.language, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get value => $composableBuilder(
+      column: $table.value, builder: (column) => ColumnFilters(column));
+}
+
+class $$ComponentFieldTranslationsTableOrderingComposer
+    extends Composer<_$CatalogDatabase, $ComponentFieldTranslationsTable> {
+  $$ComponentFieldTranslationsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get componentId => $composableBuilder(
+      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get field => $composableBuilder(
+      column: $table.field, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get language => $composableBuilder(
+      column: $table.language, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get value => $composableBuilder(
+      column: $table.value, builder: (column) => ColumnOrderings(column));
+}
+
+class $$ComponentFieldTranslationsTableAnnotationComposer
+    extends Composer<_$CatalogDatabase, $ComponentFieldTranslationsTable> {
+  $$ComponentFieldTranslationsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get componentId => $composableBuilder(
+      column: $table.componentId, builder: (column) => column);
+
+  GeneratedColumn<String> get field =>
+      $composableBuilder(column: $table.field, builder: (column) => column);
+
+  GeneratedColumn<String> get language =>
+      $composableBuilder(column: $table.language, builder: (column) => column);
+
+  GeneratedColumn<String> get value =>
+      $composableBuilder(column: $table.value, builder: (column) => column);
+}
+
+class $$ComponentFieldTranslationsTableTableManager extends RootTableManager<
+    _$CatalogDatabase,
+    $ComponentFieldTranslationsTable,
+    ComponentFieldTranslationRow,
+    $$ComponentFieldTranslationsTableFilterComposer,
+    $$ComponentFieldTranslationsTableOrderingComposer,
+    $$ComponentFieldTranslationsTableAnnotationComposer,
+    $$ComponentFieldTranslationsTableCreateCompanionBuilder,
+    $$ComponentFieldTranslationsTableUpdateCompanionBuilder,
+    (
+      ComponentFieldTranslationRow,
+      BaseReferences<_$CatalogDatabase, $ComponentFieldTranslationsTable,
+          ComponentFieldTranslationRow>
+    ),
+    ComponentFieldTranslationRow,
+    PrefetchHooks Function()> {
+  $$ComponentFieldTranslationsTableTableManager(
+      _$CatalogDatabase db, $ComponentFieldTranslationsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ComponentFieldTranslationsTableFilterComposer(
+                  $db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ComponentFieldTranslationsTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ComponentFieldTranslationsTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> componentId = const Value.absent(),
+            Value<String> field = const Value.absent(),
+            Value<String> language = const Value.absent(),
+            Value<String> value = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ComponentFieldTranslationsCompanion(
+            componentId: componentId,
+            field: field,
+            language: language,
+            value: value,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String componentId,
+            required String field,
+            required String language,
+            required String value,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ComponentFieldTranslationsCompanion.insert(
+            componentId: componentId,
+            field: field,
+            language: language,
+            value: value,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ComponentFieldTranslationsTableProcessedTableManager
+    = ProcessedTableManager<
+        _$CatalogDatabase,
+        $ComponentFieldTranslationsTable,
+        ComponentFieldTranslationRow,
+        $$ComponentFieldTranslationsTableFilterComposer,
+        $$ComponentFieldTranslationsTableOrderingComposer,
+        $$ComponentFieldTranslationsTableAnnotationComposer,
+        $$ComponentFieldTranslationsTableCreateCompanionBuilder,
+        $$ComponentFieldTranslationsTableUpdateCompanionBuilder,
+        (
+          ComponentFieldTranslationRow,
+          BaseReferences<_$CatalogDatabase, $ComponentFieldTranslationsTable,
+              ComponentFieldTranslationRow>
+        ),
+        ComponentFieldTranslationRow,
+        PrefetchHooks Function()>;
 
 class $CatalogDatabaseManager {
   final _$CatalogDatabase _db;
@@ -9338,4 +9787,8 @@ class $CatalogDatabaseManager {
       $$ComponentRelationsTableTableManager(_db, _db.componentRelations);
   $$ComponentCustomTableTableManager get componentCustom =>
       $$ComponentCustomTableTableManager(_db, _db.componentCustom);
+  $$ComponentFieldTranslationsTableTableManager
+      get componentFieldTranslations =>
+          $$ComponentFieldTranslationsTableTableManager(
+              _db, _db.componentFieldTranslations);
 }

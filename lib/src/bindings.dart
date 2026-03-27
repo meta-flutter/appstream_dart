@@ -54,13 +54,12 @@ class AppstreamBindings {
   /// Load the shared library.
   ///
   /// Search order:
-  /// 1. APPSTREAM_LIB_PATH environment variable (absolute path to .so)
-  /// 2. Executable directory + /lib/
-  /// 3. Executable directory
-  /// 4. CWD + /lib/
-  /// 5. Platform.script relative paths (if available)
-  /// 6. Each LD_LIBRARY_PATH directory (explicit File.open, not dlopen)
-  /// 7. dlopen fallback (system linker)
+  /// 1. Executable directory + /lib/
+  /// 2. Executable directory
+  /// 3. CWD + /lib/
+  /// 4. Platform.script relative paths (if available)
+  /// 5. Each LD_LIBRARY_PATH directory (explicit File.open, not dlopen)
+  /// 6. dlopen fallback (system linker)
   factory AppstreamBindings.load() {
     const libName = 'libappstream.so';
     final candidates = <String>[];
@@ -72,9 +71,9 @@ class AppstreamBindings {
     ]);
 
     try {
-      final scriptDir = Platform.script.toFilePath();
+      final scriptDir = File(Platform.script.toFilePath()).parent.path;
+      candidates.add('$scriptDir/lib/$libName');
       candidates.add('$scriptDir/../lib/$libName');
-      candidates.add('$scriptDir/../../lib/$libName');
     } catch (_) {}
 
     // Search LD_LIBRARY_PATH directories explicitly via absolute path.

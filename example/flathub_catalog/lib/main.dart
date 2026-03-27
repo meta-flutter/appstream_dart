@@ -29,12 +29,20 @@ class _FlathubCatalogAppState extends State<FlathubCatalogApp> {
   Future<void> _init() async {
     await _service.init();
     final hasDb = _service.hasDatabase;
+    if (hasDb) {
+      await _service.loadAvailableLanguages();
+    }
     if (mounted) {
       setState(() {
         _ready = hasDb;
         _initializing = false;
       });
     }
+  }
+
+  Future<void> _onSetupComplete() async {
+    await _service.loadAvailableLanguages();
+    setState(() => _ready = true);
   }
 
   @override
@@ -61,10 +69,14 @@ class _FlathubCatalogAppState extends State<FlathubCatalogApp> {
       home: _initializing
           ? const Scaffold(body: Center(child: CircularProgressIndicator()))
           : _ready
-              ? CatalogScreen(service: _service)
+              ? ListenableBuilder(
+                  listenable: _service,
+                  builder: (context, _) =>
+                      CatalogScreen(service: _service),
+                )
               : SetupScreen(
                   service: _service,
-                  onComplete: () => setState(() => _ready = true),
+                  onComplete: _onSetupComplete,
                 ),
     );
   }

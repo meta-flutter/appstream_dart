@@ -27,6 +27,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
   bool _searching = false;
 
   CatalogDatabase get _db => widget.service.db;
+  /// Language for filtering (only when user explicitly selected one).
+  String? get _filterLocale => widget.service.effectiveLocale;
+  /// Language for displaying translations (auto-detected or explicit).
+  String? get _displayLocale => widget.service.displayLocale;
 
   @override
   void initState() {
@@ -40,20 +44,55 @@ class _CatalogScreenState extends State<CatalogScreen> {
     super.dispose();
   }
 
+  /// Convert raw query results into localized app entries.
+  Future<List<_AppEntry>> _localize(
+      List<({ComponentRow component, String? iconUrl})> results) async {
+    final locale = _displayLocale;
+    if (locale == null) {
+      return results
+          .map((r) => _AppEntry(component: r.component, iconUrl: r.iconUrl))
+          .toList();
+    }
+
+    final entries = <_AppEntry>[];
+    for (final r in results) {
+      final name =
+          await _db.getTranslation(r.component.id, 'name', locale);
+      final summary =
+          await _db.getTranslation(r.component.id, 'summary', locale);
+      entries.add(_AppEntry(
+        component: r.component,
+        iconUrl: r.iconUrl,
+        displayName: name,
+        displaySummary: summary,
+      ));
+    }
+    return entries;
+  }
+
   Future<void> _loadInitial() async {
     final metrics = await _db.getMetrics();
-    final cats = await _db.listCategories();
+    final filter = _filterLocale;
 
-    // Load all apps sorted by name.
-    final featured = await _db.listComponents(limit: 60);
+    final List<({String name, int count})> cats;
+    final List<({ComponentRow component, String? iconUrl})> results;
+
+    if (filter != null) {
+      cats = await _db.listCategoriesForLanguage(filter);
+      results = await _db.componentsByTranslationLanguage(filter, limit: 60);
+    } else {
+      cats = await _db.listCategories();
+      results = await _db.listComponents(limit: 60);
+    }
+
+    final apps = await _localize(results);
 
     if (mounted) {
       setState(() {
         _metrics = metrics;
         _categories = cats;
-        _apps = featured
-            .map((r) => _AppEntry(component: r.component, iconUrl: r.iconUrl))
-            .toList();
+        _selectedCategory = null;
+        _apps = apps;
         _loading = false;
       });
     }
@@ -70,12 +109,15 @@ class _CatalogScreenState extends State<CatalogScreen> {
       _selectedCategory = null;
     });
 
-    final results = await _db.searchWithSnippets(query, limit: 60);
+    final results = await _db.searchWithSnippets(query,
+        limit: 60, locale: _filterLocale);
+    final base = results
+        .map((r) => (component: r.component, iconUrl: r.iconUrl))
+        .toList();
+    final apps = await _localize(base);
     if (mounted) {
       setState(() {
-        _apps = results
-            .map((r) => _AppEntry(component: r.component, iconUrl: r.iconUrl))
-            .toList();
+        _apps = apps;
         _searching = false;
       });
     }
@@ -88,18 +130,31 @@ class _CatalogScreenState extends State<CatalogScreen> {
       _searchController.clear();
     });
 
+    final filter = _filterLocale;
     final List<({ComponentRow component, String? iconUrl})> results;
+
     if (category == null) {
-      results = await _db.listComponents(limit: 60);
+      if (filter != null) {
+        results =
+            await _db.componentsByTranslationLanguage(filter, limit: 60);
+      } else {
+        results = await _db.listComponents(limit: 60);
+      }
     } else {
-      results = await _db.componentsByCategory(category, limit: 60);
+      if (filter != null) {
+        results = await _db.componentsByCategoryAndLanguage(
+            category, filter,
+            limit: 60);
+      } else {
+        results = await _db.componentsByCategory(category, limit: 60);
+      }
     }
+
+    final apps = await _localize(results);
 
     if (mounted) {
       setState(() {
-        _apps = results
-            .map((r) => _AppEntry(component: r.component, iconUrl: r.iconUrl))
-            .toList();
+        _apps = apps;
         _loading = false;
       });
     }
@@ -121,6 +176,74 @@ class _CatalogScreenState extends State<CatalogScreen> {
     );
   }
 
+  /// Reload content after a language change, preserving search or category.
+  Future<void> _reloadForLanguage() async {
+    final query = _searchController.text.trim();
+    if (query.isNotEmpty) {
+      // Re-apply the active search
+      await _onSearch(query);
+      // Also refresh categories in the background
+      final filter = _filterLocale;
+      final cats = filter != null
+          ? await _db.listCategoriesForLanguage(filter)
+          : await _db.listCategories();
+      if (mounted) setState(() => _categories = cats);
+    } else if (_selectedCategory != null) {
+      // Re-query the selected category; fall back to All if empty
+      final filter = _filterLocale;
+      final cats = filter != null
+          ? await _db.listCategoriesForLanguage(filter)
+          : await _db.listCategories();
+      if (mounted) setState(() => _categories = cats);
+
+      // Check if the current category still has results
+      final catExists = cats.any((c) => c.name == _selectedCategory);
+      if (catExists) {
+        await _selectCategory(_selectedCategory);
+      } else {
+        await _selectCategory(null);
+      }
+    } else {
+      await _loadInitial();
+    }
+  }
+
+  void _showLanguagePicker() {
+    final langs = widget.service.availableLanguages;
+    if (langs.isEmpty) return;
+
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (context) {
+        return ListView(
+          shrinkWrap: true,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.auto_awesome),
+              title: const Text('Auto (System)'),
+              selected: widget.service.locale == null,
+              onTap: () {
+                widget.service.locale = null;
+                Navigator.pop(context);
+                _reloadForLanguage();
+              },
+            ),
+            const Divider(),
+            ...langs.take(50).map((lang) => ListTile(
+                  title: Text(lang),
+                  selected: widget.service.locale == lang,
+                  onTap: () {
+                    widget.service.locale = lang;
+                    Navigator.pop(context);
+                    _reloadForLanguage();
+                  },
+                )),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -129,6 +252,17 @@ class _CatalogScreenState extends State<CatalogScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flathub Catalog'),
+        actions: [
+          if (widget.service.availableLanguages.isNotEmpty)
+            TextButton.icon(
+              onPressed: _showLanguagePicker,
+              icon: const Icon(Icons.language),
+              label: Text(
+                widget.service.locale ?? 'Auto',
+                style: theme.textTheme.labelMedium,
+              ),
+            ),
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(56),
           child: Padding(
@@ -290,6 +424,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
         return AppCard(
           component: app.component,
           iconUrl: app.iconUrl,
+          displayName: app.displayName,
+          displaySummary: app.displaySummary,
           onTap: () => _openDetail(app.component.id),
         );
       },
@@ -321,5 +457,12 @@ class _CatalogScreenState extends State<CatalogScreen> {
 class _AppEntry {
   final ComponentRow component;
   final String? iconUrl;
-  _AppEntry({required this.component, this.iconUrl});
+  final String? displayName;
+  final String? displaySummary;
+  _AppEntry({
+    required this.component,
+    this.iconUrl,
+    this.displayName,
+    this.displaySummary,
+  });
 }

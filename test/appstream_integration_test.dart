@@ -294,7 +294,8 @@ void main() {
       expect(c.name, 'Default Name');
     }, skip: _skip);
 
-    test('language="" processes all tags, last value wins', () async {
+    test('language="" keeps only default values (no translations stored)',
+        () async {
       final xmlPath = '${tempDir.path}/lang.xml';
       final dbPath = '${tempDir.path}/catalog.db';
       await File(xmlPath).writeAsString(_langXml());
@@ -302,9 +303,8 @@ void main() {
       final events = await _parse(xmlPath, dbPath);
 
       final c = events.whereType<ComponentParsed>().single.component;
-      // With no filter both name tags are processed; the German one is last
-      // in the XML so it overwrites the default.
-      expect(c.name, 'German Name');
+      // With no filter, only the default (no xml:lang) value is kept.
+      expect(c.name, 'Default Name');
     }, skip: _skip);
   });
 

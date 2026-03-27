@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Joel Winarske — Apache 2.0 License
+ * Copyright 2026 Joel Winarske — Apache 2.0 License
  */
 
 #ifndef SQLITEWRITER_H
@@ -77,6 +77,7 @@ private:
   sqlite3_stmt *stmtInsertRelation_ = nullptr;
   sqlite3_stmt *stmtInsertCustom_ = nullptr;
   sqlite3_stmt *stmtInsertTranslation_ = nullptr;
+  sqlite3_stmt *stmtInsertFieldTranslation_ = nullptr;
   sqlite3_stmt *stmtUpdateProgress_ = nullptr;
 
   bool createSchema();

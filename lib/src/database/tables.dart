@@ -217,3 +217,15 @@ class ComponentCustom extends Table {
   @override
   Set<Column> get primaryKey => {componentId, key};
 }
+
+/// Localized field translations (xml:lang variants of name, summary, etc.).
+@DataClassName('ComponentFieldTranslationRow')
+class ComponentFieldTranslations extends Table {
+  TextColumn get componentId => text().named('component_id')();
+  TextColumn get field => text()();
+  TextColumn get language => text()();
+  TextColumn get value => text()();
+
+  @override
+  Set<Column> get primaryKey => {componentId, field, language};
+}

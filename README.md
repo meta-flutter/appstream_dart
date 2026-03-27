@@ -1,6 +1,6 @@
 # AppStream Parser - Flathub Catalog to SQLite
 
-A high-performance C++23 FFI bridge for parsing Flathub AppStream metadata into SQLite databases, with Dart bindings, a Drift ORM layer, and a Flutter example app.
+A high-performance C++23 FFI bridge for parsing Flathub AppStream metadata into SQLite databases, with Dart bindings, a Drift ORM layer, multi-language translation support, and a Flutter example app.
 
 ## Quick Facts
 
@@ -12,11 +12,11 @@ A high-performance C++23 FFI bridge for parsing Flathub AppStream metadata into 
 ## Features
 
 ### Core Capabilities
-- **Streaming XML Parsing** - XmlScanner with fd-based sliding buffer (~256 KB resident) replaces mmap for minimal memory footprint
+- **Streaming XML Parsing** - XmlScanner with fd-based sliding buffer (~256 KB resident) for minimal memory footprint
 - **Streaming Pipeline** - XML to SQLite direct pipeline via ComponentSink interface
-- **Drift ORM Layer** - Type-safe query API with 19 tables, FTS5 full-text search, icon URL resolution, category/language browsing, and metrics
+- **Multi-Language Translations** - Stores per-field translations (name, summary, description) in a dedicated table; select language at runtime with locale fallback chain
+- **Drift ORM Layer** - Type-safe query API with 20 tables, FTS5 full-text search, locale-aware queries, icon URL resolution, category/language browsing, and metrics
 - **String Interning** - Efficient memory usage with StringPool for categories and keywords
-- **Multi-Language Support** - Language filtering at parse time (en, de, fr, es, ja, etc.)
 - **Real Flathub Data** - Parses the full Flathub catalog (~4500 components in ~260 ms)
 
 ### CLI Tools
@@ -24,12 +24,18 @@ A high-performance C++23 FFI bridge for parsing Flathub AppStream metadata into 
 - **bin/query.dart** - Interactive query tool: search, detail, categories, languages, releases, metrics
 
 ### Flutter Example
-- **example/flathub_catalog/** - Full Flutter Linux desktop app modeled after flathub.org with setup/download/import screens, catalog browsing, search, and app detail views
+- **example/flathub_catalog/** - Full Flutter Linux desktop app modeled after flathub.org with:
+  - Setup screen with download/import progress (skipped if DB exists)
+  - Catalog browsing with category sidebar and FTS5 search
+  - Global language picker (auto-detects system locale, 327+ languages available)
+  - Component detail with localized name/summary/description, HTML rendering, screenshot gallery with fullscreen viewer
+  - Keyboard navigation (Escape to go back, arrow keys in image viewer)
 
 ### Infrastructure
 - **Automated CI/CD** - GitHub Actions with 8+ configurations
 - **Code Coverage** - gcov/lcov integration + Codecov
 - **Memory Safety** - AddressSanitizer, UBSan support
+- **Security Hardening** - URI scheme validation, FTS5 query sanitization, XML integrity checks, SQLITE_TRANSIENT bindings, numeric entity overflow protection
 - **Comprehensive Tests** - Unit + integration + real-world data tests
 
 ## Project Structure
@@ -37,9 +43,9 @@ A high-performance C++23 FFI bridge for parsing Flathub AppStream metadata into 
 ```
 appstream/
 ├── src/                          # C++ source
-│   ├── AppStreamParser.cpp       # XML parsing state machine
+│   ├── AppStreamParser.cpp       # XML parsing state machine + translation capture
 │   ├── XmlScanner.cpp            # XML tokenizer (buffer + streaming fd modes)
-│   ├── Component.cpp             # Component data model
+│   ├── Component.cpp             # Component data model + FieldTranslation
 │   ├── SqliteWriter.cpp          # Batched SQLite writer with staging
 │   ├── StringPool.cpp            # String interning
 │   ├── appstream_ffi.cpp         # Dart FFI bridge + DartNotifySink
@@ -50,8 +56,8 @@ appstream/
 │   └── src/
 │       ├── bindings.dart         # FFI bindings + library loading
 │       └── database/
-│           ├── database.dart     # CatalogDatabase (Drift ORM, queries)
-│           ├── tables.dart       # 19 Drift table definitions
+│           ├── database.dart     # CatalogDatabase (Drift ORM, locale-aware queries)
+│           ├── tables.dart       # 20 Drift table definitions
 │           └── database.g.dart   # Generated Drift code
 ├── bin/                          # CLI tools
 │   ├── main.dart                 # Fetch + parse CLI with progress bars
@@ -59,8 +65,8 @@ appstream/
 ├── example/
 │   └── flathub_catalog/          # Flutter example app
 │       ├── lib/
-│       │   ├── main.dart         # App entry point
-│       │   ├── services/         # CatalogService (download, import, query)
+│       │   ├── main.dart         # App entry point + ListenableBuilder
+│       │   ├── services/         # CatalogService (download, import, locale, query)
 │       │   ├── screens/          # SetupScreen, CatalogScreen, DetailScreen
 │       │   └── widgets/          # AppCard, AppIcon
 │       └── linux/                # Linux desktop build (bundles libappstream.so)
@@ -89,8 +95,14 @@ make              # builds lib/libappstream.so
 ### Run the CLI
 
 ```bash
-# Download Flathub catalog and parse to SQLite
+# Download Flathub catalog and parse to SQLite (defaults only)
 dart run bin/main.dart
+
+# Parse with all translations (327+ languages, ~50 MB DB)
+dart run bin/main.dart --lang '*'
+
+# Parse with specific languages
+dart run bin/main.dart --lang 'en,de,fr,es,ja'
 
 # Query the catalog
 dart run bin/query.dart search firefox
@@ -122,19 +134,55 @@ cmake --build build && cd build && ctest
 dart test
 ```
 
+## Multi-Language Support
+
+The parser captures `xml:lang` variants of translatable fields and stores them in a `component_field_translations` table:
+
+```sql
+component_field_translations (component_id, field, language, value)
+-- field: 'name', 'summary', 'description', 'developer_name', 'caption:N'
+-- language: 'de', 'fr', 'pt-BR', 'zh-Hans-CN', etc.
+```
+
+### Language parameter
+
+| Value | Behavior | DB Size |
+|-------|----------|---------|
+| `""` (empty, default) | Default values only, no translations | ~26 MB |
+| `"en,de,fr"` | Default + specific languages | ~30-35 MB |
+| `"*"` | All 327+ languages | ~50 MB |
+
+### Runtime locale selection
+
+```dart
+final db = CatalogDatabase.open('catalog.db');
+
+// Get translated name with fallback: pt-BR -> pt -> default
+final name = await db.getTranslation('org.gnome.Calculator', 'name', 'pt-BR');
+
+// List components with localized names
+final apps = await db.listComponentsLocalized(locale: 'de', limit: 50);
+
+// Filter to only components with German translations
+final german = await db.componentsByTranslationLanguage('de', limit: 50);
+
+// Categories filtered to a language
+final cats = await db.listCategoriesForLanguage('de');
+```
+
 ## Dart API Usage
 
 ```dart
 import 'package:appstream/appstream.dart';
 
 void main() async {
-  // Initialize native library
   Appstream.initialize();
 
-  // Parse XML to SQLite (streams progress events)
+  // Parse with all translations
   await for (final event in Appstream.parseToSqlite(
     xmlPath: 'appstream.xml',
     dbPath: 'catalog.db',
+    language: '*',
   )) {
     switch (event) {
       case ComponentParsed(:final component):
@@ -152,6 +200,7 @@ void main() async {
   final detail = await db.getComponentDetail('org.mozilla.firefox');
   final categories = await db.listCategories();
   final metrics = await db.getMetrics();
+  final langs = await db.listTranslationLanguages();
   await db.close();
 }
 ```
@@ -161,41 +210,39 @@ void main() async {
 ### Data Flow
 
 ```
-Flathub XML (gzipped)
-    │ HTTP download + gzip stream decompress
+Flathub XML (gzipped, ~7 MB)
+    │ HTTP download + gzip decompress + integrity check
     ▼
-appstream.xml (on disk)
+appstream.xml (~42 MB on disk)
     │ open() + read() into 256 KB sliding buffer
     ▼
 XmlScanner (pull parser, zero-copy string_views)
     │ START_ELEMENT / TEXT / END_ELEMENT events
+    │ string_views valid until next next() call
     ▼
 AppStreamParser (state machine)
-    │ Component objects (moved, not copied)
+    │ Component objects + FieldTranslation vectors
+    │ Language set filter: "", "en,de", or "*"
     ▼
 ComponentSink interface
-    ├── DartNotifySink (posts id/name/summary to Dart port + delegates to writer)
-    ├── SqliteWriter (batched inserts, staging file, atomic rename)
-    └── InMemorySink (retains all components for in-memory queries)
-    │
+    ├── DartNotifySink → Dart port + SqliteWriter
+    ├── SqliteWriter → batched SQLITE_TRANSIENT inserts, staging + atomic rename
+    └── InMemorySink → retains all components for queries
     ▼
-catalog.db (SQLite with 19 tables + FTS5)
-    │ Drift ORM
+catalog.db (SQLite, 20 tables + FTS5)
+    │ Drift ORM with locale-aware queries
     ▼
-CatalogDatabase (search, browse, detail, metrics)
+CatalogDatabase
+    ├── searchComponents / searchWithSnippets (FTS5, sanitized)
+    ├── listComponentsLocalized (correlated subqueries)
+    ├── componentsByTranslationLanguage (EXISTS filter)
+    ├── getTranslation (locale fallback chain)
+    └── getMetrics
 ```
-
-### Streaming Parser (Low Memory)
-
-The `parseToSink` path uses a 256 KB sliding buffer instead of mmap:
-- XmlScanner reads from a file descriptor via `read()` syscalls
-- Buffer compacts unconsumed data and refills when less than half remains
-- All `string_view` results are consumed before the next refill
-- Peak RSS: ~22 MB (vs ~64 MB with mmap) for the full Flathub catalog
 
 ### Database Schema
 
-19 normalized tables with interned lookups:
+20 normalized tables with interned lookups:
 
 | Table | Purpose |
 |-------|---------|
@@ -211,15 +258,16 @@ The `parseToSink` path uses a 256 KB sliding buffer instead of mmap:
 | `branding_colors` | Light/dark scheme colors |
 | `component_extends` / `component_suggests` / `component_relations` | Cross-references |
 | `component_custom` | Custom key-value metadata |
+| `component_field_translations` | Localized field values (name, summary, description per language) |
 | `components_fts` | FTS5 full-text search index |
 
 ## Performance
 
 | Metric | Value |
 |--------|-------|
-| Full Flathub parse | ~260 ms (4522 components) |
+| Full Flathub parse (defaults only) | ~260 ms, ~26 MB DB |
+| Full Flathub parse (all translations) | ~350 ms, ~50 MB DB |
 | Peak memory (streaming) | ~22 MB |
-| Database size | ~26 MB |
 | FTS search | < 5 ms |
 
 ## Documentation

@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Joel Winarske — Apache 2.0 License
+ * Copyright 2026 Joel Winarske — Apache 2.0 License
  */
 
 #include "SqliteWriter.h"
@@ -54,13 +54,14 @@ bool SqliteWriter::atomicSwap() {
 }
 
 void SqliteWriter::bindText(sqlite3_stmt *s, int i, const std::string &t) {
-  sqlite3_bind_text(s, i, t.data(), static_cast<int>(t.size()), SQLITE_STATIC);
+  sqlite3_bind_text(s, i, t.data(), static_cast<int>(t.size()),
+                    SQLITE_TRANSIENT);
 }
 void SqliteWriter::bindTextOrNull(sqlite3_stmt *s, int i,
                                   const std::string &t) {
   t.empty() ? sqlite3_bind_null(s, i)
             : sqlite3_bind_text(s, i, t.data(), static_cast<int>(t.size()),
-                                SQLITE_STATIC);
+                                SQLITE_TRANSIENT);
 }
 void SqliteWriter::bindInt(sqlite3_stmt *s, int i, int64_t v) {
   sqlite3_bind_int64(s, i, v);
@@ -266,6 +267,15 @@ CREATE TABLE IF NOT EXISTS component_translations (
     component_id TEXT NOT NULL, type TEXT NOT NULL, value TEXT,
     PRIMARY KEY (component_id, type)
 ) WITHOUT ROWID;
+
+-- Localized field translations (xml:lang variants)
+CREATE TABLE IF NOT EXISTS component_field_translations (
+    component_id TEXT NOT NULL,
+    field TEXT NOT NULL,
+    language TEXT NOT NULL,
+    value TEXT NOT NULL,
+    PRIMARY KEY (component_id, field, language)
+) WITHOUT ROWID;
 )SQL");
 }
 
@@ -367,6 +377,9 @@ bool SqliteWriter::prepareStatements() {
                stmtInsertCustom_);
   ok = ok && p("INSERT OR IGNORE INTO component_translations VALUES (?,?,?)",
                stmtInsertTranslation_);
+  ok = ok &&
+       p("INSERT OR IGNORE INTO component_field_translations VALUES (?,?,?,?)",
+         stmtInsertFieldTranslation_);
   ok = ok && p("INSERT OR REPLACE INTO write_progress VALUES (?,?)",
                stmtUpdateProgress_);
 
@@ -409,6 +422,7 @@ void SqliteWriter::finalizeStatements() {
   f(stmtInsertRelation_);
   f(stmtInsertCustom_);
   f(stmtInsertTranslation_);
+  f(stmtInsertFieldTranslation_);
   f(stmtUpdateProgress_);
 }
 
@@ -785,6 +799,16 @@ SqliteWriter::onComponent(Component comp) {
     bindText(stmtInsertTranslation_, 2, t);
     bindTextOrNull(stmtInsertTranslation_, 3, v);
     if (!stepAndReset(stmtInsertTranslation_))
+      return std::unexpected(Error::DATABASE_ERROR);
+  }
+
+  // 16. Field translations (xml:lang variants)
+  for (const auto &ft : comp.field_translations) {
+    bindText(stmtInsertFieldTranslation_, 1, comp.id);
+    bindText(stmtInsertFieldTranslation_, 2, ft.field);
+    bindText(stmtInsertFieldTranslation_, 3, ft.language);
+    bindText(stmtInsertFieldTranslation_, 4, ft.value);
+    if (!stepAndReset(stmtInsertFieldTranslation_))
       return std::unexpected(Error::DATABASE_ERROR);
   }
 

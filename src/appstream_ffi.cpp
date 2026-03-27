@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Joel Winarske
+ * Copyright 2026 Joel Winarske
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,10 +86,12 @@ public:
   std::expected<void, Error> end() override {
     auto r = writer_.end();
 
-    // Notify Dart after database is finalized (indices, FTS, rename)
-    const std::string done =
-        "DONE\t" + std::to_string(writer_.componentCount());
-    postString(port_, done);
+    if (r) {
+      // Notify Dart after database is finalized (indices, FTS, rename)
+      const std::string done =
+          "DONE\t" + std::to_string(writer_.componentCount());
+      postString(port_, done);
+    }
 
     return r;
   }

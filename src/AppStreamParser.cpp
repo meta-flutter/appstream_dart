@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Joel Winarske
+ * Copyright 2026 Joel Winarske
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -169,6 +169,24 @@ std::expected<void, AppStreamParser::ParseError>
 AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
                          ComponentSink &sink) {
 
+  // ---- Build language filter set ----
+  // "" = default only (no translations stored)
+  // "*" = all languages
+  // "en,de,fr" = specific set
+  bool keepAllLangs = (language == "*");
+  std::unordered_set<std::string> langSet;
+  if (!keepAllLangs && !language.empty()) {
+    std::string_view sv(language);
+    while (!sv.empty()) {
+      auto comma = sv.find(',');
+      auto token = sv.substr(0, comma);
+      if (!token.empty())
+        langSet.emplace(token);
+      sv = (comma == std::string_view::npos) ? "" : sv.substr(comma + 1);
+    }
+  }
+  const bool storeLangs = keepAllLangs || !langSet.empty();
+
   // ---- Parser state ----
   bool insideComponent = false;
   bool insideReleases = false;
@@ -184,15 +202,20 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
   bool insideRecommends = false;
   bool insideCustom = false;
   size_t releaseCount = 0;
+  size_t screenshotIndex = 0;
 
-  // Language skip depth (see prior fix)
+  // Language skip depth — used when we want to skip a translation entirely
   int skipDepth = 0;
+
+  // Current xml:lang of the element being parsed (empty = default)
+  std::string currentLang;
 
   // Description passthrough: accumulate HTML markup inside <description>
   int descriptionDepth = 0;
   bool descInRelease = false;
   std::string descAccum;
   descAccum.reserve(512);
+  std::string descLang; // xml:lang of current <description>
 
   std::string currentElement;
   currentElement.reserve(32);
@@ -286,6 +309,8 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
         insideComponent = true;
         currentComponent = Component{};
         releaseCount = 0;
+        screenshotIndex = 0;
+        currentLang.clear();
 
         // Parse type and priority attributes
         auto typeAttr = findAttr(evt.attributes, "type"sv);
@@ -316,12 +341,16 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
 
       // ---- <description> — enter passthrough mode ----
       if (evt.name == "description"sv) {
-        // Check xml:lang
         auto lang = findAttr(evt.attributes, "xml:lang"sv);
-        if (!lang.empty() && !language.empty() && lang != language) {
-          skipDepth = 1;
-          break;
+        if (!lang.empty()) {
+          // Non-default language: skip if not in our set
+          if (!storeLangs ||
+              (!keepAllLangs && !langSet.contains(std::string(lang)))) {
+            skipDepth = 1;
+            break;
+          }
         }
+        descLang = std::string(lang);
         descriptionDepth = 1;
         descInRelease = insideReleases;
         descAccum.clear();
@@ -429,11 +458,15 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
             break;
           }
           if (evt.name == "caption"sv) {
-            // Translatable — check xml:lang
             auto lang = findAttr(evt.attributes, "xml:lang"sv);
-            if (!lang.empty() && !language.empty() && lang != language) {
-              skipDepth = 1;
+            if (!lang.empty()) {
+              if (!storeLangs ||
+                  (!keepAllLangs && !langSet.contains(std::string(lang)))) {
+                skipDepth = 1;
+                break;
+              }
             }
+            currentLang = std::string(lang);
             break;
           }
         }
@@ -541,9 +574,13 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       // ---- Language check for remaining translatable elements ----
       {
         auto lang = findAttr(evt.attributes, "xml:lang"sv);
-        if (!lang.empty() && !language.empty() && lang != language) {
-          skipDepth = 1;
-          break;
+        if (!lang.empty()) {
+          if (!storeLangs ||
+              (!keepAllLangs && !langSet.contains(std::string(lang)))) {
+            skipDepth = 1;
+            break;
+          }
+          currentLang = std::string(lang);
         }
       }
 
@@ -607,12 +644,22 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
         --descriptionDepth;
         if (descriptionDepth == 0) {
           // </description> — assign accumulated HTML
-          if (descInRelease) {
-            currentRelease.description = std::move(descAccum);
+          if (descLang.empty()) {
+            // Default language — store in main field
+            if (descInRelease) {
+              currentRelease.description = std::move(descAccum);
+            } else {
+              currentComponent.description = std::move(descAccum);
+            }
           } else {
-            currentComponent.description = std::move(descAccum);
+            // Translation — store in field_translations
+            std::string field =
+                descInRelease ? "release_description" : "description";
+            currentComponent.field_translations.push_back(
+                {std::move(field), std::move(descLang), std::move(descAccum)});
           }
           descAccum.clear();
+          descLang.clear();
         } else {
           // Close an HTML tag inside description
           descAccum.append("</");
@@ -696,10 +743,19 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
           currentScreenshot.videos.push_back(std::move(currentVideo));
           currentVideo = {};
         } else if (tag == "caption"sv) {
-          currentScreenshot.caption = std::move(textAccum);
+          if (currentLang.empty()) {
+            currentScreenshot.caption = std::move(textAccum);
+          } else {
+            currentComponent.field_translations.push_back(
+                {"caption:" + std::to_string(screenshotIndex),
+                 std::move(currentLang), std::move(textAccum)});
+          }
         }
+        if (tag == "screenshot"sv)
+          ++screenshotIndex;
         currentElement.clear();
         textAccum.clear();
+        currentLang.clear();
         break;
       }
 
@@ -811,10 +867,16 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       } else if (tag == "source_pkgname"sv) {
         currentComponent.source_pkgname = std::move(textAccum);
       } else if (tag == "name"sv) {
-        if (insideDeveloper)
-          currentComponent.developer.name = std::move(textAccum);
-        else
-          currentComponent.name = std::move(textAccum);
+        if (currentLang.empty()) {
+          if (insideDeveloper)
+            currentComponent.developer.name = std::move(textAccum);
+          else
+            currentComponent.name = std::move(textAccum);
+        } else {
+          std::string field = insideDeveloper ? "developer_name" : "name";
+          currentComponent.field_translations.push_back(
+              {std::move(field), std::move(currentLang), std::move(textAccum)});
+        }
       } else if (tag == "name_variant_suffix"sv) {
         currentComponent.name_variant_suffix = std::move(textAccum);
       } else if (tag == "project_license"sv) {
@@ -822,7 +884,12 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       } else if (tag == "metadata_license"sv) {
         currentComponent.metadata_license = std::move(textAccum);
       } else if (tag == "summary"sv) {
-        currentComponent.summary = std::move(textAccum);
+        if (currentLang.empty()) {
+          currentComponent.summary = std::move(textAccum);
+        } else {
+          currentComponent.field_translations.push_back(
+              {"summary", std::move(currentLang), std::move(textAccum)});
+        }
       } else if (tag == "url"sv) {
         currentComponent.setUrl(urlType, std::move(textAccum));
       } else if (tag == "project_group"sv) {
@@ -865,6 +932,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
 
       currentElement.clear();
       textAccum.clear();
+      currentLang.clear();
       break;
     }
 

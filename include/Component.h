@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Joel Winarske
+ * Copyright 2026 Joel Winarske
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -333,6 +333,15 @@ public:
 
   // -- Translation --
   std::vector<std::pair<std::string, std::string>> translations; // type → id
+
+  // -- Localized field translations (xml:lang variants) --
+  struct FieldTranslation {
+    std::string field;    // "name", "summary", "description", "developer_name",
+                          // "caption:<screenshot_index>"
+    std::string language; // "de", "fr", "pt-BR", etc.
+    std::string value;
+  };
+  std::vector<FieldTranslation> field_translations;
 
   // -- Agreements (simplified as string) --
   std::string agreement;

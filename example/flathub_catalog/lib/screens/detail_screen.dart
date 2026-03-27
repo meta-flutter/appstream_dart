@@ -1,6 +1,8 @@
 import 'package:appstream/appstream.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../services/catalog_service.dart';
@@ -67,6 +69,13 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   ComponentDetail? _detail;
   bool _loading = true;
+  final _focusNode = FocusNode();
+  final _screenshotScrollController = ScrollController();
+
+  // Localized fields (loaded from service locale)
+  String? _localizedName;
+  String? _localizedSummary;
+  String? _localizedDescription;
 
   @override
   void initState() {
@@ -74,11 +83,36 @@ class _DetailScreenState extends State<DetailScreen> {
     _load();
   }
 
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    _screenshotScrollController.dispose();
+    super.dispose();
+  }
+
   Future<void> _load() async {
-    final detail = await widget.service.db.getComponentDetail(widget.componentId);
+    final db = widget.service.db;
+    final detail = await db.getComponentDetail(widget.componentId);
+
+    // Load translations for the active locale
+    final locale = widget.service.displayLocale;
+    String? name, summary, description;
+    if (locale != null) {
+      try {
+        name = await db.getTranslation(widget.componentId, 'name', locale);
+        summary =
+            await db.getTranslation(widget.componentId, 'summary', locale);
+        description =
+            await db.getTranslation(widget.componentId, 'description', locale);
+      } catch (_) {}
+    }
+
     if (mounted) {
       setState(() {
         _detail = detail;
+        _localizedName = name;
+        _localizedSummary = summary;
+        _localizedDescription = description;
         _loading = false;
       });
     }
@@ -105,9 +139,18 @@ class _DetailScreenState extends State<DetailScreen> {
 
     final c = detail.component;
 
-    return Scaffold(
+    return KeyboardListener(
+      focusNode: _focusNode,
+      autofocus: true,
+      onKeyEvent: (event) {
+        if (event is KeyDownEvent &&
+            event.logicalKey == LogicalKeyboardKey.escape) {
+          Navigator.of(context).pop();
+        }
+      },
+      child: Scaffold(
       appBar: AppBar(
-        title: Text(c.name),
+        title: Text(_localizedName ?? c.name),
       ),
       body: ListView(
         padding: const EdgeInsets.all(24),
@@ -123,12 +166,12 @@ class _DetailScreenState extends State<DetailScreen> {
           ],
 
           // Description
-          if (c.description != null) ...[
+          if ((_localizedDescription ?? c.description) != null) ...[
             _sectionTitle(theme, 'Description'),
             const SizedBox(height: 8),
-            Text(
-              _stripHtml(c.description!),
-              style: theme.textTheme.bodyMedium,
+            _AppStreamHtml(
+              html: (_localizedDescription ?? c.description)!,
+              style: theme.textTheme.bodyMedium!,
             ),
             const SizedBox(height: 24),
           ],
@@ -150,7 +193,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 return ActionChip(
                   avatar: Icon(icon, size: 18),
                   label: Text(label),
-                  onPressed: () => launchUrl(Uri.parse(url.url)),
+                  onPressed: () => _launchSafe(url.url),
                 );
               }).toList(),
             ),
@@ -191,6 +234,7 @@ class _DetailScreenState extends State<DetailScreen> {
           ],
         ],
       ),
+    ),
     );
   }
 
@@ -208,7 +252,7 @@ class _DetailScreenState extends State<DetailScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(c.name, style: theme.textTheme.headlineMedium),
+              Text(_localizedName ?? c.name, style: theme.textTheme.headlineMedium),
               if (c.developerName != null)
                 Text(
                   c.developerName!,
@@ -217,8 +261,8 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                 ),
               const SizedBox(height: 8),
-              if (c.summary != null)
-                Text(c.summary!, style: theme.textTheme.bodyLarge),
+              if ((_localizedSummary ?? c.summary) != null)
+                Text((_localizedSummary ?? c.summary)!, style: theme.textTheme.bodyLarge),
               const SizedBox(height: 8),
               Wrap(
                 spacing: 6,
@@ -262,40 +306,83 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
+  /// Group images by screenshot_id, pick the best resolution for the target height.
+  static List<_ScreenshotGroup> _groupScreenshots(
+      List<ScreenshotImageRow> images) {
+    final groups = <int, List<ScreenshotImageRow>>{};
+    for (final img in images) {
+      (groups[img.screenshotId] ??= []).add(img);
+    }
+    return groups.values.map((variants) {
+      // Sort by width descending so we can pick the best fit
+      variants.sort((a, b) => (b.width ?? 0).compareTo(a.width ?? 0));
+      return _ScreenshotGroup(variants);
+    }).toList();
+  }
+
   Widget _buildScreenshots(List<ScreenshotImageRow> images) {
-    // Prefer wider images (type "source" or largest).
-    final sorted = List.of(images)
-      ..sort((a, b) => (b.width ?? 0).compareTo(a.width ?? 0));
-    final unique = <String>{};
-    final deduped = sorted.where((img) => unique.add(img.url)).take(8).toList();
+    final groups = _groupScreenshots(images);
+    if (groups.isEmpty) return const SizedBox.shrink();
+
+    final dpr = MediaQuery.devicePixelRatioOf(context);
+    const galleryHeight = 280.0;
+    final targetHeight = (galleryHeight * dpr).round();
 
     return SizedBox(
-      height: 280,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: deduped.length,
-        separatorBuilder: (context, index) => const SizedBox(width: 12),
-        itemBuilder: (context, i) {
-          final img = deduped[i];
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: CachedNetworkImage(
-              imageUrl: img.url,
-              height: 280,
-              fit: BoxFit.contain,
-              placeholder: (context, url) => Container(
-                width: 420,
-                color: Colors.grey.shade200,
-                child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+      height: galleryHeight,
+      child: ScrollConfiguration(
+        behavior: ScrollConfiguration.of(context).copyWith(
+          dragDevices: PointerDeviceKind.values.toSet(),
+        ),
+        child: ListView.separated(
+          controller: _screenshotScrollController,
+          scrollDirection: Axis.horizontal,
+          physics: const ClampingScrollPhysics(),
+          itemCount: groups.length,
+          separatorBuilder: (context, index) => const SizedBox(width: 12),
+          itemBuilder: (context, i) {
+            final url = groups[i].bestForHeight(targetHeight);
+            return InkWell(
+              onTap: () => _openImageViewer(context, groups, i),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: CachedNetworkImage(
+                  imageUrl: url,
+                  height: galleryHeight,
+                  fit: BoxFit.contain,
+                  placeholder: (context, url) => Container(
+                    width: 420,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+                  ),
+                  errorWidget: (context, url, error) => Container(
+                    width: 420,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Icon(Icons.broken_image, size: 48),
+                  ),
+                ),
               ),
-              errorWidget: (context, url, error) => Container(
-                width: 420,
-                color: Colors.grey.shade200,
-                child: const Icon(Icons.broken_image, size: 48),
-              ),
-            ),
-          );
-        },
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  void _openImageViewer(
+      BuildContext context, List<_ScreenshotGroup> groups, int initialIndex) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => _FullScreenImageViewer(
+          groups: groups,
+          initialIndex: initialIndex,
+        ),
       ),
     );
   }
@@ -316,10 +403,426 @@ class _DetailScreenState extends State<DetailScreen> {
     return Text(title, style: theme.textTheme.titleMedium);
   }
 
-  static String _stripHtml(String html) {
-    return html
-        .replaceAll(RegExp(r'<[^>]+>'), ' ')
-        .replaceAll(RegExp(r'\s+'), ' ')
-        .trim();
+  static void _launchSafe(String url) {
+    final uri = Uri.tryParse(url);
+    if (uri == null) return;
+    if (uri.scheme != 'http' && uri.scheme != 'https') return;
+    launchUrl(uri);
+  }
+
+}
+
+/// Renders AppStream HTML description markup as Flutter widgets.
+/// Supports: <p>, <ul>, <ol>, <li>, <em>, <code>, <a href="...">.
+class _AppStreamHtml extends StatefulWidget {
+  final String html;
+  final TextStyle style;
+
+  const _AppStreamHtml({required this.html, required this.style});
+
+  @override
+  State<_AppStreamHtml> createState() => _AppStreamHtmlState();
+}
+
+class _AppStreamHtmlState extends State<_AppStreamHtml> {
+  final _recognizers = <TapGestureRecognizer>[];
+
+  @override
+  void dispose() {
+    for (final r in _recognizers) {
+      r.dispose();
+    }
+    super.dispose();
+  }
+
+  TapGestureRecognizer? _makeTapRecognizer(Uri uri) {
+    if (uri.scheme != 'http' && uri.scheme != 'https') return null;
+    final r = TapGestureRecognizer()..onTap = () => launchUrl(uri);
+    _recognizers.add(r);
+    return r;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Dispose old recognizers from previous build
+    for (final r in _recognizers) {
+      r.dispose();
+    }
+    _recognizers.clear();
+
+    final theme = Theme.of(context);
+    final html = widget.html;
+    final style = widget.style;
+    final widgets = <Widget>[];
+    final tagPattern = RegExp(r'<(/?)(\w+)([^>]*)>');
+
+    // State
+    final buffer = StringBuffer();
+    final spanStack = <TextStyle>[style];
+    var ordered = false;
+    var listIndex = 0;
+    final currentSpans = <InlineSpan>[];
+    String? currentHref;
+
+    void flushText() {
+      var text = buffer.toString();
+      buffer.clear();
+      text = text.replaceAll(RegExp(r'\s+'), ' ');
+      if (text.isNotEmpty) {
+        if (currentHref != null) {
+          final uri = Uri.tryParse(currentHref);
+          currentSpans.add(TextSpan(
+            text: text,
+            style: spanStack.last,
+            recognizer: uri != null ? _makeTapRecognizer(uri) : null,
+          ));
+        } else {
+          currentSpans.add(TextSpan(text: text, style: spanStack.last));
+        }
+      }
+    }
+
+    void flushParagraph() {
+      flushText();
+      if (currentSpans.isNotEmpty) {
+        widgets.add(Padding(
+          padding: const EdgeInsets.only(bottom: 12),
+          child: Text.rich(TextSpan(children: List.of(currentSpans))),
+        ));
+        currentSpans.clear();
+      }
+    }
+
+    void flushListItem() {
+      flushText();
+      if (currentSpans.isNotEmpty) {
+        final prefix = ordered ? '${listIndex++}. ' : '\u2022 ';
+        widgets.add(Padding(
+          padding: const EdgeInsets.only(left: 16, bottom: 4),
+          child: Text.rich(TextSpan(children: [
+            TextSpan(text: prefix, style: style),
+            ...List.of(currentSpans),
+          ])),
+        ));
+        currentSpans.clear();
+      }
+    }
+
+    // Parse
+    var pos = 0;
+    for (final match in tagPattern.allMatches(html)) {
+      // Text before this tag
+      if (match.start > pos) {
+        buffer.write(html.substring(pos, match.start));
+      }
+      pos = match.end;
+
+      final closing = match.group(1) == '/';
+      final tag = match.group(2)!.toLowerCase();
+      final attrs = match.group(3) ?? '';
+
+      switch (tag) {
+        case 'p':
+          if (closing) {
+            flushParagraph();
+          } else {
+            flushText();
+          }
+        case 'ul':
+          if (!closing) {
+            flushParagraph();
+
+            ordered = false;
+          } else {
+            flushListItem();
+
+            widgets.add(const SizedBox(height: 8));
+          }
+        case 'ol':
+          if (!closing) {
+            flushParagraph();
+
+            ordered = true;
+            listIndex = 1;
+          } else {
+            flushListItem();
+
+            widgets.add(const SizedBox(height: 8));
+          }
+        case 'li':
+          if (closing) {
+            flushListItem();
+          } else {
+            flushText();
+          }
+        case 'em':
+          flushText();
+          if (!closing) {
+            spanStack.add(style.copyWith(fontStyle: FontStyle.italic));
+          } else if (spanStack.length > 1) {
+            spanStack.removeLast();
+          }
+        case 'code':
+          flushText();
+          if (!closing) {
+            spanStack.add(style.copyWith(
+              fontFamily: 'monospace',
+              backgroundColor:
+                  theme.colorScheme.surfaceContainerHighest,
+            ));
+          } else if (spanStack.length > 1) {
+            spanStack.removeLast();
+          }
+        case 'a':
+          flushText();
+          if (!closing) {
+            final hrefMatch =
+                RegExp(r'href\s*=\s*"([^"]*)"').firstMatch(attrs);
+            currentHref = hrefMatch?.group(1);
+            spanStack.add(style.copyWith(
+              color: theme.colorScheme.primary,
+              decoration: TextDecoration.underline,
+            ));
+          } else {
+            flushText();
+            currentHref = null;
+            if (spanStack.length > 1) spanStack.removeLast();
+          }
+      }
+    }
+
+    // Trailing text
+    if (pos < html.length) {
+      buffer.write(html.substring(pos));
+    }
+    flushParagraph();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: widgets,
+    );
+  }
+}
+
+/// A group of the same screenshot at different resolutions.
+class _ScreenshotGroup {
+  final List<ScreenshotImageRow> variants; // sorted by width descending
+
+  _ScreenshotGroup(this.variants);
+
+  /// Pick the smallest image whose height >= targetHeight.
+  /// Falls back to the largest available (or source) if none is big enough.
+  String bestForHeight(int targetHeight) {
+    // Prefer sized thumbnails over source (which has no dimensions)
+    final sized = variants.where((v) => v.height != null && v.height! > 0).toList();
+    if (sized.isEmpty) return variants.first.url; // source fallback
+
+    // sorted descending by width, find smallest that's >= target
+    for (final img in sized.reversed) {
+      if (img.height! >= targetHeight) return img.url;
+    }
+    // Nothing big enough, use the largest
+    return sized.first.url;
+  }
+
+  /// The largest available URL (for fullscreen).
+  String get largest {
+    // Prefer source type (no dimensions = original full-res)
+    for (final v in variants) {
+      if (v.type == 'source') return v.url;
+    }
+    return variants.first.url; // already sorted descending
+  }
+}
+
+class _FullScreenImageViewer extends StatefulWidget {
+  final List<_ScreenshotGroup> groups;
+  final int initialIndex;
+
+  const _FullScreenImageViewer({
+    required this.groups,
+    required this.initialIndex,
+  });
+
+  @override
+  State<_FullScreenImageViewer> createState() => _FullScreenImageViewerState();
+}
+
+class _FullScreenImageViewerState extends State<_FullScreenImageViewer> {
+  late final PageController _pageController;
+  late final FocusNode _focusNode;
+  late int _currentIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIndex = widget.initialIndex;
+    _pageController = PageController(initialPage: widget.initialIndex);
+    _focusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  void _onKey(KeyEvent event) {
+    if (event is! KeyDownEvent) return;
+    if (event.logicalKey == LogicalKeyboardKey.escape) {
+      Navigator.of(context).pop();
+    } else if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+      _goToPrevious();
+    } else if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
+      _goToNext();
+    }
+  }
+
+  void _onPointerSignal(PointerSignalEvent event) {
+    if (event is PointerScrollEvent) {
+      if (event.scrollDelta.dy > 0) {
+        _goToNext();
+      } else if (event.scrollDelta.dy < 0) {
+        _goToPrevious();
+      }
+    }
+  }
+
+  void _goToPrevious() {
+    if (_currentIndex > 0) {
+      _pageController.previousPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  void _goToNext() {
+    if (_currentIndex < widget.groups.length - 1) {
+      _pageController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Listener(
+      onPointerSignal: _onPointerSignal,
+      child: KeyboardListener(
+        focusNode: _focusNode,
+        autofocus: true,
+        onKeyEvent: _onKey,
+        child: Scaffold(
+        backgroundColor: Colors.black,
+        body: Stack(
+          children: [
+            // Swipeable image pages
+            PageView.builder(
+              controller: _pageController,
+              itemCount: widget.groups.length,
+              onPageChanged: (index) => setState(() => _currentIndex = index),
+              itemBuilder: (context, index) {
+                return FittedBox(
+                  fit: BoxFit.contain,
+                  child: CachedNetworkImage(
+                    imageUrl: widget.groups[index].largest,
+                    fit: BoxFit.contain,
+                    placeholder: (context, url) => const SizedBox(
+                      width: 200,
+                      height: 200,
+                      child: Center(
+                        child: CircularProgressIndicator(color: Colors.white),
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.broken_image,
+                      size: 64,
+                      color: Colors.white54,
+                    ),
+                  ),
+                );
+              },
+            ),
+
+            // Close button
+            Positioned(
+              top: 8,
+              right: 8,
+              child: SafeArea(
+                child: IconButton(
+                  icon: const Icon(Icons.close, color: Colors.white, size: 28),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ),
+            ),
+
+            // Navigation arrows
+            if (widget.groups.length > 1) ...[
+              if (_currentIndex > 0)
+                Positioned(
+                  left: 8,
+                  top: 0,
+                  bottom: 0,
+                  child: Center(
+                    child: IconButton(
+                      icon: const Icon(Icons.chevron_left,
+                          color: Colors.white70, size: 40),
+                      onPressed: () => _pageController.previousPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      ),
+                    ),
+                  ),
+                ),
+              if (_currentIndex < widget.groups.length - 1)
+                Positioned(
+                  right: 8,
+                  top: 0,
+                  bottom: 0,
+                  child: Center(
+                    child: IconButton(
+                      icon: const Icon(Icons.chevron_right,
+                          color: Colors.white70, size: 40),
+                      onPressed: () => _pageController.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+
+            // Page indicator
+            if (widget.groups.length > 1)
+              Positioned(
+                bottom: 24,
+                left: 0,
+                right: 0,
+                child: Center(
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Text(
+                      '${_currentIndex + 1} / ${widget.groups.length}',
+                      style: theme.textTheme.bodyMedium
+                          ?.copyWith(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
+      ),
+    );
   }
 }

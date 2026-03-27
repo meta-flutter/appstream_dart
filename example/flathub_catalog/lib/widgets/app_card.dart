@@ -7,12 +7,16 @@ import 'app_icon.dart';
 class AppCard extends StatelessWidget {
   final ComponentRow component;
   final String? iconUrl;
+  final String? displayName;
+  final String? displaySummary;
   final VoidCallback? onTap;
 
   const AppCard({
     super.key,
     required this.component,
     this.iconUrl,
+    this.displayName,
+    this.displaySummary,
     this.onTap,
   });
 
@@ -41,14 +45,14 @@ class AppCard extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            component.name,
+                            displayName ?? component.name,
                             style: theme.textTheme.titleSmall,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
-                          if (component.summary != null)
+                          if ((displaySummary ?? component.summary) != null)
                             Text(
-                              component.summary!,
+                              (displaySummary ?? component.summary)!,
                               style: theme.textTheme.bodySmall?.copyWith(
                                 color: theme.colorScheme.onSurfaceVariant,
                               ),
