@@ -1,91 +1,128 @@
 # AppStream Parser - Flathub Catalog to SQLite
 
-A high-performance C++23 FFI bridge for parsing Flathub AppStream metadata into SQLite databases, with Dart bindings for cross-platform access.
+A high-performance C++23 FFI bridge for parsing Flathub AppStream metadata into SQLite databases, with Dart bindings, a Drift ORM layer, and a Flutter example app.
 
-## 📋 Quick Facts
+## Quick Facts
 
 - **Language**: C++23 (backend) + Dart (frontend) + C (Dart API)
-- **Status**: ✅ Production-Ready (v0.2.0)
-- **Tests**: 185/185 passing ✅ (140 C++ + 45 Dart)
-- **Security**: 0 CVEs ✅
-- **Code Quality**: No lint/format issues ✅
+- **Status**: Production-Ready (v0.2.0)
+- **Tests**: 185/185 passing (140 C++ + 45 Dart)
+- **Peak Memory**: ~22 MB (streaming parser with 256 KB sliding buffer)
 
-## 🚀 Features
+## Features
 
 ### Core Capabilities
-- ✅ **High-Performance XML Parsing** - Custom XmlScanner (~45ms for 1000 components)
-- ✅ **Streaming Pipeline** - XML → SQLite direct pipeline (~190ms for 1000 components)
-- ✅ **String Interning** - Efficient memory usage with StringPool
-- ✅ **Multi-Language Support** - Tested with 5 languages (en, de, fr, es, ja)
-- ✅ **Real Flathub Data** - Tests with actual Flathub apps (GNOME, Firefox, GIMP, etc.)
+- **Streaming XML Parsing** - XmlScanner with fd-based sliding buffer (~256 KB resident) replaces mmap for minimal memory footprint
+- **Streaming Pipeline** - XML to SQLite direct pipeline via ComponentSink interface
+- **Drift ORM Layer** - Type-safe query API with 19 tables, FTS5 full-text search, icon URL resolution, category/language browsing, and metrics
+- **String Interning** - Efficient memory usage with StringPool for categories and keywords
+- **Multi-Language Support** - Language filtering at parse time (en, de, fr, es, ja, etc.)
+- **Real Flathub Data** - Parses the full Flathub catalog (~4500 components in ~260 ms)
 
-### Infrastructure (Enterprise-Grade)
-- ✅ **Automated CI/CD** - GitHub Actions with 8+ configurations
-- ✅ **Code Coverage** - gcov/lcov integration + Codecov
-- ✅ **Performance Tracking** - 8 benchmark scenarios
-- ✅ **Memory Safety** - AddressSanitizer, UBSan support
-- ✅ **Comprehensive Tests** - Unit + integration + real-world data tests
+### CLI Tools
+- **bin/main.dart** - Downloads, decompresses, and parses Flathub XML to SQLite with progress bars
+- **bin/query.dart** - Interactive query tool: search, detail, categories, languages, releases, metrics
 
-## 📦 Project Structure
+### Flutter Example
+- **example/flathub_catalog/** - Full Flutter Linux desktop app modeled after flathub.org with setup/download/import screens, catalog browsing, search, and app detail views
+
+### Infrastructure
+- **Automated CI/CD** - GitHub Actions with 8+ configurations
+- **Code Coverage** - gcov/lcov integration + Codecov
+- **Memory Safety** - AddressSanitizer, UBSan support
+- **Comprehensive Tests** - Unit + integration + real-world data tests
+
+## Project Structure
 
 ```
 appstream/
-├── src/                          # C++ source (7 files)
-│   ├── AppStreamParser.cpp       # XML parsing logic
-│   ├── Component.cpp             # Component model
-│   ├── XmlScanner.cpp            # XML tokenizer
-│   ├── SqliteWriter.cpp          # Database writing
+├── src/                          # C++ source
+│   ├── AppStreamParser.cpp       # XML parsing state machine
+│   ├── XmlScanner.cpp            # XML tokenizer (buffer + streaming fd modes)
+│   ├── Component.cpp             # Component data model
+│   ├── SqliteWriter.cpp          # Batched SQLite writer with staging
 │   ├── StringPool.cpp            # String interning
-│   └── appstream_ffi.cpp         # Dart FFI bridge
-├── lib/                          # Dart bindings
-│   ├── appstream.dart            # Main Dart API
-│   └── src/bindings.dart         # FFI bindings
-├── test/                         # Dart tests (4 files)
-│   └── appstream_integration_test.dart
-├── tests/                        # C++ tests (5 + 2 new)
-│   ├── test_*.cpp                # Unit tests
-│   ├── benchmark_parser.cpp      # Benchmarks
-│   └── test_real_appstream_data.cpp
-├── .github/workflows/            # CI/CD pipelines
-│   └── build-and-test.yml        # GitHub Actions
-├── CMakeLists.txt                # Build configuration
-├── pubspec.yaml                  # Dart dependencies
-└── docs/                         # Documentation
-    ├── ADVANCED_BUILD.md         # Build guide
-    ├── RUNNING_TESTS.md          # Test execution
-    └── CODE_AUDIT_REPORT.md      # Security/quality audit
+│   ├── appstream_ffi.cpp         # Dart FFI bridge + DartNotifySink
+│   └── dart_api_dl.c             # Dart API DL initialization
+├── include/                      # C++ headers
+├── lib/                          # Dart package
+│   ├── appstream.dart            # Public API + exports
+│   └── src/
+│       ├── bindings.dart         # FFI bindings + library loading
+│       └── database/
+│           ├── database.dart     # CatalogDatabase (Drift ORM, queries)
+│           ├── tables.dart       # 19 Drift table definitions
+│           └── database.g.dart   # Generated Drift code
+├── bin/                          # CLI tools
+│   ├── main.dart                 # Fetch + parse CLI with progress bars
+│   └── query.dart                # Database query CLI
+├── example/
+│   └── flathub_catalog/          # Flutter example app
+│       ├── lib/
+│       │   ├── main.dart         # App entry point
+│       │   ├── services/         # CatalogService (download, import, query)
+│       │   ├── screens/          # SetupScreen, CatalogScreen, DetailScreen
+│       │   └── widgets/          # AppCard, AppIcon
+│       └── linux/                # Linux desktop build (bundles libappstream.so)
+├── test/                         # Dart tests
+├── tests/                        # C++ tests (GoogleTest)
+├── docs/                         # Documentation
+├── Makefile                      # Shared library build
+├── CMakeLists.txt                # Full build with tests
+└── pubspec.yaml                  # Dart dependencies
 ```
 
-## 🛠️ Quick Start
+## Quick Start
 
 ### Prerequisites
 - C++23 compatible compiler (GCC 13+, Clang 17+)
-- CMake 3.22+
-- Dart SDK 3.3+
+- Dart SDK 3.4+
 - SQLite3 development libraries
-- GoogleTest (auto-fetched by CMake)
+- Flutter SDK (for example app)
 
-### Build & Test
+### Build the Native Library
 
 ```bash
-# Default build
+make              # builds lib/libappstream.so
+```
+
+### Run the CLI
+
+```bash
+# Download Flathub catalog and parse to SQLite
+dart run bin/main.dart
+
+# Query the catalog
+dart run bin/query.dart search firefox
+dart run bin/query.dart detail org.mozilla.firefox
+dart run bin/query.dart categories
+dart run bin/query.dart metrics
+```
+
+### Run the Flutter Example
+
+```bash
+cd example/flathub_catalog
+flutter pub get
+flutter run -d linux
+```
+
+### Build & Test (Full)
+
+```bash
+# Default build with tests
 cmake -S . -B build && cmake --build build
 cd build && ctest
 
-# With code coverage
-cmake -S . -B build -DENABLE_COVERAGE=ON
-cmake --build build && cd build && ctest
-
-# With sanitizers (AddressSanitizer)
+# With sanitizers
 cmake -S . -B build -DENABLE_SANITIZER=asan
 cmake --build build && cd build && ctest
 
-# Performance benchmarks
-cmake -S . -B build -DENABLE_BENCHMARKS=ON -DCMAKE_BUILD_TYPE=Release
-cmake --build build && ./build/tests/appstream_benchmarks
+# Dart tests
+dart test
 ```
 
-### Dart API Usage
+## Dart API Usage
 
 ```dart
 import 'package:appstream/appstream.dart';
@@ -94,120 +131,110 @@ void main() async {
   // Initialize native library
   Appstream.initialize();
 
-  // Parse XML to SQLite
-  final stream = Appstream.parseToSqlite(
-    xmlPath: '/path/to/appstream.xml',
-    dbPath: '/path/to/catalog.db',
-  );
-
-  // Stream results
-  await for (final event in stream) {
-    print('${event.id}: ${event.name}');
+  // Parse XML to SQLite (streams progress events)
+  await for (final event in Appstream.parseToSqlite(
+    xmlPath: 'appstream.xml',
+    dbPath: 'catalog.db',
+  )) {
+    switch (event) {
+      case ComponentParsed(:final component):
+        print('${component.id}: ${component.name}');
+      case ParseDone(:final count):
+        print('Done: $count components');
+      case ParseFailed(:final message):
+        print('Error: $message');
+    }
   }
+
+  // Query via Drift ORM
+  final db = CatalogDatabase.open('catalog.db');
+  final results = await db.searchComponents('firefox');
+  final detail = await db.getComponentDetail('org.mozilla.firefox');
+  final categories = await db.listCategories();
+  final metrics = await db.getMetrics();
+  await db.close();
 }
 ```
 
-## 📊 Performance Benchmarks
+## Architecture
 
-| Operation | Time | Components |
-|-----------|------|-----------|
-| StringPool (10k strings) | 15 ms | 100 unique |
-| XmlScanner | 45 ms | 1000 |
-| Parser (streaming) | 59 ms | 1000 |
-| SqliteWriter | 125 ms | 1000 |
-| End-to-end | 190 ms | 1000 |
-| Stress test | 946 ms | 5000 |
+### Data Flow
 
-## 🧪 Test Coverage
+```
+Flathub XML (gzipped)
+    │ HTTP download + gzip stream decompress
+    ▼
+appstream.xml (on disk)
+    │ open() + read() into 256 KB sliding buffer
+    ▼
+XmlScanner (pull parser, zero-copy string_views)
+    │ START_ELEMENT / TEXT / END_ELEMENT events
+    ▼
+AppStreamParser (state machine)
+    │ Component objects (moved, not copied)
+    ▼
+ComponentSink interface
+    ├── DartNotifySink (posts id/name/summary to Dart port + delegates to writer)
+    ├── SqliteWriter (batched inserts, staging file, atomic rename)
+    └── InMemorySink (retains all components for in-memory queries)
+    │
+    ▼
+catalog.db (SQLite with 19 tables + FTS5)
+    │ Drift ORM
+    ▼
+CatalogDatabase (search, browse, detail, metrics)
+```
 
-### C++ Tests (140)
-- ✅ StringPool deduplication
-- ✅ XmlScanner tokenization
-- ✅ Component parsing
-- ✅ SqliteWriter transactions
-- ✅ AppStreamParser integration
+### Streaming Parser (Low Memory)
 
-### Dart Tests (45)
-- ✅ FFI bindings
-- ✅ Integration tests
-- ✅ Fallback handling
-- ✅ Uninitialized library tests
+The `parseToSink` path uses a 256 KB sliding buffer instead of mmap:
+- XmlScanner reads from a file descriptor via `read()` syscalls
+- Buffer compacts unconsumed data and refills when less than half remains
+- All `string_view` results are consumed before the next refill
+- Peak RSS: ~22 MB (vs ~64 MB with mmap) for the full Flathub catalog
 
-### Real-World Tests (9 new)
-- ✅ Flathub app samples (5 real apps)
-- ✅ Multi-language support
-- ✅ Error handling
-- ✅ Large datasets (100+ components)
+### Database Schema
 
-## 🔒 Security & Quality
+19 normalized tables with interned lookups:
 
-- **Security Audit**: ✅ 0 CVEs
-- **Dart Analysis**: ✅ No issues
-- **C++ Analysis**: ✅ No critical issues (~100 style suggestions)
-- **Formatting**: ✅ Applied clang-format-19
+| Table | Purpose |
+|-------|---------|
+| `components` | Core app metadata (id, type, name, summary, description, licenses, developer) |
+| `categories` / `component_categories` | Interned category names + junction |
+| `keywords` / `component_keywords` | Interned keyword names + junction |
+| `component_urls` | URLs by type (homepage, bugtracker, donation, etc.) |
+| `component_icons` | Icons by type (stock, cached, remote) with dimensions |
+| `releases` / `release_issues` | Release versions, dates, descriptions, CVEs |
+| `screenshots` / `screenshot_images` / `screenshot_videos` | Screenshot gallery |
+| `content_rating_attrs` | OARS content ratings |
+| `component_languages` | Supported languages |
+| `branding_colors` | Light/dark scheme colors |
+| `component_extends` / `component_suggests` / `component_relations` | Cross-references |
+| `component_custom` | Custom key-value metadata |
+| `components_fts` | FTS5 full-text search index |
 
-## 📖 Documentation
+## Performance
+
+| Metric | Value |
+|--------|-------|
+| Full Flathub parse | ~260 ms (4522 components) |
+| Peak memory (streaming) | ~22 MB |
+| Database size | ~26 MB |
+| FTS search | < 5 ms |
+
+## Documentation
 
 | Document | Purpose |
 |----------|---------|
-| **ADVANCED_BUILD.md** | Comprehensive build & configuration guide |
-| **RUNNING_TESTS.md** | Test execution and debugging |
-| **CODE_AUDIT_REPORT.md** | Security & code quality audit |
-| **IMPLEMENTATION_INDEX.md** | Technical overview of all features |
-| **NEXT_STEPS_COMPLETE.md** | Recent implementation summary |
+| `docs/ARCHITECTURE.md` | System architecture and design decisions |
+| `docs/ADVANCED_BUILD.md` | Build configuration guide |
+| `docs/RUNNING_TESTS.md` | Test execution and debugging |
+| `docs/CODE_AUDIT_REPORT.md` | Security and code quality audit |
 
-## 🚀 CI/CD Pipeline
-
-Automated testing on every push with:
-- 8 build configurations (Debug/Release × Sanitizers)
-- Code quality checks (lint, format, analyze)
-- Performance benchmarking
-- Memory safety validation (ASAN/UBSan)
-- Coverage tracking (Codecov integration)
-
-## 📝 Recent Updates (March 26, 2026)
-
-✅ **CI/CD Integration** - GitHub Actions workflow  
-✅ **Code Coverage** - gcov/lcov + Codecov  
-✅ **Performance Benchmarks** - 8 comprehensive scenarios  
-✅ **Real Appstream Data** - Tests with Flathub apps  
-✅ **Sanitizers** - ASAN, MSAN, UBSan support  
-
-## 🔗 Key Technologies
-
-- **C++23** - Modern C++ standard library
-- **SQLite3** - Efficient database storage
-- **Dart FFI** - Foreign Function Interface for Dart
-- **GoogleTest** - C++ unit testing framework
-- **CMake** - Cross-platform build system
-- **GitHub Actions** - CI/CD automation
-
-## 📋 Project Statistics
-
-- **Files**: 45+ source files
-- **Lines of Code**: ~8,000 (C++) + ~2,000 (Dart)
-- **Tests**: 185 total (140 C++ + 45 Dart)
-- **Documentation**: 1,200+ lines
-- **Build Configs**: 8+ matrix combinations
-
-## 🎯 Getting Help
-
-1. **Build Issues**: See `ADVANCED_BUILD.md`
-2. **Test Failures**: See `RUNNING_TESTS.md`
-3. **Configuration**: See `CODE_AUDIT_REPORT.md`
-4. **Implementation Details**: See `IMPLEMENTATION_INDEX.md`
-
-## 📄 License
+## License
 
 Apache License 2.0 - See LICENSE file
 
-## 👤 Contributors
+## Contributors
 
 - Joel Winarske (Creator & Maintainer)
-
----
-
-**Status**: ✅ Production Ready  
-**Last Updated**: March 26, 2026  
-**Version**: 0.2.0
-
