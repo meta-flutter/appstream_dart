@@ -165,10 +165,8 @@ private:
 // ============================================================
 
 std::expected<void, AppStreamParser::ParseError>
-AppStreamParser::doParse(const char *data, size_t size,
+AppStreamParser::doParse(XmlScanner &scanner,
                          const std::string &language, ComponentSink &sink) {
-
-  XmlScanner scanner(data, size);
 
   // ---- Parser state ----
   bool insideComponent = false;
@@ -891,14 +889,13 @@ done:
 std::expected<void, AppStreamParser::ParseError>
 AppStreamParser::parseToSink(const std::string &filename,
                              const std::string &language, ComponentSink &sink) {
-  void *data = nullptr;
-  size_t size = 0;
-  mmapFile(filename, data, size);
-  if (!data)
-    return std::unexpected(ParseError::MMAP_FAILED);
+  const int fd = open(filename.c_str(), O_RDONLY);
+  if (fd == -1)
+    return std::unexpected(ParseError::FILE_NOT_FOUND);
   spdlog::info("Parsing file (streaming): {}", filename);
-  auto result = doParse(static_cast<const char *>(data), size, language, sink);
-  munmapFile(data, size);
+  XmlScanner scanner(fd);
+  auto result = doParse(scanner, language, sink);
+  close(fd);
   return result;
 }
 
@@ -916,8 +913,9 @@ AppStreamParser::create(const std::string &filename,
     return std::unexpected(ParseError::MMAP_FAILED);
   spdlog::info("Parsing file (in-memory): {}", filename);
   InMemorySink sink(parser.components_);
-  auto result = doParse(static_cast<const char *>(parser.fileData_),
-                        parser.fileSize_, language, sink);
+  XmlScanner scanner(static_cast<const char *>(parser.fileData_),
+                     parser.fileSize_);
+  auto result = doParse(scanner, language, sink);
   munmapFile(parser.fileData_, parser.fileSize_);
   if (!result)
     return std::unexpected(result.error());

@@ -17,6 +17,7 @@
 #include "XmlScanner.h"
 
 #include <cstring>
+#include <unistd.h>
 
 XmlScanner::XmlScanner(const char *data, size_t size)
     : pos_(data), end_(data + size), data_(data), pending_end_(false) {
@@ -34,6 +35,63 @@ XmlScanner::XmlScanner(const char *data, size_t size)
   skipWhitespace();
   if (pos_ + 5 < end_ && pos_[0] == '<' && pos_[1] == '?') {
     skipXmlDeclaration();
+  }
+}
+
+XmlScanner::XmlScanner(int fd, size_t bufSize)
+    : pos_(nullptr), end_(nullptr), data_(nullptr),
+      fd_(fd), stream_buf_(bufSize), pending_end_(false) {
+  attr_buf_.reserve(8);
+  decode_buf_.reserve(256);
+
+  // Initial fill
+  ssize_t n = ::read(fd_, stream_buf_.data(), stream_buf_.size());
+  if (n <= 0) {
+    pos_ = end_ = data_ = stream_buf_.data();
+    eof_ = true;
+    return;
+  }
+  data_ = stream_buf_.data();
+  pos_ = stream_buf_.data();
+  end_ = stream_buf_.data() + n;
+
+  // Skip BOM
+  const auto remaining = static_cast<size_t>(end_ - pos_);
+  if (remaining >= 3 && static_cast<unsigned char>(pos_[0]) == 0xEF &&
+      static_cast<unsigned char>(pos_[1]) == 0xBB &&
+      static_cast<unsigned char>(pos_[2]) == 0xBF) {
+    pos_ += 3;
+  }
+
+  // Skip XML declaration
+  skipWhitespace();
+  if (pos_ + 5 < end_ && pos_[0] == '<' && pos_[1] == '?') {
+    skipXmlDeclaration();
+  }
+}
+
+void XmlScanner::refillIfNeeded() {
+  if (fd_ < 0 || eof_) return;
+
+  const auto remaining = static_cast<size_t>(end_ - pos_);
+  // Refill when less than half the buffer remains
+  if (remaining >= stream_buf_.size() / 2) return;
+
+  // Compact: move unconsumed data to the front
+  if (remaining > 0 && pos_ != stream_buf_.data()) {
+    memmove(stream_buf_.data(), pos_, remaining);
+  }
+  pos_ = stream_buf_.data();
+  end_ = stream_buf_.data() + remaining;
+  data_ = stream_buf_.data();
+
+  // Fill the rest of the buffer
+  const size_t space = stream_buf_.size() - remaining;
+  ssize_t n = ::read(fd_, stream_buf_.data() + remaining, space);
+  if (n <= 0) {
+    eof_ = true;
+  } else {
+    end_ = stream_buf_.data() + remaining + static_cast<size_t>(n);
   }
 }
 
@@ -153,6 +211,11 @@ void XmlScanner::decodeEntities(std::string_view src) {
 }
 
 std::expected<XmlScanner::Event, XmlScanner::Error> XmlScanner::next() {
+  // In streaming mode, ensure we have enough buffered data before parsing
+  // the next token.  All string_views from the previous next() call are
+  // consumed by now, so compacting the buffer is safe.
+  refillIfNeeded();
+
   Event evt{};
 
   // Emit the pending END_ELEMENT for a self-closing tag from the previous call

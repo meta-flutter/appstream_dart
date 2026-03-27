@@ -84,12 +84,14 @@ public:
   }
 
   std::expected<void, Error> end() override {
-    // Notify Dart that parsing is complete (before writer_.end() which logs)
+    auto r = writer_.end();
+
+    // Notify Dart after database is finalized (indices, FTS, rename)
     const std::string done =
         "DONE\t" + std::to_string(writer_.componentCount());
     postString(port_, done);
 
-    return writer_.end();
+    return r;
   }
 
   [[nodiscard]] size_t componentCount() const override {

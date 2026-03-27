@@ -23,6 +23,10 @@
 #include <string_view>
 #include <vector>
 
+// Default streaming buffer size (256 KB — large enough for any single XML token
+// in AppStream catalogs, small enough to keep resident memory low).
+inline constexpr size_t kDefaultStreamBufSize = 256 * 1024;
+
 /// A lightweight zero-copy XML pull scanner designed for appstream XML.
 ///
 /// It scans a contiguous memory buffer (typically mmap'd) and delivers
@@ -73,9 +77,15 @@ public:
     MALFORMED_TAG,
   };
 
-  /// Construct `scanner` over a buffer. The buffer must remain valid for
-  /// the lifetime of the scanner and all returned string_views.
+  /// Construct scanner over a contiguous buffer (e.g. mmap'd).
+  /// The buffer must remain valid for the lifetime of the scanner.
   XmlScanner(const char *data, size_t size);
+
+  /// Construct a streaming scanner that reads from a file descriptor.
+  /// Uses an internal sliding buffer of `bufSize` bytes.  The fd is NOT
+  /// owned — the caller must keep it open and close it after the scanner
+  /// is destroyed.
+  explicit XmlScanner(int fd, size_t bufSize = kDefaultStreamBufSize);
 
   /// Pull the next event. Returns error on malformed input.
   std::expected<Event, Error> next();
@@ -87,6 +97,15 @@ private:
   const char *pos_;
   const char *end_;
   const char *data_;
+
+  // Streaming support
+  int fd_ = -1;
+  std::vector<char> stream_buf_;
+  bool eof_ = false;
+
+  /// Ensure at least half the stream buffer is available.  Compacts
+  /// unconsumed data to the front and reads more from fd_.
+  void refillIfNeeded();
 
   // Reusable buffers to avoid repeated allocations
   std::vector<Attribute> attr_buf_;

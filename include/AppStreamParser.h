@@ -91,7 +91,7 @@ private:
   void *fileData_ = nullptr;
 
   /// Core parse loop. Streams each completed component to the sink.
-  static std::expected<void, ParseError> doParse(const char *data, size_t size,
+  static std::expected<void, ParseError> doParse(XmlScanner &scanner,
                                                  const std::string &language,
                                                  ComponentSink &sink);
 
