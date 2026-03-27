@@ -55,8 +55,9 @@ class AppstreamBindings {
   factory AppstreamBindings.load() {
     final libName = 'libappstream.so';
 
-    // Search in lib/ relative to the script or current directory
+    // Search in lib/ relative to the executable, script, or current directory.
     final candidates = [
+      '${File(Platform.resolvedExecutable).parent.path}/lib/$libName',
       '${Directory.current.path}/lib/$libName',
       '${Platform.script.toFilePath()}/../lib/$libName',
       '${Platform.script.toFilePath()}/../../lib/$libName',

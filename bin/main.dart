@@ -101,6 +101,22 @@ class ProgressBar {
     stdout.writeln();
   }
 
+  /// Show a 100% bar then the finish message, clearing any C++ output that
+  /// may have been injected on the current line.
+  void finishComplete(int current, int total,
+      {String unit = '', String? message}) {
+    _sw.stop();
+    final pct = '100.0'.padLeft(5);
+    final unitStr = unit.isEmpty ? '' : ' $unit';
+    // \x1B[2K erases the entire current line, \r returns to column 0.
+    final bar =
+        '\x1B[2K\r  $label [${'█' * width}] $pct%  $current / $total$unitStr';
+    stdout.writeln(bar);
+    if (message != null) {
+      stdout.writeln('  $label $message');
+    }
+  }
+
   void _write(String line) {
     // Pad with spaces to overwrite any previous longer line
     final padded =
@@ -219,8 +235,9 @@ Future<void> main(List<String> args) async {
         }
 
       case ParseDone(:final count):
-        parseBar.finish(
-            '✓ $count components in ${stopwatch.elapsedMilliseconds} ms');
+        parseBar.finishComplete(count, count,
+            unit: 'components',
+            message: '✓ $count components in ${stopwatch.elapsedMilliseconds} ms');
         stopwatch.stop();
         print('');
         print('Database:  $dbPath (${_fileSizeMiB(dbPath)} MiB)');
@@ -236,7 +253,7 @@ Future<void> main(List<String> args) async {
   }
 
   // ---- DB stats ----
-  _printDbStats(dbPath);
+  await _printDbMetrics(dbPath);
 }
 
 /// Rough estimate: ~1 component per 15-20 KB of XML
@@ -322,7 +339,7 @@ Future<String> _fetchAppstream() async {
     client.close();
   }
 
-  // Decompress with progress
+  // Decompress
   print('');
   final decompBar = ProgressBar(label: 'Decompress', width: 35);
   decompBar.start();
@@ -350,28 +367,53 @@ String _fileSizeMiB(String path) {
   return (file.lengthSync() / (1024 * 1024)).toStringAsFixed(2);
 }
 
-void _printDbStats(String dbPath) {
-  final result = Process.runSync('sqlite3', [
-    dbPath,
-    '''
-    SELECT 'Components:  ' || COUNT(*) FROM components;
-    SELECT 'Categories:  ' || COUNT(*) FROM categories;
-    SELECT 'Keywords:    ' || COUNT(*) FROM keywords;
-    SELECT 'Releases:    ' || COUNT(*) FROM releases;
-    SELECT 'Icons:       ' || COUNT(*) FROM component_icons;
-    SELECT 'URLs:        ' || COUNT(*) FROM component_urls;
-    SELECT 'FTS ready:   ' || CASE WHEN EXISTS(
-      SELECT 1 FROM sqlite_master WHERE name='components_fts'
-    ) THEN 'yes' ELSE 'no' END;
-    '''
-  ]);
+const _typeNames = {
+  0: 'Unknown',
+  1: 'Generic',
+  2: 'Desktop App',
+  3: 'Console App',
+  4: 'Web App',
+  5: 'Addon',
+  6: 'Font',
+  7: 'Codec',
+  8: 'Input Method',
+  9: 'Firmware',
+  10: 'Driver',
+  11: 'Localization',
+  12: 'Service',
+  13: 'Repository',
+  14: 'OS',
+  15: 'Icon Theme',
+  16: 'Runtime',
+};
 
-  if (result.exitCode == 0) {
+Future<void> _printDbMetrics(String dbPath) async {
+  final db = CatalogDatabase.open(dbPath);
+  try {
+    final m = await db.getMetrics();
     print('');
-    print('Database contents:');
-    for (final line in (result.stdout as String).trim().split('\n')) {
-      print('  $line');
+    print('Database metrics:');
+    print('  Components:    ${m.componentCount}');
+    print('  Categories:    ${m.categoryCount}');
+    print('  Keywords:      ${m.keywordCount}');
+    print('  Releases:      ${m.releaseCount}');
+    print('  Icons:         ${m.iconCount}');
+    print('  URLs:          ${m.urlCount}');
+    print('  Screenshots:   ${m.screenshotCount}');
+    print('  Languages:     ${m.languageCount}');
+    print('  FTS ready:     ${m.ftsReady ? 'yes' : 'no'}');
+    if (m.componentsByType.isNotEmpty) {
+      print('');
+      print('  Components by type:');
+      final sorted = m.componentsByType.entries.toList()
+        ..sort((a, b) => b.value.compareTo(a.value));
+      for (final e in sorted) {
+        final name = (_typeNames[e.key] ?? 'Type ${e.key}').padRight(14);
+        print('    $name ${e.value}');
+      }
     }
+  } finally {
+    await db.close();
   }
 }
 

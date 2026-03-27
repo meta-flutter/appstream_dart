@@ -8,6 +8,7 @@ build/
 build-verify/
 src/*.o
 lib/libappstream.so
+appstream
 
 # Generated
 catalog.db
@@ -19,3 +20,6 @@ catalog.db.staging*
 .idea/
 .vscode/
 *.swp
+
+# Claude
+.claude

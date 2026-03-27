@@ -22,6 +22,9 @@ import 'package:ffi/ffi.dart';
 
 import 'src/bindings.dart';
 
+export 'src/database/database.dart';
+export 'src/database/tables.dart';
+
 typedef ParseWorkerSpawner = Future<Isolate> Function(
     void Function(Map<String, Object>) entryPoint, Map<String, Object> args);
 
