@@ -152,11 +152,24 @@ class CatalogDatabase extends _$CatalogDatabase {
   // Full-text search (uses FTS5 table built by C++)
   // ──────────────────────────────────────────────
 
+  /// Sanitize a user query for FTS5 MATCH by wrapping each token in
+  /// double-quotes to prevent FTS5 syntax errors from special characters.
+  static String _sanitizeFts5Query(String query) {
+    final trimmed = query.trim();
+    if (trimmed.isEmpty) return '""';
+    // Split into tokens and quote each one to neutralize FTS5 operators
+    return trimmed
+        .split(RegExp(r'\s+'))
+        .map((token) => '"${token.replaceAll('"', '""')}"')
+        .join(' ');
+  }
+
   /// Search components using FTS5 full-text search.
   Future<List<({ComponentRow component, String? iconUrl})>> searchComponents(
     String query, {
     int limit = 20,
   }) {
+    final safeQuery = _sanitizeFts5Query(query);
     return customSelect(
       'SELECT c.*, $_iconSubquery AS icon_url '
       'FROM components_fts fts '
@@ -164,7 +177,7 @@ class CatalogDatabase extends _$CatalogDatabase {
       'WHERE components_fts MATCH ? '
       'ORDER BY rank '
       'LIMIT ?',
-      variables: [Variable.withString(query), Variable.withInt(limit)],
+      variables: [Variable.withString(safeQuery), Variable.withInt(limit)],
       readsFrom: {components, componentIcons},
     ).map((row) {
       return (
@@ -180,6 +193,7 @@ class CatalogDatabase extends _$CatalogDatabase {
     String query, {
     int limit = 20,
   }) {
+    final safeQuery = _sanitizeFts5Query(query);
     return customSelect(
       'SELECT c.*, '
       "snippet(components_fts, 1, '<b>', '</b>', '...', 40) AS snip, "
@@ -189,7 +203,7 @@ class CatalogDatabase extends _$CatalogDatabase {
       'WHERE components_fts MATCH ? '
       'ORDER BY rank '
       'LIMIT ?',
-      variables: [Variable.withString(query), Variable.withInt(limit)],
+      variables: [Variable.withString(safeQuery), Variable.withInt(limit)],
       readsFrom: {components, componentIcons},
     ).map((row) {
       return (

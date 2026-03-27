@@ -57,7 +57,8 @@ Future<void> main(List<String> args) async {
   for (var i = 0; i < args.length; i++) {
     switch (args[i]) {
       case '--db':
-        dbPath = args[++i];
+        if (++i >= args.length) { stderr.writeln('--db requires a value'); exit(1); }
+        dbPath = args[i];
       case '--help' || '-h':
         _printUsage();
         exit(0);

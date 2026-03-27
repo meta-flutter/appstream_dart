@@ -156,11 +156,14 @@ Future<void> main(List<String> args) async {
   for (int i = 0; i < args.length; i++) {
     switch (args[i]) {
       case '--xml':
-        xmlPath = args[++i];
+        if (++i >= args.length) { stderr.writeln('--xml requires a value'); exit(1); }
+        xmlPath = args[i];
       case '--db':
-        dbPath = args[++i];
+        if (++i >= args.length) { stderr.writeln('--db requires a value'); exit(1); }
+        dbPath = args[i];
       case '--lang':
-        language = args[++i];
+        if (++i >= args.length) { stderr.writeln('--lang requires a value'); exit(1); }
+        language = args[i];
       case '--verbose' || '-v':
         verbose = true;
       case '--help' || '-h':
@@ -266,7 +269,8 @@ int _estimateComponentCount(int xmlBytes) {
 // ================================================================
 
 Future<String> _fetchAppstream() async {
-  final cacheDir = p.join(Directory.systemTemp.path, 'appstream_cache');
+  final home = Platform.environment['HOME'] ?? Directory.systemTemp.path;
+  final cacheDir = p.join(home, '.cache', 'appstream');
   await Directory(cacheDir).create(recursive: true);
 
   final gzPath = p.join(cacheDir, 'appstream.xml.gz');

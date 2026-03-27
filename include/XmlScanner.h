@@ -25,7 +25,7 @@
 
 // Default streaming buffer size (256 KB — large enough for any single XML token
 // in AppStream catalogs, small enough to keep resident memory low).
-inline constexpr size_t kDefaultStreamBufSize = 256 * 1024;
+inline constexpr size_t kDefaultStreamBufSize = 256UL * 1024;
 
 /// A lightweight zero-copy XML pull scanner designed for appstream XML.
 ///
@@ -114,7 +114,7 @@ private:
   // For self-closing tags: after returning START_ELEMENT, the next
   // call to next() returns END_ELEMENT with this name.
   bool pending_end_ = false;
-  std::string_view pending_end_name_;
+  std::string pending_end_name_; // owning copy, survives buffer compaction
 
   void skipWhitespace();
   void skipXmlDeclaration();

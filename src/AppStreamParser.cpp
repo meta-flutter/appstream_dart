@@ -70,7 +70,8 @@ static std::string unixEpochToISO8601(const std::string_view epochStr) {
     epoch = epoch * 10 + (c - '0');
   }
   const auto t = static_cast<std::time_t>(epoch);
-  const std::tm tm = *std::gmtime(&t);
+  std::tm tm{};
+  gmtime_r(&t, &tm);
   std::stringstream ss;
   ss << std::put_time(&tm, "%Y-%m-%dT%H:%M:%S") << 'Z';
   return ss.str();
@@ -165,8 +166,8 @@ private:
 // ============================================================
 
 std::expected<void, AppStreamParser::ParseError>
-AppStreamParser::doParse(XmlScanner &scanner,
-                         const std::string &language, ComponentSink &sink) {
+AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
+                         ComponentSink &sink) {
 
   // ---- Parser state ----
   bool insideComponent = false;
@@ -631,6 +632,7 @@ AppStreamParser::doParse(XmlScanner &scanner,
         insideComponent = false;
         if (!currentComponent.id.empty()) {
           auto r = sink.onComponent(std::move(currentComponent));
+          currentComponent = {}; // clear moved-from state
           if (!r)
             return std::unexpected(ParseError::SINK_ERROR);
         }
@@ -892,11 +894,16 @@ AppStreamParser::parseToSink(const std::string &filename,
   const int fd = open(filename.c_str(), O_RDONLY);
   if (fd == -1)
     return std::unexpected(ParseError::FILE_NOT_FOUND);
+
+  // RAII guard ensures fd is closed even if doParse throws
+  struct FdGuard {
+    int fd;
+    ~FdGuard() { close(fd); }
+  } guard{fd};
+
   spdlog::info("Parsing file (streaming): {}", filename);
   XmlScanner scanner(fd);
-  auto result = doParse(scanner, language, sink);
-  close(fd);
-  return result;
+  return doParse(scanner, language, sink);
 }
 
 // ============================================================

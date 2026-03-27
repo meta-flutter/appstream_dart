@@ -39,8 +39,8 @@ XmlScanner::XmlScanner(const char *data, size_t size)
 }
 
 XmlScanner::XmlScanner(int fd, size_t bufSize)
-    : pos_(nullptr), end_(nullptr), data_(nullptr),
-      fd_(fd), stream_buf_(bufSize), pending_end_(false) {
+    : pos_(nullptr), end_(nullptr), data_(nullptr), fd_(fd),
+      stream_buf_(bufSize), pending_end_(false) {
   attr_buf_.reserve(8);
   decode_buf_.reserve(256);
 
@@ -71,11 +71,13 @@ XmlScanner::XmlScanner(int fd, size_t bufSize)
 }
 
 void XmlScanner::refillIfNeeded() {
-  if (fd_ < 0 || eof_) return;
+  if (fd_ < 0 || eof_)
+    return;
 
   const auto remaining = static_cast<size_t>(end_ - pos_);
   // Refill when less than half the buffer remains
-  if (remaining >= stream_buf_.size() / 2) return;
+  if (remaining >= stream_buf_.size() / 2)
+    return;
 
   // Compact: move unconsumed data to the front
   if (remaining > 0 && pos_ != stream_buf_.data()) {

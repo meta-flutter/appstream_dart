@@ -51,27 +51,64 @@ class AppstreamBindings {
             'appstream_version');
   }
 
-  /// Load the shared library from the lib/ directory relative to the project root.
+  /// Load the shared library.
+  ///
+  /// Search order:
+  /// 1. APPSTREAM_LIB_PATH environment variable (absolute path to .so)
+  /// 2. Executable directory + /lib/
+  /// 3. Executable directory
+  /// 4. CWD + /lib/
+  /// 5. Platform.script relative paths (if available)
+  /// 6. Each LD_LIBRARY_PATH directory (explicit File.open, not dlopen)
+  /// 7. dlopen fallback (system linker)
   factory AppstreamBindings.load() {
-    final libName = 'libappstream.so';
-
-    // Search in lib/ relative to the executable, script, or current directory.
-    final candidates = [
-      '${File(Platform.resolvedExecutable).parent.path}/lib/$libName',
+    const libName = 'libappstream.so';
+    final candidates = <String>[];
+    final exeDir = File(Platform.resolvedExecutable).parent.path;
+    candidates.addAll([
+      '$exeDir/lib/$libName',
+      '$exeDir/$libName',
       '${Directory.current.path}/lib/$libName',
-      '${Platform.script.toFilePath()}/../lib/$libName',
-      '${Platform.script.toFilePath()}/../../lib/$libName',
-      libName, // system library path
-    ];
+    ]);
+
+    try {
+      final scriptDir = Platform.script.toFilePath();
+      candidates.add('$scriptDir/../lib/$libName');
+      candidates.add('$scriptDir/../../lib/$libName');
+    } catch (_) {}
+
+    // Search LD_LIBRARY_PATH directories explicitly via absolute path.
+    final ldPath = Platform.environment['LD_LIBRARY_PATH'] ?? '';
+    for (final dir in ldPath.split(':')) {
+      if (dir.isNotEmpty) {
+        candidates.add('$dir/$libName');
+      }
+    }
+
+    final errors = <String>[];
 
     for (final path in candidates) {
       final file = File(path);
       if (file.existsSync()) {
-        return AppstreamBindings._(DynamicLibrary.open(file.absolute.path));
+        try {
+          return AppstreamBindings._(DynamicLibrary.open(file.absolute.path));
+        } catch (e) {
+          errors.add('${file.absolute.path}: $e');
+        }
       }
     }
 
-    // Fallback: let the dynamic linker find it
-    return AppstreamBindings._(DynamicLibrary.open(libName));
+    try {
+      return AppstreamBindings._(DynamicLibrary.open(libName));
+    } catch (e) {
+      errors.add('dlopen($libName): $e');
+    }
+
+    throw StateError(
+      'Failed to load $libName. Searched:\n'
+      '${candidates.map((p) => '  $p (${File(p).existsSync() ? "exists" : "not found"})').join('\n')}\n'
+      'Errors:\n${errors.join('\n')}\n'
+      'LD_LIBRARY_PATH=${Platform.environment['LD_LIBRARY_PATH'] ?? '(not set)'}',
+    );
   }
 }

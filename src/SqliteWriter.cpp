@@ -36,20 +36,20 @@ void SqliteWriter::closeDb() {
 }
 
 void SqliteWriter::removeStagingFiles() {
-  std::remove(stagingPath_.c_str());
-  std::remove((stagingPath_ + "-wal").c_str());
-  std::remove((stagingPath_ + "-shm").c_str());
+  (void)std::remove(stagingPath_.c_str());
+  (void)std::remove((stagingPath_ + "-wal").c_str());
+  (void)std::remove((stagingPath_ + "-shm").c_str());
 }
 
 bool SqliteWriter::atomicSwap() {
-  std::remove((dbPath_ + "-wal").c_str());
-  std::remove((dbPath_ + "-shm").c_str());
+  (void)std::remove((dbPath_ + "-wal").c_str());
+  (void)std::remove((dbPath_ + "-shm").c_str());
   if (std::rename(stagingPath_.c_str(), dbPath_.c_str()) != 0) {
     spdlog::error("rename failed: {} → {}", stagingPath_, dbPath_);
     return false;
   }
-  std::remove((stagingPath_ + "-wal").c_str());
-  std::remove((stagingPath_ + "-shm").c_str());
+  (void)std::remove((stagingPath_ + "-wal").c_str());
+  (void)std::remove((stagingPath_ + "-shm").c_str());
   return true;
 }
 
