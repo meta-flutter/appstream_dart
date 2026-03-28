@@ -1,14 +1,29 @@
 name: appstream
-description: Flathub Appstream parser — fetches XML, streams to SQLite via C++23 FFI.
-version: 0.1.0
+description: >-
+  High-performance AppStream XML parser with C++23 FFI bridge. Parses Flathub
+  catalog metadata into SQLite with Drift ORM, multi-language translations,
+  FTS5 search, and streaming progress events.
+version: 0.2.0
+repository: https://github.com/meta-flutter/appstream
+topics:
+  - appstream
+  - flathub
+  - linux
+  - ffi
+  - sqlite
+
+platforms:
+  linux:
 
 environment:
-  sdk: ^3.4.0
+  sdk: ^3.10.0
 
 dependencies:
   drift: ^2.22.0
   ffi: ^2.1.0
+  hooks: ^1.0.2
   http: ^1.2.0
+  native_toolchain_c: ^0.17.6
   path: ^1.9.0
   sqlite3: ^2.4.0
 

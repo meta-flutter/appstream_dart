@@ -159,8 +159,8 @@ Future<void> _cmdDetail(CatalogDatabase db, List<String> args) async {
   final c = detail.component;
   final typeName = _typeNames[c.componentType] ?? 'Unknown';
 
-  print('${c.name}');
-  print('${'=' * c.name.length}');
+  print(c.name);
+  print('=' * c.name.length);
   print('ID:       ${c.id}');
   print('Type:     $typeName');
   if (c.summary != null) print('Summary:  ${c.summary}');
