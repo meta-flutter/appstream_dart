@@ -1,3 +1,10 @@
+## 0.2.1
+
+- Add `std::expected` polyfill for Clang 18 (Flutter's default Linux
+  toolchain), removing the hard requirement on Clang 19+
+- Rename package from `appstream` to `appstream_dart` and fix example
+  imports to match
+
 ## 0.2.0
 
 - Multi-language translation support: store `xml:lang` field translations
