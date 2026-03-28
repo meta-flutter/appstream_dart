@@ -19,7 +19,7 @@
 
 #include "Component.h"
 
-#include <expected>
+#include "expected_polyfill.h"
 
 /// Abstract sink interface for streaming parsed components.
 ///

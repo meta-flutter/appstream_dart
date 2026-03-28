@@ -5,9 +5,9 @@ void main(List<String> args) => build(args, _build);
 
 /// Build the appstream native library from C++ source.
 ///
-/// Requires a C++23 compiler with std::expected support:
-/// - GCC 13+ (recommended)
-/// - Clang 19+
+/// Requires a C++23 compiler:
+/// - GCC 13+
+/// - Clang 18+ (std::expected polyfilled when not available)
 ///
 /// Also requires SQLite3 development libraries.
 Future<void> _build(BuildInput input, BuildOutputBuilder output) async {

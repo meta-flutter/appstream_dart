@@ -1,4 +1,4 @@
-import 'package:appstream/appstream.dart';
+import 'package:appstream_dart/appstream.dart';
 import 'package:flutter/material.dart';
 
 import '../services/catalog_service.dart';

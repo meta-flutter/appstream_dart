@@ -18,7 +18,7 @@
 #define XMLSCANNER_H
 
 #include <cstddef>
-#include <expected>
+#include "expected_polyfill.h"
 #include <string>
 #include <string_view>
 #include <vector>

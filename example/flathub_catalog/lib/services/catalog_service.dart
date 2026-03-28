@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:appstream/appstream.dart';
+import 'package:appstream_dart/appstream.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as p;

@@ -21,7 +21,7 @@
 #include "ComponentSink.h"
 #include "XmlScanner.h"
 
-#include <expected>
+#include "expected_polyfill.h"
 #include <memory>
 #include <ranges>
 #include <string>

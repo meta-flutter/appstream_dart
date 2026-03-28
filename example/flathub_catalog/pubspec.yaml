@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  appstream:
+  appstream_dart:
     path: ../..
   cached_network_image: ^3.4.1
   drift: ^2.22.0
