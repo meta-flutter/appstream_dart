@@ -13,7 +13,7 @@ void main(List<String> args) => build(args, _build);
 Future<void> _build(BuildInput input, BuildOutputBuilder output) async {
   final builder = CBuilder.library(
     name: 'appstream',
-    assetName: 'package:appstream/src/appstream_native.dart',
+    assetName: 'package:appstream_dart/src/appstream_native.dart',
     sources: [
       'src/dart_api_dl.cpp',
       'src/appstream_ffi.cpp',

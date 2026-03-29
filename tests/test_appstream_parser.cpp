@@ -53,11 +53,11 @@ static const std::string kThree = R"xml(<?xml version="1.0" encoding="UTF-8"?>
 
 // ── parseToSink — error cases ─────────────────────────────────────────────
 
-TEST(AppStreamParserSink, MissingFileReturnsMmapFailed) {
+TEST(AppStreamParserSink, MissingFileReturnsFileNotFound) {
     VectorSink sink;
     auto r = AppStreamParser::parseToSink("/no/such/path/file.xml", "", sink);
     ASSERT_FALSE(r.has_value());
-    EXPECT_EQ(r.error(), PE::MMAP_FAILED);
+    EXPECT_EQ(r.error(), PE::FILE_NOT_FOUND);
 }
 
 TEST(AppStreamParserSink, MalformedXmlReturnsXmlParseError) {

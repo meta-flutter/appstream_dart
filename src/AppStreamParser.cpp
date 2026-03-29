@@ -173,7 +173,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
   // "" = default only (no translations stored)
   // "*" = all languages
   // "en,de,fr" = specific set
-  bool keepAllLangs = (language == "*");
+  bool keepAllLangs = (language == "*") || language.empty();
   std::unordered_set<std::string> langSet;
   if (!keepAllLangs && !language.empty()) {
     std::string_view sv(language);
@@ -867,7 +867,8 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       } else if (tag == "source_pkgname"sv) {
         currentComponent.source_pkgname = std::move(textAccum);
       } else if (tag == "name"sv) {
-        if (currentLang.empty()) {
+        if (currentLang.empty() || keepAllLangs ||
+            langSet.contains(currentLang)) {
           if (insideDeveloper)
             currentComponent.developer.name = std::move(textAccum);
           else

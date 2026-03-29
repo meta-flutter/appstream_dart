@@ -15,7 +15,7 @@ library;
 
 import 'dart:io';
 
-import 'package:appstream/appstream.dart';
+import 'package:appstream_dart/appstream.dart';
 
 const _typeNames = {
   0: 'Unknown',
