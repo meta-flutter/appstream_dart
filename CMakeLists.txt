@@ -59,11 +59,9 @@ set_target_properties(appstream_core PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # ── Shared library (Dart FFI wrapper) ─────────────────────────────────────
 add_library(appstream SHARED
-    src/dart_api_dl.c
+    src/dart_api_dl.cpp
     src/appstream_ffi.cpp
 )
-# dart_api_dl.c must be compiled as C, not C++.
-set_source_files_properties(src/dart_api_dl.c PROPERTIES LANGUAGE C)
 target_compile_options(appstream PRIVATE -O2 -fvisibility=hidden)
 target_link_libraries(appstream PRIVATE appstream_core)
 set_target_properties(appstream PROPERTIES
