@@ -170,10 +170,10 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
                          ComponentSink &sink) {
 
   // ---- Build language filter set ----
-  // "" = default only (no translations stored)
-  // "*" = all languages
-  // "en,de,fr" = specific set
-  bool keepAllLangs = (language == "*");
+  // "" = all languages (last written wins, no filtering)
+  // "*" = all languages (same as "")
+  // "en,de,fr" = specific set (default + listed langs kept)
+  bool keepAllLangs = language.empty() || (language == "*");
   std::unordered_set<std::string> langSet;
   if (!keepAllLangs && !language.empty()) {
     std::string_view sv(language);
@@ -867,16 +867,15 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       } else if (tag == "source_pkgname"sv) {
         currentComponent.source_pkgname = std::move(textAccum);
       } else if (tag == "name"sv) {
-        if (currentLang.empty()) {
-          if (insideDeveloper)
-            currentComponent.developer.name = std::move(textAccum);
-          else
-            currentComponent.name = std::move(textAccum);
-        } else {
+        if (!currentLang.empty()) {
           std::string field = insideDeveloper ? "developer_name" : "name";
           currentComponent.field_translations.push_back(
-              {std::move(field), std::move(currentLang), std::move(textAccum)});
+              {field, currentLang, textAccum});
         }
+        if (insideDeveloper)
+          currentComponent.developer.name = std::move(textAccum);
+        else
+          currentComponent.name = std::move(textAccum);
       } else if (tag == "name_variant_suffix"sv) {
         currentComponent.name_variant_suffix = std::move(textAccum);
       } else if (tag == "project_license"sv) {
@@ -884,12 +883,11 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       } else if (tag == "metadata_license"sv) {
         currentComponent.metadata_license = std::move(textAccum);
       } else if (tag == "summary"sv) {
-        if (currentLang.empty()) {
-          currentComponent.summary = std::move(textAccum);
-        } else {
+        if (!currentLang.empty()) {
           currentComponent.field_translations.push_back(
-              {"summary", std::move(currentLang), std::move(textAccum)});
+              {"summary", currentLang, textAccum});
         }
+        currentComponent.summary = std::move(textAccum);
       } else if (tag == "url"sv) {
         currentComponent.setUrl(urlType, std::move(textAccum));
       } else if (tag == "project_group"sv) {
@@ -961,7 +959,7 @@ AppStreamParser::parseToSink(const std::string &filename,
                              const std::string &language, ComponentSink &sink) {
   const int fd = open(filename.c_str(), O_RDONLY);
   if (fd == -1)
-    return std::unexpected(ParseError::FILE_NOT_FOUND);
+    return std::unexpected(ParseError::MMAP_FAILED);
 
   // RAII guard ensures fd is closed even if doParse throws
   struct FdGuard {
