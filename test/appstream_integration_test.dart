@@ -271,7 +271,8 @@ void main() {
 
     /// XML with two <name> tags: one default (no xml:lang) and one German.
     /// With language='en' → German tag is skipped, name = default.
-    /// With language=''  → both processed, last wins = German.
+    /// With language=''  → German tag is skipped, name = default (default-only).
+    /// With language='de' → German tag is kept, name = German.
     String _langXml() => '''<?xml version="1.0" encoding="UTF-8"?>
 <components>
   <component type="desktop-application">

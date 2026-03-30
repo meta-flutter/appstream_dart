@@ -170,10 +170,10 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
                          ComponentSink &sink) {
 
   // ---- Build language filter set ----
-  // "" = all languages (last written wins, no filtering)
-  // "*" = all languages (same as "")
+  // "" = default language only (elements with xml:lang are skipped)
+  // "*" = all languages (every xml:lang element is kept)
   // "en,de,fr" = specific set (default + listed langs kept)
-  bool keepAllLangs = language.empty() || (language == "*");
+  bool keepAllLangs = (language == "*");
   std::unordered_set<std::string> langSet;
   if (!keepAllLangs && !language.empty()) {
     std::string_view sv(language);

@@ -11,7 +11,7 @@ import 'dart:math';
 
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as p;
-import 'package:appstream/appstream.dart';
+import 'package:appstream_dart/appstream.dart';
 
 const flathubUrls = [
   'https://dl.flathub.org/repo/appstream/x86_64/appstream.xml.gz',
