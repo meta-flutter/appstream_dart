@@ -6,7 +6,7 @@
 ///   `dart run bin/main.dart`)
 library;
 
-import 'package:appstream/appstream.dart';
+import 'package:appstream_dart/appstream.dart';
 
 Future<void> main() async {
   // Initialize the native library (must be called once)

@@ -205,7 +205,7 @@ TEST(AppStreamParserSink, LangFilter_EnSkipsDeNameTag) {
     EXPECT_EQ(sink.components[0].name, "Default Name");
 }
 
-TEST(AppStreamParserSink, LangFilter_EmptyProcessesAll_LastWins) {
+TEST(AppStreamParserSink, LangFilter_EmptyKeepsDefaultOnly) {
     TempFile f(R"xml(<?xml version="1.0" encoding="UTF-8"?>
 <components>
   <component type="desktop-application">
@@ -218,7 +218,7 @@ TEST(AppStreamParserSink, LangFilter_EmptyProcessesAll_LastWins) {
     VectorSink sink;
     AppStreamParser::parseToSink(f.str(), "", sink);
     ASSERT_EQ(sink.components.size(), 1u);
-    EXPECT_EQ(sink.components[0].name, "German Name");  // last wins
+    EXPECT_EQ(sink.components[0].name, "Default Name");  // "" = default only
 }
 
 TEST(AppStreamParserSink, LangFilter_DeMatchesDeTag) {

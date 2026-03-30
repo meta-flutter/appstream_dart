@@ -5,7 +5,7 @@
 /// starts fresh here with _initialized = false.
 library;
 
-import 'package:appstream/appstream.dart';
+import 'package:appstream_dart/appstream.dart';
 import 'package:test/test.dart';
 
 void main() {

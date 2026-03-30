@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:appstream/appstream.dart';
+import 'package:appstream_dart/appstream.dart';
 import 'package:test/test.dart';
 
 /// Eagerly initialize the native library so the result is available
