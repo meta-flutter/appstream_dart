@@ -1,6 +1,6 @@
-# AppStream Parser - Flathub Catalog to SQLite
+# AppStream to SQLite parser
 
-A high-performance C++23 FFI bridge for parsing Flathub AppStream metadata into SQLite databases, with Dart bindings, a Drift ORM layer, multi-language translation support, and a Flutter example app.
+A high-performance C++23 FFI bridge for parsing AppStream metadata into SQLite databases, with Dart bindings, a Drift ORM layer, multi-language translation support, and a Flutter example app.
 
 ## Quick Facts
 
@@ -17,10 +17,10 @@ A high-performance C++23 FFI bridge for parsing Flathub AppStream metadata into 
 - **Multi-Language Translations** - Stores per-field translations (name, summary, description) in a dedicated table; select language at runtime with locale fallback chain
 - **Drift ORM Layer** - Type-safe query API with 20 tables, FTS5 full-text search, locale-aware queries, icon URL resolution, category/language browsing, and metrics
 - **String Interning** - Efficient memory usage with StringPool for categories and keywords
-- **Real Flathub Data** - Parses the full Flathub catalog (~4500 components in ~260 ms)
+- **Real-World Tested** - Parses the full Flathub catalog (~4500 components in ~260 ms)
 
 ### CLI Tools
-- **bin/main.dart** - Downloads, decompresses, and parses Flathub XML to SQLite with progress bars
+- **bin/main.dart** - Downloads, decompresses, and parses AppStream XML to SQLite with progress bars
 - **bin/query.dart** - Interactive query tool: search, detail, categories, languages, releases, metrics
 
 ### Flutter Example
@@ -95,7 +95,7 @@ make              # builds lib/libappstream.so
 ### Run the CLI
 
 ```bash
-# Download Flathub catalog and parse to SQLite (defaults only)
+# Download and parse AppStream catalog to SQLite (defaults only)
 dart run bin/main.dart
 
 # Parse with all translations (327+ languages, ~50 MB DB)
@@ -146,11 +146,11 @@ component_field_translations (component_id, field, language, value)
 
 ### Language parameter
 
-| Value | Behavior | DB Size |
-|-------|----------|---------|
-| `""` (empty, default) | Default values only, no translations | ~26 MB |
-| `"en,de,fr"` | Default + specific languages | ~30-35 MB |
-| `"*"` | All 327+ languages | ~50 MB |
+| Value                 | Behavior                             | DB Size   |
+|-----------------------|--------------------------------------|-----------|
+| `""` (empty, default) | Default values only, no translations | ~26 MB    |
+| `"en,de,fr"`          | Default + specific languages         | ~30-35 MB |
+| `"*"`                 | All 327+ languages                   | ~50 MB    |
 
 ### Runtime locale selection
 
@@ -210,7 +210,7 @@ void main() async {
 ### Data Flow
 
 ```
-Flathub XML (gzipped, ~7 MB)
+AppStream XML (gzipped, ~7 MB)
     │ HTTP download + gzip decompress + integrity check
     ▼
 appstream.xml (~42 MB on disk)
@@ -244,40 +244,40 @@ CatalogDatabase
 
 20 normalized tables with interned lookups:
 
-| Table | Purpose |
-|-------|---------|
-| `components` | Core app metadata (id, type, name, summary, description, licenses, developer) |
-| `categories` / `component_categories` | Interned category names + junction |
-| `keywords` / `component_keywords` | Interned keyword names + junction |
-| `component_urls` | URLs by type (homepage, bugtracker, donation, etc.) |
-| `component_icons` | Icons by type (stock, cached, remote) with dimensions |
-| `releases` / `release_issues` | Release versions, dates, descriptions, CVEs |
-| `screenshots` / `screenshot_images` / `screenshot_videos` | Screenshot gallery |
-| `content_rating_attrs` | OARS content ratings |
-| `component_languages` | Supported languages |
-| `branding_colors` | Light/dark scheme colors |
-| `component_extends` / `component_suggests` / `component_relations` | Cross-references |
-| `component_custom` | Custom key-value metadata |
-| `component_field_translations` | Localized field values (name, summary, description per language) |
-| `components_fts` | FTS5 full-text search index |
+| Table                                                              | Purpose                                                                       |
+|--------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| `components`                                                       | Core app metadata (id, type, name, summary, description, licenses, developer) |
+| `categories` / `component_categories`                              | Interned category names + junction                                            |
+| `keywords` / `component_keywords`                                  | Interned keyword names + junction                                             |
+| `component_urls`                                                   | URLs by type (homepage, bugtracker, donation, etc.)                           |
+| `component_icons`                                                  | Icons by type (stock, cached, remote) with dimensions                         |
+| `releases` / `release_issues`                                      | Release versions, dates, descriptions, CVEs                                   |
+| `screenshots` / `screenshot_images` / `screenshot_videos`          | Screenshot gallery                                                            |
+| `content_rating_attrs`                                             | OARS content ratings                                                          |
+| `component_languages`                                              | Supported languages                                                           |
+| `branding_colors`                                                  | Light/dark scheme colors                                                      |
+| `component_extends` / `component_suggests` / `component_relations` | Cross-references                                                              |
+| `component_custom`                                                 | Custom key-value metadata                                                     |
+| `component_field_translations`                                     | Localized field values (name, summary, description per language)              |
+| `components_fts`                                                   | FTS5 full-text search index                                                   |
 
 ## Performance
 
-| Metric | Value |
-|--------|-------|
-| Full Flathub parse (defaults only) | ~260 ms, ~26 MB DB |
-| Full Flathub parse (all translations) | ~350 ms, ~50 MB DB |
-| Peak memory (streaming) | ~22 MB |
-| FTS search | < 5 ms |
+| Metric                                | Value              |
+|---------------------------------------|--------------------|
+| Full catalog parse (defaults only)    | ~260 ms, ~26 MB DB |
+| Full catalog parse (all translations) | ~350 ms, ~50 MB DB |
+| Peak memory (streaming)               | ~22 MB             |
+| FTS search                            | < 5 ms             |
 
 ## Documentation
 
-| Document | Purpose |
-|----------|---------|
-| `docs/ARCHITECTURE.md` | System architecture and design decisions |
-| `docs/ADVANCED_BUILD.md` | Build configuration guide |
-| `docs/RUNNING_TESTS.md` | Test execution and debugging |
-| `docs/CODE_AUDIT_REPORT.md` | Security and code quality audit |
+| Document                    | Purpose                                  |
+|-----------------------------|------------------------------------------|
+| `docs/ARCHITECTURE.md`      | System architecture and design decisions |
+| `docs/ADVANCED_BUILD.md`    | Build configuration guide                |
+| `docs/RUNNING_TESTS.md`     | Test execution and debugging             |
+| `docs/CODE_AUDIT_REPORT.md` | Security and code quality audit          |
 
 ## License
 

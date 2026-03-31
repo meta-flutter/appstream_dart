@@ -60,7 +60,7 @@ This document describes the high-level architecture of the `appstream` project.
 ## Data Flow
 
 ```
-Flathub XML (gzipped, ~7 MB)
+AppStream XML (gzipped, ~7 MB)
     | HTTP streaming download + integrity check
     v
 appstream.xml (decompressed, ~42 MB on disk)
@@ -143,7 +143,7 @@ The `parseToSink` code path uses a 256 KB sliding buffer instead of memory-mappi
 2. `XmlScanner` maintains a 256 KB internal buffer. At the start of each `next()` call, `refillIfNeeded()` checks if less than half the buffer remains.
 3. On refill: unconsumed data is `memmove`'d to the front, then `read()` fills the rest.
 4. All `string_view` results from an event are consumed by the parser before the next `next()` call, so buffer compaction is safe.
-5. Peak RSS: ~22 MB for the full Flathub catalog (vs ~64 MB with mmap).
+5. Peak RSS: ~22 MB for a full catalog (~4500 components, vs ~64 MB with mmap).
 
 The in-memory mode (`AppStreamParser::create()`) still uses mmap since it retains data for direct queries.
 
@@ -183,7 +183,7 @@ The in-memory mode (`AppStreamParser::create()`) still uses mmap since it retain
 - **Atomic rename** of staging file for crash-safe database creation.
 - **C ABI for FFI boundary** to keep interop stable and language-agnostic.
 - **Drift ORM** for type-safe queries with FTS5 full-text search support.
-- **Flathub CDN fallback** for cached icon URLs when `media_baseurl` is not set.
+- **Configurable icon CDN fallback** for cached icon URLs when `media_baseurl` is not set (via `iconBaseUrl` parameter).
 
 ## Extension Points
 
