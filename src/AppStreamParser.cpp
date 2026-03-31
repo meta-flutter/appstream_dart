@@ -173,7 +173,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
   // "" = default only (no translations stored)
   // "*" = all languages
   // "en,de,fr" = specific set
-  bool keepAllLangs = (language == "*") || language.empty();
+  bool keepAllLangs = (language == "*");
   std::unordered_set<std::string> langSet;
   if (!keepAllLangs && !language.empty()) {
     std::string_view sv(language);

@@ -17,9 +17,11 @@
 #include <gtest/gtest.h>
 
 #include <chrono>
+#include <fcntl.h>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
+#include <unistd.h>
 
 #include "AppStreamParser.h"
 #include "Component.h"
@@ -46,7 +48,7 @@ public:
 
   ~BenchmarkTimer() {
     const auto elapsed = Duration(Clock::now() - start_);
-    std::cout << "⏱️  " << name_ << ": " << elapsed.count() << " ms"
+    std::cout << "  " << name_ << ": " << elapsed.count() << " ms"
               << std::endl;
   }
 };
@@ -66,7 +68,7 @@ protected:
     ss << "<components version=\"0.14\">\n";
 
     for (size_t i = 0; i < count; ++i) {
-      ss << "  <component type=\"desktop\">\n";
+      ss << "  <component type=\"desktop-application\">\n";
       ss << "    <id>app.example.component" << i << "</id>\n";
       ss << "    <name>Component " << i << "</name>\n";
       ss << "    <summary>Test component number " << i << "</summary>\n";
@@ -125,7 +127,7 @@ TEST_F(PerformanceBenchmark, StringPoolInterning) {
       pool.intern(str);
     }
 
-    EXPECT_GT(pool.uniqueCount(), 0);
+    EXPECT_GT(pool.size(), 0u);
   }
 }
 
@@ -140,15 +142,22 @@ TEST_F(PerformanceBenchmark, XmlScannerLargeDocument) {
     BenchmarkTimer timer("XmlScanner: Parse " + std::to_string(COMPONENT_COUNT) +
                          " components");
 
-    std::ifstream file(xml_path);
-    XmlScanner scanner(file);
+    int fd = open(xml_path.c_str(), O_RDONLY);
+    ASSERT_GE(fd, 0) << "Failed to open " << xml_path;
+    XmlScanner scanner(fd);
 
-    size_t tag_count = 0;
-    while (auto tag = scanner.next()) {
-      tag_count++;
+    size_t event_count = 0;
+    while (true) {
+      auto result = scanner.next();
+      if (!result.has_value())
+        break;
+      if (result->type == XmlScanner::EventType::END_OF_DOCUMENT)
+        break;
+      event_count++;
     }
+    close(fd);
 
-    EXPECT_GT(tag_count, 0);
+    EXPECT_GT(event_count, 0u);
   }
 
   cleanupFile(xml_path);
@@ -164,7 +173,7 @@ class MockSink : public ComponentSink {
 public:
   std::expected<void, Error> begin() override { return {}; }
 
-  std::expected<void, Error> onComponent(Component component) override {
+  std::expected<void, Error> onComponent(Component /*component*/) override {
     count_++;
     return {};
   }
@@ -183,9 +192,9 @@ TEST_F(PerformanceBenchmark, AppStreamParserStreamingMode) {
         " components");
 
     MockSink sink;
-    auto result = AppStreamParser::parseStreaming(xml_path, sink, "en");
+    auto result = AppStreamParser::parseToSink(xml_path, "en", sink);
 
-    EXPECT_TRUE(result.has_value()) << result.error().message;
+    EXPECT_TRUE(result.has_value());
     EXPECT_EQ(sink.componentCount(), COMPONENT_COUNT);
   }
 
@@ -198,15 +207,15 @@ TEST_F(PerformanceBenchmark, AppStreamParserInMemoryMode) {
   {
     BenchmarkTimer timer("AppStreamParser (in-memory): Parse and search");
 
-    auto result = AppStreamParser::parseInMemory(xml_path);
+    auto result = AppStreamParser::create(xml_path, "en");
 
-    EXPECT_TRUE(result.has_value()) << result.error().message;
-    EXPECT_GT(result->componentCount(), 0);
+    EXPECT_TRUE(result.has_value());
+    EXPECT_GT(result->getTotalComponentCount(), 0u);
 
     // Simulate search operations
     for (size_t i = 0; i < 100; ++i) {
-      auto filtered = result->search("Category" + std::to_string(i % 5));
-      (void)filtered; // Use the result
+      auto filtered = result->searchByCategory("Category" + std::to_string(i % 5));
+      (void)filtered;
     }
   }
 
@@ -228,13 +237,8 @@ TEST_F(PerformanceBenchmark, SqliteWriterBatchCommit) {
 
     {
       SqliteWriter writer(db_path);
-      EXPECT_TRUE(writer.begin().has_value());
-
-      MockSink mock_sink;
-      auto parse_result = AppStreamParser::parseStreaming(xml_path, mock_sink, "en");
-      EXPECT_TRUE(parse_result.has_value());
-
-      EXPECT_TRUE(writer.end().has_value());
+      auto result = AppStreamParser::parseToSink(xml_path, "en", writer);
+      EXPECT_TRUE(result.has_value());
     }
 
     // Verify the database was created
@@ -259,20 +263,14 @@ TEST_F(PerformanceBenchmark, EndToEndParsing) {
 
     {
       SqliteWriter writer(db_path);
-      EXPECT_TRUE(writer.begin().has_value());
-
-      // Parse streaming
-      MockSink mock_sink;
-      auto parse_result = AppStreamParser::parseStreaming(xml_path, mock_sink, "en");
-      EXPECT_TRUE(parse_result.has_value());
-
-      EXPECT_TRUE(writer.end().has_value());
+      auto result = AppStreamParser::parseToSink(xml_path, "en", writer);
+      EXPECT_TRUE(result.has_value());
     }
 
     // Verify result
     EXPECT_TRUE(fs::exists(db_path));
     auto file_size = fs::file_size(db_path);
-    EXPECT_GT(file_size, 1024); // At least 1KB
+    EXPECT_GT(file_size, static_cast<uintmax_t>(1024)); // At least 1KB
     std::cout << "   Database size: " << file_size << " bytes" << std::endl;
   }
 
@@ -294,14 +292,9 @@ TEST_F(PerformanceBenchmark, StressTestLargeDataset) {
 
     {
       SqliteWriter writer(db_path);
-      EXPECT_TRUE(writer.begin().has_value());
-
-      MockSink mock_sink;
-      auto parse_result = AppStreamParser::parseStreaming(xml_path, mock_sink, "en");
-      EXPECT_TRUE(parse_result.has_value());
-      EXPECT_EQ(mock_sink.componentCount(), LARGE_COMPONENT_COUNT);
-
-      EXPECT_TRUE(writer.end().has_value());
+      auto result = AppStreamParser::parseToSink(xml_path, "en", writer);
+      EXPECT_TRUE(result.has_value());
+      EXPECT_EQ(writer.componentCount(), LARGE_COMPONENT_COUNT);
     }
 
     auto file_size = fs::file_size(db_path);
@@ -333,9 +326,9 @@ TEST_F(PerformanceBenchmark, StringPoolMemoryEfficiency) {
     }
 
     // Verify deduplication: should only have ~UNIQUE_STRINGS unique strings
-    EXPECT_LE(pool.uniqueCount(), UNIQUE_STRINGS + 10);
+    EXPECT_LE(pool.size(), UNIQUE_STRINGS + 10);
     std::cout << "   Interned " << ITERATIONS << " strings into "
-              << pool.uniqueCount() << " unique entries" << std::endl;
+              << pool.size() << " unique entries" << std::endl;
   }
 }
 
@@ -351,14 +344,13 @@ TEST_F(PerformanceBenchmark, ComponentCreationAndConversion) {
       Component comp;
       comp.id = "app.example.test" + std::to_string(i);
       comp.name = "Test Component " + std::to_string(i);
-      comp.type = ComponentType::DESKTOP;
+      comp.type = Component::Type::DESKTOP_APPLICATION;
       comp.categories.push_back("Category1");
       comp.categories.push_back("Category2");
 
       // Simulate conversion
-      auto type_str = componentTypeToString(comp.type);
+      auto type_str = Component::componentTypeToString(comp.type);
       (void)type_str;
     }
   }
 }
-
