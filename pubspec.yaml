@@ -1,6 +1,6 @@
 name: appstream_dart
 description: >-
-  High-performance AppStream XML parser with C++23 FFI bridge. Parses Flathub
+  High-performance AppStream XML parser with C++23 FFI bridge. Parses AppStream
   catalog metadata into SQLite with Drift ORM, multi-language translations,
   FTS5 search, and streaming progress events.
 version: 0.2.0

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 project(appstream
     LANGUAGES CXX C
     VERSION 0.2.0
-    DESCRIPTION "Flathub Appstream parser — C++23 FFI bridge"
+    DESCRIPTION "AppStream XML parser — C++23 FFI bridge"
 )
 
 # ── Build options ──────────────────────────────────────────────────────────

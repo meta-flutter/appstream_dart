@@ -80,14 +80,20 @@ class CatalogMetrics {
   ComponentFieldTranslations,
 ])
 class CatalogDatabase extends _$CatalogDatabase {
-  CatalogDatabase(super.e);
+  /// Base URL used for cached icon resolution when a component's
+  /// `media_baseurl` is not set.  Pass `null` to omit the fallback
+  /// (only components that carry their own base URL will resolve).
+  final String? iconBaseUrl;
+
+  CatalogDatabase(super.e, {this.iconBaseUrl});
 
   /// Open an existing catalog database file (created by the C++ parser).
-  factory CatalogDatabase.open(String path) {
+  factory CatalogDatabase.open(String path, {String? iconBaseUrl}) {
     return CatalogDatabase(
       NativeDatabase(File(path), setup: (db) {
         db.execute('PRAGMA journal_mode=WAL');
       }),
+      iconBaseUrl: iconBaseUrl,
     );
   }
 
@@ -106,26 +112,26 @@ class CatalogDatabase extends _$CatalogDatabase {
   // Icon URL helper
   // ──────────────────────────────────────────────
 
-  /// Default CDN base URL for cached icons when media_baseurl is not set.
-  static const defaultIconBaseUrl =
-      'https://dl.flathub.org/repo/appstream/x86_64/icons';
-
   /// SQL subquery that picks the best icon URL per component.
   /// Prefers REMOTE (type 5) icons, then CACHED (type 2) composed with
-  /// the component's media_baseurl (falling back to the Flathub CDN),
+  /// the component's media_baseurl (falling back to [iconBaseUrl] if set),
   /// then STOCK name (type 1).
   /// Within each type, picks the largest available size.
-  static const _iconSubquery =
-      '(SELECT CASE ci.icon_type '
-      "  WHEN 5 THEN ci.value "
-      "  WHEN 2 THEN COALESCE(c.media_baseurl, '$defaultIconBaseUrl') || '/' || "
-      "    COALESCE(ci.width,'128') || 'x' || COALESCE(ci.height,'128') || '/' || ci.value "
-      "  ELSE ci.value "
-      'END '
-      'FROM component_icons ci '
-      'WHERE ci.component_id = c.id '
-      'ORDER BY ci.icon_type = 5 DESC, ci.icon_type = 2 DESC, ci.width DESC '
-      'LIMIT 1)';
+  String get _iconSubquery {
+    final baseFallback = iconBaseUrl != null
+        ? "COALESCE(c.media_baseurl, '${iconBaseUrl!.replaceAll("'", "''")}')"
+        : 'c.media_baseurl';
+    return '(SELECT CASE ci.icon_type '
+        "  WHEN 5 THEN ci.value "
+        "  WHEN 2 THEN $baseFallback || '/' || "
+        "    COALESCE(ci.width,'128') || 'x' || COALESCE(ci.height,'128') || '/' || ci.value "
+        "  ELSE ci.value "
+        'END '
+        'FROM component_icons ci '
+        'WHERE ci.component_id = c.id '
+        'ORDER BY ci.icon_type = 5 DESC, ci.icon_type = 2 DESC, ci.width DESC '
+        'LIMIT 1)';
+  }
 
   // ──────────────────────────────────────────────
   // List components (no search filter)

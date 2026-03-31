@@ -69,7 +69,9 @@ class CatalogService extends ChangeNotifier {
   String get gzPath => p.join(_dataDir, 'appstream.xml.gz');
 
   CatalogDatabase get db {
-    _db ??= CatalogDatabase.open(dbPath);
+    _db ??= CatalogDatabase.open(dbPath,
+        iconBaseUrl:
+            'https://dl.flathub.org/repo/appstream/x86_64/icons');
     return _db!;
   }
 
