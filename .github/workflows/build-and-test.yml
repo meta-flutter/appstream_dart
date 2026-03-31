@@ -28,12 +28,15 @@ jobs:
             g++ \
             libsqlite3-dev \
             libgtest-dev \
-            lcov
+            lcov \
+            libclang-rt-19-dev
 
       - name: Configure CMake
         run: |
           cmake -S . -B build \
             -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} \
+            -DCMAKE_C_COMPILER=gcc \
+            -DCMAKE_CXX_COMPILER=g++ \
             -DENABLE_COVERAGE=${{ matrix.build-type == 'Debug' && 'ON' || 'OFF' }} \
             -DENABLE_SANITIZER=${{ matrix.sanitizer }}
 
@@ -151,12 +154,15 @@ jobs:
             cmake \
             g++ \
             libsqlite3-dev \
-            libgtest-dev
+            libgtest-dev \
+            libclang-rt-19-dev
 
       - name: Build with ${{ matrix.sanitizer }}
         run: |
           cmake -S . -B build-${{ matrix.sanitizer }} \
             -DCMAKE_BUILD_TYPE=Debug \
+            -DCMAKE_C_COMPILER=gcc \
+            -DCMAKE_CXX_COMPILER=g++ \
             -DENABLE_SANITIZER=${{ matrix.sanitizer }}
           cmake --build build-${{ matrix.sanitizer }} -j$(nproc)
 
