@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:appstream_dart/appstream.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +19,7 @@ class CatalogScreen extends StatefulWidget {
 
 class _CatalogScreenState extends State<CatalogScreen> {
   final _searchController = TextEditingController();
+  Timer? _debounce;
 
   // Data
   CatalogMetrics? _metrics;
@@ -40,6 +43,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
 
   @override
   void dispose() {
+    _debounce?.cancel();
     _searchController.dispose();
     super.dispose();
   }
@@ -283,8 +287,16 @@ class _CatalogScreenState extends State<CatalogScreen> {
               ],
               onSubmitted: _onSearch,
               onChanged: (v) {
-                if (v.isEmpty) _clearSearch();
                 setState(() {}); // update trailing clear button
+                _debounce?.cancel();
+                if (v.trim().isEmpty) {
+                  _clearSearch();
+                } else {
+                  _debounce = Timer(
+                    const Duration(milliseconds: 300),
+                    () => _onSearch(v),
+                  );
+                }
               },
             ),
           ),
