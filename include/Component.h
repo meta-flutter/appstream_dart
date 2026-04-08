@@ -78,14 +78,7 @@ public:
   // Icon
   // ================================================================
 
-  enum class IconType : uint8_t {
-    UNKNOWN = 0,
-    STOCK,
-    CACHED,
-    LOCAL,
-    URL,
-    REMOTE
-  };
+  enum class IconType : uint8_t { UNKNOWN = 0, STOCK, CACHED, LOCAL, URL, REMOTE };
 
   struct Icon {
     IconType type = IconType::UNKNOWN;
@@ -204,28 +197,11 @@ public:
     CONTRIBUTE
   };
 
-  enum class LaunchableType : uint8_t {
-    UNKNOWN = 0,
-    DESKTOP_ID,
-    SERVICE,
-    COCKPIT_MANIFEST,
-    URL
-  };
+  enum class LaunchableType : uint8_t { UNKNOWN = 0, DESKTOP_ID, SERVICE, COCKPIT_MANIFEST, URL };
 
-  enum class ReleaseType : uint8_t {
-    UNKNOWN = 0,
-    STABLE,
-    DEVELOPMENT,
-    SNAPSHOT
-  };
+  enum class ReleaseType : uint8_t { UNKNOWN = 0, STABLE, DEVELOPMENT, SNAPSHOT };
 
-  enum class ReleaseUrgency : uint8_t {
-    UNKNOWN = 0,
-    LOW,
-    MEDIUM,
-    HIGH,
-    CRITICAL
-  };
+  enum class ReleaseUrgency : uint8_t { UNKNOWN = 0, LOW, MEDIUM, HIGH, CRITICAL };
 
   enum class IssueType : uint8_t { UNKNOWN = 0, GENERIC, CVE };
 

@@ -34,8 +34,7 @@ intptr_t Dart_InitializeApiDL(void *data) {
   DartApiEntry *entry = api->functions;
   while (entry->name != NULL) {
     if (strcmp(entry->name, "Dart_PostCObject") == 0) {
-      Dart_PostCObject_DL =
-          (bool (*)(Dart_Port, Dart_CObject *))entry->function;
+      Dart_PostCObject_DL = (bool (*)(Dart_Port, Dart_CObject *))entry->function;
     }
     entry++;
   }

@@ -1,0 +1,30 @@
+---
+# clang-tidy configuration for appstream_dart native code.
+#
+# Run with:
+#   cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_TESTING=OFF
+#   clang-tidy -p build src/*.cpp
+#
+# Stylistic checks (braces-around-statements, magic numbers, identifier
+# length, cognitive complexity) are disabled — they generate noise without
+# catching real defects.
+Checks: >
+  -*,
+  bugprone-*,
+  cert-*,
+  clang-analyzer-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-empty-catch,
+  -readability-braces-around-statements,
+  -readability-convert-member-functions-to-static,
+  -readability-function-cognitive-complexity,
+  -readability-identifier-length,
+  -readability-implicit-bool-conversion,
+  -readability-magic-numbers,
+  -readability-use-anyofallof
+WarningsAsErrors: ''
+HeaderFilterRegex: 'include/(?!dart_api|expected_polyfill|spdlog).*'
+FormatStyle: file

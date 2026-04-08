@@ -44,14 +44,13 @@ public:
   /// Peak RAM = one Component and sink overhead (e.g., SQLite page cache).
   /// The file is memory mapped for the duration of parsing, then unmapped.
   static std::expected<void, ParseError>
-  parseToSink(const std::string &filename, const std::string &language,
-              ComponentSink &sink);
+  parseToSink(const std::string &filename, const std::string &language, ComponentSink &sink);
 
   // ---- In-memory mode (original behavior) ----
 
   /// Parse and retain all components in memory.
-  static std::expected<AppStreamParser, ParseError>
-  create(const std::string &filename, const std::string &language);
+  static std::expected<AppStreamParser, ParseError> create(const std::string &filename,
+                                                           const std::string &language);
 
   ~AppStreamParser();
 
@@ -64,10 +63,8 @@ public:
   std::vector<std::string> getUniqueCategories() const;
   std::vector<std::string> getUniqueKeywords() const;
 
-  std::vector<const Component *>
-  searchByCategory(std::string_view category) const;
-  std::vector<const Component *>
-  searchByKeyword(std::string_view keyword) const;
+  std::vector<const Component *> searchByCategory(std::string_view category) const;
+  std::vector<const Component *> searchByKeyword(std::string_view keyword) const;
 
   enum class SortOption { BY_ID, BY_NAME };
   std::vector<const Component *> getSortedComponents(SortOption option) const;
@@ -77,8 +74,7 @@ public:
 
   [[nodiscard]] auto getComponents() const {
     return components_ | std::views::values |
-           std::views::transform(
-               [](const auto &ptr) -> const Component & { return *ptr; });
+           std::views::transform([](const auto &ptr) -> const Component & { return *ptr; });
   }
 
 private:
@@ -91,16 +87,14 @@ private:
   void *fileData_ = nullptr;
 
   /// Core parse loop. Streams each completed component to the sink.
-  static std::expected<void, ParseError> doParse(XmlScanner &scanner,
-                                                 const std::string &language,
+  static std::expected<void, ParseError> doParse(XmlScanner &scanner, const std::string &language,
                                                  ComponentSink &sink);
 
   static void mmapFile(const std::string &filename, void *&data, size_t &size);
   static void munmapFile(void *&data, size_t &size);
 
-  static std::string_view
-  findAttr(const std::vector<XmlScanner::Attribute> &attrs,
-           std::string_view name);
+  static std::string_view findAttr(const std::vector<XmlScanner::Attribute> &attrs,
+                                   std::string_view name);
 };
 
 #endif // APPSTREAMPARSER_H

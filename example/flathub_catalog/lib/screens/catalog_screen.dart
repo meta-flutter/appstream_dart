@@ -461,33 +461,43 @@ class _CatalogScreenState extends State<CatalogScreen> {
   static IconData _categoryIcon(String name) {
     final lower = name.toLowerCase();
     if (lower.contains('game')) return Icons.sports_esports;
-    if (lower.contains('audio') || lower.contains('music'))
+    if (lower.contains('audio') || lower.contains('music')) {
       return Icons.music_note;
-    if (lower.contains('video') || lower.contains('player'))
+    }
+    if (lower.contains('video') || lower.contains('player')) {
       return Icons.videocam;
-    if (lower.contains('graphic') || lower.contains('photo'))
+    }
+    if (lower.contains('graphic') || lower.contains('photo')) {
       return Icons.image;
-    if (lower.contains('office') || lower.contains('document'))
+    }
+    if (lower.contains('office') || lower.contains('document')) {
       return Icons.description;
-    if (lower.contains('network') || lower.contains('web'))
+    }
+    if (lower.contains('network') || lower.contains('web')) {
       return Icons.language;
+    }
     if (lower.contains('develop') ||
         lower.contains('ide') ||
-        lower.contains('text'))
+        lower.contains('text')) {
       return Icons.code;
-    if (lower.contains('system') || lower.contains('monitor'))
+    }
+    if (lower.contains('system') || lower.contains('monitor')) {
       return Icons.settings;
-    if (lower.contains('education') || lower.contains('science'))
+    }
+    if (lower.contains('education') || lower.contains('science')) {
       return Icons.school;
+    }
     if (lower.contains('utility') || lower.contains('tool')) return Icons.build;
     if (lower.contains('accessibility')) return Icons.accessibility;
     if (lower.contains('security')) return Icons.security;
     if (lower.contains('finance')) return Icons.account_balance;
-    if (lower.contains('maps') || lower.contains('navigation'))
+    if (lower.contains('maps') || lower.contains('navigation')) {
       return Icons.map;
+    }
     if (lower.contains('chat') || lower.contains('instant')) return Icons.chat;
-    if (lower.contains('email') || lower.contains('contact'))
+    if (lower.contains('email') || lower.contains('contact')) {
       return Icons.email;
+    }
     return Icons.category;
   }
 }

@@ -43,13 +43,7 @@ inline constexpr size_t kDefaultStreamBufSize = 256UL * 1024;
 /// It handles the subset of XML that appstream 1.0 actually uses.
 class XmlScanner {
 public:
-  enum class EventType {
-    START_ELEMENT,
-    END_ELEMENT,
-    TEXT,
-    END_OF_DOCUMENT,
-    ERROR
-  };
+  enum class EventType { START_ELEMENT, END_ELEMENT, TEXT, END_OF_DOCUMENT, ERROR };
 
   struct Attribute {
     std::string_view name;
@@ -63,7 +57,7 @@ public:
     std::vector<Attribute> attributes; // only for START_ELEMENT
     std::string_view text_view;        // zero-copy text (when no entities)
     std::string text_owned;            // decoded text (when entities present)
-    bool text_has_entities = false; // if true, use text_owned; else text_view
+    bool text_has_entities = false;    // if true, use text_owned; else text_view
 
     /// Convenience: get text content regardless of entity status
     [[nodiscard]] std::string_view text() const {

@@ -76,12 +76,26 @@ include(flutter/generated_plugins.cmake)
 
 
 # Bundle libappstream.so from the appstream package.
-set(APPSTREAM_LIB "${CMAKE_CURRENT_SOURCE_DIR}/../../../lib/libappstream.so")
-if(EXISTS "${APPSTREAM_LIB}")
-  list(APPEND PLUGIN_BUNDLED_LIBRARIES "${APPSTREAM_LIB}")
-else()
-  message(WARNING "libappstream.so not found at ${APPSTREAM_LIB}")
-endif()
+#
+# Build the package's native library on demand via its top-level CMake
+# project, then bundle the resulting libappstream.so. We add it as an
+# ExternalProject so the Flutter build always picks up a fresh copy and
+# the file is guaranteed to exist before the runner is linked.
+set(APPSTREAM_PKG_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../..")
+set(APPSTREAM_LIB "${APPSTREAM_PKG_ROOT}/lib/libappstream.so")
+
+include(ExternalProject)
+ExternalProject_Add(appstream_native
+  SOURCE_DIR        "${APPSTREAM_PKG_ROOT}"
+  BINARY_DIR        "${CMAKE_BINARY_DIR}/appstream_native"
+  CMAKE_ARGS        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+                    -DAPPSTREAM_BUILD_TESTS=OFF
+  BUILD_ALWAYS      ON
+  INSTALL_COMMAND   ""
+  BUILD_BYPRODUCTS  "${APPSTREAM_LIB}"
+)
+add_dependencies(${BINARY_NAME} appstream_native)
+list(APPEND PLUGIN_BUNDLED_LIBRARIES "${APPSTREAM_LIB}")
 
 # === Installation ===
 # By default, "installing" just makes a relocatable bundle in the build

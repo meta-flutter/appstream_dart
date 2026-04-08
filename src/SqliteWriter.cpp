@@ -13,17 +13,24 @@
 // ============================================================
 
 SqliteWriter::SqliteWriter(std::string dbPath, size_t batchSize)
-    : dbPath_(std::move(dbPath)), stagingPath_(dbPath_ + ".staging"),
-      batchSize_(batchSize) {}
+    : dbPath_(std::move(dbPath)), stagingPath_(dbPath_ + ".staging"), batchSize_(batchSize) {
+}
 
-SqliteWriter::~SqliteWriter() {
-  if (db_) {
-    if (inTransaction_)
-      sqlite3_exec(db_, "ROLLBACK", nullptr, nullptr, nullptr);
-    closeDb();
-    if (!endCalled_)
-      spdlog::warn("SqliteWriter destroyed without end() — staging left at: {}",
-                   stagingPath_);
+SqliteWriter::~SqliteWriter() noexcept {
+  try {
+    if (db_) {
+      if (inTransaction_) {
+        sqlite3_exec(db_, "ROLLBACK", nullptr, nullptr, nullptr);
+      }
+      closeDb();
+      if (!endCalled_) {
+        spdlog::warn("SqliteWriter destroyed without end() — staging left at: {}", stagingPath_);
+      }
+    }
+  } catch (...) {
+    // Swallow: destructors must not throw. spdlog formatting is the only
+    // realistic source of exceptions here, and we don't want to std::terminate
+    // the parsing process if logging fails during teardown.
   }
 }
 
@@ -54,14 +61,11 @@ bool SqliteWriter::atomicSwap() {
 }
 
 void SqliteWriter::bindText(sqlite3_stmt *s, int i, const std::string &t) {
-  sqlite3_bind_text(s, i, t.data(), static_cast<int>(t.size()),
-                    SQLITE_TRANSIENT);
+  sqlite3_bind_text(s, i, t.data(), static_cast<int>(t.size()), SQLITE_TRANSIENT);
 }
-void SqliteWriter::bindTextOrNull(sqlite3_stmt *s, int i,
-                                  const std::string &t) {
+void SqliteWriter::bindTextOrNull(sqlite3_stmt *s, int i, const std::string &t) {
   t.empty() ? sqlite3_bind_null(s, i)
-            : sqlite3_bind_text(s, i, t.data(), static_cast<int>(t.size()),
-                                SQLITE_TRANSIENT);
+            : sqlite3_bind_text(s, i, t.data(), static_cast<int>(t.size()), SQLITE_TRANSIENT);
 }
 void SqliteWriter::bindInt(sqlite3_stmt *s, int i, int64_t v) {
   sqlite3_bind_int64(s, i, v);
@@ -294,31 +298,27 @@ bool SqliteWriter::prepareStatements() {
   };
   bool ok = true;
 
-  ok =
-      ok && p("INSERT OR IGNORE INTO components "
-              "(id,component_type,priority,merge,name,name_variant_suffix,"
-              "summary,description,pkgname,source_pkgname,project_license,"
-              "metadata_license,project_group,"
-              "media_baseurl,architecture,bundle_type,bundle_id,developer_id,"
-              "developer_name,"
-              "launchable_type,launchable_value,content_rating_type,agreement) "
-              "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-              stmtInsertComponent_);
+  ok = ok && p("INSERT OR IGNORE INTO components "
+               "(id,component_type,priority,merge,name,name_variant_suffix,"
+               "summary,description,pkgname,source_pkgname,project_license,"
+               "metadata_license,project_group,"
+               "media_baseurl,architecture,bundle_type,bundle_id,developer_id,"
+               "developer_name,"
+               "launchable_type,launchable_value,content_rating_type,agreement) "
+               "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+               stmtInsertComponent_);
 
-  ok = ok &&
-       p("INSERT OR IGNORE INTO component_urls VALUES (?,?,?)", stmtInsertUrl_);
+  ok = ok && p("INSERT OR IGNORE INTO component_urls VALUES (?,?,?)", stmtInsertUrl_);
   ok = ok && p("INSERT INTO component_icons "
                "(component_id,icon_type,value,width,height,scale) VALUES "
                "(?,?,?,?,?,?)",
                stmtInsertIcon_);
+  ok = ok && p("INSERT OR IGNORE INTO categories VALUES (?,?)", stmtInsertCategory_);
   ok = ok &&
-       p("INSERT OR IGNORE INTO categories VALUES (?,?)", stmtInsertCategory_);
-  ok = ok && p("INSERT OR IGNORE INTO component_categories VALUES (?,?)",
-               stmtInsertComponentCategory_);
-  ok = ok &&
-       p("INSERT OR IGNORE INTO keywords VALUES (?,?)", stmtInsertKeyword_);
-  ok = ok && p("INSERT OR IGNORE INTO component_keywords VALUES (?,?)",
-               stmtInsertComponentKeyword_);
+       p("INSERT OR IGNORE INTO component_categories VALUES (?,?)", stmtInsertComponentCategory_);
+  ok = ok && p("INSERT OR IGNORE INTO keywords VALUES (?,?)", stmtInsertKeyword_);
+  ok =
+      ok && p("INSERT OR IGNORE INTO component_keywords VALUES (?,?)", stmtInsertComponentKeyword_);
   ok = ok && p("INSERT INTO releases "
                "(id,component_id,release_type,version,date,timestamp,date_eol,"
                "urgency,description,url) VALUES (?,?,?,?,?,?,?,?,?,?)",
@@ -326,18 +326,13 @@ bool SqliteWriter::prepareStatements() {
   ok = ok && p("INSERT INTO release_issues (release_id,issue_type,url,value) "
                "VALUES (?,?,?,?)",
                stmtInsertIssue_);
-  ok =
-      ok &&
-      p("INSERT INTO release_artifacts (id,release_id,location) VALUES (?,?,?)",
-        stmtInsertArtifact_);
-  ok = ok && p("INSERT OR IGNORE INTO artifact_checksums VALUES (?,?,?)",
-               stmtInsertArtifactChecksum_);
-  ok = ok && p("INSERT OR IGNORE INTO artifact_sizes VALUES (?,?,?)",
-               stmtInsertArtifactSize_);
-  ok = ok && p("INSERT OR IGNORE INTO component_languages VALUES (?,?)",
-               stmtInsertLanguage_);
-  ok = ok && p("INSERT OR IGNORE INTO component_compulsory VALUES (?,?)",
-               stmtInsertCompulsory_);
+  ok = ok && p("INSERT INTO release_artifacts (id,release_id,location) VALUES (?,?,?)",
+               stmtInsertArtifact_);
+  ok = ok &&
+       p("INSERT OR IGNORE INTO artifact_checksums VALUES (?,?,?)", stmtInsertArtifactChecksum_);
+  ok = ok && p("INSERT OR IGNORE INTO artifact_sizes VALUES (?,?,?)", stmtInsertArtifactSize_);
+  ok = ok && p("INSERT OR IGNORE INTO component_languages VALUES (?,?)", stmtInsertLanguage_);
+  ok = ok && p("INSERT OR IGNORE INTO component_compulsory VALUES (?,?)", stmtInsertCompulsory_);
 
   ok = ok && p("INSERT INTO screenshots (id,component_id,is_default,caption) "
                "VALUES (?,?,?,?)",
@@ -345,43 +340,30 @@ bool SqliteWriter::prepareStatements() {
   ok = ok && p("INSERT INTO screenshot_images "
                "(screenshot_id,url,type,width,height) VALUES (?,?,?,?,?)",
                stmtInsertScreenshotImage_);
-  ok =
-      ok &&
-      p("INSERT INTO screenshot_videos "
-        "(screenshot_id,url,codec,container,width,height) VALUES (?,?,?,?,?,?)",
-        stmtInsertScreenshotVideo_);
+  ok = ok && p("INSERT INTO screenshot_videos "
+               "(screenshot_id,url,codec,container,width,height) VALUES (?,?,?,?,?,?)",
+               stmtInsertScreenshotVideo_);
 
-  ok = ok && p("INSERT OR IGNORE INTO content_rating_attrs VALUES (?,?,?)",
-               stmtInsertContentAttr_);
-  ok = ok && p("INSERT OR IGNORE INTO provides_binaries VALUES (?,?)",
-               stmtInsertProvidesBinary_);
-  ok = ok && p("INSERT OR IGNORE INTO provides_libraries VALUES (?,?)",
-               stmtInsertProvidesLibrary_);
-  ok = ok && p("INSERT OR IGNORE INTO provides_mediatypes VALUES (?,?)",
-               stmtInsertProvidesMediatype_);
-  ok = ok && p("INSERT OR IGNORE INTO provides_dbus VALUES (?,?,?)",
-               stmtInsertProvidesDbus_);
-  ok = ok && p("INSERT OR IGNORE INTO provides_ids VALUES (?,?)",
-               stmtInsertProvidesId_);
-  ok = ok && p("INSERT OR IGNORE INTO branding_colors VALUES (?,?,?)",
-               stmtInsertBrandingColor_);
-  ok = ok && p("INSERT OR IGNORE INTO component_extends VALUES (?,?)",
-               stmtInsertExtends_);
-  ok = ok && p("INSERT OR IGNORE INTO component_suggests VALUES (?,?)",
-               stmtInsertSuggestsId_);
+  ok = ok && p("INSERT OR IGNORE INTO content_rating_attrs VALUES (?,?,?)", stmtInsertContentAttr_);
+  ok = ok && p("INSERT OR IGNORE INTO provides_binaries VALUES (?,?)", stmtInsertProvidesBinary_);
+  ok = ok && p("INSERT OR IGNORE INTO provides_libraries VALUES (?,?)", stmtInsertProvidesLibrary_);
+  ok = ok &&
+       p("INSERT OR IGNORE INTO provides_mediatypes VALUES (?,?)", stmtInsertProvidesMediatype_);
+  ok = ok && p("INSERT OR IGNORE INTO provides_dbus VALUES (?,?,?)", stmtInsertProvidesDbus_);
+  ok = ok && p("INSERT OR IGNORE INTO provides_ids VALUES (?,?)", stmtInsertProvidesId_);
+  ok = ok && p("INSERT OR IGNORE INTO branding_colors VALUES (?,?,?)", stmtInsertBrandingColor_);
+  ok = ok && p("INSERT OR IGNORE INTO component_extends VALUES (?,?)", stmtInsertExtends_);
+  ok = ok && p("INSERT OR IGNORE INTO component_suggests VALUES (?,?)", stmtInsertSuggestsId_);
   ok = ok && p("INSERT INTO component_relations "
                "(component_id,relation_kind,relation_type,value,compare,"
                "version) VALUES (?,?,?,?,?,?)",
                stmtInsertRelation_);
-  ok = ok && p("INSERT OR IGNORE INTO component_custom VALUES (?,?,?)",
-               stmtInsertCustom_);
-  ok = ok && p("INSERT OR IGNORE INTO component_translations VALUES (?,?,?)",
-               stmtInsertTranslation_);
+  ok = ok && p("INSERT OR IGNORE INTO component_custom VALUES (?,?,?)", stmtInsertCustom_);
   ok = ok &&
-       p("INSERT OR IGNORE INTO component_field_translations VALUES (?,?,?,?)",
-         stmtInsertFieldTranslation_);
-  ok = ok && p("INSERT OR REPLACE INTO write_progress VALUES (?,?)",
-               stmtUpdateProgress_);
+       p("INSERT OR IGNORE INTO component_translations VALUES (?,?,?)", stmtInsertTranslation_);
+  ok = ok && p("INSERT OR IGNORE INTO component_field_translations VALUES (?,?,?,?)",
+               stmtInsertFieldTranslation_);
+  ok = ok && p("INSERT OR REPLACE INTO write_progress VALUES (?,?)", stmtUpdateProgress_);
 
   return ok;
 }
@@ -549,8 +531,7 @@ std::expected<void, ComponentSink::Error> SqliteWriter::begin() {
 // onComponent()
 // ============================================================
 
-std::expected<void, ComponentSink::Error>
-SqliteWriter::onComponent(Component comp) {
+std::expected<void, ComponentSink::Error> SqliteWriter::onComponent(Component comp) {
 
   // 1. Component
   int col = 1;
@@ -573,8 +554,7 @@ SqliteWriter::onComponent(Component comp) {
   bindTextOrNull(stmtInsertComponent_, col++, comp.bundle.id);
   bindTextOrNull(stmtInsertComponent_, col++, comp.developer.id);
   bindTextOrNull(stmtInsertComponent_, col++, comp.developer.name);
-  bindInt(stmtInsertComponent_, col++,
-          static_cast<int64_t>(comp.launchable.type));
+  bindInt(stmtInsertComponent_, col++, static_cast<int64_t>(comp.launchable.type));
   bindTextOrNull(stmtInsertComponent_, col++, comp.launchable.value);
   bindTextOrNull(stmtInsertComponent_, col++, comp.content_rating.type);
   bindTextOrNull(stmtInsertComponent_, col++, comp.agreement);
@@ -582,19 +562,19 @@ SqliteWriter::onComponent(Component comp) {
     return std::unexpected(Error::DATABASE_ERROR);
 
 // Helper macro for simple junction inserts
-#define INSERT2(stmt, a, b)                                                    \
-  do {                                                                         \
-    bindText(stmt, 1, a);                                                      \
-    bindText(stmt, 2, b);                                                      \
-    if (!stepAndReset(stmt))                                                   \
-      return std::unexpected(Error::DATABASE_ERROR);                           \
+#define INSERT2(stmt, a, b)                                                                        \
+  do {                                                                                             \
+    bindText(stmt, 1, a);                                                                          \
+    bindText(stmt, 2, b);                                                                          \
+    if (!stepAndReset(stmt))                                                                       \
+      return std::unexpected(Error::DATABASE_ERROR);                                               \
   } while (0)
-#define INSERT2I(stmt, a, b)                                                   \
-  do {                                                                         \
-    bindText(stmt, 1, a);                                                      \
-    bindInt(stmt, 2, b);                                                       \
-    if (!stepAndReset(stmt))                                                   \
-      return std::unexpected(Error::DATABASE_ERROR);                           \
+#define INSERT2I(stmt, a, b)                                                                       \
+  do {                                                                                             \
+    bindText(stmt, 1, a);                                                                          \
+    bindInt(stmt, 2, b);                                                                           \
+    if (!stepAndReset(stmt))                                                                       \
+      return std::unexpected(Error::DATABASE_ERROR);                                               \
   } while (0)
 
   // 2. URLs
@@ -764,8 +744,7 @@ SqliteWriter::onComponent(Component comp) {
   }
 
   // 13. Relations (requires + recommends)
-  auto insertRelations = [&](const std::vector<Component::Relation> &rels,
-                             const char *kind) {
+  auto insertRelations = [&](const std::vector<Component::Relation> &rels, const char *kind) {
     std::string k(kind);
     for (const auto &r : rels) {
       bindText(stmtInsertRelation_, 1, comp.id);

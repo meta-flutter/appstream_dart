@@ -1,3 +1,38 @@
+## 0.2.2
+
+- pub.dev publishing hygiene:
+  - Add `lib/appstream_dart.dart` re-export so the primary library name
+    matches the package name. The original `lib/appstream.dart` import
+    continues to work.
+  - Rename `docs/` → `doc/` and `tests/` → `native_tests/` to match the
+    pub package layout (singular `doc/`, no clash with the Dart `test/`
+    directory).
+  - Add `.pubignore` to keep build artifacts, the cached
+    `appstream.xml`/`catalog.db`, the Flutter example sub-package, and
+    legacy/dev shell scripts out of the published archive.
+- Native build: gate the C++ test suite behind
+  `-DAPPSTREAM_BUILD_TESTS=ON` so the `package:hooks` build hook and
+  downstream consumers no longer fetch GoogleTest or build the test
+  executable by default.
+- Reliability and security fixes surfaced by clang-tidy:
+  - Fix 8 use-after-move bugs in `AppStreamParser` (member key strings
+    were re-checked via `.empty()` after being moved).
+  - Mark `SqliteWriter::~SqliteWriter` `noexcept` and wrap its body in a
+    try/catch so a logging failure during teardown can no longer
+    `std::terminate` the parsing process.
+  - `postString` (FFI) now returns success/failure and a stack-allocated
+    OOM sentinel (`-2`) is posted if the malloc fails, instead of the
+    progress message being silently dropped.
+  - Document path-handling expectations on `appstream_parse_to_sqlite`:
+    paths are passed directly to `open(2)`/SQLite with no normalization
+    or sandboxing, so callers accepting them from untrusted input must
+    validate first.
+- Tooling: add `.clang-format` and `.clang-tidy` at the repo root so
+  formatting and lint runs are deterministic.
+- Flutter example (`example/flathub_catalog`): drive the package's
+  CMake build via `ExternalProject_Add` so `libappstream.so` is always
+  built and bundled before the runner is linked.
+
 ## 0.2.1
 
 - Add `std::expected` polyfill for Clang 18 (Flutter's default Linux

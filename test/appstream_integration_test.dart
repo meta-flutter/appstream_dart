@@ -288,7 +288,7 @@ void main() {
     /// With language='en' → German tag is skipped, name = default.
     /// With language=''  → German tag is skipped, name = default (default-only).
     /// With language='de' → German tag is kept, name = German.
-    String _langXml() => '''<?xml version="1.0" encoding="UTF-8"?>
+    String langXml() => '''<?xml version="1.0" encoding="UTF-8"?>
 <components>
   <component type="desktop-application">
     <id>com.example.LangTest</id>
@@ -302,7 +302,7 @@ void main() {
     test('language="en" skips xml:lang="de" name tag', () async {
       final xmlPath = '${tempDir.path}/lang.xml';
       final dbPath = '${tempDir.path}/catalog.db';
-      await File(xmlPath).writeAsString(_langXml());
+      await File(xmlPath).writeAsString(langXml());
 
       final events = await _parse(xmlPath, dbPath, language: 'en');
 
@@ -315,7 +315,7 @@ void main() {
       () async {
         final xmlPath = '${tempDir.path}/lang.xml';
         final dbPath = '${tempDir.path}/catalog.db';
-        await File(xmlPath).writeAsString(_langXml());
+        await File(xmlPath).writeAsString(langXml());
 
         final events = await _parse(xmlPath, dbPath);
 

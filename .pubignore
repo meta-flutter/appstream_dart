@@ -1,0 +1,42 @@
+# Files excluded from the pub.dev archive but kept in git.
+# Pub falls back to .gitignore when this file is absent; with this file
+# present, only these patterns are excluded.
+
+# Build artifacts (any out-of-source CMake build dir)
+build/
+build-*/
+.cache/
+*.o
+lib/libappstream.so
+
+# Cached / generated data files
+appstream.xml
+appstream.xml.gz
+catalog.db
+catalog.db-*
+catalog.db.staging*
+
+# Legacy / dev-only build scripts (current build is CMake-driven via
+# hook/build.dart and scripts/test.sh).
+Makefile
+build.sh
+run_tests.sh
+test_advanced_features.sh
+
+# Flutter example sub-package — has its own pubspec, ~hundreds of files,
+# and is not needed for `dart pub get` consumers of appstream_dart.
+example/flathub_catalog/
+
+# Internal audit / planning docs that aren't useful to library users.
+docs/CODE_AUDIT_REPORT.md
+docs/COMPLETE_SUMMARY.md
+docs/TEST_SUMMARY.md
+
+# IDE / editor / OS junk
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Claude Code state
+.claude/

@@ -9,8 +9,11 @@ build-*/
 src/*.o
 lib/libappstream.so
 appstream
+.cache/
 
-# Generated
+# Cached AppStream catalogs / generated databases
+appstream.xml
+appstream.xml.gz
 catalog.db
 catalog.db-wal
 catalog.db-shm
