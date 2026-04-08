@@ -100,10 +100,16 @@ class _DetailScreenState extends State<DetailScreen> {
     if (locale != null) {
       try {
         name = await db.getTranslation(widget.componentId, 'name', locale);
-        summary =
-            await db.getTranslation(widget.componentId, 'summary', locale);
-        description =
-            await db.getTranslation(widget.componentId, 'description', locale);
+        summary = await db.getTranslation(
+          widget.componentId,
+          'summary',
+          locale,
+        );
+        description = await db.getTranslation(
+          widget.componentId,
+          'description',
+          locale,
+        );
       } catch (_) {}
     }
 
@@ -149,92 +155,94 @@ class _DetailScreenState extends State<DetailScreen> {
         }
       },
       child: Scaffold(
-      appBar: AppBar(
-        title: Text(_localizedName ?? c.name),
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(24),
-        children: [
-          // Header: icon + name + summary
-          _buildHeader(theme, c, detail),
-          const SizedBox(height: 24),
-
-          // Screenshot gallery
-          if (detail.screenshotImages.isNotEmpty) ...[
-            _buildScreenshots(detail.screenshotImages),
+        appBar: AppBar(title: Text(_localizedName ?? c.name)),
+        body: ListView(
+          padding: const EdgeInsets.all(24),
+          children: [
+            // Header: icon + name + summary
+            _buildHeader(theme, c, detail),
             const SizedBox(height: 24),
-          ],
 
-          // Description
-          if ((_localizedDescription ?? c.description) != null) ...[
-            _sectionTitle(theme, 'Description'),
-            const SizedBox(height: 8),
-            _AppStreamHtml(
-              html: (_localizedDescription ?? c.description)!,
-              style: theme.textTheme.bodyMedium!,
-            ),
+            // Screenshot gallery
+            if (detail.screenshotImages.isNotEmpty) ...[
+              _buildScreenshots(detail.screenshotImages),
+              const SizedBox(height: 24),
+            ],
+
+            // Description
+            if ((_localizedDescription ?? c.description) != null) ...[
+              _sectionTitle(theme, 'Description'),
+              const SizedBox(height: 8),
+              _AppStreamHtml(
+                html: (_localizedDescription ?? c.description)!,
+                style: theme.textTheme.bodyMedium!,
+              ),
+              const SizedBox(height: 24),
+            ],
+
+            // Info chips
+            _buildInfoSection(theme, c, detail),
             const SizedBox(height: 24),
-          ],
 
-          // Info chips
-          _buildInfoSection(theme, c, detail),
-          const SizedBox(height: 24),
+            // Links
+            if (detail.urls.isNotEmpty) ...[
+              _sectionTitle(theme, 'Links'),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: detail.urls.map((url) {
+                  final label = _urlTypeLabels[url.urlType] ?? 'Link';
+                  final icon = _urlTypeIcons[url.urlType] ?? Icons.link;
+                  return ActionChip(
+                    avatar: Icon(icon, size: 18),
+                    label: Text(label),
+                    onPressed: () => _launchSafe(url.url),
+                  );
+                }).toList(),
+              ),
+              const SizedBox(height: 24),
+            ],
 
-          // Links
-          if (detail.urls.isNotEmpty) ...[
-            _sectionTitle(theme, 'Links'),
-            const SizedBox(height: 8),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: detail.urls.map((url) {
-                final label = _urlTypeLabels[url.urlType] ?? 'Link';
-                final icon = _urlTypeIcons[url.urlType] ?? Icons.link;
-                return ActionChip(
-                  avatar: Icon(icon, size: 18),
-                  label: Text(label),
-                  onPressed: () => _launchSafe(url.url),
-                );
-              }).toList(),
-            ),
-            const SizedBox(height: 24),
-          ],
+            // Releases
+            if (detail.releases.isNotEmpty) ...[
+              _sectionTitle(theme, 'Recent Releases'),
+              const SizedBox(height: 8),
+              ...detail.releases
+                  .take(5)
+                  .map((rel) => _buildReleaseTile(theme, rel)),
+              const SizedBox(height: 24),
+            ],
 
-          // Releases
-          if (detail.releases.isNotEmpty) ...[
-            _sectionTitle(theme, 'Recent Releases'),
-            const SizedBox(height: 8),
-            ...detail.releases.take(5).map((rel) => _buildReleaseTile(theme, rel)),
-            const SizedBox(height: 24),
-          ],
-
-          // Languages
-          if (detail.languages.isNotEmpty) ...[
-            _sectionTitle(theme, 'Languages (${detail.languages.length})'),
-            const SizedBox(height: 8),
-            Wrap(
-              spacing: 6,
-              runSpacing: 6,
-              children: detail.languages
-                  .take(40)
-                  .map((l) => Chip(
+            // Languages
+            if (detail.languages.isNotEmpty) ...[
+              _sectionTitle(theme, 'Languages (${detail.languages.length})'),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 6,
+                runSpacing: 6,
+                children: detail.languages
+                    .take(40)
+                    .map(
+                      (l) => Chip(
                         label: Text(l),
                         visualDensity: VisualDensity.compact,
-                      ))
-                  .toList(),
-            ),
-            if (detail.languages.length > 40)
-              Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: Text(
-                  '... and ${detail.languages.length - 40} more',
-                  style: theme.textTheme.bodySmall,
-                ),
+                      ),
+                    )
+                    .toList(),
               ),
+              if (detail.languages.length > 40)
+                Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Text(
+                    '... and ${detail.languages.length - 40} more',
+                    style: theme.textTheme.bodySmall,
+                  ),
+                ),
+            ],
           ],
-        ],
+        ),
       ),
-    ),
     );
   }
 
@@ -242,17 +250,16 @@ class _DetailScreenState extends State<DetailScreen> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppIcon(
-          icons: detail.icons,
-          mediaBaseurl: c.mediaBaseurl,
-          size: 96,
-        ),
+        AppIcon(icons: detail.icons, mediaBaseurl: c.mediaBaseurl, size: 96),
         const SizedBox(width: 20),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(_localizedName ?? c.name, style: theme.textTheme.headlineMedium),
+              Text(
+                _localizedName ?? c.name,
+                style: theme.textTheme.headlineMedium,
+              ),
               if (c.developerName != null)
                 Text(
                   c.developerName!,
@@ -262,14 +269,18 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
               const SizedBox(height: 8),
               if ((_localizedSummary ?? c.summary) != null)
-                Text((_localizedSummary ?? c.summary)!, style: theme.textTheme.bodyLarge),
+                Text(
+                  (_localizedSummary ?? c.summary)!,
+                  style: theme.textTheme.bodyLarge,
+                ),
               const SizedBox(height: 8),
               Wrap(
                 spacing: 6,
                 runSpacing: 6,
                 children: [
                   _infoChip(theme, _typeNames[c.componentType] ?? 'App'),
-                  if (c.projectLicense != null) _infoChip(theme, c.projectLicense!),
+                  if (c.projectLicense != null)
+                    _infoChip(theme, c.projectLicense!),
                 ],
               ),
             ],
@@ -290,17 +301,19 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  Widget _buildInfoSection(ThemeData theme, ComponentRow c, ComponentDetail detail) {
+  Widget _buildInfoSection(
+    ThemeData theme,
+    ComponentRow c,
+    ComponentDetail detail,
+  ) {
     return Wrap(
       spacing: 8,
       runSpacing: 8,
       children: [
         if (detail.categories.isNotEmpty)
           ...detail.categories.map(
-            (cat) => Chip(
-              label: Text(cat),
-              visualDensity: VisualDensity.compact,
-            ),
+            (cat) =>
+                Chip(label: Text(cat), visualDensity: VisualDensity.compact),
           ),
       ],
     );
@@ -308,7 +321,8 @@ class _DetailScreenState extends State<DetailScreen> {
 
   /// Group images by screenshot_id, pick the best resolution for the target height.
   static List<_ScreenshotGroup> _groupScreenshots(
-      List<ScreenshotImageRow> images) {
+    List<ScreenshotImageRow> images,
+  ) {
     final groups = <int, List<ScreenshotImageRow>>{};
     for (final img in images) {
       (groups[img.screenshotId] ??= []).add(img);
@@ -331,9 +345,9 @@ class _DetailScreenState extends State<DetailScreen> {
     return SizedBox(
       height: galleryHeight,
       child: ScrollConfiguration(
-        behavior: ScrollConfiguration.of(context).copyWith(
-          dragDevices: PointerDeviceKind.values.toSet(),
-        ),
+        behavior: ScrollConfiguration.of(
+          context,
+        ).copyWith(dragDevices: PointerDeviceKind.values.toSet()),
         child: ListView.separated(
           controller: _screenshotScrollController,
           scrollDirection: Axis.horizontal,
@@ -353,15 +367,21 @@ class _DetailScreenState extends State<DetailScreen> {
                   placeholder: (context, url) => Container(
                     width: 420,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.surfaceContainerHighest,
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+                    child: const Center(
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
                   ),
                   errorWidget: (context, url, error) => Container(
                     width: 420,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.surfaceContainerHighest,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Icon(Icons.broken_image, size: 48),
@@ -376,13 +396,14 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 
   void _openImageViewer(
-      BuildContext context, List<_ScreenshotGroup> groups, int initialIndex) {
+    BuildContext context,
+    List<_ScreenshotGroup> groups,
+    int initialIndex,
+  ) {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (_) => _FullScreenImageViewer(
-          groups: groups,
-          initialIndex: initialIndex,
-        ),
+        builder: (_) =>
+            _FullScreenImageViewer(groups: groups, initialIndex: initialIndex),
       ),
     );
   }
@@ -409,7 +430,6 @@ class _DetailScreenState extends State<DetailScreen> {
     if (uri.scheme != 'http' && uri.scheme != 'https') return;
     launchUrl(uri);
   }
-
 }
 
 /// Renders AppStream HTML description markup as Flutter widgets.
@@ -471,11 +491,13 @@ class _AppStreamHtmlState extends State<_AppStreamHtml> {
       if (text.isNotEmpty) {
         if (currentHref != null) {
           final uri = Uri.tryParse(currentHref);
-          currentSpans.add(TextSpan(
-            text: text,
-            style: spanStack.last,
-            recognizer: uri != null ? _makeTapRecognizer(uri) : null,
-          ));
+          currentSpans.add(
+            TextSpan(
+              text: text,
+              style: spanStack.last,
+              recognizer: uri != null ? _makeTapRecognizer(uri) : null,
+            ),
+          );
         } else {
           currentSpans.add(TextSpan(text: text, style: spanStack.last));
         }
@@ -485,10 +507,12 @@ class _AppStreamHtmlState extends State<_AppStreamHtml> {
     void flushParagraph() {
       flushText();
       if (currentSpans.isNotEmpty) {
-        widgets.add(Padding(
-          padding: const EdgeInsets.only(bottom: 12),
-          child: Text.rich(TextSpan(children: List.of(currentSpans))),
-        ));
+        widgets.add(
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: Text.rich(TextSpan(children: List.of(currentSpans))),
+          ),
+        );
         currentSpans.clear();
       }
     }
@@ -497,13 +521,19 @@ class _AppStreamHtmlState extends State<_AppStreamHtml> {
       flushText();
       if (currentSpans.isNotEmpty) {
         final prefix = ordered ? '${listIndex++}. ' : '\u2022 ';
-        widgets.add(Padding(
-          padding: const EdgeInsets.only(left: 16, bottom: 4),
-          child: Text.rich(TextSpan(children: [
-            TextSpan(text: prefix, style: style),
-            ...List.of(currentSpans),
-          ])),
-        ));
+        widgets.add(
+          Padding(
+            padding: const EdgeInsets.only(left: 16, bottom: 4),
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(text: prefix, style: style),
+                  ...List.of(currentSpans),
+                ],
+              ),
+            ),
+          ),
+        );
         currentSpans.clear();
       }
     }
@@ -565,24 +595,26 @@ class _AppStreamHtmlState extends State<_AppStreamHtml> {
         case 'code':
           flushText();
           if (!closing) {
-            spanStack.add(style.copyWith(
-              fontFamily: 'monospace',
-              backgroundColor:
-                  theme.colorScheme.surfaceContainerHighest,
-            ));
+            spanStack.add(
+              style.copyWith(
+                fontFamily: 'monospace',
+                backgroundColor: theme.colorScheme.surfaceContainerHighest,
+              ),
+            );
           } else if (spanStack.length > 1) {
             spanStack.removeLast();
           }
         case 'a':
           flushText();
           if (!closing) {
-            final hrefMatch =
-                RegExp(r'href\s*=\s*"([^"]*)"').firstMatch(attrs);
+            final hrefMatch = RegExp(r'href\s*=\s*"([^"]*)"').firstMatch(attrs);
             currentHref = hrefMatch?.group(1);
-            spanStack.add(style.copyWith(
-              color: theme.colorScheme.primary,
-              decoration: TextDecoration.underline,
-            ));
+            spanStack.add(
+              style.copyWith(
+                color: theme.colorScheme.primary,
+                decoration: TextDecoration.underline,
+              ),
+            );
           } else {
             flushText();
             currentHref = null;
@@ -614,7 +646,9 @@ class _ScreenshotGroup {
   /// Falls back to the largest available (or source) if none is big enough.
   String bestForHeight(int targetHeight) {
     // Prefer sized thumbnails over source (which has no dimensions)
-    final sized = variants.where((v) => v.height != null && v.height! > 0).toList();
+    final sized = variants
+        .where((v) => v.height != null && v.height! > 0)
+        .toList();
     if (sized.isEmpty) return variants.first.url; // source fallback
 
     // sorted descending by width, find smallest that's >= target
@@ -718,110 +752,123 @@ class _FullScreenImageViewerState extends State<_FullScreenImageViewer> {
         autofocus: true,
         onKeyEvent: _onKey,
         child: Scaffold(
-        backgroundColor: Colors.black,
-        body: Stack(
-          children: [
-            // Swipeable image pages
-            PageView.builder(
-              controller: _pageController,
-              itemCount: widget.groups.length,
-              onPageChanged: (index) => setState(() => _currentIndex = index),
-              itemBuilder: (context, index) {
-                return FittedBox(
-                  fit: BoxFit.contain,
-                  child: CachedNetworkImage(
-                    imageUrl: widget.groups[index].largest,
+          backgroundColor: Colors.black,
+          body: Stack(
+            children: [
+              // Swipeable image pages
+              PageView.builder(
+                controller: _pageController,
+                itemCount: widget.groups.length,
+                onPageChanged: (index) => setState(() => _currentIndex = index),
+                itemBuilder: (context, index) {
+                  return FittedBox(
                     fit: BoxFit.contain,
-                    placeholder: (context, url) => const SizedBox(
-                      width: 200,
-                      height: 200,
-                      child: Center(
-                        child: CircularProgressIndicator(color: Colors.white),
+                    child: CachedNetworkImage(
+                      imageUrl: widget.groups[index].largest,
+                      fit: BoxFit.contain,
+                      placeholder: (context, url) => const SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: Center(
+                          child: CircularProgressIndicator(color: Colors.white),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => const Icon(
+                        Icons.broken_image,
+                        size: 64,
+                        color: Colors.white54,
                       ),
                     ),
-                    errorWidget: (context, url, error) => const Icon(
-                      Icons.broken_image,
-                      size: 64,
-                      color: Colors.white54,
-                    ),
-                  ),
-                );
-              },
-            ),
+                  );
+                },
+              ),
 
-            // Close button
-            Positioned(
-              top: 8,
-              right: 8,
-              child: SafeArea(
-                child: IconButton(
-                  icon: const Icon(Icons.close, color: Colors.white, size: 28),
-                  onPressed: () => Navigator.of(context).pop(),
+              // Close button
+              Positioned(
+                top: 8,
+                right: 8,
+                child: SafeArea(
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.close,
+                      color: Colors.white,
+                      size: 28,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
                 ),
               ),
-            ),
 
-            // Navigation arrows
-            if (widget.groups.length > 1) ...[
-              if (_currentIndex > 0)
-                Positioned(
-                  left: 8,
-                  top: 0,
-                  bottom: 0,
-                  child: Center(
-                    child: IconButton(
-                      icon: const Icon(Icons.chevron_left,
-                          color: Colors.white70, size: 40),
-                      onPressed: () => _pageController.previousPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
+              // Navigation arrows
+              if (widget.groups.length > 1) ...[
+                if (_currentIndex > 0)
+                  Positioned(
+                    left: 8,
+                    top: 0,
+                    bottom: 0,
+                    child: Center(
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.chevron_left,
+                          color: Colors.white70,
+                          size: 40,
+                        ),
+                        onPressed: () => _pageController.previousPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              if (_currentIndex < widget.groups.length - 1)
+                if (_currentIndex < widget.groups.length - 1)
+                  Positioned(
+                    right: 8,
+                    top: 0,
+                    bottom: 0,
+                    child: Center(
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.chevron_right,
+                          color: Colors.white70,
+                          size: 40,
+                        ),
+                        onPressed: () => _pageController.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+
+              // Page indicator
+              if (widget.groups.length > 1)
                 Positioned(
-                  right: 8,
-                  top: 0,
-                  bottom: 0,
+                  bottom: 24,
+                  left: 0,
+                  right: 0,
                   child: Center(
-                    child: IconButton(
-                      icon: const Icon(Icons.chevron_right,
-                          color: Colors.white70, size: 40),
-                      onPressed: () => _pageController.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.black54,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Text(
+                        '${_currentIndex + 1} / ${widget.groups.length}',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
                 ),
             ],
-
-            // Page indicator
-            if (widget.groups.length > 1)
-              Positioned(
-                bottom: 24,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                    decoration: BoxDecoration(
-                      color: Colors.black54,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Text(
-                      '${_currentIndex + 1} / ${widget.groups.length}',
-                      style: theme.textTheme.bodyMedium
-                          ?.copyWith(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
-          ],
+          ),
         ),
-      ),
       ),
     );
   }

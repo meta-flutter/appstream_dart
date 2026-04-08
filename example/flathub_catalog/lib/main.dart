@@ -69,15 +69,11 @@ class _FlathubCatalogAppState extends State<FlathubCatalogApp> {
       home: _initializing
           ? const Scaffold(body: Center(child: CircularProgressIndicator()))
           : _ready
-              ? ListenableBuilder(
-                  listenable: _service,
-                  builder: (context, _) =>
-                      CatalogScreen(service: _service),
-                )
-              : SetupScreen(
-                  service: _service,
-                  onComplete: _onSetupComplete,
-                ),
+          ? ListenableBuilder(
+              listenable: _service,
+              builder: (context, _) => CatalogScreen(service: _service),
+            )
+          : SetupScreen(service: _service, onComplete: _onSetupComplete),
     );
   }
 }

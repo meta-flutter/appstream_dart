@@ -28,20 +28,24 @@ String? get _skip => _nativeReady ? null : 'native library not available';
 
 /// Minimal valid Appstream XML for a list of components, each with id / name
 /// / summary.
-String _xml(List<({String id, String name, String summary})> items,
-    {Map<String, String>? rootAttrs}) {
+String _xml(
+  List<({String id, String name, String summary})> items, {
+  Map<String, String>? rootAttrs,
+}) {
   final root = rootAttrs == null
       ? ''
       : rootAttrs.entries.map((e) => ' ${e.key}="${e.value}"').join();
   final buf = StringBuffer(
-      '<?xml version="1.0" encoding="UTF-8"?>\n<components$root>\n');
+    '<?xml version="1.0" encoding="UTF-8"?>\n<components$root>\n',
+  );
   for (final c in items) {
     buf.write(
-        '  <component type="desktop-application">\n'
-        '    <id>${c.id}</id>\n'
-        '    <name>${c.name}</name>\n'
-        '    <summary>${c.summary}</summary>\n'
-        '  </component>\n');
+      '  <component type="desktop-application">\n'
+      '    <id>${c.id}</id>\n'
+      '    <name>${c.name}</name>\n'
+      '    <summary>${c.summary}</summary>\n'
+      '  </component>\n',
+    );
   }
   buf.write('</components>\n');
   return buf.toString();
@@ -55,14 +59,13 @@ Future<List<ParseEvent>> _parse(
   int batchSize = 200,
   ParseWorkerSpawner? workerSpawner,
   int seconds = 30,
-}) =>
-    Appstream.parseToSqlite(
-      xmlPath: xmlPath,
-      dbPath: dbPath,
-      language: language,
-      batchSize: batchSize,
-      workerSpawner: workerSpawner,
-    ).toList().timeout(Duration(seconds: seconds));
+}) => Appstream.parseToSqlite(
+  xmlPath: xmlPath,
+  dbPath: dbPath,
+  language: language,
+  batchSize: batchSize,
+  workerSpawner: workerSpawner,
+).toList().timeout(Duration(seconds: seconds));
 
 // ---------------------------------------------------------------------------
 // Tests
@@ -112,9 +115,9 @@ void main() {
     test('emits one ComponentParsed then ParseDone(1)', () async {
       final xmlPath = '${tempDir.path}/app.xml';
       final dbPath = '${tempDir.path}/catalog.db';
-      await File(xmlPath).writeAsString(_xml([
-        (id: 'com.example.One', name: 'One', summary: 'First'),
-      ]));
+      await File(xmlPath).writeAsString(
+        _xml([(id: 'com.example.One', name: 'One', summary: 'First')]),
+      );
 
       final events = await _parse(xmlPath, dbPath);
 
@@ -130,17 +133,18 @@ void main() {
     test('component fields (id, name, summary) are preserved', () async {
       final xmlPath = '${tempDir.path}/app.xml';
       final dbPath = '${tempDir.path}/catalog.db';
-      await File(xmlPath).writeAsString(_xml([
-        (
-          id: 'org.project.MyApp',
-          name: 'My Application',
-          summary: 'Does exactly one thing',
-        ),
-      ]));
+      await File(xmlPath).writeAsString(
+        _xml([
+          (
+            id: 'org.project.MyApp',
+            name: 'My Application',
+            summary: 'Does exactly one thing',
+          ),
+        ]),
+      );
 
       final events = await _parse(xmlPath, dbPath);
-      final c =
-          events.whereType<ComponentParsed>().single.component;
+      final c = events.whereType<ComponentParsed>().single.component;
 
       expect(c.id, 'org.project.MyApp');
       expect(c.name, 'My Application');
@@ -150,9 +154,9 @@ void main() {
     test('output database file is created and non-empty', () async {
       final xmlPath = '${tempDir.path}/app.xml';
       final dbPath = '${tempDir.path}/catalog.db';
-      await File(xmlPath).writeAsString(_xml([
-        (id: 'com.example.Db', name: 'Db', summary: 'Check db'),
-      ]));
+      await File(xmlPath).writeAsString(
+        _xml([(id: 'com.example.Db', name: 'Db', summary: 'Check db')]),
+      );
 
       await _parse(xmlPath, dbPath);
 
@@ -177,11 +181,13 @@ void main() {
     test('emits N ComponentParsed events then ParseDone(N)', () async {
       final xmlPath = '${tempDir.path}/app.xml';
       final dbPath = '${tempDir.path}/catalog.db';
-      await File(xmlPath).writeAsString(_xml([
-        (id: 'com.a.A', name: 'A', summary: 'alpha'),
-        (id: 'com.b.B', name: 'B', summary: 'beta'),
-        (id: 'com.c.C', name: 'C', summary: 'gamma'),
-      ]));
+      await File(xmlPath).writeAsString(
+        _xml([
+          (id: 'com.a.A', name: 'A', summary: 'alpha'),
+          (id: 'com.b.B', name: 'B', summary: 'beta'),
+          (id: 'com.c.C', name: 'C', summary: 'gamma'),
+        ]),
+      );
 
       final events = await _parse(xmlPath, dbPath);
 
@@ -198,9 +204,9 @@ void main() {
       final dbPath = '${tempDir.path}/catalog.db';
 
       const ids = ['io.one.One', 'io.two.Two', 'io.three.Three'];
-      await File(xmlPath).writeAsString(_xml([
-        for (final id in ids) (id: id, name: id, summary: ''),
-      ]));
+      await File(xmlPath).writeAsString(
+        _xml([for (final id in ids) (id: id, name: id, summary: '')]),
+      );
 
       final events = await _parse(xmlPath, dbPath);
       final parsedIds = events
@@ -215,14 +221,18 @@ void main() {
     test('ComponentParsed events precede ParseDone', () async {
       final xmlPath = '${tempDir.path}/app.xml';
       final dbPath = '${tempDir.path}/catalog.db';
-      await File(xmlPath).writeAsString(_xml([
-        (id: 'com.x.X', name: 'X', summary: ''),
-        (id: 'com.y.Y', name: 'Y', summary: ''),
-      ]));
+      await File(xmlPath).writeAsString(
+        _xml([
+          (id: 'com.x.X', name: 'X', summary: ''),
+          (id: 'com.y.Y', name: 'Y', summary: ''),
+        ]),
+      );
 
       final events = await _parse(xmlPath, dbPath);
 
-      final lastComponentIdx = events.lastIndexWhere((e) => e is ComponentParsed);
+      final lastComponentIdx = events.lastIndexWhere(
+        (e) => e is ComponentParsed,
+      );
       final doneIdx = events.indexWhere((e) => e is ParseDone);
 
       expect(doneIdx, greaterThan(lastComponentIdx));
@@ -242,18 +252,23 @@ void main() {
       if (tempDir.existsSync()) await tempDir.delete(recursive: true);
     });
 
-    test('empty <components> emits ParseDone(0) with no ComponentParsed', () async {
-      final xmlPath = '${tempDir.path}/empty.xml';
-      final dbPath = '${tempDir.path}/catalog.db';
-      await File(xmlPath)
-          .writeAsString('<?xml version="1.0"?>\n<components/>\n');
+    test(
+      'empty <components> emits ParseDone(0) with no ComponentParsed',
+      () async {
+        final xmlPath = '${tempDir.path}/empty.xml';
+        final dbPath = '${tempDir.path}/catalog.db';
+        await File(
+          xmlPath,
+        ).writeAsString('<?xml version="1.0"?>\n<components/>\n');
 
-      final events = await _parse(xmlPath, dbPath);
+        final events = await _parse(xmlPath, dbPath);
 
-      expect(events.whereType<ComponentParsed>(), isEmpty);
-      expect(events.whereType<ParseDone>().single.count, 0);
-      expect(events.whereType<ParseFailed>(), isEmpty);
-    }, skip: _skip);
+        expect(events.whereType<ComponentParsed>(), isEmpty);
+        expect(events.whereType<ParseDone>().single.count, 0);
+        expect(events.whereType<ParseFailed>(), isEmpty);
+      },
+      skip: _skip,
+    );
   });
 
   // ---- language filter -----------------------------------------------------
@@ -295,18 +310,21 @@ void main() {
       expect(c.name, 'Default Name');
     }, skip: _skip);
 
-    test('language="" keeps only default values (no translations stored)',
-        () async {
-      final xmlPath = '${tempDir.path}/lang.xml';
-      final dbPath = '${tempDir.path}/catalog.db';
-      await File(xmlPath).writeAsString(_langXml());
+    test(
+      'language="" keeps only default values (no translations stored)',
+      () async {
+        final xmlPath = '${tempDir.path}/lang.xml';
+        final dbPath = '${tempDir.path}/catalog.db';
+        await File(xmlPath).writeAsString(_langXml());
 
-      final events = await _parse(xmlPath, dbPath);
+        final events = await _parse(xmlPath, dbPath);
 
-      final c = events.whereType<ComponentParsed>().single.component;
-      // With no filter, only the default (no xml:lang) value is kept.
-      expect(c.name, 'Default Name');
-    }, skip: _skip);
+        final c = events.whereType<ComponentParsed>().single.component;
+        // With no filter, only the default (no xml:lang) value is kept.
+        expect(c.name, 'Default Name');
+      },
+      skip: _skip,
+    );
   });
 
   // ---- batchSize ----------------------------------------------------------
@@ -325,11 +343,13 @@ void main() {
     test('batchSize=1 still produces correct ParseDone count', () async {
       final xmlPath = '${tempDir.path}/app.xml';
       final dbPath = '${tempDir.path}/catalog.db';
-      await File(xmlPath).writeAsString(_xml([
-        (id: 'com.a.A', name: 'A', summary: ''),
-        (id: 'com.b.B', name: 'B', summary: ''),
-        (id: 'com.c.C', name: 'C', summary: ''),
-      ]));
+      await File(xmlPath).writeAsString(
+        _xml([
+          (id: 'com.a.A', name: 'A', summary: ''),
+          (id: 'com.b.B', name: 'B', summary: ''),
+          (id: 'com.c.C', name: 'C', summary: ''),
+        ]),
+      );
 
       final events = await _parse(xmlPath, dbPath, batchSize: 1);
 
@@ -340,9 +360,9 @@ void main() {
     test('batchSize=1000 handles fewer components than batch', () async {
       final xmlPath = '${tempDir.path}/app.xml';
       final dbPath = '${tempDir.path}/catalog.db';
-      await File(xmlPath).writeAsString(_xml([
-        (id: 'com.only.One', name: 'Only One', summary: ''),
-      ]));
+      await File(xmlPath).writeAsString(
+        _xml([(id: 'com.only.One', name: 'Only One', summary: '')]),
+      );
 
       final events = await _parse(xmlPath, dbPath, batchSize: 1000);
 
@@ -363,17 +383,25 @@ void main() {
       if (tempDir.existsSync()) await tempDir.delete(recursive: true);
     });
 
-    test('missing XML file produces ParseFailed with native error prefix', () async {
-      final xmlPath = '${tempDir.path}/does_not_exist.xml';
-      final dbPath = '${tempDir.path}/catalog.db';
+    test(
+      'missing XML file produces ParseFailed with native error prefix',
+      () async {
+        final xmlPath = '${tempDir.path}/does_not_exist.xml';
+        final dbPath = '${tempDir.path}/catalog.db';
 
-      final events = await _parse(xmlPath, dbPath);
+        final events = await _parse(xmlPath, dbPath);
 
-      final failures = events.whereType<ParseFailed>().toList();
-      expect(failures, isNotEmpty, reason: 'Missing file must produce ParseFailed');
-      expect(failures.first.message, startsWith('Native parser error: '));
-      expect(events.whereType<ParseDone>(), isEmpty);
-    }, skip: _skip);
+        final failures = events.whereType<ParseFailed>().toList();
+        expect(
+          failures,
+          isNotEmpty,
+          reason: 'Missing file must produce ParseFailed',
+        );
+        expect(failures.first.message, startsWith('Native parser error: '));
+        expect(events.whereType<ParseDone>(), isEmpty);
+      },
+      skip: _skip,
+    );
 
     test('missing XML file error message contains numeric code', () async {
       final xmlPath = '${tempDir.path}/gone.xml';
@@ -410,10 +438,7 @@ void main() {
       ];
       await File(xmlPath).writeAsString(_xml(items));
 
-      final stream = Appstream.parseToSqlite(
-        xmlPath: xmlPath,
-        dbPath: dbPath,
-      );
+      final stream = Appstream.parseToSqlite(xmlPath: xmlPath, dbPath: dbPath);
 
       // Collect at most 1 event then cancel.
       final received = <ParseEvent>[];
@@ -430,4 +455,3 @@ void main() {
     }, skip: _skip);
   });
 }
-

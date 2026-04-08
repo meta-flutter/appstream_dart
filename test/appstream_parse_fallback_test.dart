@@ -21,8 +21,7 @@ void main() {
   test(
     'parseToSqlite falls back when isolate spawn fails',
     () async {
-      final tempDir =
-          await Directory.systemTemp.createTemp('appstream_test_');
+      final tempDir = await Directory.systemTemp.createTemp('appstream_test_');
       final xmlPath = '${tempDir.path}/appstream.xml';
       final dbPath = '${tempDir.path}/catalog.db';
 
@@ -42,12 +41,13 @@ void main() {
         final events = await Appstream.parseToSqlite(
           xmlPath: xmlPath,
           dbPath: dbPath,
-          workerSpawner: (
-            void Function(Map<String, Object>) _,
-            Map<String, Object> __,
-          ) async {
-            throw StateError('forced spawn failure');
-          },
+          workerSpawner:
+              (
+                void Function(Map<String, Object>) _,
+                Map<String, Object> __,
+              ) async {
+                throw StateError('forced spawn failure');
+              },
         ).toList().timeout(const Duration(seconds: 30));
 
         final failures = events.whereType<ParseFailed>().toList();
@@ -75,8 +75,9 @@ void main() {
   test(
     'parseToSqlite emits ParseFailed or empty ParseDone on loosely-malformed XML',
     () async {
-      final tempDir =
-          await Directory.systemTemp.createTemp('appstream_test_bad_');
+      final tempDir = await Directory.systemTemp.createTemp(
+        'appstream_test_bad_',
+      );
       final xmlPath = '${tempDir.path}/bad.xml';
       final dbPath = '${tempDir.path}/catalog.db';
 
@@ -111,71 +112,68 @@ void main() {
     skip: _nativeReady ? null : 'native library not available',
   );
 
-  test(
-    'parseToSqlite emits ParseFailed with "Native parser error:" prefix on '
-    'unquoted XML attribute (MALFORMED_TAG)',
-    () async {
-      final tempDir =
-          await Directory.systemTemp.createTemp('appstream_test_malformed_');
-      final xmlPath = '${tempDir.path}/malformed.xml';
-      final dbPath = '${tempDir.path}/catalog.db';
+  test('parseToSqlite emits ParseFailed with "Native parser error:" prefix on '
+      'unquoted XML attribute (MALFORMED_TAG)', () async {
+    final tempDir = await Directory.systemTemp.createTemp(
+      'appstream_test_malformed_',
+    );
+    final xmlPath = '${tempDir.path}/malformed.xml';
+    final dbPath = '${tempDir.path}/catalog.db';
 
-      try {
-        // An unquoted attribute value is a hard error in XmlScanner
-        // (MALFORMED_TAG).  The C++ sends "ERROR\tParse failed (code N)" over
-        // the Dart port, which the Dart layer wraps as
-        // ParseFailed('Native parser error: Parse failed (code N)').
-        const xml =
-            '<?xml version="1.0" encoding="UTF-8"?>\n'
-            '<components>'
-            '<component type=desktop-application>'   // ← unquoted value
-            '<id>com.example.Bad</id>'
-            '</component>'
-            '</components>';
+    try {
+      // An unquoted attribute value is a hard error in XmlScanner
+      // (MALFORMED_TAG).  The C++ sends "ERROR\tParse failed (code N)" over
+      // the Dart port, which the Dart layer wraps as
+      // ParseFailed('Native parser error: Parse failed (code N)').
+      const xml =
+          '<?xml version="1.0" encoding="UTF-8"?>\n'
+          '<components>'
+          '<component type=desktop-application>' // ← unquoted value
+          '<id>com.example.Bad</id>'
+          '</component>'
+          '</components>';
 
-        await File(xmlPath).writeAsString(xml);
+      await File(xmlPath).writeAsString(xml);
 
-        final events = await Appstream.parseToSqlite(
-          xmlPath: xmlPath,
-          dbPath: dbPath,
-        ).toList().timeout(const Duration(seconds: 30));
+      final events = await Appstream.parseToSqlite(
+        xmlPath: xmlPath,
+        dbPath: dbPath,
+      ).toList().timeout(const Duration(seconds: 30));
 
-        // Must get exactly one ParseFailed and no ParseDone.
-        final failures = events.whereType<ParseFailed>().toList();
-        final done = events.whereType<ParseDone>().toList();
+      // Must get exactly one ParseFailed and no ParseDone.
+      final failures = events.whereType<ParseFailed>().toList();
+      final done = events.whereType<ParseDone>().toList();
 
-        expect(
-          failures,
-          isNotEmpty,
-          reason: 'Unquoted attribute must produce ParseFailed',
-        );
-        expect(
-          done,
-          isEmpty,
-          reason: 'A scanner error must not produce a ParseDone',
-        );
+      expect(
+        failures,
+        isNotEmpty,
+        reason: 'Unquoted attribute must produce ParseFailed',
+      );
+      expect(
+        done,
+        isEmpty,
+        reason: 'A scanner error must not produce a ParseDone',
+      );
 
-        // The message must use the canonical "Native parser error: " prefix
-        // that the Dart layer adds when it receives an ERROR tab-message
-        // from C++.
-        expect(
-          failures.first.message,
-          startsWith('Native parser error: '),
-          reason: 'Message shape must be "Native parser error: ..."',
-        );
+      // The message must use the canonical "Native parser error: " prefix
+      // that the Dart layer adds when it receives an ERROR tab-message
+      // from C++.
+      expect(
+        failures.first.message,
+        startsWith('Native parser error: '),
+        reason: 'Message shape must be "Native parser error: ..."',
+      );
 
-        // The C++ embeds the numeric error code — confirm it is present.
-        expect(
-          failures.first.message,
-          contains('Parse failed (code '),
-          reason: 'C++ error payload must include the numeric code',
-        );
-      } finally {
-        if (tempDir.existsSync()) {
-          await tempDir.delete(recursive: true);
-        }
+      // The C++ embeds the numeric error code — confirm it is present.
+      expect(
+        failures.first.message,
+        contains('Parse failed (code '),
+        reason: 'C++ error payload must include the numeric code',
+      );
+    } finally {
+      if (tempDir.existsSync()) {
+        await tempDir.delete(recursive: true);
       }
-    },
-    skip: _nativeReady ? null : 'native library not available',
-  );
+    }
+  }, skip: _nativeReady ? null : 'native library not available');
 }

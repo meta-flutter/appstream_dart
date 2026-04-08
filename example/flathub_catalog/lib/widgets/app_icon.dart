@@ -62,8 +62,8 @@ class AppIcon extends StatelessWidget {
     final best = sorted.first;
     if (best.iconType == 5) return best.value; // Remote URL
     if (best.iconType == 2) {
-      final base = mediaBaseurl ??
-          'https://dl.flathub.org/repo/appstream/x86_64/icons';
+      final base =
+          mediaBaseurl ?? 'https://dl.flathub.org/repo/appstream/x86_64/icons';
       final w = best.width ?? 128;
       final h = best.height ?? 128;
       return '$base/${w}x$h/${best.value}';

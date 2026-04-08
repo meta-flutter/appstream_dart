@@ -13,18 +13,22 @@ typedef AppstreamInitDart = int Function(Pointer<Void> data);
 /// Signature: int64_t appstream_parse_to_sqlite(
 ///   const char* xml_path, const char* db_path, const char* language,
 ///   int64_t dart_port, int64_t batch_size)
-typedef AppstreamParseNative = Int64 Function(
-    Pointer<Utf8> xmlPath,
-    Pointer<Utf8> dbPath,
-    Pointer<Utf8> language,
-    Int64 dartPort,
-    Int64 batchSize);
-typedef AppstreamParseDart = int Function(
-    Pointer<Utf8> xmlPath,
-    Pointer<Utf8> dbPath,
-    Pointer<Utf8> language,
-    int dartPort,
-    int batchSize);
+typedef AppstreamParseNative =
+    Int64 Function(
+      Pointer<Utf8> xmlPath,
+      Pointer<Utf8> dbPath,
+      Pointer<Utf8> language,
+      Int64 dartPort,
+      Int64 batchSize,
+    );
+typedef AppstreamParseDart =
+    int Function(
+      Pointer<Utf8> xmlPath,
+      Pointer<Utf8> dbPath,
+      Pointer<Utf8> language,
+      int dartPort,
+      int batchSize,
+    );
 
 /// Signature: const char* appstream_version(void)
 typedef AppstreamVersionNative = Pointer<Utf8> Function();
@@ -39,16 +43,18 @@ class AppstreamBindings {
   late final AppstreamVersionDart version;
 
   AppstreamBindings._(this._lib) {
-    init = _lib
-        .lookupFunction<AppstreamInitNative, AppstreamInitDart>('appstream_init');
+    init = _lib.lookupFunction<AppstreamInitNative, AppstreamInitDart>(
+      'appstream_init',
+    );
 
     parseToSqlite = _lib
         .lookupFunction<AppstreamParseNative, AppstreamParseDart>(
-            'appstream_parse_to_sqlite');
+          'appstream_parse_to_sqlite',
+        );
 
-    version = _lib
-        .lookupFunction<AppstreamVersionNative, AppstreamVersionDart>(
-            'appstream_version');
+    version = _lib.lookupFunction<AppstreamVersionNative, AppstreamVersionDart>(
+      'appstream_version',
+    );
   }
 
   /// Load the shared library.

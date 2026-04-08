@@ -74,8 +74,11 @@ Future<void> main() async {
   }
 
   // Get a translation (requires --lang '*' or specific language at parse time)
-  final germanName =
-      await db.getTranslation('org.gnome.Calculator', 'name', 'de');
+  final germanName = await db.getTranslation(
+    'org.gnome.Calculator',
+    'name',
+    'de',
+  );
   print('German name: ${germanName ?? '(not available)'}');
 
   // List available translation languages

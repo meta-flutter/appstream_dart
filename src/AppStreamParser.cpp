@@ -90,7 +90,7 @@ void AppStreamParser::mmapFile(const std::string &filename, void *&data,
     spdlog::error("Failed to open: {}", filename);
     return;
   }
-  struct stat sb{};
+  struct stat sb {};
   if (fstat(fd, &sb) == -1) {
     close(fd);
     return;

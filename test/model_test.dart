@@ -25,7 +25,10 @@ void main() {
 
     test('toString returns "id: name"', () {
       final e = ComponentEvent(
-          id: 'org.foo.Bar', name: 'Bar', summary: 'ignored');
+        id: 'org.foo.Bar',
+        name: 'Bar',
+        summary: 'ignored',
+      );
       expect(e.toString(), 'org.foo.Bar: Bar');
     });
 
@@ -79,8 +82,7 @@ void main() {
   // ----------------------------------------------------------------
   group('ComponentParsed', () {
     test('stores component', () {
-      final evt =
-          ComponentEvent(id: 'a', name: 'b', summary: 'c');
+      final evt = ComponentEvent(id: 'a', name: 'b', summary: 'c');
       final parsed = ComponentParsed(evt);
       expect(parsed.component.id, 'a');
       expect(parsed.component.name, 'b');
@@ -117,14 +119,15 @@ void main() {
 
     test('exhaustive switch covers all subtypes', () {
       String classify(ParseEvent e) => switch (e) {
-            ComponentParsed() => 'component',
-            ParseDone() => 'done',
-            ParseFailed() => 'failed',
-          };
+        ComponentParsed() => 'component',
+        ParseDone() => 'done',
+        ParseFailed() => 'failed',
+      };
 
       expect(
         classify(
-            ComponentParsed(ComponentEvent(id: '', name: '', summary: ''))),
+          ComponentParsed(ComponentEvent(id: '', name: '', summary: '')),
+        ),
         'component',
       );
       expect(classify(ParseDone(1)), 'done');
@@ -133,7 +136,8 @@ void main() {
 
     test('ComponentParsed is not ParseDone', () {
       final e = ComponentParsed(
-          ComponentEvent(id: 'x', name: 'y', summary: ''));
+        ComponentEvent(id: 'x', name: 'y', summary: ''),
+      );
       expect(e, isNot(isA<ParseDone>()));
       expect(e, isNot(isA<ParseFailed>()));
     });
@@ -164,4 +168,3 @@ void main() {
     });
   });
 }
-

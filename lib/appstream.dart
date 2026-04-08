@@ -25,11 +25,17 @@ import 'src/bindings.dart';
 export 'src/database/database.dart';
 export 'src/database/tables.dart';
 
-typedef ParseWorkerSpawner = Future<Isolate> Function(
-    void Function(Map<String, Object>) entryPoint, Map<String, Object> args);
+typedef ParseWorkerSpawner =
+    Future<Isolate> Function(
+      void Function(Map<String, Object>) entryPoint,
+      Map<String, Object> args,
+    );
 
 Map<String, String> _workerErrorPayload(
-    String phase, Object error, StackTrace stackTrace) {
+  String phase,
+  Object error,
+  StackTrace stackTrace,
+) {
   return {
     'type': 'ERROR',
     'phase': phase,
@@ -206,11 +212,15 @@ abstract final class Appstream {
           controller.add(ParseFailed('Native parser error: $msg'));
           closeAll();
         } else if (parts.length >= 2) {
-          controller.add(ComponentParsed(ComponentEvent(
-            id: parts[0],
-            name: parts.length > 1 ? parts[1] : '',
-            summary: parts.length > 2 ? parts[2] : '',
-          )));
+          controller.add(
+            ComponentParsed(
+              ComponentEvent(
+                id: parts[0],
+                name: parts.length > 1 ? parts[1] : '',
+                summary: parts.length > 2 ? parts[2] : '',
+              ),
+            ),
+          );
         }
       }
     };
@@ -244,10 +254,12 @@ abstract final class Appstream {
       }
     });
 
-    final spawn = workerSpawner ??
-        (void Function(Map<String, Object>) entryPoint,
-                Map<String, Object> workerArgs) =>
-            Isolate.spawn<Map<String, Object>>(entryPoint, workerArgs);
+    final spawn =
+        workerSpawner ??
+        (
+          void Function(Map<String, Object>) entryPoint,
+          Map<String, Object> workerArgs,
+        ) => Isolate.spawn<Map<String, Object>>(entryPoint, workerArgs);
 
     Future<void>(() async {
       try {

@@ -4,17 +4,20 @@ import 'package:drift/drift.dart';
 @DataClassName('ComponentRow')
 class Components extends Table {
   TextColumn get id => text()();
-  IntColumn get componentType => integer().named('component_type').withDefault(const Constant(0))();
+  IntColumn get componentType =>
+      integer().named('component_type').withDefault(const Constant(0))();
   IntColumn get priority => integer().withDefault(const Constant(0))();
   TextColumn get merge => text().nullable()();
   TextColumn get name => text()();
-  TextColumn get nameVariantSuffix => text().named('name_variant_suffix').nullable()();
+  TextColumn get nameVariantSuffix =>
+      text().named('name_variant_suffix').nullable()();
   TextColumn get summary => text().nullable()();
   TextColumn get description => text().nullable()();
   TextColumn get pkgname => text().nullable()();
   TextColumn get sourcePkgname => text().named('source_pkgname').nullable()();
   TextColumn get projectLicense => text().named('project_license').nullable()();
-  TextColumn get metadataLicense => text().named('metadata_license').nullable()();
+  TextColumn get metadataLicense =>
+      text().named('metadata_license').nullable()();
   TextColumn get projectGroup => text().named('project_group').nullable()();
   TextColumn get mediaBaseurl => text().named('media_baseurl').nullable()();
   TextColumn get architecture => text().nullable()();
@@ -22,9 +25,12 @@ class Components extends Table {
   TextColumn get bundleId => text().named('bundle_id').nullable()();
   TextColumn get developerId => text().named('developer_id').nullable()();
   TextColumn get developerName => text().named('developer_name').nullable()();
-  IntColumn get launchableType => integer().named('launchable_type').nullable()();
-  TextColumn get launchableValue => text().named('launchable_value').nullable()();
-  TextColumn get contentRatingType => text().named('content_rating_type').nullable()();
+  IntColumn get launchableType =>
+      integer().named('launchable_type').nullable()();
+  TextColumn get launchableValue =>
+      text().named('launchable_value').nullable()();
+  TextColumn get contentRatingType =>
+      text().named('content_rating_type').nullable()();
   TextColumn get agreement => text().nullable()();
 
   @override
@@ -116,7 +122,8 @@ class ReleaseIssues extends Table {
 class Screenshots extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get componentId => text().named('component_id')();
-  BoolColumn get isDefault => boolean().named('is_default').withDefault(const Constant(false))();
+  BoolColumn get isDefault =>
+      boolean().named('is_default').withDefault(const Constant(false))();
   TextColumn get caption => text().nullable()();
 }
 
