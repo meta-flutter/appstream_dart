@@ -53,21 +53,34 @@ class AppstreamBindings {
 
   /// Load the shared library.
   ///
-  /// Search order:
-  /// 1. Executable directory + /lib/
-  /// 2. Executable directory
-  /// 3. CWD + /lib/
-  /// 4. Platform.script relative paths (if available)
-  /// 5. Each LD_LIBRARY_PATH directory (explicit File.open, not dlopen)
-  /// 6. dlopen fallback (system linker)
-  factory AppstreamBindings.load() {
+  /// Search order (patterned after jwinarske/pw_dart):
+  /// 1. Newest build under `.dart_tool/hooks_runner/shared/appstream_dart/`
+  ///    (produced by `hook/build.dart`).
+  /// 2. Executable directory + /lib/
+  /// 3. Executable directory
+  /// 4. CWD + /lib/  and ./build/  and ./src/build/
+  /// 5. Platform.script relative paths (if available)
+  /// 6. Each LD_LIBRARY_PATH directory (explicit File.open, not dlopen)
+  /// 7. dlopen fallback (system linker)
+  factory AppstreamBindings.load({String? libraryPath}) {
     const libName = 'libappstream.so';
+
+    if (libraryPath != null) {
+      return AppstreamBindings._(DynamicLibrary.open(libraryPath));
+    }
+
     final candidates = <String>[];
+
+    final fromHook = _findInHooksRunner(libName);
+    if (fromHook != null) candidates.add(fromHook);
+
     final exeDir = File(Platform.resolvedExecutable).parent.path;
     candidates.addAll([
       '$exeDir/lib/$libName',
       '$exeDir/$libName',
       '${Directory.current.path}/lib/$libName',
+      '${Directory.current.path}/build/$libName',
+      '${Directory.current.path}/src/build/$libName',
     ]);
 
     try {
@@ -109,5 +122,36 @@ class AppstreamBindings {
       'Errors:\n${errors.join('\n')}\n'
       'LD_LIBRARY_PATH=${Platform.environment['LD_LIBRARY_PATH'] ?? '(not set)'}',
     );
+  }
+
+  /// Walk up from CWD looking for the most recent shared library produced
+  /// by the `package:hooks` build runner. Mirrors the discovery strategy
+  /// used by jwinarske/pw_dart so plain `dart run` / `dart test` invocations
+  /// pick up the artifact built by `hook/build.dart` automatically.
+  static String? _findInHooksRunner(String libName) {
+    var dir = Directory.current;
+    for (var i = 0; i < 6; i++) {
+      final root = Directory(
+        '${dir.path}/.dart_tool/hooks_runner/shared/appstream_dart/build',
+      );
+      if (root.existsSync()) {
+        File? newest;
+        var newestTime = DateTime.fromMillisecondsSinceEpoch(0);
+        for (final entity in root.listSync(recursive: true)) {
+          if (entity is File && entity.path.endsWith('/$libName')) {
+            final mtime = entity.statSync().modified;
+            if (mtime.isAfter(newestTime)) {
+              newest = entity;
+              newestTime = mtime;
+            }
+          }
+        }
+        if (newest != null) return newest.path;
+      }
+      final parent = dir.parent;
+      if (parent.path == dir.path) break;
+      dir = parent;
+    }
+    return null;
   }
 }

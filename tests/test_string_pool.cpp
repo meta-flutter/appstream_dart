@@ -47,16 +47,16 @@ TEST(StringPool, SizeStartsAtZero) {
 TEST(StringPool, SizeIncrementsOnNewStrings) {
     StringPool pool;
     EXPECT_EQ(pool.size(), 0u);
-    pool.intern(std::string_view{"a"});
+    [[maybe_unused]] auto _a = pool.intern(std::string_view{"a"});
     EXPECT_EQ(pool.size(), 1u);
-    pool.intern(std::string_view{"b"});
+    [[maybe_unused]] auto _b = pool.intern(std::string_view{"b"});
     EXPECT_EQ(pool.size(), 2u);
 }
 
 TEST(StringPool, SizeDoesNotChangeOnDuplicate) {
     StringPool pool;
-    pool.intern(std::string_view{"x"});
-    pool.intern(std::string_view{"x"});
+    [[maybe_unused]] auto _x1 = pool.intern(std::string_view{"x"});
+    [[maybe_unused]] auto _x2 = pool.intern(std::string_view{"x"});
     EXPECT_EQ(pool.size(), 1u);
 }
 

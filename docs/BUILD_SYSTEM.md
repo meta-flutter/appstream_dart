@@ -119,7 +119,7 @@ cd build && ctest -V
 
 The CMake build produces:
 - **`libappstream_core.a`** — static library linked by both shared lib and tests
-- **`libappstream.so`** — Dart FFI shared library (unchanged from Makefile output)
+- **`libappstream.so`** — Dart FFI shared library
 - **`appstream_tests`** — standalone C++ unit test executable (no Dart SDK needed)
 
 Dart-level tests remain in `test/` and use the built `.so` via FFI.

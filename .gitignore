@@ -5,7 +5,7 @@ pubspec.lock
 
 # Build artifacts
 build/
-build-verify/
+build-*/
 src/*.o
 lib/libappstream.so
 appstream
@@ -23,3 +23,7 @@ catalog.db.staging*
 
 # Claude
 .claude
+.cache
+
+#artifacts
+appstream.xml

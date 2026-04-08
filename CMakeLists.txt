@@ -64,13 +64,21 @@ add_library(appstream SHARED
 )
 target_compile_options(appstream PRIVATE -O2 -fvisibility=hidden)
 target_link_libraries(appstream PRIVATE appstream_core)
-set_target_properties(appstream PROPERTIES
-    OUTPUT_NAME "appstream"
-    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib"
-)
+set_target_properties(appstream PROPERTIES OUTPUT_NAME "appstream")
+# When building in-tree (not via the Dart native asset hook), stage the
+# shared library into lib/ so the legacy DynamicLibrary.open() loader and
+# bin/ scripts can find it. The hook build sets APPSTREAM_HOOK_BUILD=ON
+# and consumes the artifact directly from the CMake build directory.
+if(NOT APPSTREAM_HOOK_BUILD)
+    set_target_properties(appstream PROPERTIES
+        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib"
+    )
+endif()
 
 # ── Tests ──────────────────────────────────────────────────────────────────
 include(CTest)
-enable_testing()
-add_subdirectory(tests)
+if(BUILD_TESTING AND NOT APPSTREAM_HOOK_BUILD)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
 
