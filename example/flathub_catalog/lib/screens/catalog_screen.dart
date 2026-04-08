@@ -30,8 +30,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
   bool _searching = false;
 
   CatalogDatabase get _db => widget.service.db;
+
   /// Language for filtering (only when user explicitly selected one).
   String? get _filterLocale => widget.service.effectiveLocale;
+
   /// Language for displaying translations (auto-detected or explicit).
   String? get _displayLocale => widget.service.displayLocale;
 
@@ -50,7 +52,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
 
   /// Convert raw query results into localized app entries.
   Future<List<_AppEntry>> _localize(
-      List<({ComponentRow component, String? iconUrl})> results) async {
+    List<({ComponentRow component, String? iconUrl})> results,
+  ) async {
     final locale = _displayLocale;
     if (locale == null) {
       return results
@@ -60,16 +63,20 @@ class _CatalogScreenState extends State<CatalogScreen> {
 
     final entries = <_AppEntry>[];
     for (final r in results) {
-      final name =
-          await _db.getTranslation(r.component.id, 'name', locale);
-      final summary =
-          await _db.getTranslation(r.component.id, 'summary', locale);
-      entries.add(_AppEntry(
-        component: r.component,
-        iconUrl: r.iconUrl,
-        displayName: name,
-        displaySummary: summary,
-      ));
+      final name = await _db.getTranslation(r.component.id, 'name', locale);
+      final summary = await _db.getTranslation(
+        r.component.id,
+        'summary',
+        locale,
+      );
+      entries.add(
+        _AppEntry(
+          component: r.component,
+          iconUrl: r.iconUrl,
+          displayName: name,
+          displaySummary: summary,
+        ),
+      );
     }
     return entries;
   }
@@ -113,8 +120,11 @@ class _CatalogScreenState extends State<CatalogScreen> {
       _selectedCategory = null;
     });
 
-    final results = await _db.searchWithSnippets(query,
-        limit: 60, locale: _filterLocale);
+    final results = await _db.searchWithSnippets(
+      query,
+      limit: 60,
+      locale: _filterLocale,
+    );
     final base = results
         .map((r) => (component: r.component, iconUrl: r.iconUrl))
         .toList();
@@ -139,16 +149,17 @@ class _CatalogScreenState extends State<CatalogScreen> {
 
     if (category == null) {
       if (filter != null) {
-        results =
-            await _db.componentsByTranslationLanguage(filter, limit: 60);
+        results = await _db.componentsByTranslationLanguage(filter, limit: 60);
       } else {
         results = await _db.listComponents(limit: 60);
       }
     } else {
       if (filter != null) {
         results = await _db.componentsByCategoryAndLanguage(
-            category, filter,
-            limit: 60);
+          category,
+          filter,
+          limit: 60,
+        );
       } else {
         results = await _db.componentsByCategory(category, limit: 60);
       }
@@ -172,10 +183,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
   void _openDetail(String componentId) {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (_) => DetailScreen(
-          service: widget.service,
-          componentId: componentId,
-        ),
+        builder: (_) =>
+            DetailScreen(service: widget.service, componentId: componentId),
       ),
     );
   }
@@ -233,15 +242,19 @@ class _CatalogScreenState extends State<CatalogScreen> {
               },
             ),
             const Divider(),
-            ...langs.take(50).map((lang) => ListTile(
-                  title: Text(lang),
-                  selected: widget.service.locale == lang,
-                  onTap: () {
-                    widget.service.locale = lang;
-                    Navigator.pop(context);
-                    _reloadForLanguage();
-                  },
-                )),
+            ...langs
+                .take(50)
+                .map(
+                  (lang) => ListTile(
+                    title: Text(lang),
+                    selected: widget.service.locale == lang,
+                    onTap: () {
+                      widget.service.locale = lang;
+                      Navigator.pop(context);
+                      _reloadForLanguage();
+                    },
+                  ),
+                ),
           ],
         );
       },
@@ -305,11 +318,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
       body: Row(
         children: [
           // Category sidebar (wide layout) or drawer.
-          if (wide)
-            SizedBox(
-              width: 220,
-              child: _buildCategorySidebar(theme),
-            ),
+          if (wide) SizedBox(width: 220, child: _buildCategorySidebar(theme)),
 
           // Main content
           Expanded(
@@ -325,9 +334,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       children: [
                         _categoryChip(theme, null, 'All'),
-                        ..._categories.take(20).map(
-                              (cat) =>
-                                  _categoryChip(theme, cat.name, cat.name),
+                        ..._categories
+                            .take(20)
+                            .map(
+                              (cat) => _categoryChip(theme, cat.name, cat.name),
                             ),
                       ],
                     ),
@@ -341,8 +351,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                       _selectedCategory != null
                           ? '$_selectedCategory — ${_apps.length} apps'
                           : _searchController.text.isNotEmpty
-                              ? '${_apps.length} results'
-                              : '${_metrics!.componentCount} apps in catalog',
+                          ? '${_apps.length} results'
+                          : '${_metrics!.componentCount} apps in catalog',
                       style: theme.textTheme.labelLarge?.copyWith(
                         color: theme.colorScheme.onSurfaceVariant,
                       ),
@@ -354,13 +364,13 @@ class _CatalogScreenState extends State<CatalogScreen> {
                   child: _loading || _searching
                       ? const Center(child: CircularProgressIndicator())
                       : _apps.isEmpty
-                          ? Center(
-                              child: Text(
-                                'No apps found.',
-                                style: theme.textTheme.bodyLarge,
-                              ),
-                            )
-                          : _buildAppGrid(wide),
+                      ? Center(
+                          child: Text(
+                            'No apps found.',
+                            style: theme.textTheme.bodyLarge,
+                          ),
+                        )
+                      : _buildAppGrid(wide),
                 ),
               ],
             ),
@@ -396,7 +406,11 @@ class _CatalogScreenState extends State<CatalogScreen> {
   }
 
   Widget _categoryTile(
-      ThemeData theme, String? value, String label, IconData icon) {
+    ThemeData theme,
+    String? value,
+    String label,
+    IconData icon,
+  ) {
     final selected = _selectedCategory == value;
     return ListTile(
       dense: true,
@@ -447,21 +461,43 @@ class _CatalogScreenState extends State<CatalogScreen> {
   static IconData _categoryIcon(String name) {
     final lower = name.toLowerCase();
     if (lower.contains('game')) return Icons.sports_esports;
-    if (lower.contains('audio') || lower.contains('music')) return Icons.music_note;
-    if (lower.contains('video') || lower.contains('player')) return Icons.videocam;
-    if (lower.contains('graphic') || lower.contains('photo')) return Icons.image;
-    if (lower.contains('office') || lower.contains('document')) return Icons.description;
-    if (lower.contains('network') || lower.contains('web')) return Icons.language;
-    if (lower.contains('develop') || lower.contains('ide') || lower.contains('text')) return Icons.code;
-    if (lower.contains('system') || lower.contains('monitor')) return Icons.settings;
-    if (lower.contains('education') || lower.contains('science')) return Icons.school;
+    if (lower.contains('audio') || lower.contains('music')) {
+      return Icons.music_note;
+    }
+    if (lower.contains('video') || lower.contains('player')) {
+      return Icons.videocam;
+    }
+    if (lower.contains('graphic') || lower.contains('photo')) {
+      return Icons.image;
+    }
+    if (lower.contains('office') || lower.contains('document')) {
+      return Icons.description;
+    }
+    if (lower.contains('network') || lower.contains('web')) {
+      return Icons.language;
+    }
+    if (lower.contains('develop') ||
+        lower.contains('ide') ||
+        lower.contains('text')) {
+      return Icons.code;
+    }
+    if (lower.contains('system') || lower.contains('monitor')) {
+      return Icons.settings;
+    }
+    if (lower.contains('education') || lower.contains('science')) {
+      return Icons.school;
+    }
     if (lower.contains('utility') || lower.contains('tool')) return Icons.build;
     if (lower.contains('accessibility')) return Icons.accessibility;
     if (lower.contains('security')) return Icons.security;
     if (lower.contains('finance')) return Icons.account_balance;
-    if (lower.contains('maps') || lower.contains('navigation')) return Icons.map;
+    if (lower.contains('maps') || lower.contains('navigation')) {
+      return Icons.map;
+    }
     if (lower.contains('chat') || lower.contains('instant')) return Icons.chat;
-    if (lower.contains('email') || lower.contains('contact')) return Icons.email;
+    if (lower.contains('email') || lower.contains('contact')) {
+      return Icons.email;
+    }
     return Icons.category;
   }
 }

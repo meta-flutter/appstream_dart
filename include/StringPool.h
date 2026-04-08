@@ -51,15 +51,9 @@ private:
   };
   struct Equal {
     using is_transparent = void;
-    bool operator()(const std::string &a, const std::string &b) const noexcept {
-      return a == b;
-    }
-    bool operator()(const std::string &a, std::string_view b) const noexcept {
-      return a == b;
-    }
-    bool operator()(std::string_view a, const std::string &b) const noexcept {
-      return a == b;
-    }
+    bool operator()(const std::string &a, const std::string &b) const noexcept { return a == b; }
+    bool operator()(const std::string &a, std::string_view b) const noexcept { return a == b; }
+    bool operator()(std::string_view a, const std::string &b) const noexcept { return a == b; }
   };
 
   std::unordered_set<std::string, Hash, Equal> pool_;

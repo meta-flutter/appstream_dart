@@ -64,13 +64,28 @@ add_library(appstream SHARED
 )
 target_compile_options(appstream PRIVATE -O2 -fvisibility=hidden)
 target_link_libraries(appstream PRIVATE appstream_core)
-set_target_properties(appstream PROPERTIES
-    OUTPUT_NAME "appstream"
-    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib"
-)
+set_target_properties(appstream PROPERTIES OUTPUT_NAME "appstream")
+# When building in-tree (not via the Dart native asset hook), stage the
+# shared library into lib/ so the legacy DynamicLibrary.open() loader and
+# bin/ scripts can find it. The hook build sets APPSTREAM_HOOK_BUILD=ON
+# and consumes the artifact directly from the CMake build directory.
+if(NOT APPSTREAM_HOOK_BUILD)
+    set_target_properties(appstream PROPERTIES
+        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib"
+    )
+endif()
 
 # ── Tests ──────────────────────────────────────────────────────────────────
-include(CTest)
-enable_testing()
-add_subdirectory(tests)
+# Tests are opt-in and OFF by default. Enable explicitly when running the
+# C++ test suite (e.g. via scripts/test.sh or CI):
+#   cmake -S . -B build -DAPPSTREAM_BUILD_TESTS=ON
+# The Dart `package:hooks` build hook (APPSTREAM_HOOK_BUILD=ON) does not
+# need them, and neither do downstream consumers that just want
+# libappstream.so.
+option(APPSTREAM_BUILD_TESTS "Build the C++ test suite" OFF)
+if(APPSTREAM_BUILD_TESTS AND NOT APPSTREAM_HOOK_BUILD)
+    include(CTest)
+    enable_testing()
+    add_subdirectory(native_tests)
+endif()
 

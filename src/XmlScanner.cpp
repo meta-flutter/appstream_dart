@@ -26,8 +26,7 @@ XmlScanner::XmlScanner(const char *data, size_t size)
 
   // Skip BOM if present
   if (size >= 3 && static_cast<unsigned char>(data[0]) == 0xEF &&
-      static_cast<unsigned char>(data[1]) == 0xBB &&
-      static_cast<unsigned char>(data[2]) == 0xBF) {
+      static_cast<unsigned char>(data[1]) == 0xBB && static_cast<unsigned char>(data[2]) == 0xBF) {
     pos_ += 3;
   }
 
@@ -39,8 +38,8 @@ XmlScanner::XmlScanner(const char *data, size_t size)
 }
 
 XmlScanner::XmlScanner(int fd, size_t bufSize)
-    : pos_(nullptr), end_(nullptr), data_(nullptr), fd_(fd),
-      stream_buf_(bufSize), pending_end_(false) {
+    : pos_(nullptr), end_(nullptr), data_(nullptr), fd_(fd), stream_buf_(bufSize),
+      pending_end_(false) {
   attr_buf_.reserve(8);
   decode_buf_.reserve(256);
 
@@ -58,8 +57,7 @@ XmlScanner::XmlScanner(int fd, size_t bufSize)
   // Skip BOM
   const auto remaining = static_cast<size_t>(end_ - pos_);
   if (remaining >= 3 && static_cast<unsigned char>(pos_[0]) == 0xEF &&
-      static_cast<unsigned char>(pos_[1]) == 0xBB &&
-      static_cast<unsigned char>(pos_[2]) == 0xBF) {
+      static_cast<unsigned char>(pos_[1]) == 0xBB && static_cast<unsigned char>(pos_[2]) == 0xBF) {
     pos_ += 3;
   }
 
@@ -98,8 +96,7 @@ void XmlScanner::refillIfNeeded() {
 }
 
 void XmlScanner::skipWhitespace() {
-  while (pos_ < end_ &&
-         (*pos_ == ' ' || *pos_ == '\t' || *pos_ == '\n' || *pos_ == '\r')) {
+  while (pos_ < end_ && (*pos_ == ' ' || *pos_ == '\t' || *pos_ == '\n' || *pos_ == '\r')) {
     ++pos_;
   }
 }
@@ -146,8 +143,7 @@ void XmlScanner::decodeEntities(std::string_view src) {
     }
 
     // Find the ';'
-    const char *semi =
-        static_cast<const char *>(memchr(p, ';', static_cast<size_t>(e - p)));
+    const char *semi = static_cast<const char *>(memchr(p, ';', static_cast<size_t>(e - p)));
     if (!semi) {
       // Malformed entity, just copy the '&'
       decode_buf_ += *p++;
@@ -195,8 +191,7 @@ void XmlScanner::decodeEntities(std::string_view src) {
         }
       }
       // Reject surrogate halves, NUL, and out-of-range codepoints
-      if (!valid || cp == 0 || cp > 0x10FFFF ||
-          (cp >= 0xD800 && cp <= 0xDFFF)) {
+      if (!valid || cp == 0 || cp > 0x10FFFF || (cp >= 0xD800 && cp <= 0xDFFF)) {
         // Replace invalid reference with U+FFFD
         decode_buf_ += "\xEF\xBF\xBD";
       } else if (cp < 0x80) {
@@ -261,13 +256,13 @@ std::expected<XmlScanner::Event, XmlScanner::Error> XmlScanner::next() {
     // Trim leading/trailing whitespace from text
     // (common in XML between tags)
     size_t start = 0;
-    while (start < raw.size() && (raw[start] == ' ' || raw[start] == '\t' ||
-                                  raw[start] == '\n' || raw[start] == '\r')) {
+    while (start < raw.size() &&
+           (raw[start] == ' ' || raw[start] == '\t' || raw[start] == '\n' || raw[start] == '\r')) {
       ++start;
     }
     size_t end = raw.size();
-    while (end > start && (raw[end - 1] == ' ' || raw[end - 1] == '\t' ||
-                           raw[end - 1] == '\n' || raw[end - 1] == '\r')) {
+    while (end > start && (raw[end - 1] == ' ' || raw[end - 1] == '\t' || raw[end - 1] == '\n' ||
+                           raw[end - 1] == '\r')) {
       --end;
     }
 
@@ -302,16 +297,14 @@ std::expected<XmlScanner::Event, XmlScanner::Error> XmlScanner::next() {
   }
 
   // CDATA: <![CDATA[ ... ]]>  (rare in appstream but handle gracefully)
-  if (pos_ + 8 < end_ && pos_[1] == '!' && pos_[2] == '[' && pos_[3] == 'C' &&
-      pos_[4] == 'D' && pos_[5] == 'A' && pos_[6] == 'T' && pos_[7] == 'A' &&
-      pos_[8] == '[') {
+  if (pos_ + 8 < end_ && pos_[1] == '!' && pos_[2] == '[' && pos_[3] == 'C' && pos_[4] == 'D' &&
+      pos_[5] == 'A' && pos_[6] == 'T' && pos_[7] == 'A' && pos_[8] == '[') {
     pos_ += 9;
     const char *cdata_start = pos_;
     while (pos_ + 2 < end_) {
       if (pos_[0] == ']' && pos_[1] == ']' && pos_[2] == '>') {
         evt.type = EventType::TEXT;
-        evt.text_view = std::string_view(
-            cdata_start, static_cast<size_t>(pos_ - cdata_start));
+        evt.text_view = std::string_view(cdata_start, static_cast<size_t>(pos_ - cdata_start));
         evt.text_has_entities = false;
         pos_ += 3;
         return evt;
@@ -331,13 +324,11 @@ std::expected<XmlScanner::Event, XmlScanner::Error> XmlScanner::next() {
     evt.type = EventType::END_ELEMENT;
     // Trim whitespace from tag name
     const char *name_end = pos_;
-    while (name_end > name_start &&
-           (name_end[-1] == ' ' || name_end[-1] == '\t' ||
-            name_end[-1] == '\n' || name_end[-1] == '\r')) {
+    while (name_end > name_start && (name_end[-1] == ' ' || name_end[-1] == '\t' ||
+                                     name_end[-1] == '\n' || name_end[-1] == '\r')) {
       --name_end;
     }
-    evt.name = std::string_view(name_start,
-                                static_cast<size_t>(name_end - name_start));
+    evt.name = std::string_view(name_start, static_cast<size_t>(name_end - name_start));
     if (pos_ < end_)
       ++pos_; // skip '>'
     return evt;
@@ -346,14 +337,13 @@ std::expected<XmlScanner::Event, XmlScanner::Error> XmlScanner::next() {
   // Start tag: <name attr="val" ...> or self-closing <name ... />
   ++pos_; // skip '<'
   const char *name_start = pos_;
-  while (pos_ < end_ && *pos_ != ' ' && *pos_ != '\t' && *pos_ != '\n' &&
-         *pos_ != '\r' && *pos_ != '>' && *pos_ != '/') {
+  while (pos_ < end_ && *pos_ != ' ' && *pos_ != '\t' && *pos_ != '\n' && *pos_ != '\r' &&
+         *pos_ != '>' && *pos_ != '/') {
     ++pos_;
   }
 
   evt.type = EventType::START_ELEMENT;
-  evt.name =
-      std::string_view(name_start, static_cast<size_t>(pos_ - name_start));
+  evt.name = std::string_view(name_start, static_cast<size_t>(pos_ - name_start));
 
   // Parse attributes
   attr_buf_.clear();
@@ -387,12 +377,10 @@ std::expected<XmlScanner::Event, XmlScanner::Error> XmlScanner::next() {
 
     // Attribute: name="value" or name='value'
     const char *attr_name_start = pos_;
-    while (pos_ < end_ && *pos_ != '=' && *pos_ != ' ' && *pos_ != '>' &&
-           *pos_ != '/') {
+    while (pos_ < end_ && *pos_ != '=' && *pos_ != ' ' && *pos_ != '>' && *pos_ != '/') {
       ++pos_;
     }
-    std::string_view attr_name(attr_name_start,
-                               static_cast<size_t>(pos_ - attr_name_start));
+    std::string_view attr_name(attr_name_start, static_cast<size_t>(pos_ - attr_name_start));
 
     if (pos_ >= end_ || *pos_ != '=') {
       // Attribute without value (rare), skip

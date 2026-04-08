@@ -165,7 +165,7 @@ The in-memory mode (`AppStreamParser::create()`) still uses mmap since it retain
 
 ## Build and Test Topology
 
-- **Native build**: `Makefile` (shared library), `CMakeLists.txt` (full build with tests).
+- **Native build**: `CMakeLists.txt`, driven automatically by `hook/build.dart` for Dart FFI consumers and by `scripts/test.sh` for the C++ test suite.
 - **C++ tests**: `tests/` (GoogleTest).
 - **Dart tests**: `test/` (package:test).
 - **Flutter example**: `example/flathub_catalog/` (Linux desktop app).

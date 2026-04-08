@@ -48,16 +48,25 @@ __attribute__((visibility("default"))) int64_t appstream_init(void *data);
  * This function blocks until parsing is complete. Call from a Dart
  * `isolate` to avoid blocking the main `isolate`.
  *
- * @param xml_path    Path to the appstream.xml file (UTF-8).
- * @param db_path     Path to output SQLite database (UTF-8).
+ * SECURITY: `xml_path` and `db_path` are passed directly to `open(2)` and
+ * SQLite respectively. The library performs no path normalization,
+ * symlink resolution, or sandboxing. Callers that accept these paths
+ * from untrusted input MUST validate them (canonicalize, reject `..`
+ * traversal, restrict to an allow-listed directory, etc.) before
+ * invoking this function.
+ *
+ * @param xml_path    Path to the appstream.xml file (UTF-8). Caller-validated.
+ * @param db_path     Path to output SQLite database (UTF-8). Caller-validated.
  * @param language    Language filter (e.g. "en"), or empty string for all.
  * @param dart_port   Dart_Port (from ReceivePort.sendPort.nativePort).
  * @param batch_size  Components per SQLite transaction batch (e.g. 200).
  * @return 0 on success, non-zero on error.
  */
-__attribute__((visibility("default"))) int64_t appstream_parse_to_sqlite(
-    const char *xml_path, const char *db_path, const char *language,
-    int64_t dart_port, int64_t batch_size);
+__attribute__((visibility("default"))) int64_t appstream_parse_to_sqlite(const char *xml_path,
+                                                                         const char *db_path,
+                                                                         const char *language,
+                                                                         int64_t dart_port,
+                                                                         int64_t batch_size);
 
 /**
  * Get the library version string.

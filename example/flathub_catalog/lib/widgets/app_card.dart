@@ -30,7 +30,8 @@ class AppCard extends StatelessWidget {
         onTap: onTap,
         child: LayoutBuilder(
           builder: (context, constraints) {
-            final iconSize = constraints.maxHeight - 24; // 12px padding each side
+            final iconSize =
+                constraints.maxHeight - 24; // 12px padding each side
             return Padding(
               padding: const EdgeInsets.all(12),
               child: Row(

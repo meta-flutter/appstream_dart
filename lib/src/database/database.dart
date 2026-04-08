@@ -57,28 +57,30 @@ class CatalogMetrics {
   });
 }
 
-@DriftDatabase(tables: [
-  Components,
-  Categories,
-  ComponentCategories,
-  Keywords,
-  ComponentKeywords,
-  ComponentUrls,
-  ComponentIcons,
-  Releases,
-  ReleaseIssues,
-  Screenshots,
-  ScreenshotImages,
-  ScreenshotVideos,
-  ContentRatingAttrs,
-  ComponentLanguages,
-  BrandingColors,
-  ComponentExtends,
-  ComponentSuggests,
-  ComponentRelations,
-  ComponentCustom,
-  ComponentFieldTranslations,
-])
+@DriftDatabase(
+  tables: [
+    Components,
+    Categories,
+    ComponentCategories,
+    Keywords,
+    ComponentKeywords,
+    ComponentUrls,
+    ComponentIcons,
+    Releases,
+    ReleaseIssues,
+    Screenshots,
+    ScreenshotImages,
+    ScreenshotVideos,
+    ContentRatingAttrs,
+    ComponentLanguages,
+    BrandingColors,
+    ComponentExtends,
+    ComponentSuggests,
+    ComponentRelations,
+    ComponentCustom,
+    ComponentFieldTranslations,
+  ],
+)
 class CatalogDatabase extends _$CatalogDatabase {
   /// Base URL used for cached icon resolution when a component's
   /// `media_baseurl` is not set.  Pass `null` to omit the fallback
@@ -90,9 +92,12 @@ class CatalogDatabase extends _$CatalogDatabase {
   /// Open an existing catalog database file (created by the C++ parser).
   factory CatalogDatabase.open(String path, {String? iconBaseUrl}) {
     return CatalogDatabase(
-      NativeDatabase(File(path), setup: (db) {
-        db.execute('PRAGMA journal_mode=WAL');
-      }),
+      NativeDatabase(
+        File(path),
+        setup: (db) {
+          db.execute('PRAGMA journal_mode=WAL');
+        },
+      ),
       iconBaseUrl: iconBaseUrl,
     );
   }
@@ -103,10 +108,10 @@ class CatalogDatabase extends _$CatalogDatabase {
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
-        onCreate: (m) async {
-          // No-op: schema already exists from C++ writer.
-        },
-      );
+    onCreate: (m) async {
+      // No-op: schema already exists from C++ writer.
+    },
+  );
 
   // ──────────────────────────────────────────────
   // Icon URL helper
@@ -143,16 +148,20 @@ class CatalogDatabase extends _$CatalogDatabase {
     int offset = 0,
   }) {
     return customSelect(
-      'SELECT c.*, $_iconSubquery AS icon_url '
-      'FROM components c '
-      'ORDER BY c.name '
-      'LIMIT ? OFFSET ?',
-      variables: [Variable.withInt(limit), Variable.withInt(offset)],
-      readsFrom: {components, componentIcons},
-    ).map((row) => (
-          component: components.map(row.data),
-          iconUrl: row.readNullable<String>('icon_url'),
-        )).get();
+          'SELECT c.*, $_iconSubquery AS icon_url '
+          'FROM components c '
+          'ORDER BY c.name '
+          'LIMIT ? OFFSET ?',
+          variables: [Variable.withInt(limit), Variable.withInt(offset)],
+          readsFrom: {components, componentIcons},
+        )
+        .map(
+          (row) => (
+            component: components.map(row.data),
+            iconUrl: row.readNullable<String>('icon_url'),
+          ),
+        )
+        .get();
   }
 
   // ──────────────────────────────────────────────
@@ -197,17 +206,14 @@ class CatalogDatabase extends _$CatalogDatabase {
   /// Search with snippet highlighting. If [locale] is provided, only
   /// returns components that have translations for that language.
   Future<List<({ComponentRow component, String snippet, String? iconUrl})>>
-      searchWithSnippets(
-    String query, {
-    int limit = 20,
-    String? locale,
-  }) {
+  searchWithSnippets(String query, {int limit = 20, String? locale}) {
     final safeQuery = _sanitizeFts5Query(query);
     final hasLocale = locale != null && locale.isNotEmpty;
     final base = hasLocale
         ? (locale.contains('-') ? locale.split('-').first : locale)
         : '';
-    final sql = 'SELECT c.*, '
+    final sql =
+        'SELECT c.*, '
         "snippet(components_fts, 1, '<b>', '</b>', '...', 40) AS snip, "
         '$_iconSubquery AS icon_url '
         'FROM components_fts fts '
@@ -243,24 +249,25 @@ class CatalogDatabase extends _$CatalogDatabase {
 
   /// Get a single component by ID with all related data.
   Future<ComponentDetail?> getComponentDetail(String componentId) async {
-    final comp = await (select(components)
-          ..where((c) => c.id.equals(componentId)))
-        .getSingleOrNull();
+    final comp = await (select(
+      components,
+    )..where((c) => c.id.equals(componentId))).getSingleOrNull();
     if (comp == null) return null;
 
     final cats = await _categoriesForComponent(componentId);
     final kws = await _keywordsForComponent(componentId);
     final langs = await languagesForComponent(componentId);
-    final urls = await (select(componentUrls)
-          ..where((u) => u.componentId.equals(componentId)))
-        .get();
-    final icons = await (select(componentIcons)
-          ..where((i) => i.componentId.equals(componentId)))
-        .get();
-    final rels = await (select(releases)
-          ..where((r) => r.componentId.equals(componentId))
-          ..orderBy([(r) => OrderingTerm.desc(r.timestamp)]))
-        .get();
+    final urls = await (select(
+      componentUrls,
+    )..where((u) => u.componentId.equals(componentId))).get();
+    final icons = await (select(
+      componentIcons,
+    )..where((i) => i.componentId.equals(componentId))).get();
+    final rels =
+        await (select(releases)
+              ..where((r) => r.componentId.equals(componentId))
+              ..orderBy([(r) => OrderingTerm.desc(r.timestamp)]))
+            .get();
     final ssImages = await _screenshotImagesForComponent(componentId);
 
     return ComponentDetail(
@@ -277,9 +284,11 @@ class CatalogDatabase extends _$CatalogDatabase {
 
   Future<List<String>> _categoriesForComponent(String componentId) {
     final query = select(componentCategories).join([
-      innerJoin(categories, categories.id.equalsExp(componentCategories.categoryId)),
-    ])
-      ..where(componentCategories.componentId.equals(componentId));
+      innerJoin(
+        categories,
+        categories.id.equalsExp(componentCategories.categoryId),
+      ),
+    ])..where(componentCategories.componentId.equals(componentId));
 
     return query.map((row) => row.readTable(categories).name).get();
   }
@@ -287,17 +296,20 @@ class CatalogDatabase extends _$CatalogDatabase {
   Future<List<String>> _keywordsForComponent(String componentId) {
     final query = select(componentKeywords).join([
       innerJoin(keywords, keywords.id.equalsExp(componentKeywords.keywordId)),
-    ])
-      ..where(componentKeywords.componentId.equals(componentId));
+    ])..where(componentKeywords.componentId.equals(componentId));
 
     return query.map((row) => row.readTable(keywords).name).get();
   }
 
-  Future<List<ScreenshotImageRow>> _screenshotImagesForComponent(String componentId) {
+  Future<List<ScreenshotImageRow>> _screenshotImagesForComponent(
+    String componentId,
+  ) {
     final query = select(screenshotImages).join([
-      innerJoin(screenshots, screenshots.id.equalsExp(screenshotImages.screenshotId)),
-    ])
-      ..where(screenshots.componentId.equals(componentId));
+      innerJoin(
+        screenshots,
+        screenshots.id.equalsExp(screenshotImages.screenshotId),
+      ),
+    ])..where(screenshots.componentId.equals(componentId));
 
     return query.map((row) => row.readTable(screenshotImages)).get();
   }
@@ -309,34 +321,49 @@ class CatalogDatabase extends _$CatalogDatabase {
   /// List all categories with component counts.
   Future<List<({String name, int count})>> listCategories() {
     return customSelect(
-      'SELECT cat.name, COUNT(*) AS cnt '
-      'FROM categories cat '
-      'JOIN component_categories cc ON cc.category_id = cat.id '
-      'GROUP BY cat.name '
-      'ORDER BY cnt DESC',
-      readsFrom: {categories, componentCategories},
-    ).map((row) => (name: row.read<String>('name'), count: row.read<int>('cnt'))).get();
+          'SELECT cat.name, COUNT(*) AS cnt '
+          'FROM categories cat '
+          'JOIN component_categories cc ON cc.category_id = cat.id '
+          'GROUP BY cat.name '
+          'ORDER BY cnt DESC',
+          readsFrom: {categories, componentCategories},
+        )
+        .map(
+          (row) =>
+              (name: row.read<String>('name'), count: row.read<int>('cnt')),
+        )
+        .get();
   }
 
   /// List components in a given category.
-  Future<List<({ComponentRow component, String? iconUrl})>> componentsByCategory(
-    String categoryName, {
-    int limit = 50,
-  }) {
+  Future<List<({ComponentRow component, String? iconUrl})>>
+  componentsByCategory(String categoryName, {int limit = 50}) {
     return customSelect(
-      'SELECT c.*, $_iconSubquery AS icon_url '
-      'FROM components c '
-      'JOIN component_categories cc ON cc.component_id = c.id '
-      'JOIN categories cat ON cat.id = cc.category_id '
-      'WHERE cat.name = ? '
-      'ORDER BY c.name '
-      'LIMIT ?',
-      variables: [Variable.withString(categoryName), Variable.withInt(limit)],
-      readsFrom: {components, componentCategories, categories, componentIcons},
-    ).map((row) => (
-          component: components.map(row.data),
-          iconUrl: row.readNullable<String>('icon_url'),
-        )).get();
+          'SELECT c.*, $_iconSubquery AS icon_url '
+          'FROM components c '
+          'JOIN component_categories cc ON cc.component_id = c.id '
+          'JOIN categories cat ON cat.id = cc.category_id '
+          'WHERE cat.name = ? '
+          'ORDER BY c.name '
+          'LIMIT ?',
+          variables: [
+            Variable.withString(categoryName),
+            Variable.withInt(limit),
+          ],
+          readsFrom: {
+            components,
+            componentCategories,
+            categories,
+            componentIcons,
+          },
+        )
+        .map(
+          (row) => (
+            component: components.map(row.data),
+            iconUrl: row.readNullable<String>('icon_url'),
+          ),
+        )
+        .get();
   }
 
   // ──────────────────────────────────────────────
@@ -346,14 +373,21 @@ class CatalogDatabase extends _$CatalogDatabase {
   /// List all languages with the number of components supporting each.
   Future<List<({String language, int count})>> listLanguages({int limit = 50}) {
     return customSelect(
-      'SELECT language, COUNT(*) AS cnt '
-      'FROM component_languages '
-      'GROUP BY language '
-      'ORDER BY cnt DESC '
-      'LIMIT ?',
-      variables: [Variable.withInt(limit)],
-      readsFrom: {componentLanguages},
-    ).map((row) => (language: row.read<String>('language'), count: row.read<int>('cnt'))).get();
+          'SELECT language, COUNT(*) AS cnt '
+          'FROM component_languages '
+          'GROUP BY language '
+          'ORDER BY cnt DESC '
+          'LIMIT ?',
+          variables: [Variable.withInt(limit)],
+          readsFrom: {componentLanguages},
+        )
+        .map(
+          (row) => (
+            language: row.read<String>('language'),
+            count: row.read<int>('cnt'),
+          ),
+        )
+        .get();
   }
 
   /// Get all languages supported by a component.
@@ -365,23 +399,25 @@ class CatalogDatabase extends _$CatalogDatabase {
   }
 
   /// Find components that support a specific language.
-  Future<List<({ComponentRow component, String? iconUrl})>> componentsByLanguage(
-    String language, {
-    int limit = 50,
-  }) {
+  Future<List<({ComponentRow component, String? iconUrl})>>
+  componentsByLanguage(String language, {int limit = 50}) {
     return customSelect(
-      'SELECT c.*, $_iconSubquery AS icon_url '
-      'FROM components c '
-      'JOIN component_languages cl ON cl.component_id = c.id '
-      'WHERE cl.language = ? '
-      'ORDER BY c.name '
-      'LIMIT ?',
-      variables: [Variable.withString(language), Variable.withInt(limit)],
-      readsFrom: {components, componentLanguages, componentIcons},
-    ).map((row) => (
-          component: components.map(row.data),
-          iconUrl: row.readNullable<String>('icon_url'),
-        )).get();
+          'SELECT c.*, $_iconSubquery AS icon_url '
+          'FROM components c '
+          'JOIN component_languages cl ON cl.component_id = c.id '
+          'WHERE cl.language = ? '
+          'ORDER BY c.name '
+          'LIMIT ?',
+          variables: [Variable.withString(language), Variable.withInt(limit)],
+          readsFrom: {components, componentLanguages, componentIcons},
+        )
+        .map(
+          (row) => (
+            component: components.map(row.data),
+            iconUrl: row.readNullable<String>('icon_url'),
+          ),
+        )
+        .get();
   }
 
   // ──────────────────────────────────────────────
@@ -394,17 +430,21 @@ class CatalogDatabase extends _$CatalogDatabase {
     int limit = 50,
   }) {
     return customSelect(
-      'SELECT c.*, $_iconSubquery AS icon_url '
-      'FROM components c '
-      'WHERE c.component_type = ? '
-      'ORDER BY c.name '
-      'LIMIT ?',
-      variables: [Variable.withInt(type), Variable.withInt(limit)],
-      readsFrom: {components, componentIcons},
-    ).map((row) => (
-          component: components.map(row.data),
-          iconUrl: row.readNullable<String>('icon_url'),
-        )).get();
+          'SELECT c.*, $_iconSubquery AS icon_url '
+          'FROM components c '
+          'WHERE c.component_type = ? '
+          'ORDER BY c.name '
+          'LIMIT ?',
+          variables: [Variable.withInt(type), Variable.withInt(limit)],
+          readsFrom: {components, componentIcons},
+        )
+        .map(
+          (row) => (
+            component: components.map(row.data),
+            iconUrl: row.readNullable<String>('icon_url'),
+          ),
+        )
+        .get();
   }
 
   // ──────────────────────────────────────────────
@@ -412,7 +452,9 @@ class CatalogDatabase extends _$CatalogDatabase {
   // ──────────────────────────────────────────────
 
   /// Get the most recent releases across all components.
-  Future<List<({ReleaseRow release, String componentName})>> recentReleases({int limit = 20}) {
+  Future<List<({ReleaseRow release, String componentName})>> recentReleases({
+    int limit = 20,
+  }) {
     return customSelect(
       'SELECT r.*, c.name AS comp_name '
       'FROM releases r '
@@ -488,7 +530,10 @@ class CatalogDatabase extends _$CatalogDatabase {
   /// Tries the full locale (e.g. "pt-BR"), then the base language ("pt"),
   /// then returns null (caller should use the default field value).
   Future<String?> getTranslation(
-      String componentId, String field, String locale) {
+    String componentId,
+    String field,
+    String locale,
+  ) {
     final base = locale.contains('-') ? locale.split('-').first : locale;
     return customSelect(
       'SELECT value FROM component_field_translations '
@@ -507,62 +552,80 @@ class CatalogDatabase extends _$CatalogDatabase {
   }
 
   /// List available languages for translations in the database.
-  Future<List<({String language, int count})>> listTranslationLanguages(
-      {int limit = 50}) {
+  Future<List<({String language, int count})>> listTranslationLanguages({
+    int limit = 50,
+  }) {
     return customSelect(
-      'SELECT language, COUNT(*) AS cnt '
-      'FROM component_field_translations '
-      'GROUP BY language '
-      'ORDER BY cnt DESC '
-      'LIMIT ?',
-      variables: [Variable.withInt(limit)],
-      readsFrom: {componentFieldTranslations},
-    )
-        .map((row) =>
-            (language: row.read<String>('language'), count: row.read<int>('cnt')))
+          'SELECT language, COUNT(*) AS cnt '
+          'FROM component_field_translations '
+          'GROUP BY language '
+          'ORDER BY cnt DESC '
+          'LIMIT ?',
+          variables: [Variable.withInt(limit)],
+          readsFrom: {componentFieldTranslations},
+        )
+        .map(
+          (row) => (
+            language: row.read<String>('language'),
+            count: row.read<int>('cnt'),
+          ),
+        )
         .get();
   }
 
   /// List components with localized name/summary, falling back to defaults.
-  Future<List<({ComponentRow component, String? iconUrl, String displayName, String? displaySummary})>>
-      listComponentsLocalized({
+  Future<
+    List<
+      ({
+        ComponentRow component,
+        String? iconUrl,
+        String displayName,
+        String? displaySummary,
+      })
+    >
+  >
+  listComponentsLocalized({
     required String locale,
     int limit = 50,
     int offset = 0,
   }) {
     final base = locale.contains('-') ? locale.split('-').first : locale;
     return customSelect(
-      'SELECT c.*, $_iconSubquery AS icon_url, '
-      'COALESCE('
-      '  (SELECT value FROM component_field_translations '
-      '   WHERE component_id = c.id AND field = \'name\' AND language IN (?, ?) '
-      '   ORDER BY CASE language WHEN ? THEN 0 ELSE 1 END LIMIT 1), '
-      '  c.name) AS display_name, '
-      'COALESCE('
-      '  (SELECT value FROM component_field_translations '
-      '   WHERE component_id = c.id AND field = \'summary\' AND language IN (?, ?) '
-      '   ORDER BY CASE language WHEN ? THEN 0 ELSE 1 END LIMIT 1), '
-      '  c.summary) AS display_summary '
-      'FROM components c '
-      'ORDER BY display_name '
-      'LIMIT ? OFFSET ?',
-      variables: [
-        Variable.withString(locale),
-        Variable.withString(base),
-        Variable.withString(locale),
-        Variable.withString(locale),
-        Variable.withString(base),
-        Variable.withString(locale),
-        Variable.withInt(limit),
-        Variable.withInt(offset),
-      ],
-      readsFrom: {components, componentIcons, componentFieldTranslations},
-    ).map((row) => (
-          component: components.map(row.data),
-          iconUrl: row.readNullable<String>('icon_url'),
-          displayName: row.read<String>('display_name'),
-          displaySummary: row.readNullable<String>('display_summary'),
-        )).get();
+          'SELECT c.*, $_iconSubquery AS icon_url, '
+          'COALESCE('
+          '  (SELECT value FROM component_field_translations '
+          '   WHERE component_id = c.id AND field = \'name\' AND language IN (?, ?) '
+          '   ORDER BY CASE language WHEN ? THEN 0 ELSE 1 END LIMIT 1), '
+          '  c.name) AS display_name, '
+          'COALESCE('
+          '  (SELECT value FROM component_field_translations '
+          '   WHERE component_id = c.id AND field = \'summary\' AND language IN (?, ?) '
+          '   ORDER BY CASE language WHEN ? THEN 0 ELSE 1 END LIMIT 1), '
+          '  c.summary) AS display_summary '
+          'FROM components c '
+          'ORDER BY display_name '
+          'LIMIT ? OFFSET ?',
+          variables: [
+            Variable.withString(locale),
+            Variable.withString(base),
+            Variable.withString(locale),
+            Variable.withString(locale),
+            Variable.withString(base),
+            Variable.withString(locale),
+            Variable.withInt(limit),
+            Variable.withInt(offset),
+          ],
+          readsFrom: {components, componentIcons, componentFieldTranslations},
+        )
+        .map(
+          (row) => (
+            component: components.map(row.data),
+            iconUrl: row.readNullable<String>('icon_url'),
+            displayName: row.read<String>('display_name'),
+            displaySummary: row.readNullable<String>('display_summary'),
+          ),
+        )
+        .get();
   }
 
   static const _langExistsClause =
@@ -571,89 +634,94 @@ class CatalogDatabase extends _$CatalogDatabase {
 
   /// List only components that have translations for a given language.
   Future<List<({ComponentRow component, String? iconUrl})>>
-      componentsByTranslationLanguage(
-    String locale, {
-    int limit = 50,
-  }) {
+  componentsByTranslationLanguage(String locale, {int limit = 50}) {
     final base = locale.contains('-') ? locale.split('-').first : locale;
     return customSelect(
-      'SELECT c.*, $_iconSubquery AS icon_url '
-      'FROM components c '
-      'WHERE $_langExistsClause '
-      'ORDER BY c.name '
-      'LIMIT ?',
-      variables: [
-        Variable.withString(locale),
-        Variable.withString(base),
-        Variable.withInt(limit),
-      ],
-      readsFrom: {components, componentIcons, componentFieldTranslations},
-    ).map((row) => (
-          component: components.map(row.data),
-          iconUrl: row.readNullable<String>('icon_url'),
-        )).get();
+          'SELECT c.*, $_iconSubquery AS icon_url '
+          'FROM components c '
+          'WHERE $_langExistsClause '
+          'ORDER BY c.name '
+          'LIMIT ?',
+          variables: [
+            Variable.withString(locale),
+            Variable.withString(base),
+            Variable.withInt(limit),
+          ],
+          readsFrom: {components, componentIcons, componentFieldTranslations},
+        )
+        .map(
+          (row) => (
+            component: components.map(row.data),
+            iconUrl: row.readNullable<String>('icon_url'),
+          ),
+        )
+        .get();
   }
 
   /// List categories that have components with translations for a given language.
   Future<List<({String name, int count})>> listCategoriesForLanguage(
-      String locale) {
+    String locale,
+  ) {
     final base = locale.contains('-') ? locale.split('-').first : locale;
     return customSelect(
-      'SELECT cat.name, COUNT(*) AS cnt '
-      'FROM categories cat '
-      'JOIN component_categories cc ON cc.category_id = cat.id '
-      'JOIN components c ON c.id = cc.component_id '
-      'WHERE $_langExistsClause '
-      'GROUP BY cat.name '
-      'ORDER BY cnt DESC',
-      variables: [
-        Variable.withString(locale),
-        Variable.withString(base),
-      ],
-      readsFrom: {
-        categories,
-        componentCategories,
-        components,
-        componentFieldTranslations
-      },
-    )
-        .map((row) =>
-            (name: row.read<String>('name'), count: row.read<int>('cnt')))
+          'SELECT cat.name, COUNT(*) AS cnt '
+          'FROM categories cat '
+          'JOIN component_categories cc ON cc.category_id = cat.id '
+          'JOIN components c ON c.id = cc.component_id '
+          'WHERE $_langExistsClause '
+          'GROUP BY cat.name '
+          'ORDER BY cnt DESC',
+          variables: [Variable.withString(locale), Variable.withString(base)],
+          readsFrom: {
+            categories,
+            componentCategories,
+            components,
+            componentFieldTranslations,
+          },
+        )
+        .map(
+          (row) =>
+              (name: row.read<String>('name'), count: row.read<int>('cnt')),
+        )
         .get();
   }
 
   /// List components in a category that have translations for a given language.
   Future<List<({ComponentRow component, String? iconUrl})>>
-      componentsByCategoryAndLanguage(
+  componentsByCategoryAndLanguage(
     String categoryName,
     String locale, {
     int limit = 50,
   }) {
     final base = locale.contains('-') ? locale.split('-').first : locale;
     return customSelect(
-      'SELECT c.*, $_iconSubquery AS icon_url '
-      'FROM components c '
-      'JOIN component_categories cc ON cc.component_id = c.id '
-      'JOIN categories cat ON cat.id = cc.category_id '
-      'WHERE cat.name = ? AND $_langExistsClause '
-      'ORDER BY c.name '
-      'LIMIT ?',
-      variables: [
-        Variable.withString(categoryName),
-        Variable.withString(locale),
-        Variable.withString(base),
-        Variable.withInt(limit),
-      ],
-      readsFrom: {
-        components,
-        componentCategories,
-        categories,
-        componentIcons,
-        componentFieldTranslations
-      },
-    ).map((row) => (
-          component: components.map(row.data),
-          iconUrl: row.readNullable<String>('icon_url'),
-        )).get();
+          'SELECT c.*, $_iconSubquery AS icon_url '
+          'FROM components c '
+          'JOIN component_categories cc ON cc.component_id = c.id '
+          'JOIN categories cat ON cat.id = cc.category_id '
+          'WHERE cat.name = ? AND $_langExistsClause '
+          'ORDER BY c.name '
+          'LIMIT ?',
+          variables: [
+            Variable.withString(categoryName),
+            Variable.withString(locale),
+            Variable.withString(base),
+            Variable.withInt(limit),
+          ],
+          readsFrom: {
+            components,
+            componentCategories,
+            categories,
+            componentIcons,
+            componentFieldTranslations,
+          },
+        )
+        .map(
+          (row) => (
+            component: components.map(row.data),
+            iconUrl: row.readNullable<String>('icon_url'),
+          ),
+        )
+        .get();
   }
 }

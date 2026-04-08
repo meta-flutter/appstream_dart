@@ -329,8 +329,7 @@ std::string_view Component::iconTypeToString(IconType t) {
   }
 }
 
-Component::CompulsoryForDesktop
-Component::stringToCompulsoryForDesktop(std::string_view s) {
+Component::CompulsoryForDesktop Component::stringToCompulsoryForDesktop(std::string_view s) {
   if (s == kCosmic)
     return CompulsoryForDesktop::COSMIC;
   if (s == kGnome)
@@ -372,8 +371,7 @@ Component::stringToCompulsoryForDesktop(std::string_view s) {
   return CompulsoryForDesktop::UNKNOWN;
 }
 
-std::string_view
-Component::compulsoryForDesktopToString(CompulsoryForDesktop d) {
+std::string_view Component::compulsoryForDesktopToString(CompulsoryForDesktop d) {
   switch (d) {
   case CompulsoryForDesktop::COSMIC:
     return kCosmic;
@@ -465,8 +463,7 @@ std::string_view Component::urlTypeToString(UrlType t) {
   }
 }
 
-Component::LaunchableType
-Component::stringToLaunchableType(std::string_view s) {
+Component::LaunchableType Component::stringToLaunchableType(std::string_view s) {
   if (s == kDesktopId)
     return LaunchableType::DESKTOP_ID;
   if (s == kService)
@@ -501,8 +498,7 @@ std::string_view Component::releaseTypeToString(ReleaseType t) {
   }
 }
 
-Component::ReleaseUrgency
-Component::stringToReleaseUrgency(std::string_view s) {
+Component::ReleaseUrgency Component::stringToReleaseUrgency(std::string_view s) {
   if (s == kLow)
     return ReleaseUrgency::LOW;
   if (s == kMedium)
@@ -581,8 +577,8 @@ void Component::Dump() const {
   if (!screenshots.empty()) {
     spdlog::info("  screenshots: {}", screenshots.size());
     for (const auto &ss : screenshots) {
-      spdlog::info("    default={} images={} caption={}", ss.isDefault,
-                   ss.images.size(), ss.caption);
+      spdlog::info("    default={} images={} caption={}", ss.isDefault, ss.images.size(),
+                   ss.caption);
     }
   }
 
@@ -591,11 +587,10 @@ void Component::Dump() const {
                  content_rating.attributes.size());
   }
 
-  if (!provides.binaries.empty() || !provides.libraries.empty() ||
-      !provides.mediatypes.empty() || !provides.ids.empty()) {
-    spdlog::info("  provides: {} bins, {} libs, {} mediatypes",
-                 provides.binaries.size(), provides.libraries.size(),
-                 provides.mediatypes.size());
+  if (!provides.binaries.empty() || !provides.libraries.empty() || !provides.mediatypes.empty() ||
+      !provides.ids.empty()) {
+    spdlog::info("  provides: {} bins, {} libs, {} mediatypes", provides.binaries.size(),
+                 provides.libraries.size(), provides.mediatypes.size());
   }
 
   if (!branding_colors.empty()) {
@@ -605,8 +600,7 @@ void Component::Dump() const {
   }
 
   for (const auto &rel : releases) {
-    spdlog::info("  release: {} {} ({})", rel.version,
-                 releaseTypeToString(rel.type),
+    spdlog::info("  release: {} {} ({})", rel.version, releaseTypeToString(rel.type),
                  rel.date.empty() ? rel.timestamp : rel.date);
   }
 }

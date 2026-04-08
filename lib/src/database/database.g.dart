@@ -12,176 +12,290 @@ class $ComponentsTable extends Components
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
-      'id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _componentTypeMeta =
-      const VerificationMeta('componentType');
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _componentTypeMeta = const VerificationMeta(
+    'componentType',
+  );
   @override
   late final GeneratedColumn<int> componentType = GeneratedColumn<int>(
-      'component_type', aliasedName, false,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultValue: const Constant(0));
-  static const VerificationMeta _priorityMeta =
-      const VerificationMeta('priority');
+    'component_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _priorityMeta = const VerificationMeta(
+    'priority',
+  );
   @override
   late final GeneratedColumn<int> priority = GeneratedColumn<int>(
-      'priority', aliasedName, false,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultValue: const Constant(0));
+    'priority',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
   static const VerificationMeta _mergeMeta = const VerificationMeta('merge');
   @override
   late final GeneratedColumn<String> merge = GeneratedColumn<String>(
-      'merge', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'merge',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
-      'name', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _nameVariantSuffixMeta =
-      const VerificationMeta('nameVariantSuffix');
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameVariantSuffixMeta = const VerificationMeta(
+    'nameVariantSuffix',
+  );
   @override
   late final GeneratedColumn<String> nameVariantSuffix =
-      GeneratedColumn<String>('name_variant_suffix', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _summaryMeta =
-      const VerificationMeta('summary');
+      GeneratedColumn<String>(
+        'name_variant_suffix',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _summaryMeta = const VerificationMeta(
+    'summary',
+  );
   @override
   late final GeneratedColumn<String> summary = GeneratedColumn<String>(
-      'summary', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _descriptionMeta =
-      const VerificationMeta('description');
+    'summary',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _descriptionMeta = const VerificationMeta(
+    'description',
+  );
   @override
   late final GeneratedColumn<String> description = GeneratedColumn<String>(
-      'description', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _pkgnameMeta =
-      const VerificationMeta('pkgname');
+    'description',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _pkgnameMeta = const VerificationMeta(
+    'pkgname',
+  );
   @override
   late final GeneratedColumn<String> pkgname = GeneratedColumn<String>(
-      'pkgname', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _sourcePkgnameMeta =
-      const VerificationMeta('sourcePkgname');
+    'pkgname',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sourcePkgnameMeta = const VerificationMeta(
+    'sourcePkgname',
+  );
   @override
   late final GeneratedColumn<String> sourcePkgname = GeneratedColumn<String>(
-      'source_pkgname', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _projectLicenseMeta =
-      const VerificationMeta('projectLicense');
+    'source_pkgname',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _projectLicenseMeta = const VerificationMeta(
+    'projectLicense',
+  );
   @override
   late final GeneratedColumn<String> projectLicense = GeneratedColumn<String>(
-      'project_license', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _metadataLicenseMeta =
-      const VerificationMeta('metadataLicense');
+    'project_license',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _metadataLicenseMeta = const VerificationMeta(
+    'metadataLicense',
+  );
   @override
   late final GeneratedColumn<String> metadataLicense = GeneratedColumn<String>(
-      'metadata_license', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _projectGroupMeta =
-      const VerificationMeta('projectGroup');
+    'metadata_license',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _projectGroupMeta = const VerificationMeta(
+    'projectGroup',
+  );
   @override
   late final GeneratedColumn<String> projectGroup = GeneratedColumn<String>(
-      'project_group', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _mediaBaseurlMeta =
-      const VerificationMeta('mediaBaseurl');
+    'project_group',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _mediaBaseurlMeta = const VerificationMeta(
+    'mediaBaseurl',
+  );
   @override
   late final GeneratedColumn<String> mediaBaseurl = GeneratedColumn<String>(
-      'media_baseurl', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _architectureMeta =
-      const VerificationMeta('architecture');
+    'media_baseurl',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _architectureMeta = const VerificationMeta(
+    'architecture',
+  );
   @override
   late final GeneratedColumn<String> architecture = GeneratedColumn<String>(
-      'architecture', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _bundleTypeMeta =
-      const VerificationMeta('bundleType');
+    'architecture',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _bundleTypeMeta = const VerificationMeta(
+    'bundleType',
+  );
   @override
   late final GeneratedColumn<int> bundleType = GeneratedColumn<int>(
-      'bundle_type', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
-  static const VerificationMeta _bundleIdMeta =
-      const VerificationMeta('bundleId');
+    'bundle_type',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _bundleIdMeta = const VerificationMeta(
+    'bundleId',
+  );
   @override
   late final GeneratedColumn<String> bundleId = GeneratedColumn<String>(
-      'bundle_id', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _developerIdMeta =
-      const VerificationMeta('developerId');
+    'bundle_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _developerIdMeta = const VerificationMeta(
+    'developerId',
+  );
   @override
   late final GeneratedColumn<String> developerId = GeneratedColumn<String>(
-      'developer_id', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _developerNameMeta =
-      const VerificationMeta('developerName');
+    'developer_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _developerNameMeta = const VerificationMeta(
+    'developerName',
+  );
   @override
   late final GeneratedColumn<String> developerName = GeneratedColumn<String>(
-      'developer_name', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _launchableTypeMeta =
-      const VerificationMeta('launchableType');
+    'developer_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _launchableTypeMeta = const VerificationMeta(
+    'launchableType',
+  );
   @override
   late final GeneratedColumn<int> launchableType = GeneratedColumn<int>(
-      'launchable_type', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
-  static const VerificationMeta _launchableValueMeta =
-      const VerificationMeta('launchableValue');
+    'launchable_type',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _launchableValueMeta = const VerificationMeta(
+    'launchableValue',
+  );
   @override
   late final GeneratedColumn<String> launchableValue = GeneratedColumn<String>(
-      'launchable_value', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _contentRatingTypeMeta =
-      const VerificationMeta('contentRatingType');
+    'launchable_value',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _contentRatingTypeMeta = const VerificationMeta(
+    'contentRatingType',
+  );
   @override
   late final GeneratedColumn<String> contentRatingType =
-      GeneratedColumn<String>('content_rating_type', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _agreementMeta =
-      const VerificationMeta('agreement');
+      GeneratedColumn<String>(
+        'content_rating_type',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _agreementMeta = const VerificationMeta(
+    'agreement',
+  );
   @override
   late final GeneratedColumn<String> agreement = GeneratedColumn<String>(
-      'agreement', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'agreement',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
-        id,
-        componentType,
-        priority,
-        merge,
-        name,
-        nameVariantSuffix,
-        summary,
-        description,
-        pkgname,
-        sourcePkgname,
-        projectLicense,
-        metadataLicense,
-        projectGroup,
-        mediaBaseurl,
-        architecture,
-        bundleType,
-        bundleId,
-        developerId,
-        developerName,
-        launchableType,
-        launchableValue,
-        contentRatingType,
-        agreement
-      ];
+    id,
+    componentType,
+    priority,
+    merge,
+    name,
+    nameVariantSuffix,
+    summary,
+    description,
+    pkgname,
+    sourcePkgname,
+    projectLicense,
+    metadataLicense,
+    projectGroup,
+    mediaBaseurl,
+    architecture,
+    bundleType,
+    bundleId,
+    developerId,
+    developerName,
+    launchableType,
+    launchableValue,
+    contentRatingType,
+    agreement,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
   static const String $name = 'components';
   @override
-  VerificationContext validateIntegrity(Insertable<ComponentRow> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<ComponentRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
@@ -191,123 +305,179 @@ class $ComponentsTable extends Components
     }
     if (data.containsKey('component_type')) {
       context.handle(
+        _componentTypeMeta,
+        componentType.isAcceptableOrUnknown(
+          data['component_type']!,
           _componentTypeMeta,
-          componentType.isAcceptableOrUnknown(
-              data['component_type']!, _componentTypeMeta));
+        ),
+      );
     }
     if (data.containsKey('priority')) {
-      context.handle(_priorityMeta,
-          priority.isAcceptableOrUnknown(data['priority']!, _priorityMeta));
+      context.handle(
+        _priorityMeta,
+        priority.isAcceptableOrUnknown(data['priority']!, _priorityMeta),
+      );
     }
     if (data.containsKey('merge')) {
       context.handle(
-          _mergeMeta, merge.isAcceptableOrUnknown(data['merge']!, _mergeMeta));
+        _mergeMeta,
+        merge.isAcceptableOrUnknown(data['merge']!, _mergeMeta),
+      );
     }
     if (data.containsKey('name')) {
       context.handle(
-          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
     if (data.containsKey('name_variant_suffix')) {
       context.handle(
+        _nameVariantSuffixMeta,
+        nameVariantSuffix.isAcceptableOrUnknown(
+          data['name_variant_suffix']!,
           _nameVariantSuffixMeta,
-          nameVariantSuffix.isAcceptableOrUnknown(
-              data['name_variant_suffix']!, _nameVariantSuffixMeta));
+        ),
+      );
     }
     if (data.containsKey('summary')) {
-      context.handle(_summaryMeta,
-          summary.isAcceptableOrUnknown(data['summary']!, _summaryMeta));
+      context.handle(
+        _summaryMeta,
+        summary.isAcceptableOrUnknown(data['summary']!, _summaryMeta),
+      );
     }
     if (data.containsKey('description')) {
       context.handle(
+        _descriptionMeta,
+        description.isAcceptableOrUnknown(
+          data['description']!,
           _descriptionMeta,
-          description.isAcceptableOrUnknown(
-              data['description']!, _descriptionMeta));
+        ),
+      );
     }
     if (data.containsKey('pkgname')) {
-      context.handle(_pkgnameMeta,
-          pkgname.isAcceptableOrUnknown(data['pkgname']!, _pkgnameMeta));
+      context.handle(
+        _pkgnameMeta,
+        pkgname.isAcceptableOrUnknown(data['pkgname']!, _pkgnameMeta),
+      );
     }
     if (data.containsKey('source_pkgname')) {
       context.handle(
+        _sourcePkgnameMeta,
+        sourcePkgname.isAcceptableOrUnknown(
+          data['source_pkgname']!,
           _sourcePkgnameMeta,
-          sourcePkgname.isAcceptableOrUnknown(
-              data['source_pkgname']!, _sourcePkgnameMeta));
+        ),
+      );
     }
     if (data.containsKey('project_license')) {
       context.handle(
+        _projectLicenseMeta,
+        projectLicense.isAcceptableOrUnknown(
+          data['project_license']!,
           _projectLicenseMeta,
-          projectLicense.isAcceptableOrUnknown(
-              data['project_license']!, _projectLicenseMeta));
+        ),
+      );
     }
     if (data.containsKey('metadata_license')) {
       context.handle(
+        _metadataLicenseMeta,
+        metadataLicense.isAcceptableOrUnknown(
+          data['metadata_license']!,
           _metadataLicenseMeta,
-          metadataLicense.isAcceptableOrUnknown(
-              data['metadata_license']!, _metadataLicenseMeta));
+        ),
+      );
     }
     if (data.containsKey('project_group')) {
       context.handle(
+        _projectGroupMeta,
+        projectGroup.isAcceptableOrUnknown(
+          data['project_group']!,
           _projectGroupMeta,
-          projectGroup.isAcceptableOrUnknown(
-              data['project_group']!, _projectGroupMeta));
+        ),
+      );
     }
     if (data.containsKey('media_baseurl')) {
       context.handle(
+        _mediaBaseurlMeta,
+        mediaBaseurl.isAcceptableOrUnknown(
+          data['media_baseurl']!,
           _mediaBaseurlMeta,
-          mediaBaseurl.isAcceptableOrUnknown(
-              data['media_baseurl']!, _mediaBaseurlMeta));
+        ),
+      );
     }
     if (data.containsKey('architecture')) {
       context.handle(
+        _architectureMeta,
+        architecture.isAcceptableOrUnknown(
+          data['architecture']!,
           _architectureMeta,
-          architecture.isAcceptableOrUnknown(
-              data['architecture']!, _architectureMeta));
+        ),
+      );
     }
     if (data.containsKey('bundle_type')) {
       context.handle(
-          _bundleTypeMeta,
-          bundleType.isAcceptableOrUnknown(
-              data['bundle_type']!, _bundleTypeMeta));
+        _bundleTypeMeta,
+        bundleType.isAcceptableOrUnknown(data['bundle_type']!, _bundleTypeMeta),
+      );
     }
     if (data.containsKey('bundle_id')) {
-      context.handle(_bundleIdMeta,
-          bundleId.isAcceptableOrUnknown(data['bundle_id']!, _bundleIdMeta));
+      context.handle(
+        _bundleIdMeta,
+        bundleId.isAcceptableOrUnknown(data['bundle_id']!, _bundleIdMeta),
+      );
     }
     if (data.containsKey('developer_id')) {
       context.handle(
+        _developerIdMeta,
+        developerId.isAcceptableOrUnknown(
+          data['developer_id']!,
           _developerIdMeta,
-          developerId.isAcceptableOrUnknown(
-              data['developer_id']!, _developerIdMeta));
+        ),
+      );
     }
     if (data.containsKey('developer_name')) {
       context.handle(
+        _developerNameMeta,
+        developerName.isAcceptableOrUnknown(
+          data['developer_name']!,
           _developerNameMeta,
-          developerName.isAcceptableOrUnknown(
-              data['developer_name']!, _developerNameMeta));
+        ),
+      );
     }
     if (data.containsKey('launchable_type')) {
       context.handle(
+        _launchableTypeMeta,
+        launchableType.isAcceptableOrUnknown(
+          data['launchable_type']!,
           _launchableTypeMeta,
-          launchableType.isAcceptableOrUnknown(
-              data['launchable_type']!, _launchableTypeMeta));
+        ),
+      );
     }
     if (data.containsKey('launchable_value')) {
       context.handle(
+        _launchableValueMeta,
+        launchableValue.isAcceptableOrUnknown(
+          data['launchable_value']!,
           _launchableValueMeta,
-          launchableValue.isAcceptableOrUnknown(
-              data['launchable_value']!, _launchableValueMeta));
+        ),
+      );
     }
     if (data.containsKey('content_rating_type')) {
       context.handle(
+        _contentRatingTypeMeta,
+        contentRatingType.isAcceptableOrUnknown(
+          data['content_rating_type']!,
           _contentRatingTypeMeta,
-          contentRatingType.isAcceptableOrUnknown(
-              data['content_rating_type']!, _contentRatingTypeMeta));
+        ),
+      );
     }
     if (data.containsKey('agreement')) {
-      context.handle(_agreementMeta,
-          agreement.isAcceptableOrUnknown(data['agreement']!, _agreementMeta));
+      context.handle(
+        _agreementMeta,
+        agreement.isAcceptableOrUnknown(data['agreement']!, _agreementMeta),
+      );
     }
     return context;
   }
@@ -318,52 +488,98 @@ class $ComponentsTable extends Components
   ComponentRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ComponentRow(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
-      componentType: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}component_type'])!,
-      priority: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}priority'])!,
-      merge: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}merge']),
-      name: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      componentType: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}component_type'],
+      )!,
+      priority: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}priority'],
+      )!,
+      merge: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}merge'],
+      ),
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
       nameVariantSuffix: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}name_variant_suffix']),
-      summary: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}summary']),
-      description: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}description']),
-      pkgname: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}pkgname']),
-      sourcePkgname: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}source_pkgname']),
-      projectLicense: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}project_license']),
+        DriftSqlType.string,
+        data['${effectivePrefix}name_variant_suffix'],
+      ),
+      summary: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}summary'],
+      ),
+      description: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}description'],
+      ),
+      pkgname: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}pkgname'],
+      ),
+      sourcePkgname: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_pkgname'],
+      ),
+      projectLicense: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}project_license'],
+      ),
       metadataLicense: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}metadata_license']),
-      projectGroup: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}project_group']),
-      mediaBaseurl: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}media_baseurl']),
-      architecture: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}architecture']),
-      bundleType: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}bundle_type']),
-      bundleId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}bundle_id']),
-      developerId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}developer_id']),
-      developerName: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}developer_name']),
-      launchableType: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}launchable_type']),
+        DriftSqlType.string,
+        data['${effectivePrefix}metadata_license'],
+      ),
+      projectGroup: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}project_group'],
+      ),
+      mediaBaseurl: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}media_baseurl'],
+      ),
+      architecture: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}architecture'],
+      ),
+      bundleType: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}bundle_type'],
+      ),
+      bundleId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}bundle_id'],
+      ),
+      developerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}developer_id'],
+      ),
+      developerName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}developer_name'],
+      ),
+      launchableType: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}launchable_type'],
+      ),
       launchableValue: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}launchable_value']),
+        DriftSqlType.string,
+        data['${effectivePrefix}launchable_value'],
+      ),
       contentRatingType: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}content_rating_type']),
-      agreement: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}agreement']),
+        DriftSqlType.string,
+        data['${effectivePrefix}content_rating_type'],
+      ),
+      agreement: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}agreement'],
+      ),
     );
   }
 
@@ -397,30 +613,31 @@ class ComponentRow extends DataClass implements Insertable<ComponentRow> {
   final String? launchableValue;
   final String? contentRatingType;
   final String? agreement;
-  const ComponentRow(
-      {required this.id,
-      required this.componentType,
-      required this.priority,
-      this.merge,
-      required this.name,
-      this.nameVariantSuffix,
-      this.summary,
-      this.description,
-      this.pkgname,
-      this.sourcePkgname,
-      this.projectLicense,
-      this.metadataLicense,
-      this.projectGroup,
-      this.mediaBaseurl,
-      this.architecture,
-      this.bundleType,
-      this.bundleId,
-      this.developerId,
-      this.developerName,
-      this.launchableType,
-      this.launchableValue,
-      this.contentRatingType,
-      this.agreement});
+  const ComponentRow({
+    required this.id,
+    required this.componentType,
+    required this.priority,
+    this.merge,
+    required this.name,
+    this.nameVariantSuffix,
+    this.summary,
+    this.description,
+    this.pkgname,
+    this.sourcePkgname,
+    this.projectLicense,
+    this.metadataLicense,
+    this.projectGroup,
+    this.mediaBaseurl,
+    this.architecture,
+    this.bundleType,
+    this.bundleId,
+    this.developerId,
+    this.developerName,
+    this.launchableType,
+    this.launchableValue,
+    this.contentRatingType,
+    this.agreement,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -493,8 +710,9 @@ class ComponentRow extends DataClass implements Insertable<ComponentRow> {
       id: Value(id),
       componentType: Value(componentType),
       priority: Value(priority),
-      merge:
-          merge == null && nullToAbsent ? const Value.absent() : Value(merge),
+      merge: merge == null && nullToAbsent
+          ? const Value.absent()
+          : Value(merge),
       name: Value(name),
       nameVariantSuffix: nameVariantSuffix == null && nullToAbsent
           ? const Value.absent()
@@ -553,8 +771,10 @@ class ComponentRow extends DataClass implements Insertable<ComponentRow> {
     );
   }
 
-  factory ComponentRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ComponentRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ComponentRow(
       id: serializer.fromJson<String>(json['id']),
@@ -562,8 +782,9 @@ class ComponentRow extends DataClass implements Insertable<ComponentRow> {
       priority: serializer.fromJson<int>(json['priority']),
       merge: serializer.fromJson<String?>(json['merge']),
       name: serializer.fromJson<String>(json['name']),
-      nameVariantSuffix:
-          serializer.fromJson<String?>(json['nameVariantSuffix']),
+      nameVariantSuffix: serializer.fromJson<String?>(
+        json['nameVariantSuffix'],
+      ),
       summary: serializer.fromJson<String?>(json['summary']),
       description: serializer.fromJson<String?>(json['description']),
       pkgname: serializer.fromJson<String?>(json['pkgname']),
@@ -579,8 +800,9 @@ class ComponentRow extends DataClass implements Insertable<ComponentRow> {
       developerName: serializer.fromJson<String?>(json['developerName']),
       launchableType: serializer.fromJson<int?>(json['launchableType']),
       launchableValue: serializer.fromJson<String?>(json['launchableValue']),
-      contentRatingType:
-          serializer.fromJson<String?>(json['contentRatingType']),
+      contentRatingType: serializer.fromJson<String?>(
+        json['contentRatingType'],
+      ),
       agreement: serializer.fromJson<String?>(json['agreement']),
     );
   }
@@ -614,70 +836,71 @@ class ComponentRow extends DataClass implements Insertable<ComponentRow> {
     };
   }
 
-  ComponentRow copyWith(
-          {String? id,
-          int? componentType,
-          int? priority,
-          Value<String?> merge = const Value.absent(),
-          String? name,
-          Value<String?> nameVariantSuffix = const Value.absent(),
-          Value<String?> summary = const Value.absent(),
-          Value<String?> description = const Value.absent(),
-          Value<String?> pkgname = const Value.absent(),
-          Value<String?> sourcePkgname = const Value.absent(),
-          Value<String?> projectLicense = const Value.absent(),
-          Value<String?> metadataLicense = const Value.absent(),
-          Value<String?> projectGroup = const Value.absent(),
-          Value<String?> mediaBaseurl = const Value.absent(),
-          Value<String?> architecture = const Value.absent(),
-          Value<int?> bundleType = const Value.absent(),
-          Value<String?> bundleId = const Value.absent(),
-          Value<String?> developerId = const Value.absent(),
-          Value<String?> developerName = const Value.absent(),
-          Value<int?> launchableType = const Value.absent(),
-          Value<String?> launchableValue = const Value.absent(),
-          Value<String?> contentRatingType = const Value.absent(),
-          Value<String?> agreement = const Value.absent()}) =>
-      ComponentRow(
-        id: id ?? this.id,
-        componentType: componentType ?? this.componentType,
-        priority: priority ?? this.priority,
-        merge: merge.present ? merge.value : this.merge,
-        name: name ?? this.name,
-        nameVariantSuffix: nameVariantSuffix.present
-            ? nameVariantSuffix.value
-            : this.nameVariantSuffix,
-        summary: summary.present ? summary.value : this.summary,
-        description: description.present ? description.value : this.description,
-        pkgname: pkgname.present ? pkgname.value : this.pkgname,
-        sourcePkgname:
-            sourcePkgname.present ? sourcePkgname.value : this.sourcePkgname,
-        projectLicense:
-            projectLicense.present ? projectLicense.value : this.projectLicense,
-        metadataLicense: metadataLicense.present
-            ? metadataLicense.value
-            : this.metadataLicense,
-        projectGroup:
-            projectGroup.present ? projectGroup.value : this.projectGroup,
-        mediaBaseurl:
-            mediaBaseurl.present ? mediaBaseurl.value : this.mediaBaseurl,
-        architecture:
-            architecture.present ? architecture.value : this.architecture,
-        bundleType: bundleType.present ? bundleType.value : this.bundleType,
-        bundleId: bundleId.present ? bundleId.value : this.bundleId,
-        developerId: developerId.present ? developerId.value : this.developerId,
-        developerName:
-            developerName.present ? developerName.value : this.developerName,
-        launchableType:
-            launchableType.present ? launchableType.value : this.launchableType,
-        launchableValue: launchableValue.present
-            ? launchableValue.value
-            : this.launchableValue,
-        contentRatingType: contentRatingType.present
-            ? contentRatingType.value
-            : this.contentRatingType,
-        agreement: agreement.present ? agreement.value : this.agreement,
-      );
+  ComponentRow copyWith({
+    String? id,
+    int? componentType,
+    int? priority,
+    Value<String?> merge = const Value.absent(),
+    String? name,
+    Value<String?> nameVariantSuffix = const Value.absent(),
+    Value<String?> summary = const Value.absent(),
+    Value<String?> description = const Value.absent(),
+    Value<String?> pkgname = const Value.absent(),
+    Value<String?> sourcePkgname = const Value.absent(),
+    Value<String?> projectLicense = const Value.absent(),
+    Value<String?> metadataLicense = const Value.absent(),
+    Value<String?> projectGroup = const Value.absent(),
+    Value<String?> mediaBaseurl = const Value.absent(),
+    Value<String?> architecture = const Value.absent(),
+    Value<int?> bundleType = const Value.absent(),
+    Value<String?> bundleId = const Value.absent(),
+    Value<String?> developerId = const Value.absent(),
+    Value<String?> developerName = const Value.absent(),
+    Value<int?> launchableType = const Value.absent(),
+    Value<String?> launchableValue = const Value.absent(),
+    Value<String?> contentRatingType = const Value.absent(),
+    Value<String?> agreement = const Value.absent(),
+  }) => ComponentRow(
+    id: id ?? this.id,
+    componentType: componentType ?? this.componentType,
+    priority: priority ?? this.priority,
+    merge: merge.present ? merge.value : this.merge,
+    name: name ?? this.name,
+    nameVariantSuffix: nameVariantSuffix.present
+        ? nameVariantSuffix.value
+        : this.nameVariantSuffix,
+    summary: summary.present ? summary.value : this.summary,
+    description: description.present ? description.value : this.description,
+    pkgname: pkgname.present ? pkgname.value : this.pkgname,
+    sourcePkgname: sourcePkgname.present
+        ? sourcePkgname.value
+        : this.sourcePkgname,
+    projectLicense: projectLicense.present
+        ? projectLicense.value
+        : this.projectLicense,
+    metadataLicense: metadataLicense.present
+        ? metadataLicense.value
+        : this.metadataLicense,
+    projectGroup: projectGroup.present ? projectGroup.value : this.projectGroup,
+    mediaBaseurl: mediaBaseurl.present ? mediaBaseurl.value : this.mediaBaseurl,
+    architecture: architecture.present ? architecture.value : this.architecture,
+    bundleType: bundleType.present ? bundleType.value : this.bundleType,
+    bundleId: bundleId.present ? bundleId.value : this.bundleId,
+    developerId: developerId.present ? developerId.value : this.developerId,
+    developerName: developerName.present
+        ? developerName.value
+        : this.developerName,
+    launchableType: launchableType.present
+        ? launchableType.value
+        : this.launchableType,
+    launchableValue: launchableValue.present
+        ? launchableValue.value
+        : this.launchableValue,
+    contentRatingType: contentRatingType.present
+        ? contentRatingType.value
+        : this.contentRatingType,
+    agreement: agreement.present ? agreement.value : this.agreement,
+  );
   ComponentRow copyWithCompanion(ComponentsCompanion data) {
     return ComponentRow(
       id: data.id.present ? data.id.value : this.id,
@@ -691,8 +914,9 @@ class ComponentRow extends DataClass implements Insertable<ComponentRow> {
           ? data.nameVariantSuffix.value
           : this.nameVariantSuffix,
       summary: data.summary.present ? data.summary.value : this.summary,
-      description:
-          data.description.present ? data.description.value : this.description,
+      description: data.description.present
+          ? data.description.value
+          : this.description,
       pkgname: data.pkgname.present ? data.pkgname.value : this.pkgname,
       sourcePkgname: data.sourcePkgname.present
           ? data.sourcePkgname.value
@@ -712,11 +936,13 @@ class ComponentRow extends DataClass implements Insertable<ComponentRow> {
       architecture: data.architecture.present
           ? data.architecture.value
           : this.architecture,
-      bundleType:
-          data.bundleType.present ? data.bundleType.value : this.bundleType,
+      bundleType: data.bundleType.present
+          ? data.bundleType.value
+          : this.bundleType,
       bundleId: data.bundleId.present ? data.bundleId.value : this.bundleId,
-      developerId:
-          data.developerId.present ? data.developerId.value : this.developerId,
+      developerId: data.developerId.present
+          ? data.developerId.value
+          : this.developerId,
       developerName: data.developerName.present
           ? data.developerName.value
           : this.developerName,
@@ -765,30 +991,30 @@ class ComponentRow extends DataClass implements Insertable<ComponentRow> {
 
   @override
   int get hashCode => Object.hashAll([
-        id,
-        componentType,
-        priority,
-        merge,
-        name,
-        nameVariantSuffix,
-        summary,
-        description,
-        pkgname,
-        sourcePkgname,
-        projectLicense,
-        metadataLicense,
-        projectGroup,
-        mediaBaseurl,
-        architecture,
-        bundleType,
-        bundleId,
-        developerId,
-        developerName,
-        launchableType,
-        launchableValue,
-        contentRatingType,
-        agreement
-      ]);
+    id,
+    componentType,
+    priority,
+    merge,
+    name,
+    nameVariantSuffix,
+    summary,
+    description,
+    pkgname,
+    sourcePkgname,
+    projectLicense,
+    metadataLicense,
+    projectGroup,
+    mediaBaseurl,
+    architecture,
+    bundleType,
+    bundleId,
+    developerId,
+    developerName,
+    launchableType,
+    launchableValue,
+    contentRatingType,
+    agreement,
+  ]);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -894,8 +1120,8 @@ class ComponentsCompanion extends UpdateCompanion<ComponentRow> {
     this.contentRatingType = const Value.absent(),
     this.agreement = const Value.absent(),
     this.rowid = const Value.absent(),
-  })  : id = Value(id),
-        name = Value(name);
+  }) : id = Value(id),
+       name = Value(name);
   static Insertable<ComponentRow> custom({
     Expression<String>? id,
     Expression<int>? componentType,
@@ -950,31 +1176,32 @@ class ComponentsCompanion extends UpdateCompanion<ComponentRow> {
     });
   }
 
-  ComponentsCompanion copyWith(
-      {Value<String>? id,
-      Value<int>? componentType,
-      Value<int>? priority,
-      Value<String?>? merge,
-      Value<String>? name,
-      Value<String?>? nameVariantSuffix,
-      Value<String?>? summary,
-      Value<String?>? description,
-      Value<String?>? pkgname,
-      Value<String?>? sourcePkgname,
-      Value<String?>? projectLicense,
-      Value<String?>? metadataLicense,
-      Value<String?>? projectGroup,
-      Value<String?>? mediaBaseurl,
-      Value<String?>? architecture,
-      Value<int?>? bundleType,
-      Value<String?>? bundleId,
-      Value<String?>? developerId,
-      Value<String?>? developerName,
-      Value<int?>? launchableType,
-      Value<String?>? launchableValue,
-      Value<String?>? contentRatingType,
-      Value<String?>? agreement,
-      Value<int>? rowid}) {
+  ComponentsCompanion copyWith({
+    Value<String>? id,
+    Value<int>? componentType,
+    Value<int>? priority,
+    Value<String?>? merge,
+    Value<String>? name,
+    Value<String?>? nameVariantSuffix,
+    Value<String?>? summary,
+    Value<String?>? description,
+    Value<String?>? pkgname,
+    Value<String?>? sourcePkgname,
+    Value<String?>? projectLicense,
+    Value<String?>? metadataLicense,
+    Value<String?>? projectGroup,
+    Value<String?>? mediaBaseurl,
+    Value<String?>? architecture,
+    Value<int?>? bundleType,
+    Value<String?>? bundleId,
+    Value<String?>? developerId,
+    Value<String?>? developerName,
+    Value<int?>? launchableType,
+    Value<String?>? launchableValue,
+    Value<String?>? contentRatingType,
+    Value<String?>? agreement,
+    Value<int>? rowid,
+  }) {
     return ComponentsCompanion(
       id: id ?? this.id,
       componentType: componentType ?? this.componentType,
@@ -1122,19 +1349,26 @@ class $CategoriesTable extends Categories
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
-      'name', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: true,
-      defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'),
+  );
   @override
   List<GeneratedColumn> get $columns => [id, name];
   @override
@@ -1143,8 +1377,10 @@ class $CategoriesTable extends Categories
   String get actualTableName => $name;
   static const String $name = 'categories';
   @override
-  VerificationContext validateIntegrity(Insertable<Category> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<Category> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
@@ -1152,7 +1388,9 @@ class $CategoriesTable extends Categories
     }
     if (data.containsKey('name')) {
       context.handle(
-          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
@@ -1165,10 +1403,14 @@ class $CategoriesTable extends Categories
   Category map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return Category(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      name: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
     );
   }
 
@@ -1191,14 +1433,13 @@ class Category extends DataClass implements Insertable<Category> {
   }
 
   CategoriesCompanion toCompanion(bool nullToAbsent) {
-    return CategoriesCompanion(
-      id: Value(id),
-      name: Value(name),
-    );
+    return CategoriesCompanion(id: Value(id), name: Value(name));
   }
 
-  factory Category.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory Category.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return Category(
       id: serializer.fromJson<int>(json['id']),
@@ -1214,10 +1455,8 @@ class Category extends DataClass implements Insertable<Category> {
     };
   }
 
-  Category copyWith({int? id, String? name}) => Category(
-        id: id ?? this.id,
-        name: name ?? this.name,
-      );
+  Category copyWith({int? id, String? name}) =>
+      Category(id: id ?? this.id, name: name ?? this.name);
   Category copyWithCompanion(CategoriesCompanion data) {
     return Category(
       id: data.id.present ? data.id.value : this.id,
@@ -1264,10 +1503,7 @@ class CategoriesCompanion extends UpdateCompanion<Category> {
   }
 
   CategoriesCompanion copyWith({Value<int>? id, Value<String>? name}) {
-    return CategoriesCompanion(
-      id: id ?? this.id,
-      name: name ?? this.name,
-    );
+    return CategoriesCompanion(id: id ?? this.id, name: name ?? this.name);
   }
 
   @override
@@ -1298,18 +1534,28 @@ class $ComponentCategoriesTable extends ComponentCategories
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ComponentCategoriesTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _categoryIdMeta =
-      const VerificationMeta('categoryId');
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _categoryIdMeta = const VerificationMeta(
+    'categoryId',
+  );
   @override
   late final GeneratedColumn<int> categoryId = GeneratedColumn<int>(
-      'category_id', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'category_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [componentId, categoryId];
   @override
@@ -1319,23 +1565,27 @@ class $ComponentCategoriesTable extends ComponentCategories
   static const String $name = 'component_categories';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ComponentCategoryRow> instance,
-      {bool isInserting = false}) {
+    Insertable<ComponentCategoryRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('category_id')) {
       context.handle(
-          _categoryIdMeta,
-          categoryId.isAcceptableOrUnknown(
-              data['category_id']!, _categoryIdMeta));
+        _categoryIdMeta,
+        categoryId.isAcceptableOrUnknown(data['category_id']!, _categoryIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_categoryIdMeta);
     }
@@ -1348,10 +1598,14 @@ class $ComponentCategoriesTable extends ComponentCategories
   ComponentCategoryRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ComponentCategoryRow(
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      categoryId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}category_id'])!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      categoryId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}category_id'],
+      )!,
     );
   }
 
@@ -1365,8 +1619,10 @@ class ComponentCategoryRow extends DataClass
     implements Insertable<ComponentCategoryRow> {
   final String componentId;
   final int categoryId;
-  const ComponentCategoryRow(
-      {required this.componentId, required this.categoryId});
+  const ComponentCategoryRow({
+    required this.componentId,
+    required this.categoryId,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -1382,8 +1638,10 @@ class ComponentCategoryRow extends DataClass
     );
   }
 
-  factory ComponentCategoryRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ComponentCategoryRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ComponentCategoryRow(
       componentId: serializer.fromJson<String>(json['componentId']),
@@ -1406,10 +1664,12 @@ class ComponentCategoryRow extends DataClass
       );
   ComponentCategoryRow copyWithCompanion(ComponentCategoriesCompanion data) {
     return ComponentCategoryRow(
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
-      categoryId:
-          data.categoryId.present ? data.categoryId.value : this.categoryId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
+      categoryId: data.categoryId.present
+          ? data.categoryId.value
+          : this.categoryId,
     );
   }
 
@@ -1446,8 +1706,8 @@ class ComponentCategoriesCompanion
     required String componentId,
     required int categoryId,
     this.rowid = const Value.absent(),
-  })  : componentId = Value(componentId),
-        categoryId = Value(categoryId);
+  }) : componentId = Value(componentId),
+       categoryId = Value(categoryId);
   static Insertable<ComponentCategoryRow> custom({
     Expression<String>? componentId,
     Expression<int>? categoryId,
@@ -1460,8 +1720,11 @@ class ComponentCategoriesCompanion
     });
   }
 
-  ComponentCategoriesCompanion copyWith(
-      {Value<String>? componentId, Value<int>? categoryId, Value<int>? rowid}) {
+  ComponentCategoriesCompanion copyWith({
+    Value<String>? componentId,
+    Value<int>? categoryId,
+    Value<int>? rowid,
+  }) {
     return ComponentCategoriesCompanion(
       componentId: componentId ?? this.componentId,
       categoryId: categoryId ?? this.categoryId,
@@ -1503,19 +1766,26 @@ class $KeywordsTable extends Keywords with TableInfo<$KeywordsTable, Keyword> {
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
-      'name', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: true,
-      defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'),
+  );
   @override
   List<GeneratedColumn> get $columns => [id, name];
   @override
@@ -1524,8 +1794,10 @@ class $KeywordsTable extends Keywords with TableInfo<$KeywordsTable, Keyword> {
   String get actualTableName => $name;
   static const String $name = 'keywords';
   @override
-  VerificationContext validateIntegrity(Insertable<Keyword> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<Keyword> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
@@ -1533,7 +1805,9 @@ class $KeywordsTable extends Keywords with TableInfo<$KeywordsTable, Keyword> {
     }
     if (data.containsKey('name')) {
       context.handle(
-          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
@@ -1546,10 +1820,14 @@ class $KeywordsTable extends Keywords with TableInfo<$KeywordsTable, Keyword> {
   Keyword map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return Keyword(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      name: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
     );
   }
 
@@ -1572,14 +1850,13 @@ class Keyword extends DataClass implements Insertable<Keyword> {
   }
 
   KeywordsCompanion toCompanion(bool nullToAbsent) {
-    return KeywordsCompanion(
-      id: Value(id),
-      name: Value(name),
-    );
+    return KeywordsCompanion(id: Value(id), name: Value(name));
   }
 
-  factory Keyword.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory Keyword.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return Keyword(
       id: serializer.fromJson<int>(json['id']),
@@ -1595,10 +1872,8 @@ class Keyword extends DataClass implements Insertable<Keyword> {
     };
   }
 
-  Keyword copyWith({int? id, String? name}) => Keyword(
-        id: id ?? this.id,
-        name: name ?? this.name,
-      );
+  Keyword copyWith({int? id, String? name}) =>
+      Keyword(id: id ?? this.id, name: name ?? this.name);
   Keyword copyWithCompanion(KeywordsCompanion data) {
     return Keyword(
       id: data.id.present ? data.id.value : this.id,
@@ -1645,10 +1920,7 @@ class KeywordsCompanion extends UpdateCompanion<Keyword> {
   }
 
   KeywordsCompanion copyWith({Value<int>? id, Value<String>? name}) {
-    return KeywordsCompanion(
-      id: id ?? this.id,
-      name: name ?? this.name,
-    );
+    return KeywordsCompanion(id: id ?? this.id, name: name ?? this.name);
   }
 
   @override
@@ -1679,18 +1951,28 @@ class $ComponentKeywordsTable extends ComponentKeywords
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ComponentKeywordsTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _keywordIdMeta =
-      const VerificationMeta('keywordId');
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _keywordIdMeta = const VerificationMeta(
+    'keywordId',
+  );
   @override
   late final GeneratedColumn<int> keywordId = GeneratedColumn<int>(
-      'keyword_id', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'keyword_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [componentId, keywordId];
   @override
@@ -1700,21 +1982,27 @@ class $ComponentKeywordsTable extends ComponentKeywords
   static const String $name = 'component_keywords';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ComponentKeywordRow> instance,
-      {bool isInserting = false}) {
+    Insertable<ComponentKeywordRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('keyword_id')) {
-      context.handle(_keywordIdMeta,
-          keywordId.isAcceptableOrUnknown(data['keyword_id']!, _keywordIdMeta));
+      context.handle(
+        _keywordIdMeta,
+        keywordId.isAcceptableOrUnknown(data['keyword_id']!, _keywordIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_keywordIdMeta);
     }
@@ -1727,10 +2015,14 @@ class $ComponentKeywordsTable extends ComponentKeywords
   ComponentKeywordRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ComponentKeywordRow(
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      keywordId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}keyword_id'])!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      keywordId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}keyword_id'],
+      )!,
     );
   }
 
@@ -1744,8 +2036,10 @@ class ComponentKeywordRow extends DataClass
     implements Insertable<ComponentKeywordRow> {
   final String componentId;
   final int keywordId;
-  const ComponentKeywordRow(
-      {required this.componentId, required this.keywordId});
+  const ComponentKeywordRow({
+    required this.componentId,
+    required this.keywordId,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -1761,8 +2055,10 @@ class ComponentKeywordRow extends DataClass
     );
   }
 
-  factory ComponentKeywordRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ComponentKeywordRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ComponentKeywordRow(
       componentId: serializer.fromJson<String>(json['componentId']),
@@ -1785,8 +2081,9 @@ class ComponentKeywordRow extends DataClass
       );
   ComponentKeywordRow copyWithCompanion(ComponentKeywordsCompanion data) {
     return ComponentKeywordRow(
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
       keywordId: data.keywordId.present ? data.keywordId.value : this.keywordId,
     );
   }
@@ -1823,8 +2120,8 @@ class ComponentKeywordsCompanion extends UpdateCompanion<ComponentKeywordRow> {
     required String componentId,
     required int keywordId,
     this.rowid = const Value.absent(),
-  })  : componentId = Value(componentId),
-        keywordId = Value(keywordId);
+  }) : componentId = Value(componentId),
+       keywordId = Value(keywordId);
   static Insertable<ComponentKeywordRow> custom({
     Expression<String>? componentId,
     Expression<int>? keywordId,
@@ -1837,8 +2134,11 @@ class ComponentKeywordsCompanion extends UpdateCompanion<ComponentKeywordRow> {
     });
   }
 
-  ComponentKeywordsCompanion copyWith(
-      {Value<String>? componentId, Value<int>? keywordId, Value<int>? rowid}) {
+  ComponentKeywordsCompanion copyWith({
+    Value<String>? componentId,
+    Value<int>? keywordId,
+    Value<int>? rowid,
+  }) {
     return ComponentKeywordsCompanion(
       componentId: componentId ?? this.componentId,
       keywordId: keywordId ?? this.keywordId,
@@ -1878,23 +2178,37 @@ class $ComponentUrlsTable extends ComponentUrls
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ComponentUrlsTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _urlTypeMeta =
-      const VerificationMeta('urlType');
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _urlTypeMeta = const VerificationMeta(
+    'urlType',
+  );
   @override
   late final GeneratedColumn<int> urlType = GeneratedColumn<int>(
-      'url_type', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'url_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _urlMeta = const VerificationMeta('url');
   @override
   late final GeneratedColumn<String> url = GeneratedColumn<String>(
-      'url', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'url',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [componentId, urlType, url];
   @override
@@ -1903,27 +2217,36 @@ class $ComponentUrlsTable extends ComponentUrls
   String get actualTableName => $name;
   static const String $name = 'component_urls';
   @override
-  VerificationContext validateIntegrity(Insertable<ComponentUrlRow> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<ComponentUrlRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('url_type')) {
-      context.handle(_urlTypeMeta,
-          urlType.isAcceptableOrUnknown(data['url_type']!, _urlTypeMeta));
+      context.handle(
+        _urlTypeMeta,
+        urlType.isAcceptableOrUnknown(data['url_type']!, _urlTypeMeta),
+      );
     } else if (isInserting) {
       context.missing(_urlTypeMeta);
     }
     if (data.containsKey('url')) {
       context.handle(
-          _urlMeta, url.isAcceptableOrUnknown(data['url']!, _urlMeta));
+        _urlMeta,
+        url.isAcceptableOrUnknown(data['url']!, _urlMeta),
+      );
     } else if (isInserting) {
       context.missing(_urlMeta);
     }
@@ -1936,12 +2259,18 @@ class $ComponentUrlsTable extends ComponentUrls
   ComponentUrlRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ComponentUrlRow(
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      urlType: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}url_type'])!,
-      url: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}url'])!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      urlType: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}url_type'],
+      )!,
+      url: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}url'],
+      )!,
     );
   }
 
@@ -1955,8 +2284,11 @@ class ComponentUrlRow extends DataClass implements Insertable<ComponentUrlRow> {
   final String componentId;
   final int urlType;
   final String url;
-  const ComponentUrlRow(
-      {required this.componentId, required this.urlType, required this.url});
+  const ComponentUrlRow({
+    required this.componentId,
+    required this.urlType,
+    required this.url,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -1974,8 +2306,10 @@ class ComponentUrlRow extends DataClass implements Insertable<ComponentUrlRow> {
     );
   }
 
-  factory ComponentUrlRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ComponentUrlRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ComponentUrlRow(
       componentId: serializer.fromJson<String>(json['componentId']),
@@ -2001,8 +2335,9 @@ class ComponentUrlRow extends DataClass implements Insertable<ComponentUrlRow> {
       );
   ComponentUrlRow copyWithCompanion(ComponentUrlsCompanion data) {
     return ComponentUrlRow(
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
       urlType: data.urlType.present ? data.urlType.value : this.urlType,
       url: data.url.present ? data.url.value : this.url,
     );
@@ -2045,9 +2380,9 @@ class ComponentUrlsCompanion extends UpdateCompanion<ComponentUrlRow> {
     required int urlType,
     required String url,
     this.rowid = const Value.absent(),
-  })  : componentId = Value(componentId),
-        urlType = Value(urlType),
-        url = Value(url);
+  }) : componentId = Value(componentId),
+       urlType = Value(urlType),
+       url = Value(url);
   static Insertable<ComponentUrlRow> custom({
     Expression<String>? componentId,
     Expression<int>? urlType,
@@ -2062,11 +2397,12 @@ class ComponentUrlsCompanion extends UpdateCompanion<ComponentUrlRow> {
     });
   }
 
-  ComponentUrlsCompanion copyWith(
-      {Value<String>? componentId,
-      Value<int>? urlType,
-      Value<String>? url,
-      Value<int>? rowid}) {
+  ComponentUrlsCompanion copyWith({
+    Value<String>? componentId,
+    Value<int>? urlType,
+    Value<String>? url,
+    Value<int>? rowid,
+  }) {
     return ComponentUrlsCompanion(
       componentId: componentId ?? this.componentId,
       urlType: urlType ?? this.urlType,
@@ -2114,55 +2450,94 @@ class $ComponentIconsTable extends ComponentIcons
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _iconTypeMeta =
-      const VerificationMeta('iconType');
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _iconTypeMeta = const VerificationMeta(
+    'iconType',
+  );
   @override
   late final GeneratedColumn<int> iconType = GeneratedColumn<int>(
-      'icon_type', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'icon_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _valueMeta = const VerificationMeta('value');
   @override
   late final GeneratedColumn<String> value = GeneratedColumn<String>(
-      'value', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'value',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _widthMeta = const VerificationMeta('width');
   @override
   late final GeneratedColumn<int> width = GeneratedColumn<int>(
-      'width', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
+    'width',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _heightMeta = const VerificationMeta('height');
   @override
   late final GeneratedColumn<int> height = GeneratedColumn<int>(
-      'height', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
+    'height',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _scaleMeta = const VerificationMeta('scale');
   @override
   late final GeneratedColumn<int> scale = GeneratedColumn<int>(
-      'scale', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
+    'scale',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, componentId, iconType, value, width, height, scale];
+  List<GeneratedColumn> get $columns => [
+    id,
+    componentId,
+    iconType,
+    value,
+    width,
+    height,
+    scale,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
   static const String $name = 'component_icons';
   @override
-  VerificationContext validateIntegrity(Insertable<ComponentIconRow> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<ComponentIconRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
@@ -2170,35 +2545,48 @@ class $ComponentIconsTable extends ComponentIcons
     }
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('icon_type')) {
-      context.handle(_iconTypeMeta,
-          iconType.isAcceptableOrUnknown(data['icon_type']!, _iconTypeMeta));
+      context.handle(
+        _iconTypeMeta,
+        iconType.isAcceptableOrUnknown(data['icon_type']!, _iconTypeMeta),
+      );
     } else if (isInserting) {
       context.missing(_iconTypeMeta);
     }
     if (data.containsKey('value')) {
       context.handle(
-          _valueMeta, value.isAcceptableOrUnknown(data['value']!, _valueMeta));
+        _valueMeta,
+        value.isAcceptableOrUnknown(data['value']!, _valueMeta),
+      );
     } else if (isInserting) {
       context.missing(_valueMeta);
     }
     if (data.containsKey('width')) {
       context.handle(
-          _widthMeta, width.isAcceptableOrUnknown(data['width']!, _widthMeta));
+        _widthMeta,
+        width.isAcceptableOrUnknown(data['width']!, _widthMeta),
+      );
     }
     if (data.containsKey('height')) {
-      context.handle(_heightMeta,
-          height.isAcceptableOrUnknown(data['height']!, _heightMeta));
+      context.handle(
+        _heightMeta,
+        height.isAcceptableOrUnknown(data['height']!, _heightMeta),
+      );
     }
     if (data.containsKey('scale')) {
       context.handle(
-          _scaleMeta, scale.isAcceptableOrUnknown(data['scale']!, _scaleMeta));
+        _scaleMeta,
+        scale.isAcceptableOrUnknown(data['scale']!, _scaleMeta),
+      );
     }
     return context;
   }
@@ -2209,20 +2597,34 @@ class $ComponentIconsTable extends ComponentIcons
   ComponentIconRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ComponentIconRow(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      iconType: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}icon_type'])!,
-      value: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}value'])!,
-      width: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}width']),
-      height: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}height']),
-      scale: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}scale']),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      iconType: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}icon_type'],
+      )!,
+      value: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}value'],
+      )!,
+      width: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}width'],
+      ),
+      height: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}height'],
+      ),
+      scale: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}scale'],
+      ),
     );
   }
 
@@ -2241,14 +2643,15 @@ class ComponentIconRow extends DataClass
   final int? width;
   final int? height;
   final int? scale;
-  const ComponentIconRow(
-      {required this.id,
-      required this.componentId,
-      required this.iconType,
-      required this.value,
-      this.width,
-      this.height,
-      this.scale});
+  const ComponentIconRow({
+    required this.id,
+    required this.componentId,
+    required this.iconType,
+    required this.value,
+    this.width,
+    this.height,
+    this.scale,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -2274,17 +2677,22 @@ class ComponentIconRow extends DataClass
       componentId: Value(componentId),
       iconType: Value(iconType),
       value: Value(value),
-      width:
-          width == null && nullToAbsent ? const Value.absent() : Value(width),
-      height:
-          height == null && nullToAbsent ? const Value.absent() : Value(height),
-      scale:
-          scale == null && nullToAbsent ? const Value.absent() : Value(scale),
+      width: width == null && nullToAbsent
+          ? const Value.absent()
+          : Value(width),
+      height: height == null && nullToAbsent
+          ? const Value.absent()
+          : Value(height),
+      scale: scale == null && nullToAbsent
+          ? const Value.absent()
+          : Value(scale),
     );
   }
 
-  factory ComponentIconRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ComponentIconRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ComponentIconRow(
       id: serializer.fromJson<int>(json['id']),
@@ -2310,28 +2718,29 @@ class ComponentIconRow extends DataClass
     };
   }
 
-  ComponentIconRow copyWith(
-          {int? id,
-          String? componentId,
-          int? iconType,
-          String? value,
-          Value<int?> width = const Value.absent(),
-          Value<int?> height = const Value.absent(),
-          Value<int?> scale = const Value.absent()}) =>
-      ComponentIconRow(
-        id: id ?? this.id,
-        componentId: componentId ?? this.componentId,
-        iconType: iconType ?? this.iconType,
-        value: value ?? this.value,
-        width: width.present ? width.value : this.width,
-        height: height.present ? height.value : this.height,
-        scale: scale.present ? scale.value : this.scale,
-      );
+  ComponentIconRow copyWith({
+    int? id,
+    String? componentId,
+    int? iconType,
+    String? value,
+    Value<int?> width = const Value.absent(),
+    Value<int?> height = const Value.absent(),
+    Value<int?> scale = const Value.absent(),
+  }) => ComponentIconRow(
+    id: id ?? this.id,
+    componentId: componentId ?? this.componentId,
+    iconType: iconType ?? this.iconType,
+    value: value ?? this.value,
+    width: width.present ? width.value : this.width,
+    height: height.present ? height.value : this.height,
+    scale: scale.present ? scale.value : this.scale,
+  );
   ComponentIconRow copyWithCompanion(ComponentIconsCompanion data) {
     return ComponentIconRow(
       id: data.id.present ? data.id.value : this.id,
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
       iconType: data.iconType.present ? data.iconType.value : this.iconType,
       value: data.value.present ? data.value.value : this.value,
       width: data.width.present ? data.width.value : this.width,
@@ -2395,9 +2804,9 @@ class ComponentIconsCompanion extends UpdateCompanion<ComponentIconRow> {
     this.width = const Value.absent(),
     this.height = const Value.absent(),
     this.scale = const Value.absent(),
-  })  : componentId = Value(componentId),
-        iconType = Value(iconType),
-        value = Value(value);
+  }) : componentId = Value(componentId),
+       iconType = Value(iconType),
+       value = Value(value);
   static Insertable<ComponentIconRow> custom({
     Expression<int>? id,
     Expression<String>? componentId,
@@ -2418,14 +2827,15 @@ class ComponentIconsCompanion extends UpdateCompanion<ComponentIconRow> {
     });
   }
 
-  ComponentIconsCompanion copyWith(
-      {Value<int>? id,
-      Value<String>? componentId,
-      Value<int>? iconType,
-      Value<String>? value,
-      Value<int?>? width,
-      Value<int?>? height,
-      Value<int?>? scale}) {
+  ComponentIconsCompanion copyWith({
+    Value<int>? id,
+    Value<String>? componentId,
+    Value<int>? iconType,
+    Value<String>? value,
+    Value<int?>? width,
+    Value<int?>? height,
+    Value<int?>? scale,
+  }) {
     return ComponentIconsCompanion(
       id: id ?? this.id,
       componentId: componentId ?? this.componentId,
@@ -2488,85 +2898,134 @@ class $ReleasesTable extends Releases
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _releaseTypeMeta =
-      const VerificationMeta('releaseType');
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _releaseTypeMeta = const VerificationMeta(
+    'releaseType',
+  );
   @override
   late final GeneratedColumn<int> releaseType = GeneratedColumn<int>(
-      'release_type', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
-  static const VerificationMeta _versionMeta =
-      const VerificationMeta('version');
+    'release_type',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
   @override
   late final GeneratedColumn<String> version = GeneratedColumn<String>(
-      'version', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'version',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _dateMeta = const VerificationMeta('date');
   @override
   late final GeneratedColumn<String> date = GeneratedColumn<String>(
-      'date', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _timestampMeta =
-      const VerificationMeta('timestamp');
+    'date',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _timestampMeta = const VerificationMeta(
+    'timestamp',
+  );
   @override
   late final GeneratedColumn<String> timestamp = GeneratedColumn<String>(
-      'timestamp', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _dateEolMeta =
-      const VerificationMeta('dateEol');
+    'timestamp',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _dateEolMeta = const VerificationMeta(
+    'dateEol',
+  );
   @override
   late final GeneratedColumn<String> dateEol = GeneratedColumn<String>(
-      'date_eol', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _urgencyMeta =
-      const VerificationMeta('urgency');
+    'date_eol',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _urgencyMeta = const VerificationMeta(
+    'urgency',
+  );
   @override
   late final GeneratedColumn<int> urgency = GeneratedColumn<int>(
-      'urgency', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
-  static const VerificationMeta _descriptionMeta =
-      const VerificationMeta('description');
+    'urgency',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _descriptionMeta = const VerificationMeta(
+    'description',
+  );
   @override
   late final GeneratedColumn<String> description = GeneratedColumn<String>(
-      'description', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'description',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _urlMeta = const VerificationMeta('url');
   @override
   late final GeneratedColumn<String> url = GeneratedColumn<String>(
-      'url', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'url',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
-        id,
-        componentId,
-        releaseType,
-        version,
-        date,
-        timestamp,
-        dateEol,
-        urgency,
-        description,
-        url
-      ];
+    id,
+    componentId,
+    releaseType,
+    version,
+    date,
+    timestamp,
+    dateEol,
+    urgency,
+    description,
+    url,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
   static const String $name = 'releases';
   @override
-  VerificationContext validateIntegrity(Insertable<ReleaseRow> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<ReleaseRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
@@ -2574,47 +3033,68 @@ class $ReleasesTable extends Releases
     }
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('release_type')) {
       context.handle(
+        _releaseTypeMeta,
+        releaseType.isAcceptableOrUnknown(
+          data['release_type']!,
           _releaseTypeMeta,
-          releaseType.isAcceptableOrUnknown(
-              data['release_type']!, _releaseTypeMeta));
+        ),
+      );
     }
     if (data.containsKey('version')) {
-      context.handle(_versionMeta,
-          version.isAcceptableOrUnknown(data['version']!, _versionMeta));
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
     }
     if (data.containsKey('date')) {
       context.handle(
-          _dateMeta, date.isAcceptableOrUnknown(data['date']!, _dateMeta));
+        _dateMeta,
+        date.isAcceptableOrUnknown(data['date']!, _dateMeta),
+      );
     }
     if (data.containsKey('timestamp')) {
-      context.handle(_timestampMeta,
-          timestamp.isAcceptableOrUnknown(data['timestamp']!, _timestampMeta));
+      context.handle(
+        _timestampMeta,
+        timestamp.isAcceptableOrUnknown(data['timestamp']!, _timestampMeta),
+      );
     }
     if (data.containsKey('date_eol')) {
-      context.handle(_dateEolMeta,
-          dateEol.isAcceptableOrUnknown(data['date_eol']!, _dateEolMeta));
+      context.handle(
+        _dateEolMeta,
+        dateEol.isAcceptableOrUnknown(data['date_eol']!, _dateEolMeta),
+      );
     }
     if (data.containsKey('urgency')) {
-      context.handle(_urgencyMeta,
-          urgency.isAcceptableOrUnknown(data['urgency']!, _urgencyMeta));
+      context.handle(
+        _urgencyMeta,
+        urgency.isAcceptableOrUnknown(data['urgency']!, _urgencyMeta),
+      );
     }
     if (data.containsKey('description')) {
       context.handle(
+        _descriptionMeta,
+        description.isAcceptableOrUnknown(
+          data['description']!,
           _descriptionMeta,
-          description.isAcceptableOrUnknown(
-              data['description']!, _descriptionMeta));
+        ),
+      );
     }
     if (data.containsKey('url')) {
       context.handle(
-          _urlMeta, url.isAcceptableOrUnknown(data['url']!, _urlMeta));
+        _urlMeta,
+        url.isAcceptableOrUnknown(data['url']!, _urlMeta),
+      );
     }
     return context;
   }
@@ -2625,26 +3105,46 @@ class $ReleasesTable extends Releases
   ReleaseRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ReleaseRow(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      releaseType: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}release_type']),
-      version: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}version']),
-      date: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}date']),
-      timestamp: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}timestamp']),
-      dateEol: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}date_eol']),
-      urgency: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}urgency']),
-      description: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}description']),
-      url: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}url']),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      releaseType: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}release_type'],
+      ),
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}version'],
+      ),
+      date: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}date'],
+      ),
+      timestamp: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}timestamp'],
+      ),
+      dateEol: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}date_eol'],
+      ),
+      urgency: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}urgency'],
+      ),
+      description: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}description'],
+      ),
+      url: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}url'],
+      ),
     );
   }
 
@@ -2665,17 +3165,18 @@ class ReleaseRow extends DataClass implements Insertable<ReleaseRow> {
   final int? urgency;
   final String? description;
   final String? url;
-  const ReleaseRow(
-      {required this.id,
-      required this.componentId,
-      this.releaseType,
-      this.version,
-      this.date,
-      this.timestamp,
-      this.dateEol,
-      this.urgency,
-      this.description,
-      this.url});
+  const ReleaseRow({
+    required this.id,
+    required this.componentId,
+    this.releaseType,
+    this.version,
+    this.date,
+    this.timestamp,
+    this.dateEol,
+    this.urgency,
+    this.description,
+    this.url,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -2735,8 +3236,10 @@ class ReleaseRow extends DataClass implements Insertable<ReleaseRow> {
     );
   }
 
-  factory ReleaseRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ReleaseRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ReleaseRow(
       id: serializer.fromJson<int>(json['id']),
@@ -2768,43 +3271,46 @@ class ReleaseRow extends DataClass implements Insertable<ReleaseRow> {
     };
   }
 
-  ReleaseRow copyWith(
-          {int? id,
-          String? componentId,
-          Value<int?> releaseType = const Value.absent(),
-          Value<String?> version = const Value.absent(),
-          Value<String?> date = const Value.absent(),
-          Value<String?> timestamp = const Value.absent(),
-          Value<String?> dateEol = const Value.absent(),
-          Value<int?> urgency = const Value.absent(),
-          Value<String?> description = const Value.absent(),
-          Value<String?> url = const Value.absent()}) =>
-      ReleaseRow(
-        id: id ?? this.id,
-        componentId: componentId ?? this.componentId,
-        releaseType: releaseType.present ? releaseType.value : this.releaseType,
-        version: version.present ? version.value : this.version,
-        date: date.present ? date.value : this.date,
-        timestamp: timestamp.present ? timestamp.value : this.timestamp,
-        dateEol: dateEol.present ? dateEol.value : this.dateEol,
-        urgency: urgency.present ? urgency.value : this.urgency,
-        description: description.present ? description.value : this.description,
-        url: url.present ? url.value : this.url,
-      );
+  ReleaseRow copyWith({
+    int? id,
+    String? componentId,
+    Value<int?> releaseType = const Value.absent(),
+    Value<String?> version = const Value.absent(),
+    Value<String?> date = const Value.absent(),
+    Value<String?> timestamp = const Value.absent(),
+    Value<String?> dateEol = const Value.absent(),
+    Value<int?> urgency = const Value.absent(),
+    Value<String?> description = const Value.absent(),
+    Value<String?> url = const Value.absent(),
+  }) => ReleaseRow(
+    id: id ?? this.id,
+    componentId: componentId ?? this.componentId,
+    releaseType: releaseType.present ? releaseType.value : this.releaseType,
+    version: version.present ? version.value : this.version,
+    date: date.present ? date.value : this.date,
+    timestamp: timestamp.present ? timestamp.value : this.timestamp,
+    dateEol: dateEol.present ? dateEol.value : this.dateEol,
+    urgency: urgency.present ? urgency.value : this.urgency,
+    description: description.present ? description.value : this.description,
+    url: url.present ? url.value : this.url,
+  );
   ReleaseRow copyWithCompanion(ReleasesCompanion data) {
     return ReleaseRow(
       id: data.id.present ? data.id.value : this.id,
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
-      releaseType:
-          data.releaseType.present ? data.releaseType.value : this.releaseType,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
+      releaseType: data.releaseType.present
+          ? data.releaseType.value
+          : this.releaseType,
       version: data.version.present ? data.version.value : this.version,
       date: data.date.present ? data.date.value : this.date,
       timestamp: data.timestamp.present ? data.timestamp.value : this.timestamp,
       dateEol: data.dateEol.present ? data.dateEol.value : this.dateEol,
       urgency: data.urgency.present ? data.urgency.value : this.urgency,
-      description:
-          data.description.present ? data.description.value : this.description,
+      description: data.description.present
+          ? data.description.value
+          : this.description,
       url: data.url.present ? data.url.value : this.url,
     );
   }
@@ -2827,8 +3333,18 @@ class ReleaseRow extends DataClass implements Insertable<ReleaseRow> {
   }
 
   @override
-  int get hashCode => Object.hash(id, componentId, releaseType, version, date,
-      timestamp, dateEol, urgency, description, url);
+  int get hashCode => Object.hash(
+    id,
+    componentId,
+    releaseType,
+    version,
+    date,
+    timestamp,
+    dateEol,
+    urgency,
+    description,
+    url,
+  );
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -2906,17 +3422,18 @@ class ReleasesCompanion extends UpdateCompanion<ReleaseRow> {
     });
   }
 
-  ReleasesCompanion copyWith(
-      {Value<int>? id,
-      Value<String>? componentId,
-      Value<int?>? releaseType,
-      Value<String?>? version,
-      Value<String?>? date,
-      Value<String?>? timestamp,
-      Value<String?>? dateEol,
-      Value<int?>? urgency,
-      Value<String?>? description,
-      Value<String?>? url}) {
+  ReleasesCompanion copyWith({
+    Value<int>? id,
+    Value<String>? componentId,
+    Value<int?>? releaseType,
+    Value<String?>? version,
+    Value<String?>? date,
+    Value<String?>? timestamp,
+    Value<String?>? dateEol,
+    Value<int?>? urgency,
+    Value<String?>? description,
+    Value<String?>? url,
+  }) {
     return ReleasesCompanion(
       id: id ?? this.id,
       componentId: componentId ?? this.componentId,
@@ -2994,34 +3511,56 @@ class $ReleaseIssuesTable extends ReleaseIssues
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
-  static const VerificationMeta _releaseIdMeta =
-      const VerificationMeta('releaseId');
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _releaseIdMeta = const VerificationMeta(
+    'releaseId',
+  );
   @override
   late final GeneratedColumn<int> releaseId = GeneratedColumn<int>(
-      'release_id', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
-  static const VerificationMeta _issueTypeMeta =
-      const VerificationMeta('issueType');
+    'release_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _issueTypeMeta = const VerificationMeta(
+    'issueType',
+  );
   @override
   late final GeneratedColumn<int> issueType = GeneratedColumn<int>(
-      'issue_type', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
+    'issue_type',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _urlMeta = const VerificationMeta('url');
   @override
   late final GeneratedColumn<String> url = GeneratedColumn<String>(
-      'url', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'url',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _valueMeta = const VerificationMeta('value');
   @override
   late final GeneratedColumn<String> value = GeneratedColumn<String>(
-      'value', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'value',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [id, releaseId, issueType, url, value];
   @override
@@ -3030,30 +3569,40 @@ class $ReleaseIssuesTable extends ReleaseIssues
   String get actualTableName => $name;
   static const String $name = 'release_issues';
   @override
-  VerificationContext validateIntegrity(Insertable<ReleaseIssueRow> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<ReleaseIssueRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
     }
     if (data.containsKey('release_id')) {
-      context.handle(_releaseIdMeta,
-          releaseId.isAcceptableOrUnknown(data['release_id']!, _releaseIdMeta));
+      context.handle(
+        _releaseIdMeta,
+        releaseId.isAcceptableOrUnknown(data['release_id']!, _releaseIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_releaseIdMeta);
     }
     if (data.containsKey('issue_type')) {
-      context.handle(_issueTypeMeta,
-          issueType.isAcceptableOrUnknown(data['issue_type']!, _issueTypeMeta));
+      context.handle(
+        _issueTypeMeta,
+        issueType.isAcceptableOrUnknown(data['issue_type']!, _issueTypeMeta),
+      );
     }
     if (data.containsKey('url')) {
       context.handle(
-          _urlMeta, url.isAcceptableOrUnknown(data['url']!, _urlMeta));
+        _urlMeta,
+        url.isAcceptableOrUnknown(data['url']!, _urlMeta),
+      );
     }
     if (data.containsKey('value')) {
       context.handle(
-          _valueMeta, value.isAcceptableOrUnknown(data['value']!, _valueMeta));
+        _valueMeta,
+        value.isAcceptableOrUnknown(data['value']!, _valueMeta),
+      );
     }
     return context;
   }
@@ -3064,16 +3613,26 @@ class $ReleaseIssuesTable extends ReleaseIssues
   ReleaseIssueRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ReleaseIssueRow(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      releaseId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}release_id'])!,
-      issueType: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}issue_type']),
-      url: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}url']),
-      value: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}value']),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      releaseId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}release_id'],
+      )!,
+      issueType: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}issue_type'],
+      ),
+      url: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}url'],
+      ),
+      value: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}value'],
+      ),
     );
   }
 
@@ -3089,12 +3648,13 @@ class ReleaseIssueRow extends DataClass implements Insertable<ReleaseIssueRow> {
   final int? issueType;
   final String? url;
   final String? value;
-  const ReleaseIssueRow(
-      {required this.id,
-      required this.releaseId,
-      this.issueType,
-      this.url,
-      this.value});
+  const ReleaseIssueRow({
+    required this.id,
+    required this.releaseId,
+    this.issueType,
+    this.url,
+    this.value,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -3120,13 +3680,16 @@ class ReleaseIssueRow extends DataClass implements Insertable<ReleaseIssueRow> {
           ? const Value.absent()
           : Value(issueType),
       url: url == null && nullToAbsent ? const Value.absent() : Value(url),
-      value:
-          value == null && nullToAbsent ? const Value.absent() : Value(value),
+      value: value == null && nullToAbsent
+          ? const Value.absent()
+          : Value(value),
     );
   }
 
-  factory ReleaseIssueRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ReleaseIssueRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ReleaseIssueRow(
       id: serializer.fromJson<int>(json['id']),
@@ -3148,19 +3711,19 @@ class ReleaseIssueRow extends DataClass implements Insertable<ReleaseIssueRow> {
     };
   }
 
-  ReleaseIssueRow copyWith(
-          {int? id,
-          int? releaseId,
-          Value<int?> issueType = const Value.absent(),
-          Value<String?> url = const Value.absent(),
-          Value<String?> value = const Value.absent()}) =>
-      ReleaseIssueRow(
-        id: id ?? this.id,
-        releaseId: releaseId ?? this.releaseId,
-        issueType: issueType.present ? issueType.value : this.issueType,
-        url: url.present ? url.value : this.url,
-        value: value.present ? value.value : this.value,
-      );
+  ReleaseIssueRow copyWith({
+    int? id,
+    int? releaseId,
+    Value<int?> issueType = const Value.absent(),
+    Value<String?> url = const Value.absent(),
+    Value<String?> value = const Value.absent(),
+  }) => ReleaseIssueRow(
+    id: id ?? this.id,
+    releaseId: releaseId ?? this.releaseId,
+    issueType: issueType.present ? issueType.value : this.issueType,
+    url: url.present ? url.value : this.url,
+    value: value.present ? value.value : this.value,
+  );
   ReleaseIssueRow copyWithCompanion(ReleaseIssuesCompanion data) {
     return ReleaseIssueRow(
       id: data.id.present ? data.id.value : this.id,
@@ -3232,12 +3795,13 @@ class ReleaseIssuesCompanion extends UpdateCompanion<ReleaseIssueRow> {
     });
   }
 
-  ReleaseIssuesCompanion copyWith(
-      {Value<int>? id,
-      Value<int>? releaseId,
-      Value<int?>? issueType,
-      Value<String?>? url,
-      Value<String?>? value}) {
+  ReleaseIssuesCompanion copyWith({
+    Value<int>? id,
+    Value<int>? releaseId,
+    Value<int?>? issueType,
+    Value<String?>? url,
+    Value<String?>? value,
+  }) {
     return ReleaseIssuesCompanion(
       id: id ?? this.id,
       releaseId: releaseId ?? this.releaseId,
@@ -3290,34 +3854,53 @@ class $ScreenshotsTable extends Screenshots
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _isDefaultMeta =
-      const VerificationMeta('isDefault');
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _isDefaultMeta = const VerificationMeta(
+    'isDefault',
+  );
   @override
   late final GeneratedColumn<bool> isDefault = GeneratedColumn<bool>(
-      'is_default', aliasedName, false,
-      type: DriftSqlType.bool,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('CHECK ("is_default" IN (0, 1))'),
-      defaultValue: const Constant(false));
-  static const VerificationMeta _captionMeta =
-      const VerificationMeta('caption');
+    'is_default',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_default" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _captionMeta = const VerificationMeta(
+    'caption',
+  );
   @override
   late final GeneratedColumn<String> caption = GeneratedColumn<String>(
-      'caption', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'caption',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [id, componentId, isDefault, caption];
   @override
@@ -3326,8 +3909,10 @@ class $ScreenshotsTable extends Screenshots
   String get actualTableName => $name;
   static const String $name = 'screenshots';
   @override
-  VerificationContext validateIntegrity(Insertable<ScreenshotRow> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<ScreenshotRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
@@ -3335,19 +3920,26 @@ class $ScreenshotsTable extends Screenshots
     }
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('is_default')) {
-      context.handle(_isDefaultMeta,
-          isDefault.isAcceptableOrUnknown(data['is_default']!, _isDefaultMeta));
+      context.handle(
+        _isDefaultMeta,
+        isDefault.isAcceptableOrUnknown(data['is_default']!, _isDefaultMeta),
+      );
     }
     if (data.containsKey('caption')) {
-      context.handle(_captionMeta,
-          caption.isAcceptableOrUnknown(data['caption']!, _captionMeta));
+      context.handle(
+        _captionMeta,
+        caption.isAcceptableOrUnknown(data['caption']!, _captionMeta),
+      );
     }
     return context;
   }
@@ -3358,14 +3950,22 @@ class $ScreenshotsTable extends Screenshots
   ScreenshotRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ScreenshotRow(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      isDefault: attachedDatabase.typeMapping
-          .read(DriftSqlType.bool, data['${effectivePrefix}is_default'])!,
-      caption: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}caption']),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      isDefault: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_default'],
+      )!,
+      caption: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}caption'],
+      ),
     );
   }
 
@@ -3380,11 +3980,12 @@ class ScreenshotRow extends DataClass implements Insertable<ScreenshotRow> {
   final String componentId;
   final bool isDefault;
   final String? caption;
-  const ScreenshotRow(
-      {required this.id,
-      required this.componentId,
-      required this.isDefault,
-      this.caption});
+  const ScreenshotRow({
+    required this.id,
+    required this.componentId,
+    required this.isDefault,
+    this.caption,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -3408,8 +4009,10 @@ class ScreenshotRow extends DataClass implements Insertable<ScreenshotRow> {
     );
   }
 
-  factory ScreenshotRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ScreenshotRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ScreenshotRow(
       id: serializer.fromJson<int>(json['id']),
@@ -3429,22 +4032,23 @@ class ScreenshotRow extends DataClass implements Insertable<ScreenshotRow> {
     };
   }
 
-  ScreenshotRow copyWith(
-          {int? id,
-          String? componentId,
-          bool? isDefault,
-          Value<String?> caption = const Value.absent()}) =>
-      ScreenshotRow(
-        id: id ?? this.id,
-        componentId: componentId ?? this.componentId,
-        isDefault: isDefault ?? this.isDefault,
-        caption: caption.present ? caption.value : this.caption,
-      );
+  ScreenshotRow copyWith({
+    int? id,
+    String? componentId,
+    bool? isDefault,
+    Value<String?> caption = const Value.absent(),
+  }) => ScreenshotRow(
+    id: id ?? this.id,
+    componentId: componentId ?? this.componentId,
+    isDefault: isDefault ?? this.isDefault,
+    caption: caption.present ? caption.value : this.caption,
+  );
   ScreenshotRow copyWithCompanion(ScreenshotsCompanion data) {
     return ScreenshotRow(
       id: data.id.present ? data.id.value : this.id,
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
       isDefault: data.isDefault.present ? data.isDefault.value : this.isDefault,
       caption: data.caption.present ? data.caption.value : this.caption,
     );
@@ -3504,11 +4108,12 @@ class ScreenshotsCompanion extends UpdateCompanion<ScreenshotRow> {
     });
   }
 
-  ScreenshotsCompanion copyWith(
-      {Value<int>? id,
-      Value<String>? componentId,
-      Value<bool>? isDefault,
-      Value<String?>? caption}) {
+  ScreenshotsCompanion copyWith({
+    Value<int>? id,
+    Value<String>? componentId,
+    Value<bool>? isDefault,
+    Value<String?>? caption,
+  }) {
     return ScreenshotsCompanion(
       id: id ?? this.id,
       componentId: componentId ?? this.componentId,
@@ -3556,49 +4161,82 @@ class $ScreenshotImagesTable extends ScreenshotImages
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
-  static const VerificationMeta _screenshotIdMeta =
-      const VerificationMeta('screenshotId');
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _screenshotIdMeta = const VerificationMeta(
+    'screenshotId',
+  );
   @override
   late final GeneratedColumn<int> screenshotId = GeneratedColumn<int>(
-      'screenshot_id', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'screenshot_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _urlMeta = const VerificationMeta('url');
   @override
   late final GeneratedColumn<String> url = GeneratedColumn<String>(
-      'url', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'url',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _typeMeta = const VerificationMeta('type');
   @override
   late final GeneratedColumn<String> type = GeneratedColumn<String>(
-      'type', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'type',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _widthMeta = const VerificationMeta('width');
   @override
   late final GeneratedColumn<int> width = GeneratedColumn<int>(
-      'width', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
+    'width',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _heightMeta = const VerificationMeta('height');
   @override
   late final GeneratedColumn<int> height = GeneratedColumn<int>(
-      'height', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
+    'height',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, screenshotId, url, type, width, height];
+  List<GeneratedColumn> get $columns => [
+    id,
+    screenshotId,
+    url,
+    type,
+    width,
+    height,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
   static const String $name = 'screenshot_images';
   @override
-  VerificationContext validateIntegrity(Insertable<ScreenshotImageRow> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<ScreenshotImageRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
@@ -3606,29 +4244,40 @@ class $ScreenshotImagesTable extends ScreenshotImages
     }
     if (data.containsKey('screenshot_id')) {
       context.handle(
+        _screenshotIdMeta,
+        screenshotId.isAcceptableOrUnknown(
+          data['screenshot_id']!,
           _screenshotIdMeta,
-          screenshotId.isAcceptableOrUnknown(
-              data['screenshot_id']!, _screenshotIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_screenshotIdMeta);
     }
     if (data.containsKey('url')) {
       context.handle(
-          _urlMeta, url.isAcceptableOrUnknown(data['url']!, _urlMeta));
+        _urlMeta,
+        url.isAcceptableOrUnknown(data['url']!, _urlMeta),
+      );
     } else if (isInserting) {
       context.missing(_urlMeta);
     }
     if (data.containsKey('type')) {
       context.handle(
-          _typeMeta, type.isAcceptableOrUnknown(data['type']!, _typeMeta));
+        _typeMeta,
+        type.isAcceptableOrUnknown(data['type']!, _typeMeta),
+      );
     }
     if (data.containsKey('width')) {
       context.handle(
-          _widthMeta, width.isAcceptableOrUnknown(data['width']!, _widthMeta));
+        _widthMeta,
+        width.isAcceptableOrUnknown(data['width']!, _widthMeta),
+      );
     }
     if (data.containsKey('height')) {
-      context.handle(_heightMeta,
-          height.isAcceptableOrUnknown(data['height']!, _heightMeta));
+      context.handle(
+        _heightMeta,
+        height.isAcceptableOrUnknown(data['height']!, _heightMeta),
+      );
     }
     return context;
   }
@@ -3639,18 +4288,30 @@ class $ScreenshotImagesTable extends ScreenshotImages
   ScreenshotImageRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ScreenshotImageRow(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      screenshotId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}screenshot_id'])!,
-      url: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}url'])!,
-      type: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}type']),
-      width: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}width']),
-      height: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}height']),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      screenshotId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}screenshot_id'],
+      )!,
+      url: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}url'],
+      )!,
+      type: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}type'],
+      ),
+      width: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}width'],
+      ),
+      height: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}height'],
+      ),
     );
   }
 
@@ -3668,13 +4329,14 @@ class ScreenshotImageRow extends DataClass
   final String? type;
   final int? width;
   final int? height;
-  const ScreenshotImageRow(
-      {required this.id,
-      required this.screenshotId,
-      required this.url,
-      this.type,
-      this.width,
-      this.height});
+  const ScreenshotImageRow({
+    required this.id,
+    required this.screenshotId,
+    required this.url,
+    this.type,
+    this.width,
+    this.height,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -3699,15 +4361,19 @@ class ScreenshotImageRow extends DataClass
       screenshotId: Value(screenshotId),
       url: Value(url),
       type: type == null && nullToAbsent ? const Value.absent() : Value(type),
-      width:
-          width == null && nullToAbsent ? const Value.absent() : Value(width),
-      height:
-          height == null && nullToAbsent ? const Value.absent() : Value(height),
+      width: width == null && nullToAbsent
+          ? const Value.absent()
+          : Value(width),
+      height: height == null && nullToAbsent
+          ? const Value.absent()
+          : Value(height),
     );
   }
 
-  factory ScreenshotImageRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ScreenshotImageRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ScreenshotImageRow(
       id: serializer.fromJson<int>(json['id']),
@@ -3731,21 +4397,21 @@ class ScreenshotImageRow extends DataClass
     };
   }
 
-  ScreenshotImageRow copyWith(
-          {int? id,
-          int? screenshotId,
-          String? url,
-          Value<String?> type = const Value.absent(),
-          Value<int?> width = const Value.absent(),
-          Value<int?> height = const Value.absent()}) =>
-      ScreenshotImageRow(
-        id: id ?? this.id,
-        screenshotId: screenshotId ?? this.screenshotId,
-        url: url ?? this.url,
-        type: type.present ? type.value : this.type,
-        width: width.present ? width.value : this.width,
-        height: height.present ? height.value : this.height,
-      );
+  ScreenshotImageRow copyWith({
+    int? id,
+    int? screenshotId,
+    String? url,
+    Value<String?> type = const Value.absent(),
+    Value<int?> width = const Value.absent(),
+    Value<int?> height = const Value.absent(),
+  }) => ScreenshotImageRow(
+    id: id ?? this.id,
+    screenshotId: screenshotId ?? this.screenshotId,
+    url: url ?? this.url,
+    type: type.present ? type.value : this.type,
+    width: width.present ? width.value : this.width,
+    height: height.present ? height.value : this.height,
+  );
   ScreenshotImageRow copyWithCompanion(ScreenshotImagesCompanion data) {
     return ScreenshotImageRow(
       id: data.id.present ? data.id.value : this.id,
@@ -3808,8 +4474,8 @@ class ScreenshotImagesCompanion extends UpdateCompanion<ScreenshotImageRow> {
     this.type = const Value.absent(),
     this.width = const Value.absent(),
     this.height = const Value.absent(),
-  })  : screenshotId = Value(screenshotId),
-        url = Value(url);
+  }) : screenshotId = Value(screenshotId),
+       url = Value(url);
   static Insertable<ScreenshotImageRow> custom({
     Expression<int>? id,
     Expression<int>? screenshotId,
@@ -3828,13 +4494,14 @@ class ScreenshotImagesCompanion extends UpdateCompanion<ScreenshotImageRow> {
     });
   }
 
-  ScreenshotImagesCompanion copyWith(
-      {Value<int>? id,
-      Value<int>? screenshotId,
-      Value<String>? url,
-      Value<String?>? type,
-      Value<int?>? width,
-      Value<int?>? height}) {
+  ScreenshotImagesCompanion copyWith({
+    Value<int>? id,
+    Value<int>? screenshotId,
+    Value<String>? url,
+    Value<String?>? type,
+    Value<int?>? width,
+    Value<int?>? height,
+  }) {
     return ScreenshotImagesCompanion(
       id: id ?? this.id,
       screenshotId: screenshotId ?? this.screenshotId,
@@ -3892,55 +4559,94 @@ class $ScreenshotVideosTable extends ScreenshotVideos
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
-  static const VerificationMeta _screenshotIdMeta =
-      const VerificationMeta('screenshotId');
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _screenshotIdMeta = const VerificationMeta(
+    'screenshotId',
+  );
   @override
   late final GeneratedColumn<int> screenshotId = GeneratedColumn<int>(
-      'screenshot_id', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'screenshot_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _urlMeta = const VerificationMeta('url');
   @override
   late final GeneratedColumn<String> url = GeneratedColumn<String>(
-      'url', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'url',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _codecMeta = const VerificationMeta('codec');
   @override
   late final GeneratedColumn<String> codec = GeneratedColumn<String>(
-      'codec', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _containerMeta =
-      const VerificationMeta('container');
+    'codec',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _containerMeta = const VerificationMeta(
+    'container',
+  );
   @override
   late final GeneratedColumn<String> container = GeneratedColumn<String>(
-      'container', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'container',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _widthMeta = const VerificationMeta('width');
   @override
   late final GeneratedColumn<int> width = GeneratedColumn<int>(
-      'width', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
+    'width',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _heightMeta = const VerificationMeta('height');
   @override
   late final GeneratedColumn<int> height = GeneratedColumn<int>(
-      'height', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
+    'height',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, screenshotId, url, codec, container, width, height];
+  List<GeneratedColumn> get $columns => [
+    id,
+    screenshotId,
+    url,
+    codec,
+    container,
+    width,
+    height,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
   static const String $name = 'screenshot_videos';
   @override
-  VerificationContext validateIntegrity(Insertable<ScreenshotVideoRow> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<ScreenshotVideoRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
@@ -3948,33 +4654,46 @@ class $ScreenshotVideosTable extends ScreenshotVideos
     }
     if (data.containsKey('screenshot_id')) {
       context.handle(
+        _screenshotIdMeta,
+        screenshotId.isAcceptableOrUnknown(
+          data['screenshot_id']!,
           _screenshotIdMeta,
-          screenshotId.isAcceptableOrUnknown(
-              data['screenshot_id']!, _screenshotIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_screenshotIdMeta);
     }
     if (data.containsKey('url')) {
       context.handle(
-          _urlMeta, url.isAcceptableOrUnknown(data['url']!, _urlMeta));
+        _urlMeta,
+        url.isAcceptableOrUnknown(data['url']!, _urlMeta),
+      );
     } else if (isInserting) {
       context.missing(_urlMeta);
     }
     if (data.containsKey('codec')) {
       context.handle(
-          _codecMeta, codec.isAcceptableOrUnknown(data['codec']!, _codecMeta));
+        _codecMeta,
+        codec.isAcceptableOrUnknown(data['codec']!, _codecMeta),
+      );
     }
     if (data.containsKey('container')) {
-      context.handle(_containerMeta,
-          container.isAcceptableOrUnknown(data['container']!, _containerMeta));
+      context.handle(
+        _containerMeta,
+        container.isAcceptableOrUnknown(data['container']!, _containerMeta),
+      );
     }
     if (data.containsKey('width')) {
       context.handle(
-          _widthMeta, width.isAcceptableOrUnknown(data['width']!, _widthMeta));
+        _widthMeta,
+        width.isAcceptableOrUnknown(data['width']!, _widthMeta),
+      );
     }
     if (data.containsKey('height')) {
-      context.handle(_heightMeta,
-          height.isAcceptableOrUnknown(data['height']!, _heightMeta));
+      context.handle(
+        _heightMeta,
+        height.isAcceptableOrUnknown(data['height']!, _heightMeta),
+      );
     }
     return context;
   }
@@ -3985,20 +4704,34 @@ class $ScreenshotVideosTable extends ScreenshotVideos
   ScreenshotVideoRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ScreenshotVideoRow(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      screenshotId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}screenshot_id'])!,
-      url: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}url'])!,
-      codec: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}codec']),
-      container: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}container']),
-      width: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}width']),
-      height: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}height']),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      screenshotId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}screenshot_id'],
+      )!,
+      url: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}url'],
+      )!,
+      codec: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}codec'],
+      ),
+      container: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}container'],
+      ),
+      width: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}width'],
+      ),
+      height: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}height'],
+      ),
     );
   }
 
@@ -4017,14 +4750,15 @@ class ScreenshotVideoRow extends DataClass
   final String? container;
   final int? width;
   final int? height;
-  const ScreenshotVideoRow(
-      {required this.id,
-      required this.screenshotId,
-      required this.url,
-      this.codec,
-      this.container,
-      this.width,
-      this.height});
+  const ScreenshotVideoRow({
+    required this.id,
+    required this.screenshotId,
+    required this.url,
+    this.codec,
+    this.container,
+    this.width,
+    this.height,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -4051,20 +4785,25 @@ class ScreenshotVideoRow extends DataClass
       id: Value(id),
       screenshotId: Value(screenshotId),
       url: Value(url),
-      codec:
-          codec == null && nullToAbsent ? const Value.absent() : Value(codec),
+      codec: codec == null && nullToAbsent
+          ? const Value.absent()
+          : Value(codec),
       container: container == null && nullToAbsent
           ? const Value.absent()
           : Value(container),
-      width:
-          width == null && nullToAbsent ? const Value.absent() : Value(width),
-      height:
-          height == null && nullToAbsent ? const Value.absent() : Value(height),
+      width: width == null && nullToAbsent
+          ? const Value.absent()
+          : Value(width),
+      height: height == null && nullToAbsent
+          ? const Value.absent()
+          : Value(height),
     );
   }
 
-  factory ScreenshotVideoRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ScreenshotVideoRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ScreenshotVideoRow(
       id: serializer.fromJson<int>(json['id']),
@@ -4090,23 +4829,23 @@ class ScreenshotVideoRow extends DataClass
     };
   }
 
-  ScreenshotVideoRow copyWith(
-          {int? id,
-          int? screenshotId,
-          String? url,
-          Value<String?> codec = const Value.absent(),
-          Value<String?> container = const Value.absent(),
-          Value<int?> width = const Value.absent(),
-          Value<int?> height = const Value.absent()}) =>
-      ScreenshotVideoRow(
-        id: id ?? this.id,
-        screenshotId: screenshotId ?? this.screenshotId,
-        url: url ?? this.url,
-        codec: codec.present ? codec.value : this.codec,
-        container: container.present ? container.value : this.container,
-        width: width.present ? width.value : this.width,
-        height: height.present ? height.value : this.height,
-      );
+  ScreenshotVideoRow copyWith({
+    int? id,
+    int? screenshotId,
+    String? url,
+    Value<String?> codec = const Value.absent(),
+    Value<String?> container = const Value.absent(),
+    Value<int?> width = const Value.absent(),
+    Value<int?> height = const Value.absent(),
+  }) => ScreenshotVideoRow(
+    id: id ?? this.id,
+    screenshotId: screenshotId ?? this.screenshotId,
+    url: url ?? this.url,
+    codec: codec.present ? codec.value : this.codec,
+    container: container.present ? container.value : this.container,
+    width: width.present ? width.value : this.width,
+    height: height.present ? height.value : this.height,
+  );
   ScreenshotVideoRow copyWithCompanion(ScreenshotVideosCompanion data) {
     return ScreenshotVideoRow(
       id: data.id.present ? data.id.value : this.id,
@@ -4176,8 +4915,8 @@ class ScreenshotVideosCompanion extends UpdateCompanion<ScreenshotVideoRow> {
     this.container = const Value.absent(),
     this.width = const Value.absent(),
     this.height = const Value.absent(),
-  })  : screenshotId = Value(screenshotId),
-        url = Value(url);
+  }) : screenshotId = Value(screenshotId),
+       url = Value(url);
   static Insertable<ScreenshotVideoRow> custom({
     Expression<int>? id,
     Expression<int>? screenshotId,
@@ -4198,14 +4937,15 @@ class ScreenshotVideosCompanion extends UpdateCompanion<ScreenshotVideoRow> {
     });
   }
 
-  ScreenshotVideosCompanion copyWith(
-      {Value<int>? id,
-      Value<int>? screenshotId,
-      Value<String>? url,
-      Value<String?>? codec,
-      Value<String?>? container,
-      Value<int?>? width,
-      Value<int?>? height}) {
+  ScreenshotVideosCompanion copyWith({
+    Value<int>? id,
+    Value<int>? screenshotId,
+    Value<String>? url,
+    Value<String?>? codec,
+    Value<String?>? container,
+    Value<int?>? width,
+    Value<int?>? height,
+  }) {
     return ScreenshotVideosCompanion(
       id: id ?? this.id,
       screenshotId: screenshotId ?? this.screenshotId,
@@ -4265,22 +5005,35 @@ class $ContentRatingAttrsTable extends ContentRatingAttrs
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ContentRatingAttrsTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _attrIdMeta = const VerificationMeta('attrId');
   @override
   late final GeneratedColumn<String> attrId = GeneratedColumn<String>(
-      'attr_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'attr_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _valueMeta = const VerificationMeta('value');
   @override
   late final GeneratedColumn<String> value = GeneratedColumn<String>(
-      'value', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'value',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [componentId, attrId, value];
   @override
@@ -4290,27 +5043,35 @@ class $ContentRatingAttrsTable extends ContentRatingAttrs
   static const String $name = 'content_rating_attrs';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ContentRatingAttrRow> instance,
-      {bool isInserting = false}) {
+    Insertable<ContentRatingAttrRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('attr_id')) {
-      context.handle(_attrIdMeta,
-          attrId.isAcceptableOrUnknown(data['attr_id']!, _attrIdMeta));
+      context.handle(
+        _attrIdMeta,
+        attrId.isAcceptableOrUnknown(data['attr_id']!, _attrIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_attrIdMeta);
     }
     if (data.containsKey('value')) {
       context.handle(
-          _valueMeta, value.isAcceptableOrUnknown(data['value']!, _valueMeta));
+        _valueMeta,
+        value.isAcceptableOrUnknown(data['value']!, _valueMeta),
+      );
     } else if (isInserting) {
       context.missing(_valueMeta);
     }
@@ -4323,12 +5084,18 @@ class $ContentRatingAttrsTable extends ContentRatingAttrs
   ContentRatingAttrRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ContentRatingAttrRow(
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      attrId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}attr_id'])!,
-      value: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}value'])!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      attrId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}attr_id'],
+      )!,
+      value: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}value'],
+      )!,
     );
   }
 
@@ -4343,8 +5110,11 @@ class ContentRatingAttrRow extends DataClass
   final String componentId;
   final String attrId;
   final String value;
-  const ContentRatingAttrRow(
-      {required this.componentId, required this.attrId, required this.value});
+  const ContentRatingAttrRow({
+    required this.componentId,
+    required this.attrId,
+    required this.value,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -4362,8 +5132,10 @@ class ContentRatingAttrRow extends DataClass
     );
   }
 
-  factory ContentRatingAttrRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ContentRatingAttrRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ContentRatingAttrRow(
       componentId: serializer.fromJson<String>(json['componentId']),
@@ -4381,17 +5153,20 @@ class ContentRatingAttrRow extends DataClass
     };
   }
 
-  ContentRatingAttrRow copyWith(
-          {String? componentId, String? attrId, String? value}) =>
-      ContentRatingAttrRow(
-        componentId: componentId ?? this.componentId,
-        attrId: attrId ?? this.attrId,
-        value: value ?? this.value,
-      );
+  ContentRatingAttrRow copyWith({
+    String? componentId,
+    String? attrId,
+    String? value,
+  }) => ContentRatingAttrRow(
+    componentId: componentId ?? this.componentId,
+    attrId: attrId ?? this.attrId,
+    value: value ?? this.value,
+  );
   ContentRatingAttrRow copyWithCompanion(ContentRatingAttrsCompanion data) {
     return ContentRatingAttrRow(
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
       attrId: data.attrId.present ? data.attrId.value : this.attrId,
       value: data.value.present ? data.value.value : this.value,
     );
@@ -4435,9 +5210,9 @@ class ContentRatingAttrsCompanion
     required String attrId,
     required String value,
     this.rowid = const Value.absent(),
-  })  : componentId = Value(componentId),
-        attrId = Value(attrId),
-        value = Value(value);
+  }) : componentId = Value(componentId),
+       attrId = Value(attrId),
+       value = Value(value);
   static Insertable<ContentRatingAttrRow> custom({
     Expression<String>? componentId,
     Expression<String>? attrId,
@@ -4452,11 +5227,12 @@ class ContentRatingAttrsCompanion
     });
   }
 
-  ContentRatingAttrsCompanion copyWith(
-      {Value<String>? componentId,
-      Value<String>? attrId,
-      Value<String>? value,
-      Value<int>? rowid}) {
+  ContentRatingAttrsCompanion copyWith({
+    Value<String>? componentId,
+    Value<String>? attrId,
+    Value<String>? value,
+    Value<int>? rowid,
+  }) {
     return ContentRatingAttrsCompanion(
       componentId: componentId ?? this.componentId,
       attrId: attrId ?? this.attrId,
@@ -4501,18 +5277,28 @@ class $ComponentLanguagesTable extends ComponentLanguages
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ComponentLanguagesTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _languageMeta =
-      const VerificationMeta('language');
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _languageMeta = const VerificationMeta(
+    'language',
+  );
   @override
   late final GeneratedColumn<String> language = GeneratedColumn<String>(
-      'language', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'language',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [componentId, language];
   @override
@@ -4522,21 +5308,27 @@ class $ComponentLanguagesTable extends ComponentLanguages
   static const String $name = 'component_languages';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ComponentLanguageRow> instance,
-      {bool isInserting = false}) {
+    Insertable<ComponentLanguageRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('language')) {
-      context.handle(_languageMeta,
-          language.isAcceptableOrUnknown(data['language']!, _languageMeta));
+      context.handle(
+        _languageMeta,
+        language.isAcceptableOrUnknown(data['language']!, _languageMeta),
+      );
     } else if (isInserting) {
       context.missing(_languageMeta);
     }
@@ -4549,10 +5341,14 @@ class $ComponentLanguagesTable extends ComponentLanguages
   ComponentLanguageRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ComponentLanguageRow(
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      language: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}language'])!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      language: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}language'],
+      )!,
     );
   }
 
@@ -4566,8 +5362,10 @@ class ComponentLanguageRow extends DataClass
     implements Insertable<ComponentLanguageRow> {
   final String componentId;
   final String language;
-  const ComponentLanguageRow(
-      {required this.componentId, required this.language});
+  const ComponentLanguageRow({
+    required this.componentId,
+    required this.language,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -4583,8 +5381,10 @@ class ComponentLanguageRow extends DataClass
     );
   }
 
-  factory ComponentLanguageRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ComponentLanguageRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ComponentLanguageRow(
       componentId: serializer.fromJson<String>(json['componentId']),
@@ -4607,8 +5407,9 @@ class ComponentLanguageRow extends DataClass
       );
   ComponentLanguageRow copyWithCompanion(ComponentLanguagesCompanion data) {
     return ComponentLanguageRow(
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
       language: data.language.present ? data.language.value : this.language,
     );
   }
@@ -4646,8 +5447,8 @@ class ComponentLanguagesCompanion
     required String componentId,
     required String language,
     this.rowid = const Value.absent(),
-  })  : componentId = Value(componentId),
-        language = Value(language);
+  }) : componentId = Value(componentId),
+       language = Value(language);
   static Insertable<ComponentLanguageRow> custom({
     Expression<String>? componentId,
     Expression<String>? language,
@@ -4660,10 +5461,11 @@ class ComponentLanguagesCompanion
     });
   }
 
-  ComponentLanguagesCompanion copyWith(
-      {Value<String>? componentId,
-      Value<String>? language,
-      Value<int>? rowid}) {
+  ComponentLanguagesCompanion copyWith({
+    Value<String>? componentId,
+    Value<String>? language,
+    Value<int>? rowid,
+  }) {
     return ComponentLanguagesCompanion(
       componentId: componentId ?? this.componentId,
       language: language ?? this.language,
@@ -4703,23 +5505,37 @@ class $BrandingColorsTable extends BrandingColors
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $BrandingColorsTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _schemePreferenceMeta =
-      const VerificationMeta('schemePreference');
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _schemePreferenceMeta = const VerificationMeta(
+    'schemePreference',
+  );
   @override
   late final GeneratedColumn<String> schemePreference = GeneratedColumn<String>(
-      'scheme_preference', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'scheme_preference',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _colorMeta = const VerificationMeta('color');
   @override
   late final GeneratedColumn<String> color = GeneratedColumn<String>(
-      'color', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'color',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [componentId, schemePreference, color];
   @override
@@ -4728,29 +5544,39 @@ class $BrandingColorsTable extends BrandingColors
   String get actualTableName => $name;
   static const String $name = 'branding_colors';
   @override
-  VerificationContext validateIntegrity(Insertable<BrandingColorRow> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<BrandingColorRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('scheme_preference')) {
       context.handle(
+        _schemePreferenceMeta,
+        schemePreference.isAcceptableOrUnknown(
+          data['scheme_preference']!,
           _schemePreferenceMeta,
-          schemePreference.isAcceptableOrUnknown(
-              data['scheme_preference']!, _schemePreferenceMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_schemePreferenceMeta);
     }
     if (data.containsKey('color')) {
       context.handle(
-          _colorMeta, color.isAcceptableOrUnknown(data['color']!, _colorMeta));
+        _colorMeta,
+        color.isAcceptableOrUnknown(data['color']!, _colorMeta),
+      );
     } else if (isInserting) {
       context.missing(_colorMeta);
     }
@@ -4763,12 +5589,18 @@ class $BrandingColorsTable extends BrandingColors
   BrandingColorRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return BrandingColorRow(
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
       schemePreference: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}scheme_preference'])!,
-      color: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}color'])!,
+        DriftSqlType.string,
+        data['${effectivePrefix}scheme_preference'],
+      )!,
+      color: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}color'],
+      )!,
     );
   }
 
@@ -4783,10 +5615,11 @@ class BrandingColorRow extends DataClass
   final String componentId;
   final String schemePreference;
   final String color;
-  const BrandingColorRow(
-      {required this.componentId,
-      required this.schemePreference,
-      required this.color});
+  const BrandingColorRow({
+    required this.componentId,
+    required this.schemePreference,
+    required this.color,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -4804,8 +5637,10 @@ class BrandingColorRow extends DataClass
     );
   }
 
-  factory BrandingColorRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory BrandingColorRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return BrandingColorRow(
       componentId: serializer.fromJson<String>(json['componentId']),
@@ -4823,17 +5658,20 @@ class BrandingColorRow extends DataClass
     };
   }
 
-  BrandingColorRow copyWith(
-          {String? componentId, String? schemePreference, String? color}) =>
-      BrandingColorRow(
-        componentId: componentId ?? this.componentId,
-        schemePreference: schemePreference ?? this.schemePreference,
-        color: color ?? this.color,
-      );
+  BrandingColorRow copyWith({
+    String? componentId,
+    String? schemePreference,
+    String? color,
+  }) => BrandingColorRow(
+    componentId: componentId ?? this.componentId,
+    schemePreference: schemePreference ?? this.schemePreference,
+    color: color ?? this.color,
+  );
   BrandingColorRow copyWithCompanion(BrandingColorsCompanion data) {
     return BrandingColorRow(
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
       schemePreference: data.schemePreference.present
           ? data.schemePreference.value
           : this.schemePreference,
@@ -4878,9 +5716,9 @@ class BrandingColorsCompanion extends UpdateCompanion<BrandingColorRow> {
     required String schemePreference,
     required String color,
     this.rowid = const Value.absent(),
-  })  : componentId = Value(componentId),
-        schemePreference = Value(schemePreference),
-        color = Value(color);
+  }) : componentId = Value(componentId),
+       schemePreference = Value(schemePreference),
+       color = Value(color);
   static Insertable<BrandingColorRow> custom({
     Expression<String>? componentId,
     Expression<String>? schemePreference,
@@ -4895,11 +5733,12 @@ class BrandingColorsCompanion extends UpdateCompanion<BrandingColorRow> {
     });
   }
 
-  BrandingColorsCompanion copyWith(
-      {Value<String>? componentId,
-      Value<String>? schemePreference,
-      Value<String>? color,
-      Value<int>? rowid}) {
+  BrandingColorsCompanion copyWith({
+    Value<String>? componentId,
+    Value<String>? schemePreference,
+    Value<String>? color,
+    Value<int>? rowid,
+  }) {
     return BrandingColorsCompanion(
       componentId: componentId ?? this.componentId,
       schemePreference: schemePreference ?? this.schemePreference,
@@ -4944,18 +5783,28 @@ class $ComponentExtendsTable extends ComponentExtends
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ComponentExtendsTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _extendsIdMeta =
-      const VerificationMeta('extendsId');
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _extendsIdMeta = const VerificationMeta(
+    'extendsId',
+  );
   @override
   late final GeneratedColumn<String> extendsId = GeneratedColumn<String>(
-      'extends_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'extends_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [componentId, extendsId];
   @override
@@ -4964,21 +5813,28 @@ class $ComponentExtendsTable extends ComponentExtends
   String get actualTableName => $name;
   static const String $name = 'component_extends';
   @override
-  VerificationContext validateIntegrity(Insertable<ComponentExtendRow> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<ComponentExtendRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('extends_id')) {
-      context.handle(_extendsIdMeta,
-          extendsId.isAcceptableOrUnknown(data['extends_id']!, _extendsIdMeta));
+      context.handle(
+        _extendsIdMeta,
+        extendsId.isAcceptableOrUnknown(data['extends_id']!, _extendsIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_extendsIdMeta);
     }
@@ -4991,10 +5847,14 @@ class $ComponentExtendsTable extends ComponentExtends
   ComponentExtendRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ComponentExtendRow(
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      extendsId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}extends_id'])!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      extendsId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}extends_id'],
+      )!,
     );
   }
 
@@ -5008,8 +5868,10 @@ class ComponentExtendRow extends DataClass
     implements Insertable<ComponentExtendRow> {
   final String componentId;
   final String extendsId;
-  const ComponentExtendRow(
-      {required this.componentId, required this.extendsId});
+  const ComponentExtendRow({
+    required this.componentId,
+    required this.extendsId,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -5025,8 +5887,10 @@ class ComponentExtendRow extends DataClass
     );
   }
 
-  factory ComponentExtendRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ComponentExtendRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ComponentExtendRow(
       componentId: serializer.fromJson<String>(json['componentId']),
@@ -5049,8 +5913,9 @@ class ComponentExtendRow extends DataClass
       );
   ComponentExtendRow copyWithCompanion(ComponentExtendsCompanion data) {
     return ComponentExtendRow(
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
       extendsId: data.extendsId.present ? data.extendsId.value : this.extendsId,
     );
   }
@@ -5087,8 +5952,8 @@ class ComponentExtendsCompanion extends UpdateCompanion<ComponentExtendRow> {
     required String componentId,
     required String extendsId,
     this.rowid = const Value.absent(),
-  })  : componentId = Value(componentId),
-        extendsId = Value(extendsId);
+  }) : componentId = Value(componentId),
+       extendsId = Value(extendsId);
   static Insertable<ComponentExtendRow> custom({
     Expression<String>? componentId,
     Expression<String>? extendsId,
@@ -5101,10 +5966,11 @@ class ComponentExtendsCompanion extends UpdateCompanion<ComponentExtendRow> {
     });
   }
 
-  ComponentExtendsCompanion copyWith(
-      {Value<String>? componentId,
-      Value<String>? extendsId,
-      Value<int>? rowid}) {
+  ComponentExtendsCompanion copyWith({
+    Value<String>? componentId,
+    Value<String>? extendsId,
+    Value<int>? rowid,
+  }) {
     return ComponentExtendsCompanion(
       componentId: componentId ?? this.componentId,
       extendsId: extendsId ?? this.extendsId,
@@ -5144,18 +6010,28 @@ class $ComponentSuggestsTable extends ComponentSuggests
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ComponentSuggestsTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _suggestedIdMeta =
-      const VerificationMeta('suggestedId');
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _suggestedIdMeta = const VerificationMeta(
+    'suggestedId',
+  );
   @override
   late final GeneratedColumn<String> suggestedId = GeneratedColumn<String>(
-      'suggested_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'suggested_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [componentId, suggestedId];
   @override
@@ -5165,23 +6041,30 @@ class $ComponentSuggestsTable extends ComponentSuggests
   static const String $name = 'component_suggests';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ComponentSuggestRow> instance,
-      {bool isInserting = false}) {
+    Insertable<ComponentSuggestRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('suggested_id')) {
       context.handle(
+        _suggestedIdMeta,
+        suggestedId.isAcceptableOrUnknown(
+          data['suggested_id']!,
           _suggestedIdMeta,
-          suggestedId.isAcceptableOrUnknown(
-              data['suggested_id']!, _suggestedIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_suggestedIdMeta);
     }
@@ -5194,10 +6077,14 @@ class $ComponentSuggestsTable extends ComponentSuggests
   ComponentSuggestRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ComponentSuggestRow(
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      suggestedId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}suggested_id'])!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      suggestedId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}suggested_id'],
+      )!,
     );
   }
 
@@ -5211,8 +6098,10 @@ class ComponentSuggestRow extends DataClass
     implements Insertable<ComponentSuggestRow> {
   final String componentId;
   final String suggestedId;
-  const ComponentSuggestRow(
-      {required this.componentId, required this.suggestedId});
+  const ComponentSuggestRow({
+    required this.componentId,
+    required this.suggestedId,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -5228,8 +6117,10 @@ class ComponentSuggestRow extends DataClass
     );
   }
 
-  factory ComponentSuggestRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ComponentSuggestRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ComponentSuggestRow(
       componentId: serializer.fromJson<String>(json['componentId']),
@@ -5252,10 +6143,12 @@ class ComponentSuggestRow extends DataClass
       );
   ComponentSuggestRow copyWithCompanion(ComponentSuggestsCompanion data) {
     return ComponentSuggestRow(
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
-      suggestedId:
-          data.suggestedId.present ? data.suggestedId.value : this.suggestedId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
+      suggestedId: data.suggestedId.present
+          ? data.suggestedId.value
+          : this.suggestedId,
     );
   }
 
@@ -5291,8 +6184,8 @@ class ComponentSuggestsCompanion extends UpdateCompanion<ComponentSuggestRow> {
     required String componentId,
     required String suggestedId,
     this.rowid = const Value.absent(),
-  })  : componentId = Value(componentId),
-        suggestedId = Value(suggestedId);
+  }) : componentId = Value(componentId),
+       suggestedId = Value(suggestedId);
   static Insertable<ComponentSuggestRow> custom({
     Expression<String>? componentId,
     Expression<String>? suggestedId,
@@ -5305,10 +6198,11 @@ class ComponentSuggestsCompanion extends UpdateCompanion<ComponentSuggestRow> {
     });
   }
 
-  ComponentSuggestsCompanion copyWith(
-      {Value<String>? componentId,
-      Value<String>? suggestedId,
-      Value<int>? rowid}) {
+  ComponentSuggestsCompanion copyWith({
+    Value<String>? componentId,
+    Value<String>? suggestedId,
+    Value<int>? rowid,
+  }) {
     return ComponentSuggestsCompanion(
       componentId: componentId ?? this.componentId,
       suggestedId: suggestedId ?? this.suggestedId,
@@ -5351,50 +6245,90 @@ class $ComponentRelationsTable extends ComponentRelations
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _relationKindMeta =
-      const VerificationMeta('relationKind');
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _relationKindMeta = const VerificationMeta(
+    'relationKind',
+  );
   @override
   late final GeneratedColumn<String> relationKind = GeneratedColumn<String>(
-      'relation_kind', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _relationTypeMeta =
-      const VerificationMeta('relationType');
+    'relation_kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _relationTypeMeta = const VerificationMeta(
+    'relationType',
+  );
   @override
   late final GeneratedColumn<String> relationType = GeneratedColumn<String>(
-      'relation_type', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'relation_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _valueMeta = const VerificationMeta('value');
   @override
   late final GeneratedColumn<String> value = GeneratedColumn<String>(
-      'value', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _compareMeta =
-      const VerificationMeta('compare');
+    'value',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _compareMeta = const VerificationMeta(
+    'compare',
+  );
   @override
   late final GeneratedColumn<String> compare = GeneratedColumn<String>(
-      'compare', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _versionMeta =
-      const VerificationMeta('version');
+    'compare',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
   @override
   late final GeneratedColumn<String> version = GeneratedColumn<String>(
-      'version', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'version',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, componentId, relationKind, relationType, value, compare, version];
+  List<GeneratedColumn> get $columns => [
+    id,
+    componentId,
+    relationKind,
+    relationType,
+    value,
+    compare,
+    version,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -5402,8 +6336,9 @@ class $ComponentRelationsTable extends ComponentRelations
   static const String $name = 'component_relations';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ComponentRelationRow> instance,
-      {bool isInserting = false}) {
+    Insertable<ComponentRelationRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
@@ -5411,39 +6346,54 @@ class $ComponentRelationsTable extends ComponentRelations
     }
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('relation_kind')) {
       context.handle(
+        _relationKindMeta,
+        relationKind.isAcceptableOrUnknown(
+          data['relation_kind']!,
           _relationKindMeta,
-          relationKind.isAcceptableOrUnknown(
-              data['relation_kind']!, _relationKindMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_relationKindMeta);
     }
     if (data.containsKey('relation_type')) {
       context.handle(
+        _relationTypeMeta,
+        relationType.isAcceptableOrUnknown(
+          data['relation_type']!,
           _relationTypeMeta,
-          relationType.isAcceptableOrUnknown(
-              data['relation_type']!, _relationTypeMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_relationTypeMeta);
     }
     if (data.containsKey('value')) {
       context.handle(
-          _valueMeta, value.isAcceptableOrUnknown(data['value']!, _valueMeta));
+        _valueMeta,
+        value.isAcceptableOrUnknown(data['value']!, _valueMeta),
+      );
     }
     if (data.containsKey('compare')) {
-      context.handle(_compareMeta,
-          compare.isAcceptableOrUnknown(data['compare']!, _compareMeta));
+      context.handle(
+        _compareMeta,
+        compare.isAcceptableOrUnknown(data['compare']!, _compareMeta),
+      );
     }
     if (data.containsKey('version')) {
-      context.handle(_versionMeta,
-          version.isAcceptableOrUnknown(data['version']!, _versionMeta));
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
     }
     return context;
   }
@@ -5454,20 +6404,34 @@ class $ComponentRelationsTable extends ComponentRelations
   ComponentRelationRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ComponentRelationRow(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      relationKind: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}relation_kind'])!,
-      relationType: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}relation_type'])!,
-      value: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}value']),
-      compare: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}compare']),
-      version: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}version']),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      relationKind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}relation_kind'],
+      )!,
+      relationType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}relation_type'],
+      )!,
+      value: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}value'],
+      ),
+      compare: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}compare'],
+      ),
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}version'],
+      ),
     );
   }
 
@@ -5486,14 +6450,15 @@ class ComponentRelationRow extends DataClass
   final String? value;
   final String? compare;
   final String? version;
-  const ComponentRelationRow(
-      {required this.id,
-      required this.componentId,
-      required this.relationKind,
-      required this.relationType,
-      this.value,
-      this.compare,
-      this.version});
+  const ComponentRelationRow({
+    required this.id,
+    required this.componentId,
+    required this.relationKind,
+    required this.relationType,
+    this.value,
+    this.compare,
+    this.version,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -5519,8 +6484,9 @@ class ComponentRelationRow extends DataClass
       componentId: Value(componentId),
       relationKind: Value(relationKind),
       relationType: Value(relationType),
-      value:
-          value == null && nullToAbsent ? const Value.absent() : Value(value),
+      value: value == null && nullToAbsent
+          ? const Value.absent()
+          : Value(value),
       compare: compare == null && nullToAbsent
           ? const Value.absent()
           : Value(compare),
@@ -5530,8 +6496,10 @@ class ComponentRelationRow extends DataClass
     );
   }
 
-  factory ComponentRelationRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ComponentRelationRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ComponentRelationRow(
       id: serializer.fromJson<int>(json['id']),
@@ -5557,28 +6525,29 @@ class ComponentRelationRow extends DataClass
     };
   }
 
-  ComponentRelationRow copyWith(
-          {int? id,
-          String? componentId,
-          String? relationKind,
-          String? relationType,
-          Value<String?> value = const Value.absent(),
-          Value<String?> compare = const Value.absent(),
-          Value<String?> version = const Value.absent()}) =>
-      ComponentRelationRow(
-        id: id ?? this.id,
-        componentId: componentId ?? this.componentId,
-        relationKind: relationKind ?? this.relationKind,
-        relationType: relationType ?? this.relationType,
-        value: value.present ? value.value : this.value,
-        compare: compare.present ? compare.value : this.compare,
-        version: version.present ? version.value : this.version,
-      );
+  ComponentRelationRow copyWith({
+    int? id,
+    String? componentId,
+    String? relationKind,
+    String? relationType,
+    Value<String?> value = const Value.absent(),
+    Value<String?> compare = const Value.absent(),
+    Value<String?> version = const Value.absent(),
+  }) => ComponentRelationRow(
+    id: id ?? this.id,
+    componentId: componentId ?? this.componentId,
+    relationKind: relationKind ?? this.relationKind,
+    relationType: relationType ?? this.relationType,
+    value: value.present ? value.value : this.value,
+    compare: compare.present ? compare.value : this.compare,
+    version: version.present ? version.value : this.version,
+  );
   ComponentRelationRow copyWithCompanion(ComponentRelationsCompanion data) {
     return ComponentRelationRow(
       id: data.id.present ? data.id.value : this.id,
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
       relationKind: data.relationKind.present
           ? data.relationKind.value
           : this.relationKind,
@@ -5607,7 +6576,14 @@ class ComponentRelationRow extends DataClass
 
   @override
   int get hashCode => Object.hash(
-      id, componentId, relationKind, relationType, value, compare, version);
+    id,
+    componentId,
+    relationKind,
+    relationType,
+    value,
+    compare,
+    version,
+  );
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -5647,9 +6623,9 @@ class ComponentRelationsCompanion
     this.value = const Value.absent(),
     this.compare = const Value.absent(),
     this.version = const Value.absent(),
-  })  : componentId = Value(componentId),
-        relationKind = Value(relationKind),
-        relationType = Value(relationType);
+  }) : componentId = Value(componentId),
+       relationKind = Value(relationKind),
+       relationType = Value(relationType);
   static Insertable<ComponentRelationRow> custom({
     Expression<int>? id,
     Expression<String>? componentId,
@@ -5670,14 +6646,15 @@ class ComponentRelationsCompanion
     });
   }
 
-  ComponentRelationsCompanion copyWith(
-      {Value<int>? id,
-      Value<String>? componentId,
-      Value<String>? relationKind,
-      Value<String>? relationType,
-      Value<String?>? value,
-      Value<String?>? compare,
-      Value<String?>? version}) {
+  ComponentRelationsCompanion copyWith({
+    Value<int>? id,
+    Value<String>? componentId,
+    Value<String>? relationKind,
+    Value<String>? relationType,
+    Value<String?>? value,
+    Value<String?>? compare,
+    Value<String?>? version,
+  }) {
     return ComponentRelationsCompanion(
       id: id ?? this.id,
       componentId: componentId ?? this.componentId,
@@ -5737,22 +6714,35 @@ class $ComponentCustomTable extends ComponentCustom
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ComponentCustomTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _keyMeta = const VerificationMeta('key');
   @override
   late final GeneratedColumn<String> key = GeneratedColumn<String>(
-      'key', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _valueMeta = const VerificationMeta('value');
   @override
   late final GeneratedColumn<String> value = GeneratedColumn<String>(
-      'value', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'value',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [componentId, key, value];
   @override
@@ -5761,27 +6751,36 @@ class $ComponentCustomTable extends ComponentCustom
   String get actualTableName => $name;
   static const String $name = 'component_custom';
   @override
-  VerificationContext validateIntegrity(Insertable<ComponentCustomRow> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<ComponentCustomRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('key')) {
       context.handle(
-          _keyMeta, key.isAcceptableOrUnknown(data['key']!, _keyMeta));
+        _keyMeta,
+        key.isAcceptableOrUnknown(data['key']!, _keyMeta),
+      );
     } else if (isInserting) {
       context.missing(_keyMeta);
     }
     if (data.containsKey('value')) {
       context.handle(
-          _valueMeta, value.isAcceptableOrUnknown(data['value']!, _valueMeta));
+        _valueMeta,
+        value.isAcceptableOrUnknown(data['value']!, _valueMeta),
+      );
     } else if (isInserting) {
       context.missing(_valueMeta);
     }
@@ -5794,12 +6793,18 @@ class $ComponentCustomTable extends ComponentCustom
   ComponentCustomRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ComponentCustomRow(
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      key: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}key'])!,
-      value: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}value'])!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      key: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}key'],
+      )!,
+      value: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}value'],
+      )!,
     );
   }
 
@@ -5814,8 +6819,11 @@ class ComponentCustomRow extends DataClass
   final String componentId;
   final String key;
   final String value;
-  const ComponentCustomRow(
-      {required this.componentId, required this.key, required this.value});
+  const ComponentCustomRow({
+    required this.componentId,
+    required this.key,
+    required this.value,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -5833,8 +6841,10 @@ class ComponentCustomRow extends DataClass
     );
   }
 
-  factory ComponentCustomRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ComponentCustomRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ComponentCustomRow(
       componentId: serializer.fromJson<String>(json['componentId']),
@@ -5852,17 +6862,20 @@ class ComponentCustomRow extends DataClass
     };
   }
 
-  ComponentCustomRow copyWith(
-          {String? componentId, String? key, String? value}) =>
-      ComponentCustomRow(
-        componentId: componentId ?? this.componentId,
-        key: key ?? this.key,
-        value: value ?? this.value,
-      );
+  ComponentCustomRow copyWith({
+    String? componentId,
+    String? key,
+    String? value,
+  }) => ComponentCustomRow(
+    componentId: componentId ?? this.componentId,
+    key: key ?? this.key,
+    value: value ?? this.value,
+  );
   ComponentCustomRow copyWithCompanion(ComponentCustomCompanion data) {
     return ComponentCustomRow(
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
       key: data.key.present ? data.key.value : this.key,
       value: data.value.present ? data.value.value : this.value,
     );
@@ -5905,9 +6918,9 @@ class ComponentCustomCompanion extends UpdateCompanion<ComponentCustomRow> {
     required String key,
     required String value,
     this.rowid = const Value.absent(),
-  })  : componentId = Value(componentId),
-        key = Value(key),
-        value = Value(value);
+  }) : componentId = Value(componentId),
+       key = Value(key),
+       value = Value(value);
   static Insertable<ComponentCustomRow> custom({
     Expression<String>? componentId,
     Expression<String>? key,
@@ -5922,11 +6935,12 @@ class ComponentCustomCompanion extends UpdateCompanion<ComponentCustomRow> {
     });
   }
 
-  ComponentCustomCompanion copyWith(
-      {Value<String>? componentId,
-      Value<String>? key,
-      Value<String>? value,
-      Value<int>? rowid}) {
+  ComponentCustomCompanion copyWith({
+    Value<String>? componentId,
+    Value<String>? key,
+    Value<String>? value,
+    Value<int>? rowid,
+  }) {
     return ComponentCustomCompanion(
       componentId: componentId ?? this.componentId,
       key: key ?? this.key,
@@ -5967,34 +6981,54 @@ class ComponentCustomCompanion extends UpdateCompanion<ComponentCustomRow> {
 
 class $ComponentFieldTranslationsTable extends ComponentFieldTranslations
     with
-        TableInfo<$ComponentFieldTranslationsTable,
-            ComponentFieldTranslationRow> {
+        TableInfo<
+          $ComponentFieldTranslationsTable,
+          ComponentFieldTranslationRow
+        > {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ComponentFieldTranslationsTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _componentIdMeta =
-      const VerificationMeta('componentId');
+  static const VerificationMeta _componentIdMeta = const VerificationMeta(
+    'componentId',
+  );
   @override
   late final GeneratedColumn<String> componentId = GeneratedColumn<String>(
-      'component_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'component_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _fieldMeta = const VerificationMeta('field');
   @override
   late final GeneratedColumn<String> field = GeneratedColumn<String>(
-      'field', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _languageMeta =
-      const VerificationMeta('language');
+    'field',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _languageMeta = const VerificationMeta(
+    'language',
+  );
   @override
   late final GeneratedColumn<String> language = GeneratedColumn<String>(
-      'language', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'language',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _valueMeta = const VerificationMeta('value');
   @override
   late final GeneratedColumn<String> value = GeneratedColumn<String>(
-      'value', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'value',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [componentId, field, language, value];
   @override
@@ -6004,33 +7038,43 @@ class $ComponentFieldTranslationsTable extends ComponentFieldTranslations
   static const String $name = 'component_field_translations';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ComponentFieldTranslationRow> instance,
-      {bool isInserting = false}) {
+    Insertable<ComponentFieldTranslationRow> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('component_id')) {
       context.handle(
+        _componentIdMeta,
+        componentId.isAcceptableOrUnknown(
+          data['component_id']!,
           _componentIdMeta,
-          componentId.isAcceptableOrUnknown(
-              data['component_id']!, _componentIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_componentIdMeta);
     }
     if (data.containsKey('field')) {
       context.handle(
-          _fieldMeta, field.isAcceptableOrUnknown(data['field']!, _fieldMeta));
+        _fieldMeta,
+        field.isAcceptableOrUnknown(data['field']!, _fieldMeta),
+      );
     } else if (isInserting) {
       context.missing(_fieldMeta);
     }
     if (data.containsKey('language')) {
-      context.handle(_languageMeta,
-          language.isAcceptableOrUnknown(data['language']!, _languageMeta));
+      context.handle(
+        _languageMeta,
+        language.isAcceptableOrUnknown(data['language']!, _languageMeta),
+      );
     } else if (isInserting) {
       context.missing(_languageMeta);
     }
     if (data.containsKey('value')) {
       context.handle(
-          _valueMeta, value.isAcceptableOrUnknown(data['value']!, _valueMeta));
+        _valueMeta,
+        value.isAcceptableOrUnknown(data['value']!, _valueMeta),
+      );
     } else if (isInserting) {
       context.missing(_valueMeta);
     }
@@ -6040,18 +7084,28 @@ class $ComponentFieldTranslationsTable extends ComponentFieldTranslations
   @override
   Set<GeneratedColumn> get $primaryKey => {componentId, field, language};
   @override
-  ComponentFieldTranslationRow map(Map<String, dynamic> data,
-      {String? tablePrefix}) {
+  ComponentFieldTranslationRow map(
+    Map<String, dynamic> data, {
+    String? tablePrefix,
+  }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ComponentFieldTranslationRow(
-      componentId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}component_id'])!,
-      field: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}field'])!,
-      language: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}language'])!,
-      value: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}value'])!,
+      componentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}component_id'],
+      )!,
+      field: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field'],
+      )!,
+      language: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}language'],
+      )!,
+      value: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}value'],
+      )!,
     );
   }
 
@@ -6067,11 +7121,12 @@ class ComponentFieldTranslationRow extends DataClass
   final String field;
   final String language;
   final String value;
-  const ComponentFieldTranslationRow(
-      {required this.componentId,
-      required this.field,
-      required this.language,
-      required this.value});
+  const ComponentFieldTranslationRow({
+    required this.componentId,
+    required this.field,
+    required this.language,
+    required this.value,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -6091,8 +7146,10 @@ class ComponentFieldTranslationRow extends DataClass
     );
   }
 
-  factory ComponentFieldTranslationRow.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory ComponentFieldTranslationRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ComponentFieldTranslationRow(
       componentId: serializer.fromJson<String>(json['componentId']),
@@ -6112,22 +7169,24 @@ class ComponentFieldTranslationRow extends DataClass
     };
   }
 
-  ComponentFieldTranslationRow copyWith(
-          {String? componentId,
-          String? field,
-          String? language,
-          String? value}) =>
-      ComponentFieldTranslationRow(
-        componentId: componentId ?? this.componentId,
-        field: field ?? this.field,
-        language: language ?? this.language,
-        value: value ?? this.value,
-      );
+  ComponentFieldTranslationRow copyWith({
+    String? componentId,
+    String? field,
+    String? language,
+    String? value,
+  }) => ComponentFieldTranslationRow(
+    componentId: componentId ?? this.componentId,
+    field: field ?? this.field,
+    language: language ?? this.language,
+    value: value ?? this.value,
+  );
   ComponentFieldTranslationRow copyWithCompanion(
-      ComponentFieldTranslationsCompanion data) {
+    ComponentFieldTranslationsCompanion data,
+  ) {
     return ComponentFieldTranslationRow(
-      componentId:
-          data.componentId.present ? data.componentId.value : this.componentId,
+      componentId: data.componentId.present
+          ? data.componentId.value
+          : this.componentId,
       field: data.field.present ? data.field.value : this.field,
       language: data.language.present ? data.language.value : this.language,
       value: data.value.present ? data.value.value : this.value,
@@ -6177,10 +7236,10 @@ class ComponentFieldTranslationsCompanion
     required String language,
     required String value,
     this.rowid = const Value.absent(),
-  })  : componentId = Value(componentId),
-        field = Value(field),
-        language = Value(language),
-        value = Value(value);
+  }) : componentId = Value(componentId),
+       field = Value(field),
+       language = Value(language),
+       value = Value(value);
   static Insertable<ComponentFieldTranslationRow> custom({
     Expression<String>? componentId,
     Expression<String>? field,
@@ -6197,12 +7256,13 @@ class ComponentFieldTranslationsCompanion
     });
   }
 
-  ComponentFieldTranslationsCompanion copyWith(
-      {Value<String>? componentId,
-      Value<String>? field,
-      Value<String>? language,
-      Value<String>? value,
-      Value<int>? rowid}) {
+  ComponentFieldTranslationsCompanion copyWith({
+    Value<String>? componentId,
+    Value<String>? field,
+    Value<String>? language,
+    Value<String>? value,
+    Value<int>? rowid,
+  }) {
     return ComponentFieldTranslationsCompanion(
       componentId: componentId ?? this.componentId,
       field: field ?? this.field,
@@ -6261,23 +7321,27 @@ abstract class _$CatalogDatabase extends GeneratedDatabase {
   late final $ReleasesTable releases = $ReleasesTable(this);
   late final $ReleaseIssuesTable releaseIssues = $ReleaseIssuesTable(this);
   late final $ScreenshotsTable screenshots = $ScreenshotsTable(this);
-  late final $ScreenshotImagesTable screenshotImages =
-      $ScreenshotImagesTable(this);
-  late final $ScreenshotVideosTable screenshotVideos =
-      $ScreenshotVideosTable(this);
+  late final $ScreenshotImagesTable screenshotImages = $ScreenshotImagesTable(
+    this,
+  );
+  late final $ScreenshotVideosTable screenshotVideos = $ScreenshotVideosTable(
+    this,
+  );
   late final $ContentRatingAttrsTable contentRatingAttrs =
       $ContentRatingAttrsTable(this);
   late final $ComponentLanguagesTable componentLanguages =
       $ComponentLanguagesTable(this);
   late final $BrandingColorsTable brandingColors = $BrandingColorsTable(this);
-  late final $ComponentExtendsTable componentExtends =
-      $ComponentExtendsTable(this);
+  late final $ComponentExtendsTable componentExtends = $ComponentExtendsTable(
+    this,
+  );
   late final $ComponentSuggestsTable componentSuggests =
       $ComponentSuggestsTable(this);
   late final $ComponentRelationsTable componentRelations =
       $ComponentRelationsTable(this);
-  late final $ComponentCustomTable componentCustom =
-      $ComponentCustomTable(this);
+  late final $ComponentCustomTable componentCustom = $ComponentCustomTable(
+    this,
+  );
   late final $ComponentFieldTranslationsTable componentFieldTranslations =
       $ComponentFieldTranslationsTable(this);
   @override
@@ -6285,81 +7349,83 @@ abstract class _$CatalogDatabase extends GeneratedDatabase {
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [
-        components,
-        categories,
-        componentCategories,
-        keywords,
-        componentKeywords,
-        componentUrls,
-        componentIcons,
-        releases,
-        releaseIssues,
-        screenshots,
-        screenshotImages,
-        screenshotVideos,
-        contentRatingAttrs,
-        componentLanguages,
-        brandingColors,
-        componentExtends,
-        componentSuggests,
-        componentRelations,
-        componentCustom,
-        componentFieldTranslations
-      ];
+    components,
+    categories,
+    componentCategories,
+    keywords,
+    componentKeywords,
+    componentUrls,
+    componentIcons,
+    releases,
+    releaseIssues,
+    screenshots,
+    screenshotImages,
+    screenshotVideos,
+    contentRatingAttrs,
+    componentLanguages,
+    brandingColors,
+    componentExtends,
+    componentSuggests,
+    componentRelations,
+    componentCustom,
+    componentFieldTranslations,
+  ];
 }
 
-typedef $$ComponentsTableCreateCompanionBuilder = ComponentsCompanion Function({
-  required String id,
-  Value<int> componentType,
-  Value<int> priority,
-  Value<String?> merge,
-  required String name,
-  Value<String?> nameVariantSuffix,
-  Value<String?> summary,
-  Value<String?> description,
-  Value<String?> pkgname,
-  Value<String?> sourcePkgname,
-  Value<String?> projectLicense,
-  Value<String?> metadataLicense,
-  Value<String?> projectGroup,
-  Value<String?> mediaBaseurl,
-  Value<String?> architecture,
-  Value<int?> bundleType,
-  Value<String?> bundleId,
-  Value<String?> developerId,
-  Value<String?> developerName,
-  Value<int?> launchableType,
-  Value<String?> launchableValue,
-  Value<String?> contentRatingType,
-  Value<String?> agreement,
-  Value<int> rowid,
-});
-typedef $$ComponentsTableUpdateCompanionBuilder = ComponentsCompanion Function({
-  Value<String> id,
-  Value<int> componentType,
-  Value<int> priority,
-  Value<String?> merge,
-  Value<String> name,
-  Value<String?> nameVariantSuffix,
-  Value<String?> summary,
-  Value<String?> description,
-  Value<String?> pkgname,
-  Value<String?> sourcePkgname,
-  Value<String?> projectLicense,
-  Value<String?> metadataLicense,
-  Value<String?> projectGroup,
-  Value<String?> mediaBaseurl,
-  Value<String?> architecture,
-  Value<int?> bundleType,
-  Value<String?> bundleId,
-  Value<String?> developerId,
-  Value<String?> developerName,
-  Value<int?> launchableType,
-  Value<String?> launchableValue,
-  Value<String?> contentRatingType,
-  Value<String?> agreement,
-  Value<int> rowid,
-});
+typedef $$ComponentsTableCreateCompanionBuilder =
+    ComponentsCompanion Function({
+      required String id,
+      Value<int> componentType,
+      Value<int> priority,
+      Value<String?> merge,
+      required String name,
+      Value<String?> nameVariantSuffix,
+      Value<String?> summary,
+      Value<String?> description,
+      Value<String?> pkgname,
+      Value<String?> sourcePkgname,
+      Value<String?> projectLicense,
+      Value<String?> metadataLicense,
+      Value<String?> projectGroup,
+      Value<String?> mediaBaseurl,
+      Value<String?> architecture,
+      Value<int?> bundleType,
+      Value<String?> bundleId,
+      Value<String?> developerId,
+      Value<String?> developerName,
+      Value<int?> launchableType,
+      Value<String?> launchableValue,
+      Value<String?> contentRatingType,
+      Value<String?> agreement,
+      Value<int> rowid,
+    });
+typedef $$ComponentsTableUpdateCompanionBuilder =
+    ComponentsCompanion Function({
+      Value<String> id,
+      Value<int> componentType,
+      Value<int> priority,
+      Value<String?> merge,
+      Value<String> name,
+      Value<String?> nameVariantSuffix,
+      Value<String?> summary,
+      Value<String?> description,
+      Value<String?> pkgname,
+      Value<String?> sourcePkgname,
+      Value<String?> projectLicense,
+      Value<String?> metadataLicense,
+      Value<String?> projectGroup,
+      Value<String?> mediaBaseurl,
+      Value<String?> architecture,
+      Value<int?> bundleType,
+      Value<String?> bundleId,
+      Value<String?> developerId,
+      Value<String?> developerName,
+      Value<int?> launchableType,
+      Value<String?> launchableValue,
+      Value<String?> contentRatingType,
+      Value<String?> agreement,
+      Value<int> rowid,
+    });
 
 class $$ComponentsTableFilterComposer
     extends Composer<_$CatalogDatabase, $ComponentsTable> {
@@ -6371,79 +7437,119 @@ class $$ComponentsTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get componentType => $composableBuilder(
-      column: $table.componentType, builder: (column) => ColumnFilters(column));
+    column: $table.componentType,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get priority => $composableBuilder(
-      column: $table.priority, builder: (column) => ColumnFilters(column));
+    column: $table.priority,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get merge => $composableBuilder(
-      column: $table.merge, builder: (column) => ColumnFilters(column));
+    column: $table.merge,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get name => $composableBuilder(
-      column: $table.name, builder: (column) => ColumnFilters(column));
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get nameVariantSuffix => $composableBuilder(
-      column: $table.nameVariantSuffix,
-      builder: (column) => ColumnFilters(column));
+    column: $table.nameVariantSuffix,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get summary => $composableBuilder(
-      column: $table.summary, builder: (column) => ColumnFilters(column));
+    column: $table.summary,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get description => $composableBuilder(
-      column: $table.description, builder: (column) => ColumnFilters(column));
+    column: $table.description,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get pkgname => $composableBuilder(
-      column: $table.pkgname, builder: (column) => ColumnFilters(column));
+    column: $table.pkgname,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get sourcePkgname => $composableBuilder(
-      column: $table.sourcePkgname, builder: (column) => ColumnFilters(column));
+    column: $table.sourcePkgname,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get projectLicense => $composableBuilder(
-      column: $table.projectLicense,
-      builder: (column) => ColumnFilters(column));
+    column: $table.projectLicense,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get metadataLicense => $composableBuilder(
-      column: $table.metadataLicense,
-      builder: (column) => ColumnFilters(column));
+    column: $table.metadataLicense,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get projectGroup => $composableBuilder(
-      column: $table.projectGroup, builder: (column) => ColumnFilters(column));
+    column: $table.projectGroup,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get mediaBaseurl => $composableBuilder(
-      column: $table.mediaBaseurl, builder: (column) => ColumnFilters(column));
+    column: $table.mediaBaseurl,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get architecture => $composableBuilder(
-      column: $table.architecture, builder: (column) => ColumnFilters(column));
+    column: $table.architecture,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get bundleType => $composableBuilder(
-      column: $table.bundleType, builder: (column) => ColumnFilters(column));
+    column: $table.bundleType,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get bundleId => $composableBuilder(
-      column: $table.bundleId, builder: (column) => ColumnFilters(column));
+    column: $table.bundleId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get developerId => $composableBuilder(
-      column: $table.developerId, builder: (column) => ColumnFilters(column));
+    column: $table.developerId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get developerName => $composableBuilder(
-      column: $table.developerName, builder: (column) => ColumnFilters(column));
+    column: $table.developerName,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get launchableType => $composableBuilder(
-      column: $table.launchableType,
-      builder: (column) => ColumnFilters(column));
+    column: $table.launchableType,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get launchableValue => $composableBuilder(
-      column: $table.launchableValue,
-      builder: (column) => ColumnFilters(column));
+    column: $table.launchableValue,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get contentRatingType => $composableBuilder(
-      column: $table.contentRatingType,
-      builder: (column) => ColumnFilters(column));
+    column: $table.contentRatingType,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get agreement => $composableBuilder(
-      column: $table.agreement, builder: (column) => ColumnFilters(column));
+    column: $table.agreement,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ComponentsTableOrderingComposer
@@ -6456,85 +7562,119 @@ class $$ComponentsTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get componentType => $composableBuilder(
-      column: $table.componentType,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.componentType,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get priority => $composableBuilder(
-      column: $table.priority, builder: (column) => ColumnOrderings(column));
+    column: $table.priority,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get merge => $composableBuilder(
-      column: $table.merge, builder: (column) => ColumnOrderings(column));
+    column: $table.merge,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get name => $composableBuilder(
-      column: $table.name, builder: (column) => ColumnOrderings(column));
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get nameVariantSuffix => $composableBuilder(
-      column: $table.nameVariantSuffix,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.nameVariantSuffix,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get summary => $composableBuilder(
-      column: $table.summary, builder: (column) => ColumnOrderings(column));
+    column: $table.summary,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get description => $composableBuilder(
-      column: $table.description, builder: (column) => ColumnOrderings(column));
+    column: $table.description,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get pkgname => $composableBuilder(
-      column: $table.pkgname, builder: (column) => ColumnOrderings(column));
+    column: $table.pkgname,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get sourcePkgname => $composableBuilder(
-      column: $table.sourcePkgname,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.sourcePkgname,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get projectLicense => $composableBuilder(
-      column: $table.projectLicense,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.projectLicense,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get metadataLicense => $composableBuilder(
-      column: $table.metadataLicense,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.metadataLicense,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get projectGroup => $composableBuilder(
-      column: $table.projectGroup,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.projectGroup,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get mediaBaseurl => $composableBuilder(
-      column: $table.mediaBaseurl,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.mediaBaseurl,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get architecture => $composableBuilder(
-      column: $table.architecture,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.architecture,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get bundleType => $composableBuilder(
-      column: $table.bundleType, builder: (column) => ColumnOrderings(column));
+    column: $table.bundleType,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get bundleId => $composableBuilder(
-      column: $table.bundleId, builder: (column) => ColumnOrderings(column));
+    column: $table.bundleId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get developerId => $composableBuilder(
-      column: $table.developerId, builder: (column) => ColumnOrderings(column));
+    column: $table.developerId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get developerName => $composableBuilder(
-      column: $table.developerName,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.developerName,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get launchableType => $composableBuilder(
-      column: $table.launchableType,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.launchableType,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get launchableValue => $composableBuilder(
-      column: $table.launchableValue,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.launchableValue,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get contentRatingType => $composableBuilder(
-      column: $table.contentRatingType,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.contentRatingType,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get agreement => $composableBuilder(
-      column: $table.agreement, builder: (column) => ColumnOrderings(column));
+    column: $table.agreement,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ComponentsTableAnnotationComposer
@@ -6550,7 +7690,9 @@ class $$ComponentsTableAnnotationComposer
       $composableBuilder(column: $table.id, builder: (column) => column);
 
   GeneratedColumn<int> get componentType => $composableBuilder(
-      column: $table.componentType, builder: (column) => column);
+    column: $table.componentType,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get priority =>
       $composableBuilder(column: $table.priority, builder: (column) => column);
@@ -6562,77 +7704,109 @@ class $$ComponentsTableAnnotationComposer
       $composableBuilder(column: $table.name, builder: (column) => column);
 
   GeneratedColumn<String> get nameVariantSuffix => $composableBuilder(
-      column: $table.nameVariantSuffix, builder: (column) => column);
+    column: $table.nameVariantSuffix,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get summary =>
       $composableBuilder(column: $table.summary, builder: (column) => column);
 
   GeneratedColumn<String> get description => $composableBuilder(
-      column: $table.description, builder: (column) => column);
+    column: $table.description,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get pkgname =>
       $composableBuilder(column: $table.pkgname, builder: (column) => column);
 
   GeneratedColumn<String> get sourcePkgname => $composableBuilder(
-      column: $table.sourcePkgname, builder: (column) => column);
+    column: $table.sourcePkgname,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get projectLicense => $composableBuilder(
-      column: $table.projectLicense, builder: (column) => column);
+    column: $table.projectLicense,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get metadataLicense => $composableBuilder(
-      column: $table.metadataLicense, builder: (column) => column);
+    column: $table.metadataLicense,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get projectGroup => $composableBuilder(
-      column: $table.projectGroup, builder: (column) => column);
+    column: $table.projectGroup,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get mediaBaseurl => $composableBuilder(
-      column: $table.mediaBaseurl, builder: (column) => column);
+    column: $table.mediaBaseurl,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get architecture => $composableBuilder(
-      column: $table.architecture, builder: (column) => column);
+    column: $table.architecture,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get bundleType => $composableBuilder(
-      column: $table.bundleType, builder: (column) => column);
+    column: $table.bundleType,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get bundleId =>
       $composableBuilder(column: $table.bundleId, builder: (column) => column);
 
   GeneratedColumn<String> get developerId => $composableBuilder(
-      column: $table.developerId, builder: (column) => column);
+    column: $table.developerId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get developerName => $composableBuilder(
-      column: $table.developerName, builder: (column) => column);
+    column: $table.developerName,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get launchableType => $composableBuilder(
-      column: $table.launchableType, builder: (column) => column);
+    column: $table.launchableType,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get launchableValue => $composableBuilder(
-      column: $table.launchableValue, builder: (column) => column);
+    column: $table.launchableValue,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get contentRatingType => $composableBuilder(
-      column: $table.contentRatingType, builder: (column) => column);
+    column: $table.contentRatingType,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get agreement =>
       $composableBuilder(column: $table.agreement, builder: (column) => column);
 }
 
-class $$ComponentsTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ComponentsTable,
-    ComponentRow,
-    $$ComponentsTableFilterComposer,
-    $$ComponentsTableOrderingComposer,
-    $$ComponentsTableAnnotationComposer,
-    $$ComponentsTableCreateCompanionBuilder,
-    $$ComponentsTableUpdateCompanionBuilder,
-    (
-      ComponentRow,
-      BaseReferences<_$CatalogDatabase, $ComponentsTable, ComponentRow>
-    ),
-    ComponentRow,
-    PrefetchHooks Function()> {
+class $$ComponentsTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ComponentsTable,
+          ComponentRow,
+          $$ComponentsTableFilterComposer,
+          $$ComponentsTableOrderingComposer,
+          $$ComponentsTableAnnotationComposer,
+          $$ComponentsTableCreateCompanionBuilder,
+          $$ComponentsTableUpdateCompanionBuilder,
+          (
+            ComponentRow,
+            BaseReferences<_$CatalogDatabase, $ComponentsTable, ComponentRow>,
+          ),
+          ComponentRow,
+          PrefetchHooks Function()
+        > {
   $$ComponentsTableTableManager(_$CatalogDatabase db, $ComponentsTable table)
-      : super(TableManagerState(
+    : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -6641,140 +7815,139 @@ class $$ComponentsTableTableManager extends RootTableManager<
               $$ComponentsTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ComponentsTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<int> componentType = const Value.absent(),
-            Value<int> priority = const Value.absent(),
-            Value<String?> merge = const Value.absent(),
-            Value<String> name = const Value.absent(),
-            Value<String?> nameVariantSuffix = const Value.absent(),
-            Value<String?> summary = const Value.absent(),
-            Value<String?> description = const Value.absent(),
-            Value<String?> pkgname = const Value.absent(),
-            Value<String?> sourcePkgname = const Value.absent(),
-            Value<String?> projectLicense = const Value.absent(),
-            Value<String?> metadataLicense = const Value.absent(),
-            Value<String?> projectGroup = const Value.absent(),
-            Value<String?> mediaBaseurl = const Value.absent(),
-            Value<String?> architecture = const Value.absent(),
-            Value<int?> bundleType = const Value.absent(),
-            Value<String?> bundleId = const Value.absent(),
-            Value<String?> developerId = const Value.absent(),
-            Value<String?> developerName = const Value.absent(),
-            Value<int?> launchableType = const Value.absent(),
-            Value<String?> launchableValue = const Value.absent(),
-            Value<String?> contentRatingType = const Value.absent(),
-            Value<String?> agreement = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentsCompanion(
-            id: id,
-            componentType: componentType,
-            priority: priority,
-            merge: merge,
-            name: name,
-            nameVariantSuffix: nameVariantSuffix,
-            summary: summary,
-            description: description,
-            pkgname: pkgname,
-            sourcePkgname: sourcePkgname,
-            projectLicense: projectLicense,
-            metadataLicense: metadataLicense,
-            projectGroup: projectGroup,
-            mediaBaseurl: mediaBaseurl,
-            architecture: architecture,
-            bundleType: bundleType,
-            bundleId: bundleId,
-            developerId: developerId,
-            developerName: developerName,
-            launchableType: launchableType,
-            launchableValue: launchableValue,
-            contentRatingType: contentRatingType,
-            agreement: agreement,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            Value<int> componentType = const Value.absent(),
-            Value<int> priority = const Value.absent(),
-            Value<String?> merge = const Value.absent(),
-            required String name,
-            Value<String?> nameVariantSuffix = const Value.absent(),
-            Value<String?> summary = const Value.absent(),
-            Value<String?> description = const Value.absent(),
-            Value<String?> pkgname = const Value.absent(),
-            Value<String?> sourcePkgname = const Value.absent(),
-            Value<String?> projectLicense = const Value.absent(),
-            Value<String?> metadataLicense = const Value.absent(),
-            Value<String?> projectGroup = const Value.absent(),
-            Value<String?> mediaBaseurl = const Value.absent(),
-            Value<String?> architecture = const Value.absent(),
-            Value<int?> bundleType = const Value.absent(),
-            Value<String?> bundleId = const Value.absent(),
-            Value<String?> developerId = const Value.absent(),
-            Value<String?> developerName = const Value.absent(),
-            Value<int?> launchableType = const Value.absent(),
-            Value<String?> launchableValue = const Value.absent(),
-            Value<String?> contentRatingType = const Value.absent(),
-            Value<String?> agreement = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentsCompanion.insert(
-            id: id,
-            componentType: componentType,
-            priority: priority,
-            merge: merge,
-            name: name,
-            nameVariantSuffix: nameVariantSuffix,
-            summary: summary,
-            description: description,
-            pkgname: pkgname,
-            sourcePkgname: sourcePkgname,
-            projectLicense: projectLicense,
-            metadataLicense: metadataLicense,
-            projectGroup: projectGroup,
-            mediaBaseurl: mediaBaseurl,
-            architecture: architecture,
-            bundleType: bundleType,
-            bundleId: bundleId,
-            developerId: developerId,
-            developerName: developerName,
-            launchableType: launchableType,
-            launchableValue: launchableValue,
-            contentRatingType: contentRatingType,
-            agreement: agreement,
-            rowid: rowid,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<int> componentType = const Value.absent(),
+                Value<int> priority = const Value.absent(),
+                Value<String?> merge = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String?> nameVariantSuffix = const Value.absent(),
+                Value<String?> summary = const Value.absent(),
+                Value<String?> description = const Value.absent(),
+                Value<String?> pkgname = const Value.absent(),
+                Value<String?> sourcePkgname = const Value.absent(),
+                Value<String?> projectLicense = const Value.absent(),
+                Value<String?> metadataLicense = const Value.absent(),
+                Value<String?> projectGroup = const Value.absent(),
+                Value<String?> mediaBaseurl = const Value.absent(),
+                Value<String?> architecture = const Value.absent(),
+                Value<int?> bundleType = const Value.absent(),
+                Value<String?> bundleId = const Value.absent(),
+                Value<String?> developerId = const Value.absent(),
+                Value<String?> developerName = const Value.absent(),
+                Value<int?> launchableType = const Value.absent(),
+                Value<String?> launchableValue = const Value.absent(),
+                Value<String?> contentRatingType = const Value.absent(),
+                Value<String?> agreement = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentsCompanion(
+                id: id,
+                componentType: componentType,
+                priority: priority,
+                merge: merge,
+                name: name,
+                nameVariantSuffix: nameVariantSuffix,
+                summary: summary,
+                description: description,
+                pkgname: pkgname,
+                sourcePkgname: sourcePkgname,
+                projectLicense: projectLicense,
+                metadataLicense: metadataLicense,
+                projectGroup: projectGroup,
+                mediaBaseurl: mediaBaseurl,
+                architecture: architecture,
+                bundleType: bundleType,
+                bundleId: bundleId,
+                developerId: developerId,
+                developerName: developerName,
+                launchableType: launchableType,
+                launchableValue: launchableValue,
+                contentRatingType: contentRatingType,
+                agreement: agreement,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                Value<int> componentType = const Value.absent(),
+                Value<int> priority = const Value.absent(),
+                Value<String?> merge = const Value.absent(),
+                required String name,
+                Value<String?> nameVariantSuffix = const Value.absent(),
+                Value<String?> summary = const Value.absent(),
+                Value<String?> description = const Value.absent(),
+                Value<String?> pkgname = const Value.absent(),
+                Value<String?> sourcePkgname = const Value.absent(),
+                Value<String?> projectLicense = const Value.absent(),
+                Value<String?> metadataLicense = const Value.absent(),
+                Value<String?> projectGroup = const Value.absent(),
+                Value<String?> mediaBaseurl = const Value.absent(),
+                Value<String?> architecture = const Value.absent(),
+                Value<int?> bundleType = const Value.absent(),
+                Value<String?> bundleId = const Value.absent(),
+                Value<String?> developerId = const Value.absent(),
+                Value<String?> developerName = const Value.absent(),
+                Value<int?> launchableType = const Value.absent(),
+                Value<String?> launchableValue = const Value.absent(),
+                Value<String?> contentRatingType = const Value.absent(),
+                Value<String?> agreement = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentsCompanion.insert(
+                id: id,
+                componentType: componentType,
+                priority: priority,
+                merge: merge,
+                name: name,
+                nameVariantSuffix: nameVariantSuffix,
+                summary: summary,
+                description: description,
+                pkgname: pkgname,
+                sourcePkgname: sourcePkgname,
+                projectLicense: projectLicense,
+                metadataLicense: metadataLicense,
+                projectGroup: projectGroup,
+                mediaBaseurl: mediaBaseurl,
+                architecture: architecture,
+                bundleType: bundleType,
+                bundleId: bundleId,
+                developerId: developerId,
+                developerName: developerName,
+                launchableType: launchableType,
+                launchableValue: launchableValue,
+                contentRatingType: contentRatingType,
+                agreement: agreement,
+                rowid: rowid,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ComponentsTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ComponentsTable,
-    ComponentRow,
-    $$ComponentsTableFilterComposer,
-    $$ComponentsTableOrderingComposer,
-    $$ComponentsTableAnnotationComposer,
-    $$ComponentsTableCreateCompanionBuilder,
-    $$ComponentsTableUpdateCompanionBuilder,
-    (
+typedef $$ComponentsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ComponentsTable,
       ComponentRow,
-      BaseReferences<_$CatalogDatabase, $ComponentsTable, ComponentRow>
-    ),
-    ComponentRow,
-    PrefetchHooks Function()>;
-typedef $$CategoriesTableCreateCompanionBuilder = CategoriesCompanion Function({
-  Value<int> id,
-  required String name,
-});
-typedef $$CategoriesTableUpdateCompanionBuilder = CategoriesCompanion Function({
-  Value<int> id,
-  Value<String> name,
-});
+      $$ComponentsTableFilterComposer,
+      $$ComponentsTableOrderingComposer,
+      $$ComponentsTableAnnotationComposer,
+      $$ComponentsTableCreateCompanionBuilder,
+      $$ComponentsTableUpdateCompanionBuilder,
+      (
+        ComponentRow,
+        BaseReferences<_$CatalogDatabase, $ComponentsTable, ComponentRow>,
+      ),
+      ComponentRow,
+      PrefetchHooks Function()
+    >;
+typedef $$CategoriesTableCreateCompanionBuilder =
+    CategoriesCompanion Function({Value<int> id, required String name});
+typedef $$CategoriesTableUpdateCompanionBuilder =
+    CategoriesCompanion Function({Value<int> id, Value<String> name});
 
 class $$CategoriesTableFilterComposer
     extends Composer<_$CatalogDatabase, $CategoriesTable> {
@@ -6786,10 +7959,14 @@ class $$CategoriesTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get name => $composableBuilder(
-      column: $table.name, builder: (column) => ColumnFilters(column));
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$CategoriesTableOrderingComposer
@@ -6802,10 +7979,14 @@ class $$CategoriesTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get name => $composableBuilder(
-      column: $table.name, builder: (column) => ColumnOrderings(column));
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$CategoriesTableAnnotationComposer
@@ -6824,20 +8005,27 @@ class $$CategoriesTableAnnotationComposer
       $composableBuilder(column: $table.name, builder: (column) => column);
 }
 
-class $$CategoriesTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $CategoriesTable,
-    Category,
-    $$CategoriesTableFilterComposer,
-    $$CategoriesTableOrderingComposer,
-    $$CategoriesTableAnnotationComposer,
-    $$CategoriesTableCreateCompanionBuilder,
-    $$CategoriesTableUpdateCompanionBuilder,
-    (Category, BaseReferences<_$CatalogDatabase, $CategoriesTable, Category>),
-    Category,
-    PrefetchHooks Function()> {
+class $$CategoriesTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $CategoriesTable,
+          Category,
+          $$CategoriesTableFilterComposer,
+          $$CategoriesTableOrderingComposer,
+          $$CategoriesTableAnnotationComposer,
+          $$CategoriesTableCreateCompanionBuilder,
+          $$CategoriesTableUpdateCompanionBuilder,
+          (
+            Category,
+            BaseReferences<_$CatalogDatabase, $CategoriesTable, Category>,
+          ),
+          Category,
+          PrefetchHooks Function()
+        > {
   $$CategoriesTableTableManager(_$CatalogDatabase db, $CategoriesTable table)
-      : super(TableManagerState(
+    : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -6846,53 +8034,48 @@ class $$CategoriesTableTableManager extends RootTableManager<
               $$CategoriesTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$CategoriesTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<String> name = const Value.absent(),
-          }) =>
-              CategoriesCompanion(
-            id: id,
-            name: name,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required String name,
-          }) =>
-              CategoriesCompanion.insert(
-            id: id,
-            name: name,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+              }) => CategoriesCompanion(id: id, name: name),
+          createCompanionCallback:
+              ({Value<int> id = const Value.absent(), required String name}) =>
+                  CategoriesCompanion.insert(id: id, name: name),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$CategoriesTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $CategoriesTable,
-    Category,
-    $$CategoriesTableFilterComposer,
-    $$CategoriesTableOrderingComposer,
-    $$CategoriesTableAnnotationComposer,
-    $$CategoriesTableCreateCompanionBuilder,
-    $$CategoriesTableUpdateCompanionBuilder,
-    (Category, BaseReferences<_$CatalogDatabase, $CategoriesTable, Category>),
-    Category,
-    PrefetchHooks Function()>;
-typedef $$ComponentCategoriesTableCreateCompanionBuilder
-    = ComponentCategoriesCompanion Function({
-  required String componentId,
-  required int categoryId,
-  Value<int> rowid,
-});
-typedef $$ComponentCategoriesTableUpdateCompanionBuilder
-    = ComponentCategoriesCompanion Function({
-  Value<String> componentId,
-  Value<int> categoryId,
-  Value<int> rowid,
-});
+typedef $$CategoriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $CategoriesTable,
+      Category,
+      $$CategoriesTableFilterComposer,
+      $$CategoriesTableOrderingComposer,
+      $$CategoriesTableAnnotationComposer,
+      $$CategoriesTableCreateCompanionBuilder,
+      $$CategoriesTableUpdateCompanionBuilder,
+      (Category, BaseReferences<_$CatalogDatabase, $CategoriesTable, Category>),
+      Category,
+      PrefetchHooks Function()
+    >;
+typedef $$ComponentCategoriesTableCreateCompanionBuilder =
+    ComponentCategoriesCompanion Function({
+      required String componentId,
+      required int categoryId,
+      Value<int> rowid,
+    });
+typedef $$ComponentCategoriesTableUpdateCompanionBuilder =
+    ComponentCategoriesCompanion Function({
+      Value<String> componentId,
+      Value<int> categoryId,
+      Value<int> rowid,
+    });
 
 class $$ComponentCategoriesTableFilterComposer
     extends Composer<_$CatalogDatabase, $ComponentCategoriesTable> {
@@ -6904,10 +8087,14 @@ class $$ComponentCategoriesTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get categoryId => $composableBuilder(
-      column: $table.categoryId, builder: (column) => ColumnFilters(column));
+    column: $table.categoryId,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ComponentCategoriesTableOrderingComposer
@@ -6920,10 +8107,14 @@ class $$ComponentCategoriesTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get categoryId => $composableBuilder(
-      column: $table.categoryId, builder: (column) => ColumnOrderings(column));
+    column: $table.categoryId,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ComponentCategoriesTableAnnotationComposer
@@ -6936,92 +8127,110 @@ class $$ComponentCategoriesTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get categoryId => $composableBuilder(
-      column: $table.categoryId, builder: (column) => column);
+    column: $table.categoryId,
+    builder: (column) => column,
+  );
 }
 
-class $$ComponentCategoriesTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ComponentCategoriesTable,
-    ComponentCategoryRow,
-    $$ComponentCategoriesTableFilterComposer,
-    $$ComponentCategoriesTableOrderingComposer,
-    $$ComponentCategoriesTableAnnotationComposer,
-    $$ComponentCategoriesTableCreateCompanionBuilder,
-    $$ComponentCategoriesTableUpdateCompanionBuilder,
-    (
-      ComponentCategoryRow,
-      BaseReferences<_$CatalogDatabase, $ComponentCategoriesTable,
-          ComponentCategoryRow>
-    ),
-    ComponentCategoryRow,
-    PrefetchHooks Function()> {
+class $$ComponentCategoriesTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ComponentCategoriesTable,
+          ComponentCategoryRow,
+          $$ComponentCategoriesTableFilterComposer,
+          $$ComponentCategoriesTableOrderingComposer,
+          $$ComponentCategoriesTableAnnotationComposer,
+          $$ComponentCategoriesTableCreateCompanionBuilder,
+          $$ComponentCategoriesTableUpdateCompanionBuilder,
+          (
+            ComponentCategoryRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ComponentCategoriesTable,
+              ComponentCategoryRow
+            >,
+          ),
+          ComponentCategoryRow,
+          PrefetchHooks Function()
+        > {
   $$ComponentCategoriesTableTableManager(
-      _$CatalogDatabase db, $ComponentCategoriesTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ComponentCategoriesTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
               $$ComponentCategoriesTableFilterComposer($db: db, $table: table),
           createOrderingComposer: () =>
               $$ComponentCategoriesTableOrderingComposer(
-                  $db: db, $table: table),
+                $db: db,
+                $table: table,
+              ),
           createComputedFieldComposer: () =>
               $$ComponentCategoriesTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> componentId = const Value.absent(),
-            Value<int> categoryId = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentCategoriesCompanion(
-            componentId: componentId,
-            categoryId: categoryId,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String componentId,
-            required int categoryId,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentCategoriesCompanion.insert(
-            componentId: componentId,
-            categoryId: categoryId,
-            rowid: rowid,
-          ),
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> componentId = const Value.absent(),
+                Value<int> categoryId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentCategoriesCompanion(
+                componentId: componentId,
+                categoryId: categoryId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String componentId,
+                required int categoryId,
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentCategoriesCompanion.insert(
+                componentId: componentId,
+                categoryId: categoryId,
+                rowid: rowid,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ComponentCategoriesTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ComponentCategoriesTable,
-    ComponentCategoryRow,
-    $$ComponentCategoriesTableFilterComposer,
-    $$ComponentCategoriesTableOrderingComposer,
-    $$ComponentCategoriesTableAnnotationComposer,
-    $$ComponentCategoriesTableCreateCompanionBuilder,
-    $$ComponentCategoriesTableUpdateCompanionBuilder,
-    (
+typedef $$ComponentCategoriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ComponentCategoriesTable,
       ComponentCategoryRow,
-      BaseReferences<_$CatalogDatabase, $ComponentCategoriesTable,
-          ComponentCategoryRow>
-    ),
-    ComponentCategoryRow,
-    PrefetchHooks Function()>;
-typedef $$KeywordsTableCreateCompanionBuilder = KeywordsCompanion Function({
-  Value<int> id,
-  required String name,
-});
-typedef $$KeywordsTableUpdateCompanionBuilder = KeywordsCompanion Function({
-  Value<int> id,
-  Value<String> name,
-});
+      $$ComponentCategoriesTableFilterComposer,
+      $$ComponentCategoriesTableOrderingComposer,
+      $$ComponentCategoriesTableAnnotationComposer,
+      $$ComponentCategoriesTableCreateCompanionBuilder,
+      $$ComponentCategoriesTableUpdateCompanionBuilder,
+      (
+        ComponentCategoryRow,
+        BaseReferences<
+          _$CatalogDatabase,
+          $ComponentCategoriesTable,
+          ComponentCategoryRow
+        >,
+      ),
+      ComponentCategoryRow,
+      PrefetchHooks Function()
+    >;
+typedef $$KeywordsTableCreateCompanionBuilder =
+    KeywordsCompanion Function({Value<int> id, required String name});
+typedef $$KeywordsTableUpdateCompanionBuilder =
+    KeywordsCompanion Function({Value<int> id, Value<String> name});
 
 class $$KeywordsTableFilterComposer
     extends Composer<_$CatalogDatabase, $KeywordsTable> {
@@ -7033,10 +8242,14 @@ class $$KeywordsTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get name => $composableBuilder(
-      column: $table.name, builder: (column) => ColumnFilters(column));
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$KeywordsTableOrderingComposer
@@ -7049,10 +8262,14 @@ class $$KeywordsTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get name => $composableBuilder(
-      column: $table.name, builder: (column) => ColumnOrderings(column));
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$KeywordsTableAnnotationComposer
@@ -7071,20 +8288,24 @@ class $$KeywordsTableAnnotationComposer
       $composableBuilder(column: $table.name, builder: (column) => column);
 }
 
-class $$KeywordsTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $KeywordsTable,
-    Keyword,
-    $$KeywordsTableFilterComposer,
-    $$KeywordsTableOrderingComposer,
-    $$KeywordsTableAnnotationComposer,
-    $$KeywordsTableCreateCompanionBuilder,
-    $$KeywordsTableUpdateCompanionBuilder,
-    (Keyword, BaseReferences<_$CatalogDatabase, $KeywordsTable, Keyword>),
-    Keyword,
-    PrefetchHooks Function()> {
+class $$KeywordsTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $KeywordsTable,
+          Keyword,
+          $$KeywordsTableFilterComposer,
+          $$KeywordsTableOrderingComposer,
+          $$KeywordsTableAnnotationComposer,
+          $$KeywordsTableCreateCompanionBuilder,
+          $$KeywordsTableUpdateCompanionBuilder,
+          (Keyword, BaseReferences<_$CatalogDatabase, $KeywordsTable, Keyword>),
+          Keyword,
+          PrefetchHooks Function()
+        > {
   $$KeywordsTableTableManager(_$CatalogDatabase db, $KeywordsTable table)
-      : super(TableManagerState(
+    : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -7093,53 +8314,48 @@ class $$KeywordsTableTableManager extends RootTableManager<
               $$KeywordsTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$KeywordsTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<String> name = const Value.absent(),
-          }) =>
-              KeywordsCompanion(
-            id: id,
-            name: name,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required String name,
-          }) =>
-              KeywordsCompanion.insert(
-            id: id,
-            name: name,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+              }) => KeywordsCompanion(id: id, name: name),
+          createCompanionCallback:
+              ({Value<int> id = const Value.absent(), required String name}) =>
+                  KeywordsCompanion.insert(id: id, name: name),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$KeywordsTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $KeywordsTable,
-    Keyword,
-    $$KeywordsTableFilterComposer,
-    $$KeywordsTableOrderingComposer,
-    $$KeywordsTableAnnotationComposer,
-    $$KeywordsTableCreateCompanionBuilder,
-    $$KeywordsTableUpdateCompanionBuilder,
-    (Keyword, BaseReferences<_$CatalogDatabase, $KeywordsTable, Keyword>),
-    Keyword,
-    PrefetchHooks Function()>;
-typedef $$ComponentKeywordsTableCreateCompanionBuilder
-    = ComponentKeywordsCompanion Function({
-  required String componentId,
-  required int keywordId,
-  Value<int> rowid,
-});
-typedef $$ComponentKeywordsTableUpdateCompanionBuilder
-    = ComponentKeywordsCompanion Function({
-  Value<String> componentId,
-  Value<int> keywordId,
-  Value<int> rowid,
-});
+typedef $$KeywordsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $KeywordsTable,
+      Keyword,
+      $$KeywordsTableFilterComposer,
+      $$KeywordsTableOrderingComposer,
+      $$KeywordsTableAnnotationComposer,
+      $$KeywordsTableCreateCompanionBuilder,
+      $$KeywordsTableUpdateCompanionBuilder,
+      (Keyword, BaseReferences<_$CatalogDatabase, $KeywordsTable, Keyword>),
+      Keyword,
+      PrefetchHooks Function()
+    >;
+typedef $$ComponentKeywordsTableCreateCompanionBuilder =
+    ComponentKeywordsCompanion Function({
+      required String componentId,
+      required int keywordId,
+      Value<int> rowid,
+    });
+typedef $$ComponentKeywordsTableUpdateCompanionBuilder =
+    ComponentKeywordsCompanion Function({
+      Value<String> componentId,
+      Value<int> keywordId,
+      Value<int> rowid,
+    });
 
 class $$ComponentKeywordsTableFilterComposer
     extends Composer<_$CatalogDatabase, $ComponentKeywordsTable> {
@@ -7151,10 +8367,14 @@ class $$ComponentKeywordsTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get keywordId => $composableBuilder(
-      column: $table.keywordId, builder: (column) => ColumnFilters(column));
+    column: $table.keywordId,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ComponentKeywordsTableOrderingComposer
@@ -7167,10 +8387,14 @@ class $$ComponentKeywordsTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get keywordId => $composableBuilder(
-      column: $table.keywordId, builder: (column) => ColumnOrderings(column));
+    column: $table.keywordId,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ComponentKeywordsTableAnnotationComposer
@@ -7183,31 +8407,41 @@ class $$ComponentKeywordsTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get keywordId =>
       $composableBuilder(column: $table.keywordId, builder: (column) => column);
 }
 
-class $$ComponentKeywordsTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ComponentKeywordsTable,
-    ComponentKeywordRow,
-    $$ComponentKeywordsTableFilterComposer,
-    $$ComponentKeywordsTableOrderingComposer,
-    $$ComponentKeywordsTableAnnotationComposer,
-    $$ComponentKeywordsTableCreateCompanionBuilder,
-    $$ComponentKeywordsTableUpdateCompanionBuilder,
-    (
-      ComponentKeywordRow,
-      BaseReferences<_$CatalogDatabase, $ComponentKeywordsTable,
-          ComponentKeywordRow>
-    ),
-    ComponentKeywordRow,
-    PrefetchHooks Function()> {
+class $$ComponentKeywordsTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ComponentKeywordsTable,
+          ComponentKeywordRow,
+          $$ComponentKeywordsTableFilterComposer,
+          $$ComponentKeywordsTableOrderingComposer,
+          $$ComponentKeywordsTableAnnotationComposer,
+          $$ComponentKeywordsTableCreateCompanionBuilder,
+          $$ComponentKeywordsTableUpdateCompanionBuilder,
+          (
+            ComponentKeywordRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ComponentKeywordsTable,
+              ComponentKeywordRow
+            >,
+          ),
+          ComponentKeywordRow,
+          PrefetchHooks Function()
+        > {
   $$ComponentKeywordsTableTableManager(
-      _$CatalogDatabase db, $ComponentKeywordsTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ComponentKeywordsTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -7216,64 +8450,72 @@ class $$ComponentKeywordsTableTableManager extends RootTableManager<
               $$ComponentKeywordsTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ComponentKeywordsTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> componentId = const Value.absent(),
-            Value<int> keywordId = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentKeywordsCompanion(
-            componentId: componentId,
-            keywordId: keywordId,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String componentId,
-            required int keywordId,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentKeywordsCompanion.insert(
-            componentId: componentId,
-            keywordId: keywordId,
-            rowid: rowid,
-          ),
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> componentId = const Value.absent(),
+                Value<int> keywordId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentKeywordsCompanion(
+                componentId: componentId,
+                keywordId: keywordId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String componentId,
+                required int keywordId,
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentKeywordsCompanion.insert(
+                componentId: componentId,
+                keywordId: keywordId,
+                rowid: rowid,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ComponentKeywordsTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ComponentKeywordsTable,
-    ComponentKeywordRow,
-    $$ComponentKeywordsTableFilterComposer,
-    $$ComponentKeywordsTableOrderingComposer,
-    $$ComponentKeywordsTableAnnotationComposer,
-    $$ComponentKeywordsTableCreateCompanionBuilder,
-    $$ComponentKeywordsTableUpdateCompanionBuilder,
-    (
+typedef $$ComponentKeywordsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ComponentKeywordsTable,
       ComponentKeywordRow,
-      BaseReferences<_$CatalogDatabase, $ComponentKeywordsTable,
-          ComponentKeywordRow>
-    ),
-    ComponentKeywordRow,
-    PrefetchHooks Function()>;
-typedef $$ComponentUrlsTableCreateCompanionBuilder = ComponentUrlsCompanion
-    Function({
-  required String componentId,
-  required int urlType,
-  required String url,
-  Value<int> rowid,
-});
-typedef $$ComponentUrlsTableUpdateCompanionBuilder = ComponentUrlsCompanion
-    Function({
-  Value<String> componentId,
-  Value<int> urlType,
-  Value<String> url,
-  Value<int> rowid,
-});
+      $$ComponentKeywordsTableFilterComposer,
+      $$ComponentKeywordsTableOrderingComposer,
+      $$ComponentKeywordsTableAnnotationComposer,
+      $$ComponentKeywordsTableCreateCompanionBuilder,
+      $$ComponentKeywordsTableUpdateCompanionBuilder,
+      (
+        ComponentKeywordRow,
+        BaseReferences<
+          _$CatalogDatabase,
+          $ComponentKeywordsTable,
+          ComponentKeywordRow
+        >,
+      ),
+      ComponentKeywordRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ComponentUrlsTableCreateCompanionBuilder =
+    ComponentUrlsCompanion Function({
+      required String componentId,
+      required int urlType,
+      required String url,
+      Value<int> rowid,
+    });
+typedef $$ComponentUrlsTableUpdateCompanionBuilder =
+    ComponentUrlsCompanion Function({
+      Value<String> componentId,
+      Value<int> urlType,
+      Value<String> url,
+      Value<int> rowid,
+    });
 
 class $$ComponentUrlsTableFilterComposer
     extends Composer<_$CatalogDatabase, $ComponentUrlsTable> {
@@ -7285,13 +8527,19 @@ class $$ComponentUrlsTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get urlType => $composableBuilder(
-      column: $table.urlType, builder: (column) => ColumnFilters(column));
+    column: $table.urlType,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get url => $composableBuilder(
-      column: $table.url, builder: (column) => ColumnFilters(column));
+    column: $table.url,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ComponentUrlsTableOrderingComposer
@@ -7304,13 +8552,19 @@ class $$ComponentUrlsTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get urlType => $composableBuilder(
-      column: $table.urlType, builder: (column) => ColumnOrderings(column));
+    column: $table.urlType,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get url => $composableBuilder(
-      column: $table.url, builder: (column) => ColumnOrderings(column));
+    column: $table.url,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ComponentUrlsTableAnnotationComposer
@@ -7323,7 +8577,9 @@ class $$ComponentUrlsTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get urlType =>
       $composableBuilder(column: $table.urlType, builder: (column) => column);
@@ -7332,24 +8588,33 @@ class $$ComponentUrlsTableAnnotationComposer
       $composableBuilder(column: $table.url, builder: (column) => column);
 }
 
-class $$ComponentUrlsTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ComponentUrlsTable,
-    ComponentUrlRow,
-    $$ComponentUrlsTableFilterComposer,
-    $$ComponentUrlsTableOrderingComposer,
-    $$ComponentUrlsTableAnnotationComposer,
-    $$ComponentUrlsTableCreateCompanionBuilder,
-    $$ComponentUrlsTableUpdateCompanionBuilder,
-    (
-      ComponentUrlRow,
-      BaseReferences<_$CatalogDatabase, $ComponentUrlsTable, ComponentUrlRow>
-    ),
-    ComponentUrlRow,
-    PrefetchHooks Function()> {
+class $$ComponentUrlsTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ComponentUrlsTable,
+          ComponentUrlRow,
+          $$ComponentUrlsTableFilterComposer,
+          $$ComponentUrlsTableOrderingComposer,
+          $$ComponentUrlsTableAnnotationComposer,
+          $$ComponentUrlsTableCreateCompanionBuilder,
+          $$ComponentUrlsTableUpdateCompanionBuilder,
+          (
+            ComponentUrlRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ComponentUrlsTable,
+              ComponentUrlRow
+            >,
+          ),
+          ComponentUrlRow,
+          PrefetchHooks Function()
+        > {
   $$ComponentUrlsTableTableManager(
-      _$CatalogDatabase db, $ComponentUrlsTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ComponentUrlsTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -7358,72 +8623,75 @@ class $$ComponentUrlsTableTableManager extends RootTableManager<
               $$ComponentUrlsTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ComponentUrlsTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> componentId = const Value.absent(),
-            Value<int> urlType = const Value.absent(),
-            Value<String> url = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentUrlsCompanion(
-            componentId: componentId,
-            urlType: urlType,
-            url: url,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String componentId,
-            required int urlType,
-            required String url,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentUrlsCompanion.insert(
-            componentId: componentId,
-            urlType: urlType,
-            url: url,
-            rowid: rowid,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<String> componentId = const Value.absent(),
+                Value<int> urlType = const Value.absent(),
+                Value<String> url = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentUrlsCompanion(
+                componentId: componentId,
+                urlType: urlType,
+                url: url,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String componentId,
+                required int urlType,
+                required String url,
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentUrlsCompanion.insert(
+                componentId: componentId,
+                urlType: urlType,
+                url: url,
+                rowid: rowid,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ComponentUrlsTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ComponentUrlsTable,
-    ComponentUrlRow,
-    $$ComponentUrlsTableFilterComposer,
-    $$ComponentUrlsTableOrderingComposer,
-    $$ComponentUrlsTableAnnotationComposer,
-    $$ComponentUrlsTableCreateCompanionBuilder,
-    $$ComponentUrlsTableUpdateCompanionBuilder,
-    (
+typedef $$ComponentUrlsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ComponentUrlsTable,
       ComponentUrlRow,
-      BaseReferences<_$CatalogDatabase, $ComponentUrlsTable, ComponentUrlRow>
-    ),
-    ComponentUrlRow,
-    PrefetchHooks Function()>;
-typedef $$ComponentIconsTableCreateCompanionBuilder = ComponentIconsCompanion
-    Function({
-  Value<int> id,
-  required String componentId,
-  required int iconType,
-  required String value,
-  Value<int?> width,
-  Value<int?> height,
-  Value<int?> scale,
-});
-typedef $$ComponentIconsTableUpdateCompanionBuilder = ComponentIconsCompanion
-    Function({
-  Value<int> id,
-  Value<String> componentId,
-  Value<int> iconType,
-  Value<String> value,
-  Value<int?> width,
-  Value<int?> height,
-  Value<int?> scale,
-});
+      $$ComponentUrlsTableFilterComposer,
+      $$ComponentUrlsTableOrderingComposer,
+      $$ComponentUrlsTableAnnotationComposer,
+      $$ComponentUrlsTableCreateCompanionBuilder,
+      $$ComponentUrlsTableUpdateCompanionBuilder,
+      (
+        ComponentUrlRow,
+        BaseReferences<_$CatalogDatabase, $ComponentUrlsTable, ComponentUrlRow>,
+      ),
+      ComponentUrlRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ComponentIconsTableCreateCompanionBuilder =
+    ComponentIconsCompanion Function({
+      Value<int> id,
+      required String componentId,
+      required int iconType,
+      required String value,
+      Value<int?> width,
+      Value<int?> height,
+      Value<int?> scale,
+    });
+typedef $$ComponentIconsTableUpdateCompanionBuilder =
+    ComponentIconsCompanion Function({
+      Value<int> id,
+      Value<String> componentId,
+      Value<int> iconType,
+      Value<String> value,
+      Value<int?> width,
+      Value<int?> height,
+      Value<int?> scale,
+    });
 
 class $$ComponentIconsTableFilterComposer
     extends Composer<_$CatalogDatabase, $ComponentIconsTable> {
@@ -7435,25 +8703,39 @@ class $$ComponentIconsTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get iconType => $composableBuilder(
-      column: $table.iconType, builder: (column) => ColumnFilters(column));
+    column: $table.iconType,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get value => $composableBuilder(
-      column: $table.value, builder: (column) => ColumnFilters(column));
+    column: $table.value,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get width => $composableBuilder(
-      column: $table.width, builder: (column) => ColumnFilters(column));
+    column: $table.width,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get height => $composableBuilder(
-      column: $table.height, builder: (column) => ColumnFilters(column));
+    column: $table.height,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get scale => $composableBuilder(
-      column: $table.scale, builder: (column) => ColumnFilters(column));
+    column: $table.scale,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ComponentIconsTableOrderingComposer
@@ -7466,25 +8748,39 @@ class $$ComponentIconsTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get iconType => $composableBuilder(
-      column: $table.iconType, builder: (column) => ColumnOrderings(column));
+    column: $table.iconType,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get value => $composableBuilder(
-      column: $table.value, builder: (column) => ColumnOrderings(column));
+    column: $table.value,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get width => $composableBuilder(
-      column: $table.width, builder: (column) => ColumnOrderings(column));
+    column: $table.width,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get height => $composableBuilder(
-      column: $table.height, builder: (column) => ColumnOrderings(column));
+    column: $table.height,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get scale => $composableBuilder(
-      column: $table.scale, builder: (column) => ColumnOrderings(column));
+    column: $table.scale,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ComponentIconsTableAnnotationComposer
@@ -7500,7 +8796,9 @@ class $$ComponentIconsTableAnnotationComposer
       $composableBuilder(column: $table.id, builder: (column) => column);
 
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get iconType =>
       $composableBuilder(column: $table.iconType, builder: (column) => column);
@@ -7518,24 +8816,33 @@ class $$ComponentIconsTableAnnotationComposer
       $composableBuilder(column: $table.scale, builder: (column) => column);
 }
 
-class $$ComponentIconsTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ComponentIconsTable,
-    ComponentIconRow,
-    $$ComponentIconsTableFilterComposer,
-    $$ComponentIconsTableOrderingComposer,
-    $$ComponentIconsTableAnnotationComposer,
-    $$ComponentIconsTableCreateCompanionBuilder,
-    $$ComponentIconsTableUpdateCompanionBuilder,
-    (
-      ComponentIconRow,
-      BaseReferences<_$CatalogDatabase, $ComponentIconsTable, ComponentIconRow>
-    ),
-    ComponentIconRow,
-    PrefetchHooks Function()> {
+class $$ComponentIconsTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ComponentIconsTable,
+          ComponentIconRow,
+          $$ComponentIconsTableFilterComposer,
+          $$ComponentIconsTableOrderingComposer,
+          $$ComponentIconsTableAnnotationComposer,
+          $$ComponentIconsTableCreateCompanionBuilder,
+          $$ComponentIconsTableUpdateCompanionBuilder,
+          (
+            ComponentIconRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ComponentIconsTable,
+              ComponentIconRow
+            >,
+          ),
+          ComponentIconRow,
+          PrefetchHooks Function()
+        > {
   $$ComponentIconsTableTableManager(
-      _$CatalogDatabase db, $ComponentIconsTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ComponentIconsTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -7544,88 +8851,97 @@ class $$ComponentIconsTableTableManager extends RootTableManager<
               $$ComponentIconsTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ComponentIconsTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<String> componentId = const Value.absent(),
-            Value<int> iconType = const Value.absent(),
-            Value<String> value = const Value.absent(),
-            Value<int?> width = const Value.absent(),
-            Value<int?> height = const Value.absent(),
-            Value<int?> scale = const Value.absent(),
-          }) =>
-              ComponentIconsCompanion(
-            id: id,
-            componentId: componentId,
-            iconType: iconType,
-            value: value,
-            width: width,
-            height: height,
-            scale: scale,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required String componentId,
-            required int iconType,
-            required String value,
-            Value<int?> width = const Value.absent(),
-            Value<int?> height = const Value.absent(),
-            Value<int?> scale = const Value.absent(),
-          }) =>
-              ComponentIconsCompanion.insert(
-            id: id,
-            componentId: componentId,
-            iconType: iconType,
-            value: value,
-            width: width,
-            height: height,
-            scale: scale,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> componentId = const Value.absent(),
+                Value<int> iconType = const Value.absent(),
+                Value<String> value = const Value.absent(),
+                Value<int?> width = const Value.absent(),
+                Value<int?> height = const Value.absent(),
+                Value<int?> scale = const Value.absent(),
+              }) => ComponentIconsCompanion(
+                id: id,
+                componentId: componentId,
+                iconType: iconType,
+                value: value,
+                width: width,
+                height: height,
+                scale: scale,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String componentId,
+                required int iconType,
+                required String value,
+                Value<int?> width = const Value.absent(),
+                Value<int?> height = const Value.absent(),
+                Value<int?> scale = const Value.absent(),
+              }) => ComponentIconsCompanion.insert(
+                id: id,
+                componentId: componentId,
+                iconType: iconType,
+                value: value,
+                width: width,
+                height: height,
+                scale: scale,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ComponentIconsTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ComponentIconsTable,
-    ComponentIconRow,
-    $$ComponentIconsTableFilterComposer,
-    $$ComponentIconsTableOrderingComposer,
-    $$ComponentIconsTableAnnotationComposer,
-    $$ComponentIconsTableCreateCompanionBuilder,
-    $$ComponentIconsTableUpdateCompanionBuilder,
-    (
+typedef $$ComponentIconsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ComponentIconsTable,
       ComponentIconRow,
-      BaseReferences<_$CatalogDatabase, $ComponentIconsTable, ComponentIconRow>
-    ),
-    ComponentIconRow,
-    PrefetchHooks Function()>;
-typedef $$ReleasesTableCreateCompanionBuilder = ReleasesCompanion Function({
-  Value<int> id,
-  required String componentId,
-  Value<int?> releaseType,
-  Value<String?> version,
-  Value<String?> date,
-  Value<String?> timestamp,
-  Value<String?> dateEol,
-  Value<int?> urgency,
-  Value<String?> description,
-  Value<String?> url,
-});
-typedef $$ReleasesTableUpdateCompanionBuilder = ReleasesCompanion Function({
-  Value<int> id,
-  Value<String> componentId,
-  Value<int?> releaseType,
-  Value<String?> version,
-  Value<String?> date,
-  Value<String?> timestamp,
-  Value<String?> dateEol,
-  Value<int?> urgency,
-  Value<String?> description,
-  Value<String?> url,
-});
+      $$ComponentIconsTableFilterComposer,
+      $$ComponentIconsTableOrderingComposer,
+      $$ComponentIconsTableAnnotationComposer,
+      $$ComponentIconsTableCreateCompanionBuilder,
+      $$ComponentIconsTableUpdateCompanionBuilder,
+      (
+        ComponentIconRow,
+        BaseReferences<
+          _$CatalogDatabase,
+          $ComponentIconsTable,
+          ComponentIconRow
+        >,
+      ),
+      ComponentIconRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ReleasesTableCreateCompanionBuilder =
+    ReleasesCompanion Function({
+      Value<int> id,
+      required String componentId,
+      Value<int?> releaseType,
+      Value<String?> version,
+      Value<String?> date,
+      Value<String?> timestamp,
+      Value<String?> dateEol,
+      Value<int?> urgency,
+      Value<String?> description,
+      Value<String?> url,
+    });
+typedef $$ReleasesTableUpdateCompanionBuilder =
+    ReleasesCompanion Function({
+      Value<int> id,
+      Value<String> componentId,
+      Value<int?> releaseType,
+      Value<String?> version,
+      Value<String?> date,
+      Value<String?> timestamp,
+      Value<String?> dateEol,
+      Value<int?> urgency,
+      Value<String?> description,
+      Value<String?> url,
+    });
 
 class $$ReleasesTableFilterComposer
     extends Composer<_$CatalogDatabase, $ReleasesTable> {
@@ -7637,34 +8953,54 @@ class $$ReleasesTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get releaseType => $composableBuilder(
-      column: $table.releaseType, builder: (column) => ColumnFilters(column));
+    column: $table.releaseType,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get version => $composableBuilder(
-      column: $table.version, builder: (column) => ColumnFilters(column));
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get date => $composableBuilder(
-      column: $table.date, builder: (column) => ColumnFilters(column));
+    column: $table.date,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get timestamp => $composableBuilder(
-      column: $table.timestamp, builder: (column) => ColumnFilters(column));
+    column: $table.timestamp,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get dateEol => $composableBuilder(
-      column: $table.dateEol, builder: (column) => ColumnFilters(column));
+    column: $table.dateEol,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get urgency => $composableBuilder(
-      column: $table.urgency, builder: (column) => ColumnFilters(column));
+    column: $table.urgency,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get description => $composableBuilder(
-      column: $table.description, builder: (column) => ColumnFilters(column));
+    column: $table.description,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get url => $composableBuilder(
-      column: $table.url, builder: (column) => ColumnFilters(column));
+    column: $table.url,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ReleasesTableOrderingComposer
@@ -7677,34 +9013,54 @@ class $$ReleasesTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get releaseType => $composableBuilder(
-      column: $table.releaseType, builder: (column) => ColumnOrderings(column));
+    column: $table.releaseType,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get version => $composableBuilder(
-      column: $table.version, builder: (column) => ColumnOrderings(column));
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get date => $composableBuilder(
-      column: $table.date, builder: (column) => ColumnOrderings(column));
+    column: $table.date,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get timestamp => $composableBuilder(
-      column: $table.timestamp, builder: (column) => ColumnOrderings(column));
+    column: $table.timestamp,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get dateEol => $composableBuilder(
-      column: $table.dateEol, builder: (column) => ColumnOrderings(column));
+    column: $table.dateEol,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get urgency => $composableBuilder(
-      column: $table.urgency, builder: (column) => ColumnOrderings(column));
+    column: $table.urgency,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get description => $composableBuilder(
-      column: $table.description, builder: (column) => ColumnOrderings(column));
+    column: $table.description,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get url => $composableBuilder(
-      column: $table.url, builder: (column) => ColumnOrderings(column));
+    column: $table.url,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ReleasesTableAnnotationComposer
@@ -7720,10 +9076,14 @@ class $$ReleasesTableAnnotationComposer
       $composableBuilder(column: $table.id, builder: (column) => column);
 
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get releaseType => $composableBuilder(
-      column: $table.releaseType, builder: (column) => column);
+    column: $table.releaseType,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get version =>
       $composableBuilder(column: $table.version, builder: (column) => column);
@@ -7741,26 +9101,35 @@ class $$ReleasesTableAnnotationComposer
       $composableBuilder(column: $table.urgency, builder: (column) => column);
 
   GeneratedColumn<String> get description => $composableBuilder(
-      column: $table.description, builder: (column) => column);
+    column: $table.description,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get url =>
       $composableBuilder(column: $table.url, builder: (column) => column);
 }
 
-class $$ReleasesTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ReleasesTable,
-    ReleaseRow,
-    $$ReleasesTableFilterComposer,
-    $$ReleasesTableOrderingComposer,
-    $$ReleasesTableAnnotationComposer,
-    $$ReleasesTableCreateCompanionBuilder,
-    $$ReleasesTableUpdateCompanionBuilder,
-    (ReleaseRow, BaseReferences<_$CatalogDatabase, $ReleasesTable, ReleaseRow>),
-    ReleaseRow,
-    PrefetchHooks Function()> {
+class $$ReleasesTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ReleasesTable,
+          ReleaseRow,
+          $$ReleasesTableFilterComposer,
+          $$ReleasesTableOrderingComposer,
+          $$ReleasesTableAnnotationComposer,
+          $$ReleasesTableCreateCompanionBuilder,
+          $$ReleasesTableUpdateCompanionBuilder,
+          (
+            ReleaseRow,
+            BaseReferences<_$CatalogDatabase, $ReleasesTable, ReleaseRow>,
+          ),
+          ReleaseRow,
+          PrefetchHooks Function()
+        > {
   $$ReleasesTableTableManager(_$CatalogDatabase db, $ReleasesTable table)
-      : super(TableManagerState(
+    : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -7769,89 +9138,95 @@ class $$ReleasesTableTableManager extends RootTableManager<
               $$ReleasesTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ReleasesTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<String> componentId = const Value.absent(),
-            Value<int?> releaseType = const Value.absent(),
-            Value<String?> version = const Value.absent(),
-            Value<String?> date = const Value.absent(),
-            Value<String?> timestamp = const Value.absent(),
-            Value<String?> dateEol = const Value.absent(),
-            Value<int?> urgency = const Value.absent(),
-            Value<String?> description = const Value.absent(),
-            Value<String?> url = const Value.absent(),
-          }) =>
-              ReleasesCompanion(
-            id: id,
-            componentId: componentId,
-            releaseType: releaseType,
-            version: version,
-            date: date,
-            timestamp: timestamp,
-            dateEol: dateEol,
-            urgency: urgency,
-            description: description,
-            url: url,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required String componentId,
-            Value<int?> releaseType = const Value.absent(),
-            Value<String?> version = const Value.absent(),
-            Value<String?> date = const Value.absent(),
-            Value<String?> timestamp = const Value.absent(),
-            Value<String?> dateEol = const Value.absent(),
-            Value<int?> urgency = const Value.absent(),
-            Value<String?> description = const Value.absent(),
-            Value<String?> url = const Value.absent(),
-          }) =>
-              ReleasesCompanion.insert(
-            id: id,
-            componentId: componentId,
-            releaseType: releaseType,
-            version: version,
-            date: date,
-            timestamp: timestamp,
-            dateEol: dateEol,
-            urgency: urgency,
-            description: description,
-            url: url,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> componentId = const Value.absent(),
+                Value<int?> releaseType = const Value.absent(),
+                Value<String?> version = const Value.absent(),
+                Value<String?> date = const Value.absent(),
+                Value<String?> timestamp = const Value.absent(),
+                Value<String?> dateEol = const Value.absent(),
+                Value<int?> urgency = const Value.absent(),
+                Value<String?> description = const Value.absent(),
+                Value<String?> url = const Value.absent(),
+              }) => ReleasesCompanion(
+                id: id,
+                componentId: componentId,
+                releaseType: releaseType,
+                version: version,
+                date: date,
+                timestamp: timestamp,
+                dateEol: dateEol,
+                urgency: urgency,
+                description: description,
+                url: url,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String componentId,
+                Value<int?> releaseType = const Value.absent(),
+                Value<String?> version = const Value.absent(),
+                Value<String?> date = const Value.absent(),
+                Value<String?> timestamp = const Value.absent(),
+                Value<String?> dateEol = const Value.absent(),
+                Value<int?> urgency = const Value.absent(),
+                Value<String?> description = const Value.absent(),
+                Value<String?> url = const Value.absent(),
+              }) => ReleasesCompanion.insert(
+                id: id,
+                componentId: componentId,
+                releaseType: releaseType,
+                version: version,
+                date: date,
+                timestamp: timestamp,
+                dateEol: dateEol,
+                urgency: urgency,
+                description: description,
+                url: url,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ReleasesTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ReleasesTable,
-    ReleaseRow,
-    $$ReleasesTableFilterComposer,
-    $$ReleasesTableOrderingComposer,
-    $$ReleasesTableAnnotationComposer,
-    $$ReleasesTableCreateCompanionBuilder,
-    $$ReleasesTableUpdateCompanionBuilder,
-    (ReleaseRow, BaseReferences<_$CatalogDatabase, $ReleasesTable, ReleaseRow>),
-    ReleaseRow,
-    PrefetchHooks Function()>;
-typedef $$ReleaseIssuesTableCreateCompanionBuilder = ReleaseIssuesCompanion
-    Function({
-  Value<int> id,
-  required int releaseId,
-  Value<int?> issueType,
-  Value<String?> url,
-  Value<String?> value,
-});
-typedef $$ReleaseIssuesTableUpdateCompanionBuilder = ReleaseIssuesCompanion
-    Function({
-  Value<int> id,
-  Value<int> releaseId,
-  Value<int?> issueType,
-  Value<String?> url,
-  Value<String?> value,
-});
+typedef $$ReleasesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ReleasesTable,
+      ReleaseRow,
+      $$ReleasesTableFilterComposer,
+      $$ReleasesTableOrderingComposer,
+      $$ReleasesTableAnnotationComposer,
+      $$ReleasesTableCreateCompanionBuilder,
+      $$ReleasesTableUpdateCompanionBuilder,
+      (
+        ReleaseRow,
+        BaseReferences<_$CatalogDatabase, $ReleasesTable, ReleaseRow>,
+      ),
+      ReleaseRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ReleaseIssuesTableCreateCompanionBuilder =
+    ReleaseIssuesCompanion Function({
+      Value<int> id,
+      required int releaseId,
+      Value<int?> issueType,
+      Value<String?> url,
+      Value<String?> value,
+    });
+typedef $$ReleaseIssuesTableUpdateCompanionBuilder =
+    ReleaseIssuesCompanion Function({
+      Value<int> id,
+      Value<int> releaseId,
+      Value<int?> issueType,
+      Value<String?> url,
+      Value<String?> value,
+    });
 
 class $$ReleaseIssuesTableFilterComposer
     extends Composer<_$CatalogDatabase, $ReleaseIssuesTable> {
@@ -7863,19 +9238,29 @@ class $$ReleaseIssuesTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get releaseId => $composableBuilder(
-      column: $table.releaseId, builder: (column) => ColumnFilters(column));
+    column: $table.releaseId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get issueType => $composableBuilder(
-      column: $table.issueType, builder: (column) => ColumnFilters(column));
+    column: $table.issueType,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get url => $composableBuilder(
-      column: $table.url, builder: (column) => ColumnFilters(column));
+    column: $table.url,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get value => $composableBuilder(
-      column: $table.value, builder: (column) => ColumnFilters(column));
+    column: $table.value,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ReleaseIssuesTableOrderingComposer
@@ -7888,19 +9273,29 @@ class $$ReleaseIssuesTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get releaseId => $composableBuilder(
-      column: $table.releaseId, builder: (column) => ColumnOrderings(column));
+    column: $table.releaseId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get issueType => $composableBuilder(
-      column: $table.issueType, builder: (column) => ColumnOrderings(column));
+    column: $table.issueType,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get url => $composableBuilder(
-      column: $table.url, builder: (column) => ColumnOrderings(column));
+    column: $table.url,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get value => $composableBuilder(
-      column: $table.value, builder: (column) => ColumnOrderings(column));
+    column: $table.value,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ReleaseIssuesTableAnnotationComposer
@@ -7928,24 +9323,33 @@ class $$ReleaseIssuesTableAnnotationComposer
       $composableBuilder(column: $table.value, builder: (column) => column);
 }
 
-class $$ReleaseIssuesTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ReleaseIssuesTable,
-    ReleaseIssueRow,
-    $$ReleaseIssuesTableFilterComposer,
-    $$ReleaseIssuesTableOrderingComposer,
-    $$ReleaseIssuesTableAnnotationComposer,
-    $$ReleaseIssuesTableCreateCompanionBuilder,
-    $$ReleaseIssuesTableUpdateCompanionBuilder,
-    (
-      ReleaseIssueRow,
-      BaseReferences<_$CatalogDatabase, $ReleaseIssuesTable, ReleaseIssueRow>
-    ),
-    ReleaseIssueRow,
-    PrefetchHooks Function()> {
+class $$ReleaseIssuesTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ReleaseIssuesTable,
+          ReleaseIssueRow,
+          $$ReleaseIssuesTableFilterComposer,
+          $$ReleaseIssuesTableOrderingComposer,
+          $$ReleaseIssuesTableAnnotationComposer,
+          $$ReleaseIssuesTableCreateCompanionBuilder,
+          $$ReleaseIssuesTableUpdateCompanionBuilder,
+          (
+            ReleaseIssueRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ReleaseIssuesTable,
+              ReleaseIssueRow
+            >,
+          ),
+          ReleaseIssueRow,
+          PrefetchHooks Function()
+        > {
   $$ReleaseIssuesTableTableManager(
-      _$CatalogDatabase db, $ReleaseIssuesTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ReleaseIssuesTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -7954,70 +9358,73 @@ class $$ReleaseIssuesTableTableManager extends RootTableManager<
               $$ReleaseIssuesTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ReleaseIssuesTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<int> releaseId = const Value.absent(),
-            Value<int?> issueType = const Value.absent(),
-            Value<String?> url = const Value.absent(),
-            Value<String?> value = const Value.absent(),
-          }) =>
-              ReleaseIssuesCompanion(
-            id: id,
-            releaseId: releaseId,
-            issueType: issueType,
-            url: url,
-            value: value,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required int releaseId,
-            Value<int?> issueType = const Value.absent(),
-            Value<String?> url = const Value.absent(),
-            Value<String?> value = const Value.absent(),
-          }) =>
-              ReleaseIssuesCompanion.insert(
-            id: id,
-            releaseId: releaseId,
-            issueType: issueType,
-            url: url,
-            value: value,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> releaseId = const Value.absent(),
+                Value<int?> issueType = const Value.absent(),
+                Value<String?> url = const Value.absent(),
+                Value<String?> value = const Value.absent(),
+              }) => ReleaseIssuesCompanion(
+                id: id,
+                releaseId: releaseId,
+                issueType: issueType,
+                url: url,
+                value: value,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required int releaseId,
+                Value<int?> issueType = const Value.absent(),
+                Value<String?> url = const Value.absent(),
+                Value<String?> value = const Value.absent(),
+              }) => ReleaseIssuesCompanion.insert(
+                id: id,
+                releaseId: releaseId,
+                issueType: issueType,
+                url: url,
+                value: value,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ReleaseIssuesTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ReleaseIssuesTable,
-    ReleaseIssueRow,
-    $$ReleaseIssuesTableFilterComposer,
-    $$ReleaseIssuesTableOrderingComposer,
-    $$ReleaseIssuesTableAnnotationComposer,
-    $$ReleaseIssuesTableCreateCompanionBuilder,
-    $$ReleaseIssuesTableUpdateCompanionBuilder,
-    (
+typedef $$ReleaseIssuesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ReleaseIssuesTable,
       ReleaseIssueRow,
-      BaseReferences<_$CatalogDatabase, $ReleaseIssuesTable, ReleaseIssueRow>
-    ),
-    ReleaseIssueRow,
-    PrefetchHooks Function()>;
-typedef $$ScreenshotsTableCreateCompanionBuilder = ScreenshotsCompanion
-    Function({
-  Value<int> id,
-  required String componentId,
-  Value<bool> isDefault,
-  Value<String?> caption,
-});
-typedef $$ScreenshotsTableUpdateCompanionBuilder = ScreenshotsCompanion
-    Function({
-  Value<int> id,
-  Value<String> componentId,
-  Value<bool> isDefault,
-  Value<String?> caption,
-});
+      $$ReleaseIssuesTableFilterComposer,
+      $$ReleaseIssuesTableOrderingComposer,
+      $$ReleaseIssuesTableAnnotationComposer,
+      $$ReleaseIssuesTableCreateCompanionBuilder,
+      $$ReleaseIssuesTableUpdateCompanionBuilder,
+      (
+        ReleaseIssueRow,
+        BaseReferences<_$CatalogDatabase, $ReleaseIssuesTable, ReleaseIssueRow>,
+      ),
+      ReleaseIssueRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ScreenshotsTableCreateCompanionBuilder =
+    ScreenshotsCompanion Function({
+      Value<int> id,
+      required String componentId,
+      Value<bool> isDefault,
+      Value<String?> caption,
+    });
+typedef $$ScreenshotsTableUpdateCompanionBuilder =
+    ScreenshotsCompanion Function({
+      Value<int> id,
+      Value<String> componentId,
+      Value<bool> isDefault,
+      Value<String?> caption,
+    });
 
 class $$ScreenshotsTableFilterComposer
     extends Composer<_$CatalogDatabase, $ScreenshotsTable> {
@@ -8029,16 +9436,24 @@ class $$ScreenshotsTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<bool> get isDefault => $composableBuilder(
-      column: $table.isDefault, builder: (column) => ColumnFilters(column));
+    column: $table.isDefault,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get caption => $composableBuilder(
-      column: $table.caption, builder: (column) => ColumnFilters(column));
+    column: $table.caption,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ScreenshotsTableOrderingComposer
@@ -8051,16 +9466,24 @@ class $$ScreenshotsTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<bool> get isDefault => $composableBuilder(
-      column: $table.isDefault, builder: (column) => ColumnOrderings(column));
+    column: $table.isDefault,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get caption => $composableBuilder(
-      column: $table.caption, builder: (column) => ColumnOrderings(column));
+    column: $table.caption,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ScreenshotsTableAnnotationComposer
@@ -8076,7 +9499,9 @@ class $$ScreenshotsTableAnnotationComposer
       $composableBuilder(column: $table.id, builder: (column) => column);
 
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<bool> get isDefault =>
       $composableBuilder(column: $table.isDefault, builder: (column) => column);
@@ -8085,23 +9510,27 @@ class $$ScreenshotsTableAnnotationComposer
       $composableBuilder(column: $table.caption, builder: (column) => column);
 }
 
-class $$ScreenshotsTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ScreenshotsTable,
-    ScreenshotRow,
-    $$ScreenshotsTableFilterComposer,
-    $$ScreenshotsTableOrderingComposer,
-    $$ScreenshotsTableAnnotationComposer,
-    $$ScreenshotsTableCreateCompanionBuilder,
-    $$ScreenshotsTableUpdateCompanionBuilder,
-    (
-      ScreenshotRow,
-      BaseReferences<_$CatalogDatabase, $ScreenshotsTable, ScreenshotRow>
-    ),
-    ScreenshotRow,
-    PrefetchHooks Function()> {
+class $$ScreenshotsTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ScreenshotsTable,
+          ScreenshotRow,
+          $$ScreenshotsTableFilterComposer,
+          $$ScreenshotsTableOrderingComposer,
+          $$ScreenshotsTableAnnotationComposer,
+          $$ScreenshotsTableCreateCompanionBuilder,
+          $$ScreenshotsTableUpdateCompanionBuilder,
+          (
+            ScreenshotRow,
+            BaseReferences<_$CatalogDatabase, $ScreenshotsTable, ScreenshotRow>,
+          ),
+          ScreenshotRow,
+          PrefetchHooks Function()
+        > {
   $$ScreenshotsTableTableManager(_$CatalogDatabase db, $ScreenshotsTable table)
-      : super(TableManagerState(
+    : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -8110,70 +9539,73 @@ class $$ScreenshotsTableTableManager extends RootTableManager<
               $$ScreenshotsTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ScreenshotsTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<String> componentId = const Value.absent(),
-            Value<bool> isDefault = const Value.absent(),
-            Value<String?> caption = const Value.absent(),
-          }) =>
-              ScreenshotsCompanion(
-            id: id,
-            componentId: componentId,
-            isDefault: isDefault,
-            caption: caption,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required String componentId,
-            Value<bool> isDefault = const Value.absent(),
-            Value<String?> caption = const Value.absent(),
-          }) =>
-              ScreenshotsCompanion.insert(
-            id: id,
-            componentId: componentId,
-            isDefault: isDefault,
-            caption: caption,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> componentId = const Value.absent(),
+                Value<bool> isDefault = const Value.absent(),
+                Value<String?> caption = const Value.absent(),
+              }) => ScreenshotsCompanion(
+                id: id,
+                componentId: componentId,
+                isDefault: isDefault,
+                caption: caption,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String componentId,
+                Value<bool> isDefault = const Value.absent(),
+                Value<String?> caption = const Value.absent(),
+              }) => ScreenshotsCompanion.insert(
+                id: id,
+                componentId: componentId,
+                isDefault: isDefault,
+                caption: caption,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ScreenshotsTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ScreenshotsTable,
-    ScreenshotRow,
-    $$ScreenshotsTableFilterComposer,
-    $$ScreenshotsTableOrderingComposer,
-    $$ScreenshotsTableAnnotationComposer,
-    $$ScreenshotsTableCreateCompanionBuilder,
-    $$ScreenshotsTableUpdateCompanionBuilder,
-    (
+typedef $$ScreenshotsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ScreenshotsTable,
       ScreenshotRow,
-      BaseReferences<_$CatalogDatabase, $ScreenshotsTable, ScreenshotRow>
-    ),
-    ScreenshotRow,
-    PrefetchHooks Function()>;
-typedef $$ScreenshotImagesTableCreateCompanionBuilder
-    = ScreenshotImagesCompanion Function({
-  Value<int> id,
-  required int screenshotId,
-  required String url,
-  Value<String?> type,
-  Value<int?> width,
-  Value<int?> height,
-});
-typedef $$ScreenshotImagesTableUpdateCompanionBuilder
-    = ScreenshotImagesCompanion Function({
-  Value<int> id,
-  Value<int> screenshotId,
-  Value<String> url,
-  Value<String?> type,
-  Value<int?> width,
-  Value<int?> height,
-});
+      $$ScreenshotsTableFilterComposer,
+      $$ScreenshotsTableOrderingComposer,
+      $$ScreenshotsTableAnnotationComposer,
+      $$ScreenshotsTableCreateCompanionBuilder,
+      $$ScreenshotsTableUpdateCompanionBuilder,
+      (
+        ScreenshotRow,
+        BaseReferences<_$CatalogDatabase, $ScreenshotsTable, ScreenshotRow>,
+      ),
+      ScreenshotRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ScreenshotImagesTableCreateCompanionBuilder =
+    ScreenshotImagesCompanion Function({
+      Value<int> id,
+      required int screenshotId,
+      required String url,
+      Value<String?> type,
+      Value<int?> width,
+      Value<int?> height,
+    });
+typedef $$ScreenshotImagesTableUpdateCompanionBuilder =
+    ScreenshotImagesCompanion Function({
+      Value<int> id,
+      Value<int> screenshotId,
+      Value<String> url,
+      Value<String?> type,
+      Value<int?> width,
+      Value<int?> height,
+    });
 
 class $$ScreenshotImagesTableFilterComposer
     extends Composer<_$CatalogDatabase, $ScreenshotImagesTable> {
@@ -8185,22 +9617,34 @@ class $$ScreenshotImagesTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get screenshotId => $composableBuilder(
-      column: $table.screenshotId, builder: (column) => ColumnFilters(column));
+    column: $table.screenshotId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get url => $composableBuilder(
-      column: $table.url, builder: (column) => ColumnFilters(column));
+    column: $table.url,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get type => $composableBuilder(
-      column: $table.type, builder: (column) => ColumnFilters(column));
+    column: $table.type,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get width => $composableBuilder(
-      column: $table.width, builder: (column) => ColumnFilters(column));
+    column: $table.width,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get height => $composableBuilder(
-      column: $table.height, builder: (column) => ColumnFilters(column));
+    column: $table.height,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ScreenshotImagesTableOrderingComposer
@@ -8213,23 +9657,34 @@ class $$ScreenshotImagesTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get screenshotId => $composableBuilder(
-      column: $table.screenshotId,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.screenshotId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get url => $composableBuilder(
-      column: $table.url, builder: (column) => ColumnOrderings(column));
+    column: $table.url,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get type => $composableBuilder(
-      column: $table.type, builder: (column) => ColumnOrderings(column));
+    column: $table.type,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get width => $composableBuilder(
-      column: $table.width, builder: (column) => ColumnOrderings(column));
+    column: $table.width,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get height => $composableBuilder(
-      column: $table.height, builder: (column) => ColumnOrderings(column));
+    column: $table.height,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ScreenshotImagesTableAnnotationComposer
@@ -8245,7 +9700,9 @@ class $$ScreenshotImagesTableAnnotationComposer
       $composableBuilder(column: $table.id, builder: (column) => column);
 
   GeneratedColumn<int> get screenshotId => $composableBuilder(
-      column: $table.screenshotId, builder: (column) => column);
+    column: $table.screenshotId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get url =>
       $composableBuilder(column: $table.url, builder: (column) => column);
@@ -8260,25 +9717,33 @@ class $$ScreenshotImagesTableAnnotationComposer
       $composableBuilder(column: $table.height, builder: (column) => column);
 }
 
-class $$ScreenshotImagesTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ScreenshotImagesTable,
-    ScreenshotImageRow,
-    $$ScreenshotImagesTableFilterComposer,
-    $$ScreenshotImagesTableOrderingComposer,
-    $$ScreenshotImagesTableAnnotationComposer,
-    $$ScreenshotImagesTableCreateCompanionBuilder,
-    $$ScreenshotImagesTableUpdateCompanionBuilder,
-    (
-      ScreenshotImageRow,
-      BaseReferences<_$CatalogDatabase, $ScreenshotImagesTable,
-          ScreenshotImageRow>
-    ),
-    ScreenshotImageRow,
-    PrefetchHooks Function()> {
+class $$ScreenshotImagesTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ScreenshotImagesTable,
+          ScreenshotImageRow,
+          $$ScreenshotImagesTableFilterComposer,
+          $$ScreenshotImagesTableOrderingComposer,
+          $$ScreenshotImagesTableAnnotationComposer,
+          $$ScreenshotImagesTableCreateCompanionBuilder,
+          $$ScreenshotImagesTableUpdateCompanionBuilder,
+          (
+            ScreenshotImageRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ScreenshotImagesTable,
+              ScreenshotImageRow
+            >,
+          ),
+          ScreenshotImageRow,
+          PrefetchHooks Function()
+        > {
   $$ScreenshotImagesTableTableManager(
-      _$CatalogDatabase db, $ScreenshotImagesTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ScreenshotImagesTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -8287,81 +9752,87 @@ class $$ScreenshotImagesTableTableManager extends RootTableManager<
               $$ScreenshotImagesTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ScreenshotImagesTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<int> screenshotId = const Value.absent(),
-            Value<String> url = const Value.absent(),
-            Value<String?> type = const Value.absent(),
-            Value<int?> width = const Value.absent(),
-            Value<int?> height = const Value.absent(),
-          }) =>
-              ScreenshotImagesCompanion(
-            id: id,
-            screenshotId: screenshotId,
-            url: url,
-            type: type,
-            width: width,
-            height: height,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required int screenshotId,
-            required String url,
-            Value<String?> type = const Value.absent(),
-            Value<int?> width = const Value.absent(),
-            Value<int?> height = const Value.absent(),
-          }) =>
-              ScreenshotImagesCompanion.insert(
-            id: id,
-            screenshotId: screenshotId,
-            url: url,
-            type: type,
-            width: width,
-            height: height,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> screenshotId = const Value.absent(),
+                Value<String> url = const Value.absent(),
+                Value<String?> type = const Value.absent(),
+                Value<int?> width = const Value.absent(),
+                Value<int?> height = const Value.absent(),
+              }) => ScreenshotImagesCompanion(
+                id: id,
+                screenshotId: screenshotId,
+                url: url,
+                type: type,
+                width: width,
+                height: height,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required int screenshotId,
+                required String url,
+                Value<String?> type = const Value.absent(),
+                Value<int?> width = const Value.absent(),
+                Value<int?> height = const Value.absent(),
+              }) => ScreenshotImagesCompanion.insert(
+                id: id,
+                screenshotId: screenshotId,
+                url: url,
+                type: type,
+                width: width,
+                height: height,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ScreenshotImagesTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ScreenshotImagesTable,
-    ScreenshotImageRow,
-    $$ScreenshotImagesTableFilterComposer,
-    $$ScreenshotImagesTableOrderingComposer,
-    $$ScreenshotImagesTableAnnotationComposer,
-    $$ScreenshotImagesTableCreateCompanionBuilder,
-    $$ScreenshotImagesTableUpdateCompanionBuilder,
-    (
+typedef $$ScreenshotImagesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ScreenshotImagesTable,
       ScreenshotImageRow,
-      BaseReferences<_$CatalogDatabase, $ScreenshotImagesTable,
-          ScreenshotImageRow>
-    ),
-    ScreenshotImageRow,
-    PrefetchHooks Function()>;
-typedef $$ScreenshotVideosTableCreateCompanionBuilder
-    = ScreenshotVideosCompanion Function({
-  Value<int> id,
-  required int screenshotId,
-  required String url,
-  Value<String?> codec,
-  Value<String?> container,
-  Value<int?> width,
-  Value<int?> height,
-});
-typedef $$ScreenshotVideosTableUpdateCompanionBuilder
-    = ScreenshotVideosCompanion Function({
-  Value<int> id,
-  Value<int> screenshotId,
-  Value<String> url,
-  Value<String?> codec,
-  Value<String?> container,
-  Value<int?> width,
-  Value<int?> height,
-});
+      $$ScreenshotImagesTableFilterComposer,
+      $$ScreenshotImagesTableOrderingComposer,
+      $$ScreenshotImagesTableAnnotationComposer,
+      $$ScreenshotImagesTableCreateCompanionBuilder,
+      $$ScreenshotImagesTableUpdateCompanionBuilder,
+      (
+        ScreenshotImageRow,
+        BaseReferences<
+          _$CatalogDatabase,
+          $ScreenshotImagesTable,
+          ScreenshotImageRow
+        >,
+      ),
+      ScreenshotImageRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ScreenshotVideosTableCreateCompanionBuilder =
+    ScreenshotVideosCompanion Function({
+      Value<int> id,
+      required int screenshotId,
+      required String url,
+      Value<String?> codec,
+      Value<String?> container,
+      Value<int?> width,
+      Value<int?> height,
+    });
+typedef $$ScreenshotVideosTableUpdateCompanionBuilder =
+    ScreenshotVideosCompanion Function({
+      Value<int> id,
+      Value<int> screenshotId,
+      Value<String> url,
+      Value<String?> codec,
+      Value<String?> container,
+      Value<int?> width,
+      Value<int?> height,
+    });
 
 class $$ScreenshotVideosTableFilterComposer
     extends Composer<_$CatalogDatabase, $ScreenshotVideosTable> {
@@ -8373,25 +9844,39 @@ class $$ScreenshotVideosTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get screenshotId => $composableBuilder(
-      column: $table.screenshotId, builder: (column) => ColumnFilters(column));
+    column: $table.screenshotId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get url => $composableBuilder(
-      column: $table.url, builder: (column) => ColumnFilters(column));
+    column: $table.url,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get codec => $composableBuilder(
-      column: $table.codec, builder: (column) => ColumnFilters(column));
+    column: $table.codec,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get container => $composableBuilder(
-      column: $table.container, builder: (column) => ColumnFilters(column));
+    column: $table.container,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get width => $composableBuilder(
-      column: $table.width, builder: (column) => ColumnFilters(column));
+    column: $table.width,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get height => $composableBuilder(
-      column: $table.height, builder: (column) => ColumnFilters(column));
+    column: $table.height,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ScreenshotVideosTableOrderingComposer
@@ -8404,26 +9889,39 @@ class $$ScreenshotVideosTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get screenshotId => $composableBuilder(
-      column: $table.screenshotId,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.screenshotId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get url => $composableBuilder(
-      column: $table.url, builder: (column) => ColumnOrderings(column));
+    column: $table.url,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get codec => $composableBuilder(
-      column: $table.codec, builder: (column) => ColumnOrderings(column));
+    column: $table.codec,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get container => $composableBuilder(
-      column: $table.container, builder: (column) => ColumnOrderings(column));
+    column: $table.container,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get width => $composableBuilder(
-      column: $table.width, builder: (column) => ColumnOrderings(column));
+    column: $table.width,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get height => $composableBuilder(
-      column: $table.height, builder: (column) => ColumnOrderings(column));
+    column: $table.height,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ScreenshotVideosTableAnnotationComposer
@@ -8439,7 +9937,9 @@ class $$ScreenshotVideosTableAnnotationComposer
       $composableBuilder(column: $table.id, builder: (column) => column);
 
   GeneratedColumn<int> get screenshotId => $composableBuilder(
-      column: $table.screenshotId, builder: (column) => column);
+    column: $table.screenshotId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get url =>
       $composableBuilder(column: $table.url, builder: (column) => column);
@@ -8457,25 +9957,33 @@ class $$ScreenshotVideosTableAnnotationComposer
       $composableBuilder(column: $table.height, builder: (column) => column);
 }
 
-class $$ScreenshotVideosTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ScreenshotVideosTable,
-    ScreenshotVideoRow,
-    $$ScreenshotVideosTableFilterComposer,
-    $$ScreenshotVideosTableOrderingComposer,
-    $$ScreenshotVideosTableAnnotationComposer,
-    $$ScreenshotVideosTableCreateCompanionBuilder,
-    $$ScreenshotVideosTableUpdateCompanionBuilder,
-    (
-      ScreenshotVideoRow,
-      BaseReferences<_$CatalogDatabase, $ScreenshotVideosTable,
-          ScreenshotVideoRow>
-    ),
-    ScreenshotVideoRow,
-    PrefetchHooks Function()> {
+class $$ScreenshotVideosTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ScreenshotVideosTable,
+          ScreenshotVideoRow,
+          $$ScreenshotVideosTableFilterComposer,
+          $$ScreenshotVideosTableOrderingComposer,
+          $$ScreenshotVideosTableAnnotationComposer,
+          $$ScreenshotVideosTableCreateCompanionBuilder,
+          $$ScreenshotVideosTableUpdateCompanionBuilder,
+          (
+            ScreenshotVideoRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ScreenshotVideosTable,
+              ScreenshotVideoRow
+            >,
+          ),
+          ScreenshotVideoRow,
+          PrefetchHooks Function()
+        > {
   $$ScreenshotVideosTableTableManager(
-      _$CatalogDatabase db, $ScreenshotVideosTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ScreenshotVideosTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -8484,79 +9992,85 @@ class $$ScreenshotVideosTableTableManager extends RootTableManager<
               $$ScreenshotVideosTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ScreenshotVideosTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<int> screenshotId = const Value.absent(),
-            Value<String> url = const Value.absent(),
-            Value<String?> codec = const Value.absent(),
-            Value<String?> container = const Value.absent(),
-            Value<int?> width = const Value.absent(),
-            Value<int?> height = const Value.absent(),
-          }) =>
-              ScreenshotVideosCompanion(
-            id: id,
-            screenshotId: screenshotId,
-            url: url,
-            codec: codec,
-            container: container,
-            width: width,
-            height: height,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required int screenshotId,
-            required String url,
-            Value<String?> codec = const Value.absent(),
-            Value<String?> container = const Value.absent(),
-            Value<int?> width = const Value.absent(),
-            Value<int?> height = const Value.absent(),
-          }) =>
-              ScreenshotVideosCompanion.insert(
-            id: id,
-            screenshotId: screenshotId,
-            url: url,
-            codec: codec,
-            container: container,
-            width: width,
-            height: height,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> screenshotId = const Value.absent(),
+                Value<String> url = const Value.absent(),
+                Value<String?> codec = const Value.absent(),
+                Value<String?> container = const Value.absent(),
+                Value<int?> width = const Value.absent(),
+                Value<int?> height = const Value.absent(),
+              }) => ScreenshotVideosCompanion(
+                id: id,
+                screenshotId: screenshotId,
+                url: url,
+                codec: codec,
+                container: container,
+                width: width,
+                height: height,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required int screenshotId,
+                required String url,
+                Value<String?> codec = const Value.absent(),
+                Value<String?> container = const Value.absent(),
+                Value<int?> width = const Value.absent(),
+                Value<int?> height = const Value.absent(),
+              }) => ScreenshotVideosCompanion.insert(
+                id: id,
+                screenshotId: screenshotId,
+                url: url,
+                codec: codec,
+                container: container,
+                width: width,
+                height: height,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ScreenshotVideosTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ScreenshotVideosTable,
-    ScreenshotVideoRow,
-    $$ScreenshotVideosTableFilterComposer,
-    $$ScreenshotVideosTableOrderingComposer,
-    $$ScreenshotVideosTableAnnotationComposer,
-    $$ScreenshotVideosTableCreateCompanionBuilder,
-    $$ScreenshotVideosTableUpdateCompanionBuilder,
-    (
+typedef $$ScreenshotVideosTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ScreenshotVideosTable,
       ScreenshotVideoRow,
-      BaseReferences<_$CatalogDatabase, $ScreenshotVideosTable,
-          ScreenshotVideoRow>
-    ),
-    ScreenshotVideoRow,
-    PrefetchHooks Function()>;
-typedef $$ContentRatingAttrsTableCreateCompanionBuilder
-    = ContentRatingAttrsCompanion Function({
-  required String componentId,
-  required String attrId,
-  required String value,
-  Value<int> rowid,
-});
-typedef $$ContentRatingAttrsTableUpdateCompanionBuilder
-    = ContentRatingAttrsCompanion Function({
-  Value<String> componentId,
-  Value<String> attrId,
-  Value<String> value,
-  Value<int> rowid,
-});
+      $$ScreenshotVideosTableFilterComposer,
+      $$ScreenshotVideosTableOrderingComposer,
+      $$ScreenshotVideosTableAnnotationComposer,
+      $$ScreenshotVideosTableCreateCompanionBuilder,
+      $$ScreenshotVideosTableUpdateCompanionBuilder,
+      (
+        ScreenshotVideoRow,
+        BaseReferences<
+          _$CatalogDatabase,
+          $ScreenshotVideosTable,
+          ScreenshotVideoRow
+        >,
+      ),
+      ScreenshotVideoRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ContentRatingAttrsTableCreateCompanionBuilder =
+    ContentRatingAttrsCompanion Function({
+      required String componentId,
+      required String attrId,
+      required String value,
+      Value<int> rowid,
+    });
+typedef $$ContentRatingAttrsTableUpdateCompanionBuilder =
+    ContentRatingAttrsCompanion Function({
+      Value<String> componentId,
+      Value<String> attrId,
+      Value<String> value,
+      Value<int> rowid,
+    });
 
 class $$ContentRatingAttrsTableFilterComposer
     extends Composer<_$CatalogDatabase, $ContentRatingAttrsTable> {
@@ -8568,13 +10082,19 @@ class $$ContentRatingAttrsTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get attrId => $composableBuilder(
-      column: $table.attrId, builder: (column) => ColumnFilters(column));
+    column: $table.attrId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get value => $composableBuilder(
-      column: $table.value, builder: (column) => ColumnFilters(column));
+    column: $table.value,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ContentRatingAttrsTableOrderingComposer
@@ -8587,13 +10107,19 @@ class $$ContentRatingAttrsTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get attrId => $composableBuilder(
-      column: $table.attrId, builder: (column) => ColumnOrderings(column));
+    column: $table.attrId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get value => $composableBuilder(
-      column: $table.value, builder: (column) => ColumnOrderings(column));
+    column: $table.value,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ContentRatingAttrsTableAnnotationComposer
@@ -8606,7 +10132,9 @@ class $$ContentRatingAttrsTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get attrId =>
       $composableBuilder(column: $table.attrId, builder: (column) => column);
@@ -8615,25 +10143,33 @@ class $$ContentRatingAttrsTableAnnotationComposer
       $composableBuilder(column: $table.value, builder: (column) => column);
 }
 
-class $$ContentRatingAttrsTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ContentRatingAttrsTable,
-    ContentRatingAttrRow,
-    $$ContentRatingAttrsTableFilterComposer,
-    $$ContentRatingAttrsTableOrderingComposer,
-    $$ContentRatingAttrsTableAnnotationComposer,
-    $$ContentRatingAttrsTableCreateCompanionBuilder,
-    $$ContentRatingAttrsTableUpdateCompanionBuilder,
-    (
-      ContentRatingAttrRow,
-      BaseReferences<_$CatalogDatabase, $ContentRatingAttrsTable,
-          ContentRatingAttrRow>
-    ),
-    ContentRatingAttrRow,
-    PrefetchHooks Function()> {
+class $$ContentRatingAttrsTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ContentRatingAttrsTable,
+          ContentRatingAttrRow,
+          $$ContentRatingAttrsTableFilterComposer,
+          $$ContentRatingAttrsTableOrderingComposer,
+          $$ContentRatingAttrsTableAnnotationComposer,
+          $$ContentRatingAttrsTableCreateCompanionBuilder,
+          $$ContentRatingAttrsTableUpdateCompanionBuilder,
+          (
+            ContentRatingAttrRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ContentRatingAttrsTable,
+              ContentRatingAttrRow
+            >,
+          ),
+          ContentRatingAttrRow,
+          PrefetchHooks Function()
+        > {
   $$ContentRatingAttrsTableTableManager(
-      _$CatalogDatabase db, $ContentRatingAttrsTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ContentRatingAttrsTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -8642,66 +10178,74 @@ class $$ContentRatingAttrsTableTableManager extends RootTableManager<
               $$ContentRatingAttrsTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ContentRatingAttrsTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> componentId = const Value.absent(),
-            Value<String> attrId = const Value.absent(),
-            Value<String> value = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ContentRatingAttrsCompanion(
-            componentId: componentId,
-            attrId: attrId,
-            value: value,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String componentId,
-            required String attrId,
-            required String value,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ContentRatingAttrsCompanion.insert(
-            componentId: componentId,
-            attrId: attrId,
-            value: value,
-            rowid: rowid,
-          ),
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> componentId = const Value.absent(),
+                Value<String> attrId = const Value.absent(),
+                Value<String> value = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ContentRatingAttrsCompanion(
+                componentId: componentId,
+                attrId: attrId,
+                value: value,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String componentId,
+                required String attrId,
+                required String value,
+                Value<int> rowid = const Value.absent(),
+              }) => ContentRatingAttrsCompanion.insert(
+                componentId: componentId,
+                attrId: attrId,
+                value: value,
+                rowid: rowid,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ContentRatingAttrsTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ContentRatingAttrsTable,
-    ContentRatingAttrRow,
-    $$ContentRatingAttrsTableFilterComposer,
-    $$ContentRatingAttrsTableOrderingComposer,
-    $$ContentRatingAttrsTableAnnotationComposer,
-    $$ContentRatingAttrsTableCreateCompanionBuilder,
-    $$ContentRatingAttrsTableUpdateCompanionBuilder,
-    (
+typedef $$ContentRatingAttrsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ContentRatingAttrsTable,
       ContentRatingAttrRow,
-      BaseReferences<_$CatalogDatabase, $ContentRatingAttrsTable,
-          ContentRatingAttrRow>
-    ),
-    ContentRatingAttrRow,
-    PrefetchHooks Function()>;
-typedef $$ComponentLanguagesTableCreateCompanionBuilder
-    = ComponentLanguagesCompanion Function({
-  required String componentId,
-  required String language,
-  Value<int> rowid,
-});
-typedef $$ComponentLanguagesTableUpdateCompanionBuilder
-    = ComponentLanguagesCompanion Function({
-  Value<String> componentId,
-  Value<String> language,
-  Value<int> rowid,
-});
+      $$ContentRatingAttrsTableFilterComposer,
+      $$ContentRatingAttrsTableOrderingComposer,
+      $$ContentRatingAttrsTableAnnotationComposer,
+      $$ContentRatingAttrsTableCreateCompanionBuilder,
+      $$ContentRatingAttrsTableUpdateCompanionBuilder,
+      (
+        ContentRatingAttrRow,
+        BaseReferences<
+          _$CatalogDatabase,
+          $ContentRatingAttrsTable,
+          ContentRatingAttrRow
+        >,
+      ),
+      ContentRatingAttrRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ComponentLanguagesTableCreateCompanionBuilder =
+    ComponentLanguagesCompanion Function({
+      required String componentId,
+      required String language,
+      Value<int> rowid,
+    });
+typedef $$ComponentLanguagesTableUpdateCompanionBuilder =
+    ComponentLanguagesCompanion Function({
+      Value<String> componentId,
+      Value<String> language,
+      Value<int> rowid,
+    });
 
 class $$ComponentLanguagesTableFilterComposer
     extends Composer<_$CatalogDatabase, $ComponentLanguagesTable> {
@@ -8713,10 +10257,14 @@ class $$ComponentLanguagesTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get language => $composableBuilder(
-      column: $table.language, builder: (column) => ColumnFilters(column));
+    column: $table.language,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ComponentLanguagesTableOrderingComposer
@@ -8729,10 +10277,14 @@ class $$ComponentLanguagesTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get language => $composableBuilder(
-      column: $table.language, builder: (column) => ColumnOrderings(column));
+    column: $table.language,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ComponentLanguagesTableAnnotationComposer
@@ -8745,31 +10297,41 @@ class $$ComponentLanguagesTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get language =>
       $composableBuilder(column: $table.language, builder: (column) => column);
 }
 
-class $$ComponentLanguagesTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ComponentLanguagesTable,
-    ComponentLanguageRow,
-    $$ComponentLanguagesTableFilterComposer,
-    $$ComponentLanguagesTableOrderingComposer,
-    $$ComponentLanguagesTableAnnotationComposer,
-    $$ComponentLanguagesTableCreateCompanionBuilder,
-    $$ComponentLanguagesTableUpdateCompanionBuilder,
-    (
-      ComponentLanguageRow,
-      BaseReferences<_$CatalogDatabase, $ComponentLanguagesTable,
-          ComponentLanguageRow>
-    ),
-    ComponentLanguageRow,
-    PrefetchHooks Function()> {
+class $$ComponentLanguagesTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ComponentLanguagesTable,
+          ComponentLanguageRow,
+          $$ComponentLanguagesTableFilterComposer,
+          $$ComponentLanguagesTableOrderingComposer,
+          $$ComponentLanguagesTableAnnotationComposer,
+          $$ComponentLanguagesTableCreateCompanionBuilder,
+          $$ComponentLanguagesTableUpdateCompanionBuilder,
+          (
+            ComponentLanguageRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ComponentLanguagesTable,
+              ComponentLanguageRow
+            >,
+          ),
+          ComponentLanguageRow,
+          PrefetchHooks Function()
+        > {
   $$ComponentLanguagesTableTableManager(
-      _$CatalogDatabase db, $ComponentLanguagesTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ComponentLanguagesTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -8778,64 +10340,72 @@ class $$ComponentLanguagesTableTableManager extends RootTableManager<
               $$ComponentLanguagesTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ComponentLanguagesTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> componentId = const Value.absent(),
-            Value<String> language = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentLanguagesCompanion(
-            componentId: componentId,
-            language: language,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String componentId,
-            required String language,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentLanguagesCompanion.insert(
-            componentId: componentId,
-            language: language,
-            rowid: rowid,
-          ),
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> componentId = const Value.absent(),
+                Value<String> language = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentLanguagesCompanion(
+                componentId: componentId,
+                language: language,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String componentId,
+                required String language,
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentLanguagesCompanion.insert(
+                componentId: componentId,
+                language: language,
+                rowid: rowid,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ComponentLanguagesTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ComponentLanguagesTable,
-    ComponentLanguageRow,
-    $$ComponentLanguagesTableFilterComposer,
-    $$ComponentLanguagesTableOrderingComposer,
-    $$ComponentLanguagesTableAnnotationComposer,
-    $$ComponentLanguagesTableCreateCompanionBuilder,
-    $$ComponentLanguagesTableUpdateCompanionBuilder,
-    (
+typedef $$ComponentLanguagesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ComponentLanguagesTable,
       ComponentLanguageRow,
-      BaseReferences<_$CatalogDatabase, $ComponentLanguagesTable,
-          ComponentLanguageRow>
-    ),
-    ComponentLanguageRow,
-    PrefetchHooks Function()>;
-typedef $$BrandingColorsTableCreateCompanionBuilder = BrandingColorsCompanion
-    Function({
-  required String componentId,
-  required String schemePreference,
-  required String color,
-  Value<int> rowid,
-});
-typedef $$BrandingColorsTableUpdateCompanionBuilder = BrandingColorsCompanion
-    Function({
-  Value<String> componentId,
-  Value<String> schemePreference,
-  Value<String> color,
-  Value<int> rowid,
-});
+      $$ComponentLanguagesTableFilterComposer,
+      $$ComponentLanguagesTableOrderingComposer,
+      $$ComponentLanguagesTableAnnotationComposer,
+      $$ComponentLanguagesTableCreateCompanionBuilder,
+      $$ComponentLanguagesTableUpdateCompanionBuilder,
+      (
+        ComponentLanguageRow,
+        BaseReferences<
+          _$CatalogDatabase,
+          $ComponentLanguagesTable,
+          ComponentLanguageRow
+        >,
+      ),
+      ComponentLanguageRow,
+      PrefetchHooks Function()
+    >;
+typedef $$BrandingColorsTableCreateCompanionBuilder =
+    BrandingColorsCompanion Function({
+      required String componentId,
+      required String schemePreference,
+      required String color,
+      Value<int> rowid,
+    });
+typedef $$BrandingColorsTableUpdateCompanionBuilder =
+    BrandingColorsCompanion Function({
+      Value<String> componentId,
+      Value<String> schemePreference,
+      Value<String> color,
+      Value<int> rowid,
+    });
 
 class $$BrandingColorsTableFilterComposer
     extends Composer<_$CatalogDatabase, $BrandingColorsTable> {
@@ -8847,14 +10417,19 @@ class $$BrandingColorsTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get schemePreference => $composableBuilder(
-      column: $table.schemePreference,
-      builder: (column) => ColumnFilters(column));
+    column: $table.schemePreference,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get color => $composableBuilder(
-      column: $table.color, builder: (column) => ColumnFilters(column));
+    column: $table.color,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$BrandingColorsTableOrderingComposer
@@ -8867,14 +10442,19 @@ class $$BrandingColorsTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get schemePreference => $composableBuilder(
-      column: $table.schemePreference,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.schemePreference,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get color => $composableBuilder(
-      column: $table.color, builder: (column) => ColumnOrderings(column));
+    column: $table.color,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$BrandingColorsTableAnnotationComposer
@@ -8887,33 +10467,46 @@ class $$BrandingColorsTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get schemePreference => $composableBuilder(
-      column: $table.schemePreference, builder: (column) => column);
+    column: $table.schemePreference,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get color =>
       $composableBuilder(column: $table.color, builder: (column) => column);
 }
 
-class $$BrandingColorsTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $BrandingColorsTable,
-    BrandingColorRow,
-    $$BrandingColorsTableFilterComposer,
-    $$BrandingColorsTableOrderingComposer,
-    $$BrandingColorsTableAnnotationComposer,
-    $$BrandingColorsTableCreateCompanionBuilder,
-    $$BrandingColorsTableUpdateCompanionBuilder,
-    (
-      BrandingColorRow,
-      BaseReferences<_$CatalogDatabase, $BrandingColorsTable, BrandingColorRow>
-    ),
-    BrandingColorRow,
-    PrefetchHooks Function()> {
+class $$BrandingColorsTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $BrandingColorsTable,
+          BrandingColorRow,
+          $$BrandingColorsTableFilterComposer,
+          $$BrandingColorsTableOrderingComposer,
+          $$BrandingColorsTableAnnotationComposer,
+          $$BrandingColorsTableCreateCompanionBuilder,
+          $$BrandingColorsTableUpdateCompanionBuilder,
+          (
+            BrandingColorRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $BrandingColorsTable,
+              BrandingColorRow
+            >,
+          ),
+          BrandingColorRow,
+          PrefetchHooks Function()
+        > {
   $$BrandingColorsTableTableManager(
-      _$CatalogDatabase db, $BrandingColorsTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $BrandingColorsTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -8922,64 +10515,71 @@ class $$BrandingColorsTableTableManager extends RootTableManager<
               $$BrandingColorsTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$BrandingColorsTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> componentId = const Value.absent(),
-            Value<String> schemePreference = const Value.absent(),
-            Value<String> color = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              BrandingColorsCompanion(
-            componentId: componentId,
-            schemePreference: schemePreference,
-            color: color,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String componentId,
-            required String schemePreference,
-            required String color,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              BrandingColorsCompanion.insert(
-            componentId: componentId,
-            schemePreference: schemePreference,
-            color: color,
-            rowid: rowid,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<String> componentId = const Value.absent(),
+                Value<String> schemePreference = const Value.absent(),
+                Value<String> color = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => BrandingColorsCompanion(
+                componentId: componentId,
+                schemePreference: schemePreference,
+                color: color,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String componentId,
+                required String schemePreference,
+                required String color,
+                Value<int> rowid = const Value.absent(),
+              }) => BrandingColorsCompanion.insert(
+                componentId: componentId,
+                schemePreference: schemePreference,
+                color: color,
+                rowid: rowid,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$BrandingColorsTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $BrandingColorsTable,
-    BrandingColorRow,
-    $$BrandingColorsTableFilterComposer,
-    $$BrandingColorsTableOrderingComposer,
-    $$BrandingColorsTableAnnotationComposer,
-    $$BrandingColorsTableCreateCompanionBuilder,
-    $$BrandingColorsTableUpdateCompanionBuilder,
-    (
+typedef $$BrandingColorsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $BrandingColorsTable,
       BrandingColorRow,
-      BaseReferences<_$CatalogDatabase, $BrandingColorsTable, BrandingColorRow>
-    ),
-    BrandingColorRow,
-    PrefetchHooks Function()>;
-typedef $$ComponentExtendsTableCreateCompanionBuilder
-    = ComponentExtendsCompanion Function({
-  required String componentId,
-  required String extendsId,
-  Value<int> rowid,
-});
-typedef $$ComponentExtendsTableUpdateCompanionBuilder
-    = ComponentExtendsCompanion Function({
-  Value<String> componentId,
-  Value<String> extendsId,
-  Value<int> rowid,
-});
+      $$BrandingColorsTableFilterComposer,
+      $$BrandingColorsTableOrderingComposer,
+      $$BrandingColorsTableAnnotationComposer,
+      $$BrandingColorsTableCreateCompanionBuilder,
+      $$BrandingColorsTableUpdateCompanionBuilder,
+      (
+        BrandingColorRow,
+        BaseReferences<
+          _$CatalogDatabase,
+          $BrandingColorsTable,
+          BrandingColorRow
+        >,
+      ),
+      BrandingColorRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ComponentExtendsTableCreateCompanionBuilder =
+    ComponentExtendsCompanion Function({
+      required String componentId,
+      required String extendsId,
+      Value<int> rowid,
+    });
+typedef $$ComponentExtendsTableUpdateCompanionBuilder =
+    ComponentExtendsCompanion Function({
+      Value<String> componentId,
+      Value<String> extendsId,
+      Value<int> rowid,
+    });
 
 class $$ComponentExtendsTableFilterComposer
     extends Composer<_$CatalogDatabase, $ComponentExtendsTable> {
@@ -8991,10 +10591,14 @@ class $$ComponentExtendsTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get extendsId => $composableBuilder(
-      column: $table.extendsId, builder: (column) => ColumnFilters(column));
+    column: $table.extendsId,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ComponentExtendsTableOrderingComposer
@@ -9007,10 +10611,14 @@ class $$ComponentExtendsTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get extendsId => $composableBuilder(
-      column: $table.extendsId, builder: (column) => ColumnOrderings(column));
+    column: $table.extendsId,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ComponentExtendsTableAnnotationComposer
@@ -9023,31 +10631,41 @@ class $$ComponentExtendsTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get extendsId =>
       $composableBuilder(column: $table.extendsId, builder: (column) => column);
 }
 
-class $$ComponentExtendsTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ComponentExtendsTable,
-    ComponentExtendRow,
-    $$ComponentExtendsTableFilterComposer,
-    $$ComponentExtendsTableOrderingComposer,
-    $$ComponentExtendsTableAnnotationComposer,
-    $$ComponentExtendsTableCreateCompanionBuilder,
-    $$ComponentExtendsTableUpdateCompanionBuilder,
-    (
-      ComponentExtendRow,
-      BaseReferences<_$CatalogDatabase, $ComponentExtendsTable,
-          ComponentExtendRow>
-    ),
-    ComponentExtendRow,
-    PrefetchHooks Function()> {
+class $$ComponentExtendsTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ComponentExtendsTable,
+          ComponentExtendRow,
+          $$ComponentExtendsTableFilterComposer,
+          $$ComponentExtendsTableOrderingComposer,
+          $$ComponentExtendsTableAnnotationComposer,
+          $$ComponentExtendsTableCreateCompanionBuilder,
+          $$ComponentExtendsTableUpdateCompanionBuilder,
+          (
+            ComponentExtendRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ComponentExtendsTable,
+              ComponentExtendRow
+            >,
+          ),
+          ComponentExtendRow,
+          PrefetchHooks Function()
+        > {
   $$ComponentExtendsTableTableManager(
-      _$CatalogDatabase db, $ComponentExtendsTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ComponentExtendsTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -9056,61 +10674,67 @@ class $$ComponentExtendsTableTableManager extends RootTableManager<
               $$ComponentExtendsTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ComponentExtendsTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> componentId = const Value.absent(),
-            Value<String> extendsId = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentExtendsCompanion(
-            componentId: componentId,
-            extendsId: extendsId,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String componentId,
-            required String extendsId,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentExtendsCompanion.insert(
-            componentId: componentId,
-            extendsId: extendsId,
-            rowid: rowid,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<String> componentId = const Value.absent(),
+                Value<String> extendsId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentExtendsCompanion(
+                componentId: componentId,
+                extendsId: extendsId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String componentId,
+                required String extendsId,
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentExtendsCompanion.insert(
+                componentId: componentId,
+                extendsId: extendsId,
+                rowid: rowid,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ComponentExtendsTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ComponentExtendsTable,
-    ComponentExtendRow,
-    $$ComponentExtendsTableFilterComposer,
-    $$ComponentExtendsTableOrderingComposer,
-    $$ComponentExtendsTableAnnotationComposer,
-    $$ComponentExtendsTableCreateCompanionBuilder,
-    $$ComponentExtendsTableUpdateCompanionBuilder,
-    (
+typedef $$ComponentExtendsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ComponentExtendsTable,
       ComponentExtendRow,
-      BaseReferences<_$CatalogDatabase, $ComponentExtendsTable,
-          ComponentExtendRow>
-    ),
-    ComponentExtendRow,
-    PrefetchHooks Function()>;
-typedef $$ComponentSuggestsTableCreateCompanionBuilder
-    = ComponentSuggestsCompanion Function({
-  required String componentId,
-  required String suggestedId,
-  Value<int> rowid,
-});
-typedef $$ComponentSuggestsTableUpdateCompanionBuilder
-    = ComponentSuggestsCompanion Function({
-  Value<String> componentId,
-  Value<String> suggestedId,
-  Value<int> rowid,
-});
+      $$ComponentExtendsTableFilterComposer,
+      $$ComponentExtendsTableOrderingComposer,
+      $$ComponentExtendsTableAnnotationComposer,
+      $$ComponentExtendsTableCreateCompanionBuilder,
+      $$ComponentExtendsTableUpdateCompanionBuilder,
+      (
+        ComponentExtendRow,
+        BaseReferences<
+          _$CatalogDatabase,
+          $ComponentExtendsTable,
+          ComponentExtendRow
+        >,
+      ),
+      ComponentExtendRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ComponentSuggestsTableCreateCompanionBuilder =
+    ComponentSuggestsCompanion Function({
+      required String componentId,
+      required String suggestedId,
+      Value<int> rowid,
+    });
+typedef $$ComponentSuggestsTableUpdateCompanionBuilder =
+    ComponentSuggestsCompanion Function({
+      Value<String> componentId,
+      Value<String> suggestedId,
+      Value<int> rowid,
+    });
 
 class $$ComponentSuggestsTableFilterComposer
     extends Composer<_$CatalogDatabase, $ComponentSuggestsTable> {
@@ -9122,10 +10746,14 @@ class $$ComponentSuggestsTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get suggestedId => $composableBuilder(
-      column: $table.suggestedId, builder: (column) => ColumnFilters(column));
+    column: $table.suggestedId,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ComponentSuggestsTableOrderingComposer
@@ -9138,10 +10766,14 @@ class $$ComponentSuggestsTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get suggestedId => $composableBuilder(
-      column: $table.suggestedId, builder: (column) => ColumnOrderings(column));
+    column: $table.suggestedId,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ComponentSuggestsTableAnnotationComposer
@@ -9154,31 +10786,43 @@ class $$ComponentSuggestsTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get suggestedId => $composableBuilder(
-      column: $table.suggestedId, builder: (column) => column);
+    column: $table.suggestedId,
+    builder: (column) => column,
+  );
 }
 
-class $$ComponentSuggestsTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ComponentSuggestsTable,
-    ComponentSuggestRow,
-    $$ComponentSuggestsTableFilterComposer,
-    $$ComponentSuggestsTableOrderingComposer,
-    $$ComponentSuggestsTableAnnotationComposer,
-    $$ComponentSuggestsTableCreateCompanionBuilder,
-    $$ComponentSuggestsTableUpdateCompanionBuilder,
-    (
-      ComponentSuggestRow,
-      BaseReferences<_$CatalogDatabase, $ComponentSuggestsTable,
-          ComponentSuggestRow>
-    ),
-    ComponentSuggestRow,
-    PrefetchHooks Function()> {
+class $$ComponentSuggestsTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ComponentSuggestsTable,
+          ComponentSuggestRow,
+          $$ComponentSuggestsTableFilterComposer,
+          $$ComponentSuggestsTableOrderingComposer,
+          $$ComponentSuggestsTableAnnotationComposer,
+          $$ComponentSuggestsTableCreateCompanionBuilder,
+          $$ComponentSuggestsTableUpdateCompanionBuilder,
+          (
+            ComponentSuggestRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ComponentSuggestsTable,
+              ComponentSuggestRow
+            >,
+          ),
+          ComponentSuggestRow,
+          PrefetchHooks Function()
+        > {
   $$ComponentSuggestsTableTableManager(
-      _$CatalogDatabase db, $ComponentSuggestsTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ComponentSuggestsTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -9187,70 +10831,78 @@ class $$ComponentSuggestsTableTableManager extends RootTableManager<
               $$ComponentSuggestsTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ComponentSuggestsTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> componentId = const Value.absent(),
-            Value<String> suggestedId = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentSuggestsCompanion(
-            componentId: componentId,
-            suggestedId: suggestedId,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String componentId,
-            required String suggestedId,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentSuggestsCompanion.insert(
-            componentId: componentId,
-            suggestedId: suggestedId,
-            rowid: rowid,
-          ),
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> componentId = const Value.absent(),
+                Value<String> suggestedId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentSuggestsCompanion(
+                componentId: componentId,
+                suggestedId: suggestedId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String componentId,
+                required String suggestedId,
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentSuggestsCompanion.insert(
+                componentId: componentId,
+                suggestedId: suggestedId,
+                rowid: rowid,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ComponentSuggestsTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ComponentSuggestsTable,
-    ComponentSuggestRow,
-    $$ComponentSuggestsTableFilterComposer,
-    $$ComponentSuggestsTableOrderingComposer,
-    $$ComponentSuggestsTableAnnotationComposer,
-    $$ComponentSuggestsTableCreateCompanionBuilder,
-    $$ComponentSuggestsTableUpdateCompanionBuilder,
-    (
+typedef $$ComponentSuggestsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ComponentSuggestsTable,
       ComponentSuggestRow,
-      BaseReferences<_$CatalogDatabase, $ComponentSuggestsTable,
-          ComponentSuggestRow>
-    ),
-    ComponentSuggestRow,
-    PrefetchHooks Function()>;
-typedef $$ComponentRelationsTableCreateCompanionBuilder
-    = ComponentRelationsCompanion Function({
-  Value<int> id,
-  required String componentId,
-  required String relationKind,
-  required String relationType,
-  Value<String?> value,
-  Value<String?> compare,
-  Value<String?> version,
-});
-typedef $$ComponentRelationsTableUpdateCompanionBuilder
-    = ComponentRelationsCompanion Function({
-  Value<int> id,
-  Value<String> componentId,
-  Value<String> relationKind,
-  Value<String> relationType,
-  Value<String?> value,
-  Value<String?> compare,
-  Value<String?> version,
-});
+      $$ComponentSuggestsTableFilterComposer,
+      $$ComponentSuggestsTableOrderingComposer,
+      $$ComponentSuggestsTableAnnotationComposer,
+      $$ComponentSuggestsTableCreateCompanionBuilder,
+      $$ComponentSuggestsTableUpdateCompanionBuilder,
+      (
+        ComponentSuggestRow,
+        BaseReferences<
+          _$CatalogDatabase,
+          $ComponentSuggestsTable,
+          ComponentSuggestRow
+        >,
+      ),
+      ComponentSuggestRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ComponentRelationsTableCreateCompanionBuilder =
+    ComponentRelationsCompanion Function({
+      Value<int> id,
+      required String componentId,
+      required String relationKind,
+      required String relationType,
+      Value<String?> value,
+      Value<String?> compare,
+      Value<String?> version,
+    });
+typedef $$ComponentRelationsTableUpdateCompanionBuilder =
+    ComponentRelationsCompanion Function({
+      Value<int> id,
+      Value<String> componentId,
+      Value<String> relationKind,
+      Value<String> relationType,
+      Value<String?> value,
+      Value<String?> compare,
+      Value<String?> version,
+    });
 
 class $$ComponentRelationsTableFilterComposer
     extends Composer<_$CatalogDatabase, $ComponentRelationsTable> {
@@ -9262,25 +10914,39 @@ class $$ComponentRelationsTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get relationKind => $composableBuilder(
-      column: $table.relationKind, builder: (column) => ColumnFilters(column));
+    column: $table.relationKind,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get relationType => $composableBuilder(
-      column: $table.relationType, builder: (column) => ColumnFilters(column));
+    column: $table.relationType,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get value => $composableBuilder(
-      column: $table.value, builder: (column) => ColumnFilters(column));
+    column: $table.value,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get compare => $composableBuilder(
-      column: $table.compare, builder: (column) => ColumnFilters(column));
+    column: $table.compare,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get version => $composableBuilder(
-      column: $table.version, builder: (column) => ColumnFilters(column));
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ComponentRelationsTableOrderingComposer
@@ -9293,27 +10959,39 @@ class $$ComponentRelationsTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get relationKind => $composableBuilder(
-      column: $table.relationKind,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.relationKind,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get relationType => $composableBuilder(
-      column: $table.relationType,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.relationType,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get value => $composableBuilder(
-      column: $table.value, builder: (column) => ColumnOrderings(column));
+    column: $table.value,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get compare => $composableBuilder(
-      column: $table.compare, builder: (column) => ColumnOrderings(column));
+    column: $table.compare,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get version => $composableBuilder(
-      column: $table.version, builder: (column) => ColumnOrderings(column));
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ComponentRelationsTableAnnotationComposer
@@ -9329,13 +11007,19 @@ class $$ComponentRelationsTableAnnotationComposer
       $composableBuilder(column: $table.id, builder: (column) => column);
 
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get relationKind => $composableBuilder(
-      column: $table.relationKind, builder: (column) => column);
+    column: $table.relationKind,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get relationType => $composableBuilder(
-      column: $table.relationType, builder: (column) => column);
+    column: $table.relationType,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get value =>
       $composableBuilder(column: $table.value, builder: (column) => column);
@@ -9347,25 +11031,33 @@ class $$ComponentRelationsTableAnnotationComposer
       $composableBuilder(column: $table.version, builder: (column) => column);
 }
 
-class $$ComponentRelationsTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ComponentRelationsTable,
-    ComponentRelationRow,
-    $$ComponentRelationsTableFilterComposer,
-    $$ComponentRelationsTableOrderingComposer,
-    $$ComponentRelationsTableAnnotationComposer,
-    $$ComponentRelationsTableCreateCompanionBuilder,
-    $$ComponentRelationsTableUpdateCompanionBuilder,
-    (
-      ComponentRelationRow,
-      BaseReferences<_$CatalogDatabase, $ComponentRelationsTable,
-          ComponentRelationRow>
-    ),
-    ComponentRelationRow,
-    PrefetchHooks Function()> {
+class $$ComponentRelationsTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ComponentRelationsTable,
+          ComponentRelationRow,
+          $$ComponentRelationsTableFilterComposer,
+          $$ComponentRelationsTableOrderingComposer,
+          $$ComponentRelationsTableAnnotationComposer,
+          $$ComponentRelationsTableCreateCompanionBuilder,
+          $$ComponentRelationsTableUpdateCompanionBuilder,
+          (
+            ComponentRelationRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ComponentRelationsTable,
+              ComponentRelationRow
+            >,
+          ),
+          ComponentRelationRow,
+          PrefetchHooks Function()
+        > {
   $$ComponentRelationsTableTableManager(
-      _$CatalogDatabase db, $ComponentRelationsTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ComponentRelationsTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -9374,80 +11066,88 @@ class $$ComponentRelationsTableTableManager extends RootTableManager<
               $$ComponentRelationsTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ComponentRelationsTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<String> componentId = const Value.absent(),
-            Value<String> relationKind = const Value.absent(),
-            Value<String> relationType = const Value.absent(),
-            Value<String?> value = const Value.absent(),
-            Value<String?> compare = const Value.absent(),
-            Value<String?> version = const Value.absent(),
-          }) =>
-              ComponentRelationsCompanion(
-            id: id,
-            componentId: componentId,
-            relationKind: relationKind,
-            relationType: relationType,
-            value: value,
-            compare: compare,
-            version: version,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required String componentId,
-            required String relationKind,
-            required String relationType,
-            Value<String?> value = const Value.absent(),
-            Value<String?> compare = const Value.absent(),
-            Value<String?> version = const Value.absent(),
-          }) =>
-              ComponentRelationsCompanion.insert(
-            id: id,
-            componentId: componentId,
-            relationKind: relationKind,
-            relationType: relationType,
-            value: value,
-            compare: compare,
-            version: version,
-          ),
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> componentId = const Value.absent(),
+                Value<String> relationKind = const Value.absent(),
+                Value<String> relationType = const Value.absent(),
+                Value<String?> value = const Value.absent(),
+                Value<String?> compare = const Value.absent(),
+                Value<String?> version = const Value.absent(),
+              }) => ComponentRelationsCompanion(
+                id: id,
+                componentId: componentId,
+                relationKind: relationKind,
+                relationType: relationType,
+                value: value,
+                compare: compare,
+                version: version,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String componentId,
+                required String relationKind,
+                required String relationType,
+                Value<String?> value = const Value.absent(),
+                Value<String?> compare = const Value.absent(),
+                Value<String?> version = const Value.absent(),
+              }) => ComponentRelationsCompanion.insert(
+                id: id,
+                componentId: componentId,
+                relationKind: relationKind,
+                relationType: relationType,
+                value: value,
+                compare: compare,
+                version: version,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ComponentRelationsTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ComponentRelationsTable,
-    ComponentRelationRow,
-    $$ComponentRelationsTableFilterComposer,
-    $$ComponentRelationsTableOrderingComposer,
-    $$ComponentRelationsTableAnnotationComposer,
-    $$ComponentRelationsTableCreateCompanionBuilder,
-    $$ComponentRelationsTableUpdateCompanionBuilder,
-    (
+typedef $$ComponentRelationsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ComponentRelationsTable,
       ComponentRelationRow,
-      BaseReferences<_$CatalogDatabase, $ComponentRelationsTable,
-          ComponentRelationRow>
-    ),
-    ComponentRelationRow,
-    PrefetchHooks Function()>;
-typedef $$ComponentCustomTableCreateCompanionBuilder = ComponentCustomCompanion
-    Function({
-  required String componentId,
-  required String key,
-  required String value,
-  Value<int> rowid,
-});
-typedef $$ComponentCustomTableUpdateCompanionBuilder = ComponentCustomCompanion
-    Function({
-  Value<String> componentId,
-  Value<String> key,
-  Value<String> value,
-  Value<int> rowid,
-});
+      $$ComponentRelationsTableFilterComposer,
+      $$ComponentRelationsTableOrderingComposer,
+      $$ComponentRelationsTableAnnotationComposer,
+      $$ComponentRelationsTableCreateCompanionBuilder,
+      $$ComponentRelationsTableUpdateCompanionBuilder,
+      (
+        ComponentRelationRow,
+        BaseReferences<
+          _$CatalogDatabase,
+          $ComponentRelationsTable,
+          ComponentRelationRow
+        >,
+      ),
+      ComponentRelationRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ComponentCustomTableCreateCompanionBuilder =
+    ComponentCustomCompanion Function({
+      required String componentId,
+      required String key,
+      required String value,
+      Value<int> rowid,
+    });
+typedef $$ComponentCustomTableUpdateCompanionBuilder =
+    ComponentCustomCompanion Function({
+      Value<String> componentId,
+      Value<String> key,
+      Value<String> value,
+      Value<int> rowid,
+    });
 
 class $$ComponentCustomTableFilterComposer
     extends Composer<_$CatalogDatabase, $ComponentCustomTable> {
@@ -9459,13 +11159,19 @@ class $$ComponentCustomTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get key => $composableBuilder(
-      column: $table.key, builder: (column) => ColumnFilters(column));
+    column: $table.key,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get value => $composableBuilder(
-      column: $table.value, builder: (column) => ColumnFilters(column));
+    column: $table.value,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ComponentCustomTableOrderingComposer
@@ -9478,13 +11184,19 @@ class $$ComponentCustomTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get key => $composableBuilder(
-      column: $table.key, builder: (column) => ColumnOrderings(column));
+    column: $table.key,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get value => $composableBuilder(
-      column: $table.value, builder: (column) => ColumnOrderings(column));
+    column: $table.value,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ComponentCustomTableAnnotationComposer
@@ -9497,7 +11209,9 @@ class $$ComponentCustomTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get key =>
       $composableBuilder(column: $table.key, builder: (column) => column);
@@ -9506,25 +11220,33 @@ class $$ComponentCustomTableAnnotationComposer
       $composableBuilder(column: $table.value, builder: (column) => column);
 }
 
-class $$ComponentCustomTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ComponentCustomTable,
-    ComponentCustomRow,
-    $$ComponentCustomTableFilterComposer,
-    $$ComponentCustomTableOrderingComposer,
-    $$ComponentCustomTableAnnotationComposer,
-    $$ComponentCustomTableCreateCompanionBuilder,
-    $$ComponentCustomTableUpdateCompanionBuilder,
-    (
-      ComponentCustomRow,
-      BaseReferences<_$CatalogDatabase, $ComponentCustomTable,
-          ComponentCustomRow>
-    ),
-    ComponentCustomRow,
-    PrefetchHooks Function()> {
+class $$ComponentCustomTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ComponentCustomTable,
+          ComponentCustomRow,
+          $$ComponentCustomTableFilterComposer,
+          $$ComponentCustomTableOrderingComposer,
+          $$ComponentCustomTableAnnotationComposer,
+          $$ComponentCustomTableCreateCompanionBuilder,
+          $$ComponentCustomTableUpdateCompanionBuilder,
+          (
+            ComponentCustomRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ComponentCustomTable,
+              ComponentCustomRow
+            >,
+          ),
+          ComponentCustomRow,
+          PrefetchHooks Function()
+        > {
   $$ComponentCustomTableTableManager(
-      _$CatalogDatabase db, $ComponentCustomTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ComponentCustomTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
@@ -9533,69 +11255,75 @@ class $$ComponentCustomTableTableManager extends RootTableManager<
               $$ComponentCustomTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
               $$ComponentCustomTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> componentId = const Value.absent(),
-            Value<String> key = const Value.absent(),
-            Value<String> value = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentCustomCompanion(
-            componentId: componentId,
-            key: key,
-            value: value,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String componentId,
-            required String key,
-            required String value,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentCustomCompanion.insert(
-            componentId: componentId,
-            key: key,
-            value: value,
-            rowid: rowid,
-          ),
+          updateCompanionCallback:
+              ({
+                Value<String> componentId = const Value.absent(),
+                Value<String> key = const Value.absent(),
+                Value<String> value = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentCustomCompanion(
+                componentId: componentId,
+                key: key,
+                value: value,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String componentId,
+                required String key,
+                required String value,
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentCustomCompanion.insert(
+                componentId: componentId,
+                key: key,
+                value: value,
+                rowid: rowid,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ComponentCustomTableProcessedTableManager = ProcessedTableManager<
-    _$CatalogDatabase,
-    $ComponentCustomTable,
-    ComponentCustomRow,
-    $$ComponentCustomTableFilterComposer,
-    $$ComponentCustomTableOrderingComposer,
-    $$ComponentCustomTableAnnotationComposer,
-    $$ComponentCustomTableCreateCompanionBuilder,
-    $$ComponentCustomTableUpdateCompanionBuilder,
-    (
+typedef $$ComponentCustomTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ComponentCustomTable,
       ComponentCustomRow,
-      BaseReferences<_$CatalogDatabase, $ComponentCustomTable,
-          ComponentCustomRow>
-    ),
-    ComponentCustomRow,
-    PrefetchHooks Function()>;
-typedef $$ComponentFieldTranslationsTableCreateCompanionBuilder
-    = ComponentFieldTranslationsCompanion Function({
-  required String componentId,
-  required String field,
-  required String language,
-  required String value,
-  Value<int> rowid,
-});
-typedef $$ComponentFieldTranslationsTableUpdateCompanionBuilder
-    = ComponentFieldTranslationsCompanion Function({
-  Value<String> componentId,
-  Value<String> field,
-  Value<String> language,
-  Value<String> value,
-  Value<int> rowid,
-});
+      $$ComponentCustomTableFilterComposer,
+      $$ComponentCustomTableOrderingComposer,
+      $$ComponentCustomTableAnnotationComposer,
+      $$ComponentCustomTableCreateCompanionBuilder,
+      $$ComponentCustomTableUpdateCompanionBuilder,
+      (
+        ComponentCustomRow,
+        BaseReferences<
+          _$CatalogDatabase,
+          $ComponentCustomTable,
+          ComponentCustomRow
+        >,
+      ),
+      ComponentCustomRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ComponentFieldTranslationsTableCreateCompanionBuilder =
+    ComponentFieldTranslationsCompanion Function({
+      required String componentId,
+      required String field,
+      required String language,
+      required String value,
+      Value<int> rowid,
+    });
+typedef $$ComponentFieldTranslationsTableUpdateCompanionBuilder =
+    ComponentFieldTranslationsCompanion Function({
+      Value<String> componentId,
+      Value<String> field,
+      Value<String> language,
+      Value<String> value,
+      Value<int> rowid,
+    });
 
 class $$ComponentFieldTranslationsTableFilterComposer
     extends Composer<_$CatalogDatabase, $ComponentFieldTranslationsTable> {
@@ -9607,16 +11335,24 @@ class $$ComponentFieldTranslationsTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnFilters(column));
+    column: $table.componentId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get field => $composableBuilder(
-      column: $table.field, builder: (column) => ColumnFilters(column));
+    column: $table.field,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get language => $composableBuilder(
-      column: $table.language, builder: (column) => ColumnFilters(column));
+    column: $table.language,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get value => $composableBuilder(
-      column: $table.value, builder: (column) => ColumnFilters(column));
+    column: $table.value,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ComponentFieldTranslationsTableOrderingComposer
@@ -9629,16 +11365,24 @@ class $$ComponentFieldTranslationsTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => ColumnOrderings(column));
+    column: $table.componentId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get field => $composableBuilder(
-      column: $table.field, builder: (column) => ColumnOrderings(column));
+    column: $table.field,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get language => $composableBuilder(
-      column: $table.language, builder: (column) => ColumnOrderings(column));
+    column: $table.language,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get value => $composableBuilder(
-      column: $table.value, builder: (column) => ColumnOrderings(column));
+    column: $table.value,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ComponentFieldTranslationsTableAnnotationComposer
@@ -9651,7 +11395,9 @@ class $$ComponentFieldTranslationsTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get componentId => $composableBuilder(
-      column: $table.componentId, builder: (column) => column);
+    column: $table.componentId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get field =>
       $composableBuilder(column: $table.field, builder: (column) => column);
@@ -9663,88 +11409,107 @@ class $$ComponentFieldTranslationsTableAnnotationComposer
       $composableBuilder(column: $table.value, builder: (column) => column);
 }
 
-class $$ComponentFieldTranslationsTableTableManager extends RootTableManager<
-    _$CatalogDatabase,
-    $ComponentFieldTranslationsTable,
-    ComponentFieldTranslationRow,
-    $$ComponentFieldTranslationsTableFilterComposer,
-    $$ComponentFieldTranslationsTableOrderingComposer,
-    $$ComponentFieldTranslationsTableAnnotationComposer,
-    $$ComponentFieldTranslationsTableCreateCompanionBuilder,
-    $$ComponentFieldTranslationsTableUpdateCompanionBuilder,
-    (
-      ComponentFieldTranslationRow,
-      BaseReferences<_$CatalogDatabase, $ComponentFieldTranslationsTable,
-          ComponentFieldTranslationRow>
-    ),
-    ComponentFieldTranslationRow,
-    PrefetchHooks Function()> {
+class $$ComponentFieldTranslationsTableTableManager
+    extends
+        RootTableManager<
+          _$CatalogDatabase,
+          $ComponentFieldTranslationsTable,
+          ComponentFieldTranslationRow,
+          $$ComponentFieldTranslationsTableFilterComposer,
+          $$ComponentFieldTranslationsTableOrderingComposer,
+          $$ComponentFieldTranslationsTableAnnotationComposer,
+          $$ComponentFieldTranslationsTableCreateCompanionBuilder,
+          $$ComponentFieldTranslationsTableUpdateCompanionBuilder,
+          (
+            ComponentFieldTranslationRow,
+            BaseReferences<
+              _$CatalogDatabase,
+              $ComponentFieldTranslationsTable,
+              ComponentFieldTranslationRow
+            >,
+          ),
+          ComponentFieldTranslationRow,
+          PrefetchHooks Function()
+        > {
   $$ComponentFieldTranslationsTableTableManager(
-      _$CatalogDatabase db, $ComponentFieldTranslationsTable table)
-      : super(TableManagerState(
+    _$CatalogDatabase db,
+    $ComponentFieldTranslationsTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
               $$ComponentFieldTranslationsTableFilterComposer(
-                  $db: db, $table: table),
+                $db: db,
+                $table: table,
+              ),
           createOrderingComposer: () =>
               $$ComponentFieldTranslationsTableOrderingComposer(
-                  $db: db, $table: table),
+                $db: db,
+                $table: table,
+              ),
           createComputedFieldComposer: () =>
               $$ComponentFieldTranslationsTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> componentId = const Value.absent(),
-            Value<String> field = const Value.absent(),
-            Value<String> language = const Value.absent(),
-            Value<String> value = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentFieldTranslationsCompanion(
-            componentId: componentId,
-            field: field,
-            language: language,
-            value: value,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String componentId,
-            required String field,
-            required String language,
-            required String value,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ComponentFieldTranslationsCompanion.insert(
-            componentId: componentId,
-            field: field,
-            language: language,
-            value: value,
-            rowid: rowid,
-          ),
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> componentId = const Value.absent(),
+                Value<String> field = const Value.absent(),
+                Value<String> language = const Value.absent(),
+                Value<String> value = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentFieldTranslationsCompanion(
+                componentId: componentId,
+                field: field,
+                language: language,
+                value: value,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String componentId,
+                required String field,
+                required String language,
+                required String value,
+                Value<int> rowid = const Value.absent(),
+              }) => ComponentFieldTranslationsCompanion.insert(
+                componentId: componentId,
+                field: field,
+                language: language,
+                value: value,
+                rowid: rowid,
+              ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
               .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ComponentFieldTranslationsTableProcessedTableManager
-    = ProcessedTableManager<
-        _$CatalogDatabase,
-        $ComponentFieldTranslationsTable,
+typedef $$ComponentFieldTranslationsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$CatalogDatabase,
+      $ComponentFieldTranslationsTable,
+      ComponentFieldTranslationRow,
+      $$ComponentFieldTranslationsTableFilterComposer,
+      $$ComponentFieldTranslationsTableOrderingComposer,
+      $$ComponentFieldTranslationsTableAnnotationComposer,
+      $$ComponentFieldTranslationsTableCreateCompanionBuilder,
+      $$ComponentFieldTranslationsTableUpdateCompanionBuilder,
+      (
         ComponentFieldTranslationRow,
-        $$ComponentFieldTranslationsTableFilterComposer,
-        $$ComponentFieldTranslationsTableOrderingComposer,
-        $$ComponentFieldTranslationsTableAnnotationComposer,
-        $$ComponentFieldTranslationsTableCreateCompanionBuilder,
-        $$ComponentFieldTranslationsTableUpdateCompanionBuilder,
-        (
-          ComponentFieldTranslationRow,
-          BaseReferences<_$CatalogDatabase, $ComponentFieldTranslationsTable,
-              ComponentFieldTranslationRow>
-        ),
-        ComponentFieldTranslationRow,
-        PrefetchHooks Function()>;
+        BaseReferences<
+          _$CatalogDatabase,
+          $ComponentFieldTranslationsTable,
+          ComponentFieldTranslationRow
+        >,
+      ),
+      ComponentFieldTranslationRow,
+      PrefetchHooks Function()
+    >;
 
 class $CatalogDatabaseManager {
   final _$CatalogDatabase _db;
@@ -9788,7 +11553,9 @@ class $CatalogDatabaseManager {
   $$ComponentCustomTableTableManager get componentCustom =>
       $$ComponentCustomTableTableManager(_db, _db.componentCustom);
   $$ComponentFieldTranslationsTableTableManager
-      get componentFieldTranslations =>
-          $$ComponentFieldTranslationsTableTableManager(
-              _db, _db.componentFieldTranslations);
+  get componentFieldTranslations =>
+      $$ComponentFieldTranslationsTableTableManager(
+        _db,
+        _db.componentFieldTranslations,
+      );
 }

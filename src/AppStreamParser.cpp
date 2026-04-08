@@ -81,8 +81,7 @@ static std::string unixEpochToISO8601(const std::string_view epochStr) {
 // mmap helpers
 // ============================================================
 
-void AppStreamParser::mmapFile(const std::string &filename, void *&data,
-                               size_t &size) {
+void AppStreamParser::mmapFile(const std::string &filename, void *&data, size_t &size) {
   data = nullptr;
   size = 0;
   const int fd = open(filename.c_str(), O_RDONLY);
@@ -90,7 +89,7 @@ void AppStreamParser::mmapFile(const std::string &filename, void *&data,
     spdlog::error("Failed to open: {}", filename);
     return;
   }
-  struct stat sb{};
+  struct stat sb {};
   if (fstat(fd, &sb) == -1) {
     close(fd);
     return;
@@ -117,9 +116,8 @@ void AppStreamParser::munmapFile(void *&data, size_t &size) {
 // Attribute lookup
 // ============================================================
 
-std::string_view
-AppStreamParser::findAttr(const std::vector<XmlScanner::Attribute> &attrs,
-                          std::string_view name) {
+std::string_view AppStreamParser::findAttr(const std::vector<XmlScanner::Attribute> &attrs,
+                                           std::string_view name) {
   for (const auto &a : attrs) {
     if (a.name == name)
       return a.value;
@@ -135,16 +133,14 @@ namespace {
 
 class InMemorySink final : public ComponentSink {
 public:
-  explicit InMemorySink(
-      std::unordered_map<std::string, std::unique_ptr<Component>> &components)
+  explicit InMemorySink(std::unordered_map<std::string, std::unique_ptr<Component>> &components)
       : components_(components), count_(0) {}
 
   std::expected<void, Error> onComponent(Component component) override {
     auto id = component.id;
     component.shrinkToFit();
     if (!components_.contains(id)) {
-      components_.emplace(std::move(id),
-                          std::make_unique<Component>(std::move(component)));
+      components_.emplace(std::move(id), std::make_unique<Component>(std::move(component)));
       ++count_;
     } else {
       SPDLOG_WARN("Duplicate: [{}]", id);
@@ -166,8 +162,7 @@ private:
 // ============================================================
 
 std::expected<void, AppStreamParser::ParseError>
-AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
-                         ComponentSink &sink) {
+AppStreamParser::doParse(XmlScanner &scanner, const std::string &language, ComponentSink &sink) {
 
   // ---- Build language filter set ----
   // "" = default language only (elements with xml:lang are skipped)
@@ -297,10 +292,8 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
 
       // ---- Root <components> tag ----
       if (evt.name == "components"sv) {
-        rootMediaBaseurl =
-            std::string(findAttr(evt.attributes, "media_baseurl"sv));
-        rootArchitecture =
-            std::string(findAttr(evt.attributes, "architecture"sv));
+        rootMediaBaseurl = std::string(findAttr(evt.attributes, "media_baseurl"sv));
+        rootArchitecture = std::string(findAttr(evt.attributes, "architecture"sv));
         break;
       }
 
@@ -344,8 +337,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
         auto lang = findAttr(evt.attributes, "xml:lang"sv);
         if (!lang.empty()) {
           // Non-default language: skip if not in our set
-          if (!storeLangs ||
-              (!keepAllLangs && !langSet.contains(std::string(lang)))) {
+          if (!storeLangs || (!keepAllLangs && !langSet.contains(std::string(lang)))) {
             skipDepth = 1;
             break;
           }
@@ -380,8 +372,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
             else if (a.name == "date_eol"sv)
               currentRelease.date_eol = std::string(a.value);
             else if (a.name == "urgency"sv)
-              currentRelease.urgency =
-                  Component::stringToReleaseUrgency(a.value);
+              currentRelease.urgency = Component::stringToReleaseUrgency(a.value);
           }
           break;
         }
@@ -405,11 +396,9 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
         }
         if (insideArtifact) {
           if (evt.name == "checksum"sv) {
-            currentArtifactChecksumKey =
-                std::string(findAttr(evt.attributes, "type"sv));
+            currentArtifactChecksumKey = std::string(findAttr(evt.attributes, "type"sv));
           } else if (evt.name == "size"sv) {
-            currentArtifactSizeKey =
-                std::string(findAttr(evt.attributes, "type"sv));
+            currentArtifactSizeKey = std::string(findAttr(evt.attributes, "type"sv));
           }
           break;
         }
@@ -445,10 +434,8 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
           }
           if (evt.name == "video"sv) {
             currentVideo = Component::Video{};
-            currentVideo.codec =
-                std::string(findAttr(evt.attributes, "codec"sv));
-            currentVideo.container =
-                std::string(findAttr(evt.attributes, "container"sv));
+            currentVideo.codec = std::string(findAttr(evt.attributes, "codec"sv));
+            currentVideo.container = std::string(findAttr(evt.attributes, "container"sv));
             auto w = findAttr(evt.attributes, "width"sv);
             auto h = findAttr(evt.attributes, "height"sv);
             if (!w.empty())
@@ -460,8 +447,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
           if (evt.name == "caption"sv) {
             auto lang = findAttr(evt.attributes, "xml:lang"sv);
             if (!lang.empty()) {
-              if (!storeLangs ||
-                  (!keepAllLangs && !langSet.contains(std::string(lang)))) {
+              if (!storeLangs || (!keepAllLangs && !langSet.contains(std::string(lang)))) {
                 skipDepth = 1;
                 break;
               }
@@ -476,8 +462,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       // ---- <content_rating> ----
       if (evt.name == "content_rating"sv) {
         insideContentRating = true;
-        currentComponent.content_rating.type =
-            std::string(findAttr(evt.attributes, "type"sv));
+        currentComponent.content_rating.type = std::string(findAttr(evt.attributes, "type"sv));
         break;
       }
       if (insideContentRating && evt.name == "content_attribute"sv) {
@@ -514,8 +499,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
         break;
       }
       if (insideBranding && evt.name == "color"sv) {
-        currentBrandingScheme =
-            std::string(findAttr(evt.attributes, "scheme_preference"sv));
+        currentBrandingScheme = std::string(findAttr(evt.attributes, "scheme_preference"sv));
         break;
       }
 
@@ -531,10 +515,8 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       if (insideRequires || insideRecommends) {
         currentRelation = Component::Relation{};
         currentRelation.type = std::string(evt.name);
-        currentRelation.compare =
-            std::string(findAttr(evt.attributes, "compare"sv));
-        currentRelation.version =
-            std::string(findAttr(evt.attributes, "version"sv));
+        currentRelation.compare = std::string(findAttr(evt.attributes, "compare"sv));
+        currentRelation.version = std::string(findAttr(evt.attributes, "version"sv));
         break;
       }
 
@@ -566,8 +548,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
 
       // ---- <translation> ----
       if (evt.name == "translation"sv) {
-        currentTranslationType =
-            std::string(findAttr(evt.attributes, "type"sv));
+        currentTranslationType = std::string(findAttr(evt.attributes, "type"sv));
         break;
       }
 
@@ -575,8 +556,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       {
         auto lang = findAttr(evt.attributes, "xml:lang"sv);
         if (!lang.empty()) {
-          if (!storeLangs ||
-              (!keepAllLangs && !langSet.contains(std::string(lang)))) {
+          if (!storeLangs || (!keepAllLangs && !langSet.contains(std::string(lang)))) {
             skipDepth = 1;
             break;
           }
@@ -653,8 +633,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
             }
           } else {
             // Translation — store in field_translations
-            std::string field =
-                descInRelease ? "release_description" : "description";
+            std::string field = descInRelease ? "release_description" : "description";
             currentComponent.field_translations.push_back(
                 {std::move(field), std::move(descLang), std::move(descAccum)});
           }
@@ -709,13 +688,17 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
         } else if (insideArtifact && tag == "location"sv) {
           currentArtifact.location = std::move(textAccum);
         } else if (insideArtifact && tag == "checksum"sv) {
-          if (!currentArtifactChecksumKey.empty())
-            currentArtifact.checksums.emplace_back(
-                std::move(currentArtifactChecksumKey), std::move(textAccum));
+          if (!currentArtifactChecksumKey.empty()) {
+            currentArtifact.checksums.emplace_back(std::move(currentArtifactChecksumKey),
+                                                   std::move(textAccum));
+            currentArtifactChecksumKey.clear();
+          }
         } else if (insideArtifact && tag == "size"sv) {
-          if (!currentArtifactSizeKey.empty())
-            currentArtifact.sizes.emplace_back(
-                std::move(currentArtifactSizeKey), convertToSizeT(textAccum));
+          if (!currentArtifactSizeKey.empty()) {
+            currentArtifact.sizes.emplace_back(std::move(currentArtifactSizeKey),
+                                               convertToSizeT(textAccum));
+            currentArtifactSizeKey.clear();
+          }
         } else if (tag == "url"sv) {
           currentRelease.url = std::move(textAccum);
         }
@@ -747,8 +730,8 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
             currentScreenshot.caption = std::move(textAccum);
           } else {
             currentComponent.field_translations.push_back(
-                {"caption:" + std::to_string(screenshotIndex),
-                 std::move(currentLang), std::move(textAccum)});
+                {"caption:" + std::to_string(screenshotIndex), std::move(currentLang),
+                 std::move(textAccum)});
           }
         }
         if (tag == "screenshot"sv)
@@ -766,8 +749,9 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       }
       if (insideContentRating && tag == "content_attribute"sv) {
         if (!currentContentAttrId.empty()) {
-          currentComponent.content_rating.attributes.emplace_back(
-              std::move(currentContentAttrId), std::move(textAccum));
+          currentComponent.content_rating.attributes.emplace_back(std::move(currentContentAttrId),
+                                                                  std::move(textAccum));
+          currentContentAttrId.clear();
         }
         currentElement.clear();
         textAccum.clear();
@@ -789,8 +773,9 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
         else if (tag == "id"sv)
           currentComponent.provides.ids.push_back(std::move(textAccum));
         else if (tag == "dbus"sv) {
-          currentComponent.provides.dbus.emplace_back(
-              std::move(currentDbusType), std::move(textAccum));
+          currentComponent.provides.dbus.emplace_back(std::move(currentDbusType),
+                                                      std::move(textAccum));
+          currentDbusType.clear();
         } else if (tag == "firmware"sv)
           currentComponent.provides.firmware.push_back(std::move(textAccum));
         currentElement.clear();
@@ -818,6 +803,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       if (insideBranding && tag == "color"sv) {
         currentComponent.branding_colors.push_back(
             {std::move(currentBrandingScheme), std::move(textAccum)});
+        currentBrandingScheme.clear();
         currentElement.clear();
         textAccum.clear();
         break;
@@ -851,8 +837,8 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       }
       if (insideCustom && tag == "value"sv) {
         if (!currentCustomKey.empty()) {
-          currentComponent.custom.emplace_back(std::move(currentCustomKey),
-                                               std::move(textAccum));
+          currentComponent.custom.emplace_back(std::move(currentCustomKey), std::move(textAccum));
+          currentCustomKey.clear();
         }
         currentElement.clear();
         textAccum.clear();
@@ -869,8 +855,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       } else if (tag == "name"sv) {
         if (!currentLang.empty()) {
           std::string field = insideDeveloper ? "developer_name" : "name";
-          currentComponent.field_translations.push_back(
-              {field, currentLang, textAccum});
+          currentComponent.field_translations.push_back({field, currentLang, textAccum});
         }
         if (insideDeveloper)
           currentComponent.developer.name = std::move(textAccum);
@@ -884,8 +869,7 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
         currentComponent.metadata_license = std::move(textAccum);
       } else if (tag == "summary"sv) {
         if (!currentLang.empty()) {
-          currentComponent.field_translations.push_back(
-              {"summary", currentLang, textAccum});
+          currentComponent.field_translations.push_back({"summary", currentLang, textAccum});
         }
         currentComponent.summary = std::move(textAccum);
       } else if (tag == "url"sv) {
@@ -922,8 +906,9 @@ AppStreamParser::doParse(XmlScanner &scanner, const std::string &language,
       } else if (tag == "agreement"sv) {
         currentComponent.agreement = std::move(textAccum);
       } else if (tag == "translation"sv) {
-        currentComponent.translations.emplace_back(
-            std::move(currentTranslationType), std::move(textAccum));
+        currentComponent.translations.emplace_back(std::move(currentTranslationType),
+                                                   std::move(textAccum));
+        currentTranslationType.clear();
       } else if (tag == "language"sv) {
         currentComponent.addSupportedLanguage(textAccum);
       }
@@ -955,8 +940,8 @@ done:
 // ============================================================
 
 std::expected<void, AppStreamParser::ParseError>
-AppStreamParser::parseToSink(const std::string &filename,
-                             const std::string &language, ComponentSink &sink) {
+AppStreamParser::parseToSink(const std::string &filename, const std::string &language,
+                             ComponentSink &sink) {
   const int fd = open(filename.c_str(), O_RDONLY);
   if (fd == -1)
     return std::unexpected(ParseError::MMAP_FAILED);
@@ -977,8 +962,7 @@ AppStreamParser::parseToSink(const std::string &filename,
 // ============================================================
 
 std::expected<AppStreamParser, AppStreamParser::ParseError>
-AppStreamParser::create(const std::string &filename,
-                        const std::string &language) {
+AppStreamParser::create(const std::string &filename, const std::string &language) {
   AppStreamParser parser;
   parser.language_ = language;
   mmapFile(filename, parser.fileData_, parser.fileSize_);
@@ -986,8 +970,7 @@ AppStreamParser::create(const std::string &filename,
     return std::unexpected(ParseError::MMAP_FAILED);
   spdlog::info("Parsing file (in-memory): {}", filename);
   InMemorySink sink(parser.components_);
-  XmlScanner scanner(static_cast<const char *>(parser.fileData_),
-                     parser.fileSize_);
+  XmlScanner scanner(static_cast<const char *>(parser.fileData_), parser.fileSize_);
   auto result = doParse(scanner, language, sink);
   munmapFile(parser.fileData_, parser.fileSize_);
   if (!result)
@@ -1043,8 +1026,7 @@ std::vector<std::string> AppStreamParser::getUniqueKeywords() const {
   return {u.begin(), u.end()};
 }
 
-std::vector<const Component *>
-AppStreamParser::getSortedComponents(SortOption option) const {
+std::vector<const Component *> AppStreamParser::getSortedComponents(SortOption option) const {
   std::vector<const Component *> s;
   s.reserve(components_.size());
   for (const auto &c : components_ | std::views::values)
@@ -1060,8 +1042,7 @@ AppStreamParser::getSortedComponents(SortOption option) const {
   return s;
 }
 
-std::vector<const Component *>
-AppStreamParser::searchByCategory(std::string_view cat) const {
+std::vector<const Component *> AppStreamParser::searchByCategory(std::string_view cat) const {
   std::vector<const Component *> r;
   for (const auto &c : components_ | std::views::values)
     if (std::ranges::contains(c->categories, cat))
@@ -1069,11 +1050,10 @@ AppStreamParser::searchByCategory(std::string_view cat) const {
   return r;
 }
 
-std::vector<const Component *>
-AppStreamParser::searchByKeyword(std::string_view kw) const {
+std::vector<const Component *> AppStreamParser::searchByKeyword(std::string_view keyword) const {
   std::vector<const Component *> r;
   for (const auto &c : components_ | std::views::values)
-    if (std::ranges::contains(c->keywords, kw))
+    if (std::ranges::contains(c->keywords, keyword))
       r.push_back(c.get());
   return r;
 }

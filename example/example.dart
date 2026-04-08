@@ -1,16 +1,35 @@
 /// Example: Parse Flathub AppStream XML and query the catalog.
 ///
-/// Prerequisites:
-/// - SQLite3 development libraries installed
-/// - An AppStream XML file (download from Flathub or use the CLI:
-///   `dart run bin/main.dart`)
+/// On first run this downloads `appstream.xml.gz` from Flathub and
+/// gunzips it to ./appstream.xml. Subsequent runs reuse the local copy.
 library;
 
+import 'dart:io';
+
 import 'package:appstream_dart/appstream.dart';
+import 'package:http/http.dart' as http;
+
+const _flathubUrl =
+    'https://dl.flathub.org/repo/appstream/x86_64/appstream.xml.gz';
+
+Future<void> _ensureCatalog(String path) async {
+  if (File(path).existsSync()) return;
+  print('Downloading $_flathubUrl ...');
+  final resp = await http.get(Uri.parse(_flathubUrl));
+  if (resp.statusCode != 200) {
+    throw StateError('Download failed: HTTP ${resp.statusCode}');
+  }
+  final xml = gzip.decode(resp.bodyBytes);
+  await File(path).writeAsBytes(xml);
+  print('Saved ${xml.length} bytes to $path');
+}
 
 Future<void> main() async {
   // Initialize the native library (must be called once)
   Appstream.initialize();
+
+  // Make sure the input catalog exists locally before parsing.
+  await _ensureCatalog('appstream.xml');
 
   // Parse XML to SQLite with all translations
   print('Parsing...');
@@ -27,6 +46,7 @@ Future<void> main() async {
         print('Done: $count components');
       case ParseFailed(:final message):
         print('Error: $message');
+        exit(1);
     }
   }
 
@@ -54,8 +74,11 @@ Future<void> main() async {
   }
 
   // Get a translation (requires --lang '*' or specific language at parse time)
-  final germanName =
-      await db.getTranslation('org.gnome.Calculator', 'name', 'de');
+  final germanName = await db.getTranslation(
+    'org.gnome.Calculator',
+    'name',
+    'de',
+  );
   print('German name: ${germanName ?? '(not available)'}');
 
   // List available translation languages

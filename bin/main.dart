@@ -41,8 +41,9 @@ class ProgressBar {
     final currentStr = _formatBytes(current);
     final totalStr = _formatBytes(total);
     final elapsed = _sw.elapsed;
-    final rate =
-        elapsed.inMilliseconds > 0 ? current / elapsed.inMilliseconds * 1000 : 0;
+    final rate = elapsed.inMilliseconds > 0
+        ? current / elapsed.inMilliseconds * 1000
+        : 0;
     final rateStr = _formatBytes(rate.round());
 
     final line =
@@ -68,8 +69,9 @@ class ProgressBar {
 
   /// Update with count and estimated total.
   void updateCountOf(int current, int estimatedTotal, {String unit = ''}) {
-    final fraction =
-        estimatedTotal > 0 ? (current / estimatedTotal).clamp(0.0, 1.0) : 0.0;
+    final fraction = estimatedTotal > 0
+        ? (current / estimatedTotal).clamp(0.0, 1.0)
+        : 0.0;
     final filled = (fraction * width).round();
     final empty = width - filled;
     final pct = (fraction * 100).toStringAsFixed(1).padLeft(5);
@@ -103,8 +105,12 @@ class ProgressBar {
 
   /// Show a 100% bar then the finish message, clearing any C++ output that
   /// may have been injected on the current line.
-  void finishComplete(int current, int total,
-      {String unit = '', String? message}) {
+  void finishComplete(
+    int current,
+    int total, {
+    String unit = '',
+    String? message,
+  }) {
     _sw.stop();
     final pct = '100.0'.padLeft(5);
     final unitStr = unit.isEmpty ? '' : ' $unit';
@@ -119,8 +125,9 @@ class ProgressBar {
 
   void _write(String line) {
     // Pad with spaces to overwrite any previous longer line
-    final padded =
-        line.length < _lastLineLen ? line.padRight(_lastLineLen) : line;
+    final padded = line.length < _lastLineLen
+        ? line.padRight(_lastLineLen)
+        : line;
     stdout.write(padded);
     _lastLineLen = line.length;
   }
@@ -156,13 +163,22 @@ Future<void> main(List<String> args) async {
   for (int i = 0; i < args.length; i++) {
     switch (args[i]) {
       case '--xml':
-        if (++i >= args.length) { stderr.writeln('--xml requires a value'); exit(1); }
+        if (++i >= args.length) {
+          stderr.writeln('--xml requires a value');
+          exit(1);
+        }
         xmlPath = args[i];
       case '--db':
-        if (++i >= args.length) { stderr.writeln('--db requires a value'); exit(1); }
+        if (++i >= args.length) {
+          stderr.writeln('--db requires a value');
+          exit(1);
+        }
         dbPath = args[i];
       case '--lang':
-        if (++i >= args.length) { stderr.writeln('--lang requires a value'); exit(1); }
+        if (++i >= args.length) {
+          stderr.writeln('--lang requires a value');
+          exit(1);
+        }
         language = args[i];
       case '--verbose' || '-v':
         verbose = true;
@@ -201,8 +217,7 @@ Future<void> main(List<String> args) async {
   int estimatedTotal = _estimateComponentCount(xmlSize);
 
   print('Streaming to SQLite...');
-  final parseBar =
-      ProgressBar(label: 'Parsing', width: 35);
+  final parseBar = ProgressBar(label: 'Parsing', width: 35);
   parseBar.start();
 
   String? lastId;
@@ -238,9 +253,12 @@ Future<void> main(List<String> args) async {
         }
 
       case ParseDone(:final count):
-        parseBar.finishComplete(count, count,
-            unit: 'components',
-            message: '✓ $count components in ${stopwatch.elapsedMilliseconds} ms');
+        parseBar.finishComplete(
+          count,
+          count,
+          unit: 'components',
+          message: '✓ $count components in ${stopwatch.elapsedMilliseconds} ms',
+        );
         stopwatch.stop();
         print('');
         print('Database:  $dbPath (${_fileSizeMiB(dbPath)} MiB)');
@@ -355,13 +373,16 @@ Future<String> _fetchAppstream() async {
   await File(xmlPath).writeAsBytes(xmlBytes);
 
   decompBar.finish(
-      '✓ ${ProgressBar._formatBytes(gzBytes.length)} → ${ProgressBar._formatBytes(xmlBytes.length)}');
+    '✓ ${ProgressBar._formatBytes(gzBytes.length)} → ${ProgressBar._formatBytes(xmlBytes.length)}',
+  );
   print('');
 
   // Basic integrity check: verify the decompressed file looks like AppStream XML
   final header = String.fromCharCodes(xmlBytes.take(256));
   if (!header.contains('<components') && !header.contains('<component')) {
-    stderr.writeln('Error: downloaded file does not appear to be AppStream XML');
+    stderr.writeln(
+      'Error: downloaded file does not appear to be AppStream XML',
+    );
     exit(1);
   }
 
@@ -434,7 +455,9 @@ void _printUsage() {
   print('Usage: dart run bin/main.dart [options]');
   print('');
   print('Options:');
-  print('  --xml <path>    Path to appstream.xml (downloads from Flathub if omitted)');
+  print(
+    '  --xml <path>    Path to appstream.xml (downloads from Flathub if omitted)',
+  );
   print('  --db <path>     Output SQLite database path (default: catalog.db)');
   print('  --lang <code>   Language filter (e.g. "en")');
   print('  -v, --verbose   Print each component as it streams');

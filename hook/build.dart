@@ -1,37 +1,94 @@
+// Native assets build hook for appstream_dart.
+//
+// Drives the project's CMake build to compile libappstream.so, then
+// declares the resulting shared library as a CodeAsset under the asset id
+// `package:appstream_dart/src/appstream_native.dart`. The @Native bindings
+// in lib/src/bindings.dart resolve symbols against that asset at runtime.
+//
+// Patterned after https://github.com/jwinarske/pw_dart/blob/main/hook/build.dart
+
+import 'dart:io';
+
+import 'package:code_assets/code_assets.dart';
 import 'package:hooks/hooks.dart';
-import 'package:native_toolchain_c/native_toolchain_c.dart';
 
-void main(List<String> args) => build(args, _build);
+void main(List<String> args) async {
+  await build(args, (input, output) async {
+    if (!input.config.buildCodeAssets) return;
 
-/// Build the appstream native library from C++ source.
-///
-/// Requires a C++23 compiler:
-/// - GCC 13+
-/// - Clang 18+ (std::expected polyfilled when not available)
-///
-/// Also requires SQLite3 development libraries.
-Future<void> _build(BuildInput input, BuildOutputBuilder output) async {
-  final builder = CBuilder.library(
-    name: 'appstream',
-    assetName: 'package:appstream/src/appstream_native.dart',
-    sources: [
-      'src/dart_api_dl.cpp',
-      'src/appstream_ffi.cpp',
-      'src/AppStreamParser.cpp',
-      'src/Component.cpp',
-      'src/XmlScanner.cpp',
-      'src/SqliteWriter.cpp',
-      'src/StringPool.cpp',
-    ],
-    includes: ['include'],
-    libraries: ['sqlite3', 'pthread'],
-    language: Language.cpp,
-    std: 'c++23',
-    cppLinkStdLib: 'stdc++',
-    flags: [
-      '-fvisibility=hidden',
-    ],
-  );
+    if (Platform.environment.containsKey('SKIP_NATIVE_BUILD')) {
+      stderr.writeln('SKIP_NATIVE_BUILD set — skipping native build.');
+      return;
+    }
 
-  await builder.run(input: input, output: output);
+    final pkgRoot = input.packageRoot.toFilePath();
+    final buildDir = input.outputDirectory.resolve('cmake/').toFilePath();
+
+    await Directory(buildDir).create(recursive: true);
+
+    final hasNinja = await _which('ninja');
+
+    if (!File('${buildDir}CMakeCache.txt').existsSync()) {
+      await _run('cmake', [
+        '-S',
+        pkgRoot,
+        '-B',
+        buildDir,
+        '-DCMAKE_BUILD_TYPE=Release',
+        '-DBUILD_TESTING=OFF',
+        '-DAPPSTREAM_HOOK_BUILD=ON',
+        if (hasNinja) ...['-G', 'Ninja'],
+      ]);
+    }
+
+    await _run('cmake', ['--build', buildDir, '--parallel']);
+
+    // CMake's default LIBRARY_OUTPUT_DIRECTORY is the build dir root.
+    final libFile = File('${buildDir}libappstream.so');
+    if (!libFile.existsSync()) {
+      throw StateError('libappstream.so not found at ${libFile.path}');
+    }
+
+    output.assets.code.add(
+      CodeAsset(
+        package: input.packageName,
+        name: 'src/appstream_native.dart',
+        linkMode: DynamicLoadingBundled(),
+        file: libFile.uri,
+      ),
+    );
+
+    // Re-run the hook whenever any C/C++ source or CMake file changes.
+    for (final dir in ['src', 'include']) {
+      final d = Directory('$pkgRoot/$dir');
+      if (!d.existsSync()) continue;
+      for (final entity in d.listSync(recursive: true)) {
+        if (entity is! File) continue;
+        final p = entity.path;
+        if (p.endsWith('.cpp') ||
+            p.endsWith('.cc') ||
+            p.endsWith('.c') ||
+            p.endsWith('.hpp') ||
+            p.endsWith('.h')) {
+          output.dependencies.add(entity.uri);
+        }
+      }
+    }
+    output.dependencies.add(Uri.file('$pkgRoot/CMakeLists.txt'));
+
+    stderr.writeln('libappstream built: ${libFile.path}');
+  });
+}
+
+Future<void> _run(String exe, List<String> args) async {
+  final p = await Process.start(exe, args, mode: ProcessStartMode.inheritStdio);
+  final code = await p.exitCode;
+  if (code != 0) {
+    throw ProcessException(exe, args, 'exit code $code', code);
+  }
+}
+
+Future<bool> _which(String exe) async {
+  final r = await Process.run('which', [exe]);
+  return r.exitCode == 0;
 }

@@ -66,7 +66,8 @@ class _SetupScreenState extends State<SetupScreen> {
         _statusText = 'Importing catalog...';
       });
 
-      await for (final (count, estimated) in widget.service.importToDatabase()) {
+      await for (final (count, estimated)
+          in widget.service.importToDatabase()) {
         setState(() {
           _componentCount = count;
           _progress = estimated > 0 ? (count / estimated).clamp(0.0, 1.0) : 0;
@@ -118,10 +119,10 @@ class _SetupScreenState extends State<SetupScreen> {
                           _phase == _SetupPhase.decompressing
                       ? 'Fetching Catalog'
                       : _phase == _SetupPhase.importing
-                          ? 'Building Database'
-                          : _phase == _SetupPhase.done
-                              ? 'All Set!'
-                              : 'Error',
+                      ? 'Building Database'
+                      : _phase == _SetupPhase.done
+                      ? 'All Set!'
+                      : 'Error',
                   style: theme.textTheme.headlineSmall,
                 ),
                 const SizedBox(height: 16),

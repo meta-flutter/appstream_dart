@@ -205,7 +205,7 @@ $ ls -lh lib/libappstream.so build/tests/appstream_tests
 
 ### Source Files Added/Modified
 - **New:** `CMakeLists.txt`, `tests/CMakeLists.txt`, 5× `test_*.cpp`, 4× `test_*.dart`
-- **Modified:** `lib/appstream.dart` (isolate fallback), `src/SqliteWriter.cpp` (schema fix), `build.sh` (clock skew), `bin/main.dart` (Flathub endpoints)
+- **Modified:** `lib/appstream.dart` (isolate fallback), `src/SqliteWriter.cpp` (schema fix), `bin/main.dart` (Flathub endpoints)
 - **Documentation:** `BUILD_SYSTEM.md`, `TEST_SUMMARY.md`
 
 ---

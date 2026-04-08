@@ -17,7 +17,7 @@ struct sqlite3_stmt;
 class SqliteWriter final : public ComponentSink {
 public:
   explicit SqliteWriter(std::string dbPath, size_t batchSize = 200);
-  ~SqliteWriter() override;
+  ~SqliteWriter() noexcept override;
 
   SqliteWriter(const SqliteWriter &) = delete;
   SqliteWriter &operator=(const SqliteWriter &) = delete;

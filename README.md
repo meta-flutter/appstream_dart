@@ -73,8 +73,7 @@ appstream/
 ├── test/                         # Dart tests
 ├── tests/                        # C++ tests (GoogleTest)
 ├── docs/                         # Documentation
-├── Makefile                      # Shared library build
-├── CMakeLists.txt                # Full build with tests
+├── CMakeLists.txt                # Native build (driven by hook/build.dart)
 └── pubspec.yaml                  # Dart dependencies
 ```
 
@@ -82,14 +81,22 @@ appstream/
 
 ### Prerequisites
 - C++23 compatible compiler (GCC 13+, Clang 17+)
-- Dart SDK 3.4+
+- CMake ≥ 3.22 (Ninja optional but recommended)
+- Dart SDK 3.10+
 - SQLite3 development libraries
 - Flutter SDK (for example app)
 
 ### Build the Native Library
 
+The native library is built automatically by `hook/build.dart` (via CMake)
+the first time you run `dart pub get`, `dart run`, `dart test`, or
+`flutter build`. No manual build step is required.
+
+To build by hand for native development:
+
 ```bash
-make              # builds lib/libappstream.so
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build
 ```
 
 ### Run the CLI

@@ -1,0 +1,146 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - run: dart pub get
+      # The Flutter sub-package under example/flathub_catalog/ is formatted
+      # in the flutter-flathub-catalog job below (its formatting tracks the
+      # Flutter SDK's bundled dart format, which can differ from the
+      # standalone Dart SDK used here).
+      - run: dart format --output=none --set-exit-if-changed lib test hook bin example/example.dart
+
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - run: dart pub get
+      - run: dart analyze --fatal-infos
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - name: Install native dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build g++ libsqlite3-dev pkg-config
+      - run: dart pub get
+      # The Dart test suite triggers hook/build.dart, which drives CMake
+      # to compile libappstream.so before the FFI tests load it.
+      - run: dart test
+
+  doc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - run: dart pub get
+      - run: dart doc --validate-links
+
+  clang-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install clang-format
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format
+      - name: Check formatting
+        run: |
+          find src include tests -type f \( -name '*.cpp' -o -name '*.hpp' -o -name '*.h' -o -name '*.c' \) \
+            -not -name 'dart_api_dl*' \
+            -not -name 'dart_api_types*' \
+            -not -name 'expected_polyfill*' \
+            -not -name 'spdlog*' \
+            -print0 | xargs -0 clang-format --dry-run --Werror
+
+  clang-tidy:
+    runs-on: ubuntu-latest
+    # The native CMake build is normally driven by hook/build.dart.
+    # Reproducing the full configure here is straightforward, but
+    # diagnostics from third-party headers can be noisy, so this job is
+    # advisory only.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-tidy cmake ninja-build libsqlite3-dev pkg-config
+      - name: Generate compile_commands.json
+        run: |
+          cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_TESTING=OFF
+      - name: Run clang-tidy
+        run: |
+          find src -type f \( -name '*.cpp' -o -name '*.hpp' \) \
+            -not -name 'dart_api_dl*' \
+            -print0 | xargs -0 clang-tidy -p build --extra-arg=-std=c++23
+
+  cxx-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        build-type: [Debug, Release]
+        sanitizer: [none, asan, ubsan]
+        exclude:
+          - build-type: Release
+            sanitizer: asan
+          - build-type: Release
+            sanitizer: ubsan
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build g++ libsqlite3-dev libgtest-dev
+      - name: Configure
+        run: |
+          cmake -S . -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} \
+            -DBUILD_TESTING=ON \
+            -DAPPSTREAM_BUILD_TESTS=ON \
+            -DENABLE_SANITIZER=${{ matrix.sanitizer }}
+      - name: Build
+        run: cmake --build build --parallel
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  flutter-flathub-catalog:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: example/flathub_catalog
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - name: Install native dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build g++ libsqlite3-dev pkg-config \
+            clang libgtk-3-dev liblzma-dev
+      - run: flutter pub get
+      - run: dart format --output=none --set-exit-if-changed .
+      - run: flutter analyze
+
+  publish-dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - run: dart pub get
+      - run: dart pub publish --dry-run

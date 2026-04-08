@@ -5,7 +5,7 @@
 ### What Was Added
 
 1. **CMake Build System** (`CMakeLists.txt` + `tests/CMakeLists.txt`)
-   - Replaced Makefile for C++ builds
+   - Sole build system for C++ sources; driven by `hook/build.dart` for FFI consumers
    - Targets: `appstream_core` (static), `appstream` (shared), `appstream_tests` (executable)
    - C++23 standard, -Wall -Wextra, automatic compile command export
    - Uses system GoogleTest (v1.15.2) with FetchContent fallback

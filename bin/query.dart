@@ -57,7 +57,10 @@ Future<void> main(List<String> args) async {
   for (var i = 0; i < args.length; i++) {
     switch (args[i]) {
       case '--db':
-        if (++i >= args.length) { stderr.writeln('--db requires a value'); exit(1); }
+        if (++i >= args.length) {
+          stderr.writeln('--db requires a value');
+          exit(1);
+        }
         dbPath = args[i];
       case '--help' || '-h':
         _printUsage();
@@ -258,10 +261,14 @@ Future<void> _cmdCategory(CatalogDatabase db, List<String> args) async {
 
   final truncated = comps.length > limit;
   final display = truncated ? comps.sublist(0, limit) : comps;
-  print('Category "$name" (showing ${display.length}${truncated ? '+' : ''} components):\n');
+  print(
+    'Category "$name" (showing ${display.length}${truncated ? '+' : ''} components):\n',
+  );
   for (final (:component, :iconUrl) in display) {
     final summary = component.summary ?? '';
-    final trimmed = summary.length > 60 ? '${summary.substring(0, 57)}...' : summary;
+    final trimmed = summary.length > 60
+        ? '${summary.substring(0, 57)}...'
+        : summary;
     print('  ${component.id}');
     print('    ${component.name} — $trimmed');
     if (iconUrl != null) print('    Icon: $iconUrl');
@@ -301,10 +308,14 @@ Future<void> _cmdLanguage(CatalogDatabase db, List<String> args) async {
 
   final truncated = comps.length > limit;
   final display = truncated ? comps.sublist(0, limit) : comps;
-  print('Components supporting "$lang" (showing ${display.length}${truncated ? '+' : ''}):\n');
+  print(
+    'Components supporting "$lang" (showing ${display.length}${truncated ? '+' : ''}):\n',
+  );
   for (final (:component, :iconUrl) in display) {
     final summary = component.summary ?? '';
-    final trimmed = summary.length > 60 ? '${summary.substring(0, 57)}...' : summary;
+    final trimmed = summary.length > 60
+        ? '${summary.substring(0, 57)}...'
+        : summary;
     print('  ${component.id}');
     print('    ${component.name} — $trimmed');
     if (iconUrl != null) print('    Icon: $iconUrl');
@@ -394,8 +405,12 @@ void _printUsage() {
   print('Commands:');
   print('  search <term>           Full-text search for components');
   print('  detail <component-id>   Show full component detail');
-  print('  categories [name]       List all categories, or components in a category');
-  print('  languages [code]        List languages, or components supporting a language');
+  print(
+    '  categories [name]       List all categories, or components in a category',
+  );
+  print(
+    '  languages [code]        List languages, or components supporting a language',
+  );
   print('  releases                Show most recent releases');
   print('  metrics                 Show database-wide statistics');
   print('');
