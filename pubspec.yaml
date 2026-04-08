@@ -5,6 +5,7 @@ description: >-
   FTS5 search, and streaming progress events.
 version: 0.2.2
 repository: https://github.com/meta-flutter/appstream
+issue_tracker: https://github.com/meta-flutter/appstream/issues
 topics:
   - appstream
   - flathub
@@ -14,6 +15,13 @@ topics:
 
 platforms:
   linux:
+
+# Exposed via `dart pub global activate appstream_dart`. After activation:
+#   appstream_dart        — download + parse Flathub catalog (bin/main.dart)
+#   appstream_dart_query  — interactive query tool       (bin/query.dart)
+executables:
+  appstream_dart: main
+  appstream_dart_query: query
 
 environment:
   sdk: ^3.10.0

@@ -4,7 +4,7 @@
 
 ### What Was Added
 
-1. **CMake Build System** (`CMakeLists.txt` + `tests/CMakeLists.txt`)
+1. **CMake Build System** (`CMakeLists.txt` + `native_tests/CMakeLists.txt`)
    - Sole build system for C++ sources; driven by `hook/build.dart` for FFI consumers
    - Targets: `appstream_core` (static), `appstream` (shared), `appstream_tests` (executable)
    - C++23 standard, -Wall -Wextra, automatic compile command export
@@ -44,7 +44,7 @@ cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 cmake --build build -j$(nproc)
 
 # Run C++ tests
-./build/tests/appstream_tests
+./build/native_tests/appstream_tests
 
 # Run Dart tests
 dart test
@@ -75,11 +75,11 @@ dart test
 
 ```
 lib/libappstream.so          5.8 MB  (shared library)
-build/tests/appstream_tests  9.0 MB  (test executable)
+build/native_tests/appstream_tests  9.0 MB  (test executable)
 CMakeLists.txt               ~50 lines
-tests/CMakeLists.txt         ~35 lines
-tests/test_*.cpp             1000+ lines across 5 files
-tests/test_helpers.h         ~90 lines
+native_tests/CMakeLists.txt         ~35 lines
+native_tests/test_*.cpp             1000+ lines across 5 files
+native_tests/test_helpers.h         ~90 lines
 BUILD_SYSTEM.md              This document
 ```
 
