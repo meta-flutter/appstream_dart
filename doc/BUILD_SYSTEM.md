@@ -14,12 +14,12 @@ Added **CMake-based build system** with **Google Test** for comprehensive C++ un
    - Builds `appstream` shared library (Dart FFI wrapper)
    - Enables CTest and includes tests subdirectory
 
-2. **`tests/CMakeLists.txt`**
+2. **`native_tests/CMakeLists.txt`**
    - Uses system GTest (v1.15.2) or falls back to FetchContent
    - Links test executable against `appstream_core`
    - Auto-discovers tests via `gtest_discover_tests()`
 
-3. **`tests/test_helpers.h`** (header-only)
+3. **`native_tests/test_helpers.h`** (header-only)
    - `TempFile` / `TempPath` RAII helpers for file cleanup
    - `VectorSink` mock sink for testing
    - XML builder utilities
@@ -82,7 +82,7 @@ cmake --build build -j$(nproc)
 ### Run Tests
 
 ```bash
-./build/tests/appstream_tests
+./build/native_tests/appstream_tests
 # or with CTest
 cd build && ctest -V
 ```
@@ -90,7 +90,7 @@ cd build && ctest -V
 ### Output Artifacts
 
 - **Native library**: `lib/libappstream.so` (5.8 MB)
-- **Test executable**: `build/tests/appstream_tests` (9.0 MB)
+- **Test executable**: `build/native_tests/appstream_tests` (9.0 MB)
 - **Test results**: ✅ **140/140 tests pass** (34 ms total)
 
 ## Test Coverage Summary

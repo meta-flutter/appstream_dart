@@ -2,10 +2,58 @@
 
 A high-performance C++23 FFI bridge for parsing AppStream metadata into SQLite databases, with Dart bindings, a Drift ORM layer, multi-language translation support, and a Flutter example app.
 
+## Quick start
+
+```dart
+import 'package:appstream_dart/appstream_dart.dart';
+
+Future<void> main() async {
+  // One-time native library init.
+  Appstream.initialize();
+
+  // Stream-parse an AppStream XML file into SQLite.
+  await for (final event in Appstream.parseToSqlite(
+    xmlPath: 'appstream.xml',
+    dbPath: 'catalog.db',
+    language: '*', // store every translation
+  )) {
+    switch (event) {
+      case ComponentParsed(:final component):
+        print('${component.id}: ${component.name}');
+      case ParseDone(:final count):
+        print('Done — $count components');
+      case ParseFailed(:final message):
+        throw StateError(message);
+    }
+  }
+
+  // Query via the Drift ORM layer.
+  final db = CatalogDatabase.open('catalog.db');
+  final results = await db.searchComponents('calculator');
+  for (final r in results) {
+    print('${r.component.name}  (${r.component.id})');
+  }
+  await db.close();
+}
+```
+
+Add to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  appstream_dart: ^0.2.2
+```
+
+The first `dart pub get` triggers `hook/build.dart`, which drives CMake
+to compile `libappstream.so` from the bundled C++23 sources. You'll
+need a C++23 compiler (GCC 13+ or Clang 18+), CMake ≥ 3.22, and
+`libsqlite3-dev`. See `doc/ADVANCED_BUILD.md` for sanitizer, coverage,
+and benchmark configurations.
+
 ## Quick Facts
 
 - **Language**: C++23 (backend) + Dart (frontend) + C (Dart API)
-- **Status**: Production-Ready (v0.2.0)
+- **Status**: Production-Ready (v0.2.2)
 - **Tests**: 185/185 passing (140 C++ + 45 Dart)
 - **Peak Memory**: ~22 MB (streaming parser with 256 KB sliding buffer)
 
@@ -71,8 +119,8 @@ appstream/
 │       │   └── widgets/          # AppCard, AppIcon
 │       └── linux/                # Linux desktop build (bundles libappstream.so)
 ├── test/                         # Dart tests
-├── tests/                        # C++ tests (GoogleTest)
-├── docs/                         # Documentation
+├── native_tests/                        # C++ tests (GoogleTest)
+├── doc/                         # Documentation
 ├── CMakeLists.txt                # Native build (driven by hook/build.dart)
 └── pubspec.yaml                  # Dart dependencies
 ```
@@ -281,10 +329,10 @@ CatalogDatabase
 
 | Document                    | Purpose                                  |
 |-----------------------------|------------------------------------------|
-| `docs/ARCHITECTURE.md`      | System architecture and design decisions |
-| `docs/ADVANCED_BUILD.md`    | Build configuration guide                |
-| `docs/RUNNING_TESTS.md`     | Test execution and debugging             |
-| `docs/CODE_AUDIT_REPORT.md` | Security and code quality audit          |
+| `doc/ARCHITECTURE.md`      | System architecture and design decisions |
+| `doc/ADVANCED_BUILD.md`    | Build configuration guide                |
+| `doc/RUNNING_TESTS.md`     | Test execution and debugging             |
+| `doc/CODE_AUDIT_REPORT.md` | Security and code quality audit          |
 
 ## License
 

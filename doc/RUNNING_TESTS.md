@@ -50,4 +50,4 @@ dart test
 - `test/appstream_uninit_test.dart` — uninitialized-state behavior
 - `test/appstream_parse_fallback_test.dart` — isolate spawn fallback path
 - `test/appstream_integration_test.dart` — end-to-end FFI integration
-- `tests/*.cpp` — C++ unit and integration tests (GoogleTest)
+- `native_tests/*.cpp` — C++ unit and integration tests (GoogleTest)

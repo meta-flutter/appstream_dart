@@ -20,13 +20,13 @@ appstream/
 ├── build/                            # Build output directory
 │   ├── libappstream_core.a          # Static library (core logic)
 │   ├── libappstream.so → ../lib/    # Shared library (Dart FFI)
-│   └── tests/
+│   └── native_tests/
 │       └── appstream_tests          # C++ unit test executable
 ├── lib/
 │   ├── libappstream.so              # Dart FFI shared library (5.8 MB)
 │   ├── appstream.dart               # Dart API (updated with isolate fallback)
 │   └── src/bindings.dart
-├── tests/                            # C++ tests (CMake-driven)
+├── native_tests/                            # C++ tests (CMake-driven)
 │   ├── CMakeLists.txt
 │   ├── test_helpers.h               # RAII utilities (TempFile, TempPath, VectorSink)
 │   ├── test_string_pool.cpp         # 12 tests
@@ -106,7 +106,7 @@ cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 cmake --build build -j$(nproc)
 
 # 3. Run C++ tests
-./build/tests/appstream_tests
+./build/native_tests/appstream_tests
 
 # 4. Run Dart tests
 dart test
@@ -118,9 +118,9 @@ ls -lh lib/libappstream.so
 ### Output Verification
 
 ```bash
-$ ls -lh lib/libappstream.so build/tests/appstream_tests
+$ ls -lh lib/libappstream.so build/native_tests/appstream_tests
 -rwxr-xr-x. 1 joel joel 5.8M  lib/libappstream.so
--rwxr-xr-x. 1 joel joel 9.0M  build/tests/appstream_tests
+-rwxr-xr-x. 1 joel joel 9.0M  build/native_tests/appstream_tests
 ```
 
 ---
@@ -134,7 +134,7 @@ $ ls -lh lib/libappstream.so build/tests/appstream_tests
 - Builds `appstream` shared library with Dart FFI wrapper
 - Enables CTest and includes test subdirectory
 
-**tests/CMakeLists.txt:**
+**native_tests/CMakeLists.txt:**
 - Uses system GTest (1.15.2) or FetchContent fallback
 - Automatically discovers tests with `gtest_discover_tests()`
 - Links test executable against `appstream_core`
@@ -200,11 +200,11 @@ $ ls -lh lib/libappstream.so build/tests/appstream_tests
 
 ### Build Artifacts
 - `lib/libappstream.so` – Dart FFI shared library (5.8 MB)
-- `build/tests/appstream_tests` – C++ test executable (9.0 MB)
+- `build/native_tests/appstream_tests` – C++ test executable (9.0 MB)
 - `build/libappstream_core.a` – Static core library
 
 ### Source Files Added/Modified
-- **New:** `CMakeLists.txt`, `tests/CMakeLists.txt`, 5× `test_*.cpp`, 4× `test_*.dart`
+- **New:** `CMakeLists.txt`, `native_tests/CMakeLists.txt`, 5× `test_*.cpp`, 4× `test_*.dart`
 - **Modified:** `lib/appstream.dart` (isolate fallback), `src/SqliteWriter.cpp` (schema fix), `bin/main.dart` (Flathub endpoints)
 - **Documentation:** `BUILD_SYSTEM.md`, `TEST_SUMMARY.md`
 

@@ -37,7 +37,7 @@ lcov --directory . --capture --output-file coverage.info
 lcov --remove coverage.info \
     '/usr/*' \
     '*/test/*' \
-    '*/tests/*' \
+    '*/native_tests/*' \
     --output-file coverage.info
 
 # Generate HTML report
@@ -74,12 +74,12 @@ cmake -S . -B build-asan \
     -DENABLE_SANITIZER=asan
 
 cmake --build build-asan -j$(nproc)
-./build-asan/tests/appstream_tests
+./build-asan/native_tests/appstream_tests
 ```
 
 **Environment variables:**
 ```bash
-ASAN_OPTIONS=halt_on_error=1:strict_string_checks=1 ./build-asan/tests/appstream_tests
+ASAN_OPTIONS=halt_on_error=1:strict_string_checks=1 ./build-asan/native_tests/appstream_tests
 ```
 
 ### MemorySanitizer (MSAN)
@@ -92,7 +92,7 @@ cmake -S . -B build-msan \
     -DENABLE_SANITIZER=msan
 
 cmake --build build-msan -j$(nproc)
-./build-msan/tests/appstream_tests
+./build-msan/native_tests/appstream_tests
 ```
 
 ### UndefinedBehaviorSanitizer (UBSan)
@@ -105,7 +105,7 @@ cmake -S . -B build-ubsan \
     -DENABLE_SANITIZER=ubsan
 
 cmake --build build-ubsan -j$(nproc)
-./build-ubsan/tests/appstream_tests
+./build-ubsan/native_tests/appstream_tests
 ```
 
 ### Combined Sanitizers
@@ -120,7 +120,7 @@ cmake -S . -B build-combined \
     -DENABLE_SANITIZER=asan
 
 cmake --build build-combined -j$(nproc)
-./build-combined/tests/appstream_tests
+./build-combined/native_tests/appstream_tests
 ```
 
 ---
@@ -137,7 +137,7 @@ cmake -S . -B build-bench \
 cmake --build build-bench -j$(nproc)
 
 # Run benchmarks
-./build-bench/tests/appstream_benchmarks
+./build-bench/native_tests/appstream_benchmarks
 ```
 
 ### Benchmark Categories
@@ -249,16 +249,16 @@ cd build-ci-asan && ctest && cd ..
 
 ```bash
 # List all tests
-./build/tests/appstream_tests --gtest_list_tests
+./build/native_tests/appstream_tests --gtest_list_tests
 
 # Run specific test
-./build/tests/appstream_tests --gtest_filter=StringPoolTest.Intern
+./build/native_tests/appstream_tests --gtest_filter=StringPoolTest.Intern
 
 # Run with verbosity
-./build/tests/appstream_tests --gtest_filter=*Coverage* -v
+./build/native_tests/appstream_tests --gtest_filter=*Coverage* -v
 
 # Run real appstream data tests
-./build/tests/appstream_tests --gtest_filter=RealAppstreamTest.*
+./build/native_tests/appstream_tests --gtest_filter=RealAppstreamTest.*
 ```
 
 ---
@@ -267,7 +267,7 @@ cd build-ci-asan && ctest && cd ..
 
 ### Overview
 
-New test file: `tests/test_real_appstream_data.cpp`
+New test file: `native_tests/test_real_appstream_data.cpp`
 
 Tests the parser with realistic Flathub-style appstream data including:
 - Real component structure
@@ -318,13 +318,13 @@ Tests the parser with realistic Flathub-style appstream data including:
 
 ```bash
 # Run all real appstream tests
-./build/tests/appstream_tests --gtest_filter=RealAppstreamTest.*
+./build/native_tests/appstream_tests --gtest_filter=RealAppstreamTest.*
 
 # Run specific real appstream test
-./build/tests/appstream_tests --gtest_filter=RealAppstreamTest.ParseRealWorldSample
+./build/native_tests/appstream_tests --gtest_filter=RealAppstreamTest.ParseRealWorldSample
 
 # Run with verbose output
-./build/tests/appstream_tests --gtest_filter=RealAppstreamTest.* -v
+./build/native_tests/appstream_tests --gtest_filter=RealAppstreamTest.* -v
 ```
 
 ---
@@ -365,7 +365,7 @@ cmake -S . -B build-prod \
     -DENABLE_COVERAGE=OFF
 
 cmake --build build-prod -j$(nproc)
-./build-prod/tests/appstream_tests
+./build-prod/native_tests/appstream_tests
 dart test
 ```
 
