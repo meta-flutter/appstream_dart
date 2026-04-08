@@ -111,6 +111,7 @@ jobs:
           cmake -S . -B build -G Ninja \
             -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} \
             -DBUILD_TESTING=ON \
+            -DAPPSTREAM_BUILD_TESTS=ON \
             -DENABLE_SANITIZER=${{ matrix.sanitizer }}
       - name: Build
         run: cmake --build build --parallel
