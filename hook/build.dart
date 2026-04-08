@@ -30,8 +30,10 @@ void main(List<String> args) async {
 
     if (!File('${buildDir}CMakeCache.txt').existsSync()) {
       await _run('cmake', [
-        '-S', pkgRoot,
-        '-B', buildDir,
+        '-S',
+        pkgRoot,
+        '-B',
+        buildDir,
         '-DCMAKE_BUILD_TYPE=Release',
         '-DBUILD_TESTING=OFF',
         '-DAPPSTREAM_HOOK_BUILD=ON',
