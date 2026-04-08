@@ -70,7 +70,8 @@ set_target_properties(appstream PROPERTIES
 )
 
 # ── Tests ──────────────────────────────────────────────────────────────────
-include(CTest)
-enable_testing()
-add_subdirectory(tests)
-
+if (BUILD_UNIT_TESTS)
+    include(CTest)
+    enable_testing()
+    add_subdirectory(tests)
+endif ()
