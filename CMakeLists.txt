@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
+
 cmake_minimum_required(VERSION 3.22)
 project(appstream
     LANGUAGES CXX C

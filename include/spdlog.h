@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
 /*
  * Minimal spdlog-compatible shim for shared library builds.
  * Provides info/warn/error/debug logging via fprintf(stderr, ...).

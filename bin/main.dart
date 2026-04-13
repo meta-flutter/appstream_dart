@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
+
 /// Appstream CLI — Fetches Flathub appstream XML and streams to SQLite.
 ///
 /// Usage:

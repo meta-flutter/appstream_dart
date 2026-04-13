@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
 /// Shared helpers for appstream unit tests.
 ///
 /// Included directly by each test_*.cpp — no separate compilation unit.

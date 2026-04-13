@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
+
 /// Example: Parse Flathub AppStream XML and query the catalog.
 ///
 /// On first run this downloads `appstream.xml.gz` from Flathub and

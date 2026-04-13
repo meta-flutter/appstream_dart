@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
+
 /// Appstream parser — Dart API for the C++23 FFI bridge.
 ///
 /// Usage:
@@ -25,6 +28,8 @@ import 'src/bindings.dart';
 export 'src/database/database.dart';
 export 'src/database/tables.dart';
 
+/// Signature for a custom isolate spawner, used to override the default
+/// [Isolate.spawn] in tests or alternative embedders.
 typedef ParseWorkerSpawner =
     Future<Isolate> Function(
       void Function(Map<String, Object>) entryPoint,
@@ -84,10 +89,16 @@ void _parseToSqliteWorker(Map<String, Object> args) {
 
 /// A component notification received from the C++ parser.
 class ComponentEvent {
+  /// Unique AppStream component identifier (e.g. `org.example.App`).
   final String id;
+
+  /// Human-readable display name of the component.
   final String name;
+
+  /// One-line summary describing the component.
   final String summary;
 
+  /// Creates a component event with the given [id], [name], and [summary].
   ComponentEvent({required this.id, required this.name, required this.summary});
 
   @override
@@ -96,31 +107,49 @@ class ComponentEvent {
 
 /// Parse completion event.
 class ParseComplete {
+  /// Total number of components that were parsed.
   final int componentCount;
+
+  /// Creates a parse-complete event with the given [componentCount].
   ParseComplete(this.componentCount);
 }
 
 /// Parse error event.
 class ParseError {
+  /// Human-readable error description.
   final String message;
+
+  /// Creates a parse-error event with the given [message].
   ParseError(this.message);
 }
 
 /// Sealed type for stream events.
 sealed class ParseEvent {}
 
+/// Emitted for each component written to the database.
 class ComponentParsed extends ParseEvent {
+  /// The parsed component metadata.
   final ComponentEvent component;
+
+  /// Creates a [ComponentParsed] event wrapping [component].
   ComponentParsed(this.component);
 }
 
+/// Emitted when parsing completes successfully.
 class ParseDone extends ParseEvent {
+  /// Total number of components written.
   final int count;
+
+  /// Creates a [ParseDone] event with the given [count].
   ParseDone(this.count);
 }
 
+/// Emitted when parsing fails.
 class ParseFailed extends ParseEvent {
+  /// Human-readable error description.
   final String message;
+
+  /// Creates a [ParseFailed] event with the given [message].
   ParseFailed(this.message);
 }
 

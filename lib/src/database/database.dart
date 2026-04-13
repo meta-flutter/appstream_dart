@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
+
 import 'dart:io';
 
 import 'package:drift/drift.dart';
@@ -9,15 +12,31 @@ part 'database.g.dart';
 
 /// Detailed component with related data for display.
 class ComponentDetail {
+  /// The main component row (id, name, summary, description, etc.).
   final ComponentRow component;
+
+  /// Category names this component belongs to (e.g. "Game", "Utility").
   final List<String> categories;
+
+  /// Search keywords associated with this component.
   final List<String> keywords;
+
+  /// Languages supported by this component.
   final List<String> languages;
+
+  /// Typed URLs (homepage, bugtracker, donation, etc.).
   final List<ComponentUrlRow> urls;
+
+  /// Icons (cached, remote, stock) for this component.
   final List<ComponentIconRow> icons;
+
+  /// Release history, ordered newest-first.
   final List<ReleaseRow> releases;
+
+  /// Screenshot images for this component.
   final List<ScreenshotImageRow> screenshotImages;
 
+  /// Creates a [ComponentDetail] with all related data.
   ComponentDetail({
     required this.component,
     required this.categories,
@@ -32,17 +51,37 @@ class ComponentDetail {
 
 /// Database-level statistics.
 class CatalogMetrics {
+  /// Total number of components in the catalog.
   final int componentCount;
+
+  /// Number of distinct categories.
   final int categoryCount;
+
+  /// Number of distinct keywords.
   final int keywordCount;
+
+  /// Total number of release entries across all components.
   final int releaseCount;
+
+  /// Total number of icon entries.
   final int iconCount;
+
+  /// Total number of URL entries.
   final int urlCount;
+
+  /// Total number of screenshot entries.
   final int screenshotCount;
+
+  /// Number of distinct languages referenced in component metadata.
   final int languageCount;
+
+  /// Component counts keyed by AppStream component type integer.
   final Map<int, int> componentsByType;
+
+  /// Whether the FTS5 full-text search index is available.
   final bool ftsReady;
 
+  /// Creates a [CatalogMetrics] snapshot.
   CatalogMetrics({
     required this.componentCount,
     required this.categoryCount,

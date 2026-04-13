@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
+
 /// Unit tests for pure-Dart data model classes.
 ///
 /// No native library is needed — none of these tests call

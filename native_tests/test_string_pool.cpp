@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
 // Unit tests for StringPool
 #include <gtest/gtest.h>
 #include "StringPool.h"

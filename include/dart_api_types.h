@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: BSD-3-Clause
+// SPDX-FileCopyrightText: 2012 the Dart project authors. All rights reserved.
 /*
  * Minimal reproduction of dart_api_types.h from the Dart SDK.
  * Layout-identical to the official header for Dart 3.x.
