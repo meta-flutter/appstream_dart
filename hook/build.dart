@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
+//
 // Native assets build hook for appstream_dart.
 //
 // Drives the project's CMake build to compile libappstream.so, then

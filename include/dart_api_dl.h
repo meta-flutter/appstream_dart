@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: BSD-3-Clause
+// SPDX-FileCopyrightText: 2012 the Dart project authors. All rights reserved.
 /*
  * Minimal reproduction of dart_api_dl.h from the Dart SDK.
  * Declares Dart_InitializeApiDL and the dynamically linked function pointers.

@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
+
 # ── GoogleTest: prefer system install, fall back to FetchContent ──────────
 find_package(GTest QUIET)
 if(NOT GTest_FOUND)

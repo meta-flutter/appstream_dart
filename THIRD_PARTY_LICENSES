@@ -1,0 +1,120 @@
+Third-Party Licenses
+====================
+
+This project depends on the following third-party libraries.
+
+
+Dart SDK (dart_api_dl, dart_api_types)
+--------------------------------------
+SPDX-License-Identifier: BSD-3-Clause
+
+Files derived from the Dart SDK:
+  include/dart_api_types.h
+  include/dart_api_dl.h
+  src/dart_api_dl_impl.c
+  src/dart_api_dl.cpp
+
+Copyright 2012, the Dart project authors.
+https://github.com/dart-lang/sdk/blob/main/LICENSE
+
+
+Dart package: drift
+-------------------
+SPDX-License-Identifier: MIT
+https://pub.dev/packages/drift/license
+
+
+Dart package: drift_dev
+-----------------------
+SPDX-License-Identifier: MIT
+https://pub.dev/packages/drift_dev/license
+
+
+Dart package: sqlite3
+---------------------
+SPDX-License-Identifier: MIT
+https://pub.dev/packages/sqlite3/license
+
+
+Dart package: ffi
+-----------------
+SPDX-License-Identifier: BSD-3-Clause
+https://pub.dev/packages/ffi/license
+
+
+Dart package: http
+------------------
+SPDX-License-Identifier: BSD-3-Clause
+https://pub.dev/packages/http/license
+
+
+Dart package: path
+------------------
+SPDX-License-Identifier: BSD-3-Clause
+https://pub.dev/packages/path/license
+
+
+Dart package: code_assets
+-------------------------
+SPDX-License-Identifier: BSD-3-Clause
+https://pub.dev/packages/code_assets/license
+
+
+Dart package: hooks
+-------------------
+SPDX-License-Identifier: BSD-3-Clause
+https://pub.dev/packages/hooks/license
+
+
+Dart package: test
+------------------
+SPDX-License-Identifier: BSD-3-Clause
+https://pub.dev/packages/test/license
+
+
+Dart package: lints
+-------------------
+SPDX-License-Identifier: BSD-3-Clause
+https://pub.dev/packages/lints/license
+
+
+Dart package: build_runner
+--------------------------
+SPDX-License-Identifier: BSD-3-Clause
+https://pub.dev/packages/build_runner/license
+
+
+Example app additional dependencies
+------------------------------------
+
+Flutter package: cached_network_image
+SPDX-License-Identifier: MIT
+https://pub.dev/packages/cached_network_image/license
+
+Flutter package: path_provider
+SPDX-License-Identifier: BSD-3-Clause
+https://pub.dev/packages/path_provider/license
+
+Flutter package: url_launcher
+SPDX-License-Identifier: BSD-3-Clause
+https://pub.dev/packages/url_launcher/license
+
+Flutter package: flutter_lints
+SPDX-License-Identifier: BSD-3-Clause
+https://pub.dev/packages/flutter_lints/license
+
+
+C++ dependencies (fetched by CMake)
+------------------------------------
+
+Google Test (gtest)
+SPDX-License-Identifier: BSD-3-Clause
+https://github.com/google/googletest/blob/main/LICENSE
+
+SQLite
+SPDX-License-Identifier: blessing (public domain)
+https://www.sqlite.org/copyright.html
+
+pugixml (if used)
+SPDX-License-Identifier: MIT
+https://github.com/zeux/pugixml/blob/master/LICENSE.md

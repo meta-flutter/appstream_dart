@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
+
 /// Integration tests that exercise the native library end-to-end.
 ///
 /// All tests in this file are skipped automatically when libappstream.so

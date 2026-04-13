@@ -1,12 +1,15 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
+
 /// Catalog query CLI — demonstrates Drift-based SQLite queries on the
 /// AppStream catalog database produced by `bin/main.dart`.
 ///
 /// Usage:
-///   dart run bin/query.dart [--db <path>] <command> [args...]
+///   dart run bin/query.dart [--db `<path>`] `<command>` [args...]
 ///
 /// Commands:
-///   search <term>           Full-text search for components
-///   detail <component-id>   Show full component detail
+///   search `<term>`           Full-text search for components
+///   detail `<component-id>`   Show full component detail
 ///   categories [name]       List all categories, or components in a category
 ///   languages [code]        List languages, or components supporting a language
 ///   releases                Show most recent releases

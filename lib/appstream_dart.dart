@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
+
 /// Primary library entry point for the `appstream_dart` package.
 ///
 /// This is a thin re-export of `package:appstream_dart/appstream.dart`,

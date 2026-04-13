@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
 // Unit tests for Component — enum conversions, setUrl/getUrl,
 // addSupportedLanguage, shrinkToFit, and default field values.
 #include <gtest/gtest.h>

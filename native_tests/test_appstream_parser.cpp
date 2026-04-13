@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
 // Integration tests for AppStreamParser — both streaming (parseToSink) and
 // in-memory (create) modes.
 #include <gtest/gtest.h>

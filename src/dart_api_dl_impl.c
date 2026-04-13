@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: BSD-3-Clause
+// SPDX-FileCopyrightText: 2012 the Dart project authors. All rights reserved.
 /*
  * Dart API dynamic linking initialization.
  * Must be compiled as C (not C++).

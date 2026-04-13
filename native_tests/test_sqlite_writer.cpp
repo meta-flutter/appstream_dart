@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Joel Winarske <joel.winarske@gmail.com>
 // Unit / integration tests for SqliteWriter.
 // Each test writes to a unique temp DB path.
 #include <gtest/gtest.h>
