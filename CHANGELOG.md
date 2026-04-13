@@ -1,3 +1,15 @@
+## 0.3.0
+
+- Licensing: adopt SPDX license headers (`SPDX-License-Identifier` /
+  `SPDX-FileCopyrightText`) across all source files; add
+  `THIRD_PARTY_LICENSES` cataloging every direct dependency.
+- LICENSE file replaced with the compact SPDX-standard Apache-2.0 text.
+- Dependency bumps: `sqlite3` ^2.4.0 → ^3.3.1, `lints` ^4.0.0 → ^6.1.0
+  (applies to both the main package and the Flutter example).
+- Public API documentation: add dartdoc comments to all exported classes,
+  fields, and constructors in `lib/appstream.dart`,
+  `lib/src/database/database.dart`, and `lib/src/database/tables.dart`.
+
 ## 0.2.2
 
 - pub.dev publishing hygiene:

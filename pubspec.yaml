@@ -2,7 +2,7 @@ name: appstream_dart
 description: >-
   High-performance AppStream XML parser with C++23 FFI bridge.
   Streams catalog metadata into SQLite with Drift ORM and FTS5 search.
-version: 0.2.2
+version: 0.3.0
 repository: https://github.com/meta-flutter/appstream
 issue_tracker: https://github.com/meta-flutter/appstream/issues
 topics:
